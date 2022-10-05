@@ -6,9 +6,7 @@ const NotFoundPage = React.lazy(
   () => import("../Pages/NotFoundPage/NotFoundPage")
 );
 const Login = React.lazy(() => import("../Pages/LoginPage/LoginPage"));
-const Styleguide = React.lazy(
-  () => import("../Pages/StyleguidePage/StyleguidePage")
-);
+
 const mainRoutes: IRoute[] = [
   {
     index: true,

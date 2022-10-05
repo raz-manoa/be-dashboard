@@ -1,9 +1,0 @@
-.card {
-  @apply grid grid-cols-8;
-  &__flag {
-    @apply flex items-center justify-center flex-col;
-    span {
-      margin-top: 10px;
-    }
-  }
-}

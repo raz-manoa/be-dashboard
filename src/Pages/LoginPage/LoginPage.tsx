@@ -6,7 +6,7 @@ const LoginPage = () => {
   };
   return (
     <div>
-      LoginPage
+    
       <button onClick={handleLogin}>Fake login</button>
     </div>
   );

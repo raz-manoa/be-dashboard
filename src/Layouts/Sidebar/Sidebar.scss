@@ -1,7 +1,7 @@
 .sidebar {
   @apply fixed left-0 top-0;
   height: 100vh;
-  background-color: #e02b59;
+  background-color: var(--red);
   width: 20%;
   padding: 45px 18px;
   &__list {

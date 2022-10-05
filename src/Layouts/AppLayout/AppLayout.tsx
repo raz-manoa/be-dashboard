@@ -12,7 +12,9 @@ const AppLayout = () => {
         <Layout.Sider>
           <Sidebar />
         </Layout.Sider>
-        <Layout.Content style={{ marginLeft: "20%", paddingLeft: 32 }}>
+        <Layout.Content
+          style={{ marginLeft: "20%", padding: "0 32px", marginTop: 100 }}
+        >
           <Outlet />
         </Layout.Content>
       </Layout>
