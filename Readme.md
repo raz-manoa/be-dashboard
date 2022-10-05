@@ -107,7 +107,7 @@ All components are separated in folder discribed as below:
 
 ## Components
 
-### Text
+### Text (`Components/General/Text`)
 
 ```javascript
 <Text tag="h1" type="h1" variant="green">Content</Text>
