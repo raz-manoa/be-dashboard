@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import "./Text.scss";
+import styles from "./Text.module.scss";
 interface TextProps extends React.HTMLAttributes<any> {
   tag: keyof JSX.IntrinsicElements;
   children: ReactNode;
@@ -22,9 +22,10 @@ export default function Text(props: TextProps) {
   return (
     <TextTag
       {...rest}
-      className={`text text__color--${variant} ${
-        type ? `text__size--${type}` : "text__size"
-      } ${className}`}
+      className={`
+        ${styles.text} 
+        ${styles[`text__color_${variant}`]} 
+        ${type ? `${styles[`text__size_${type}`]}` : ""} ${className}`}
       style={{ "--font-size": `${size}px` } as React.CSSProperties}
     >
       {children}

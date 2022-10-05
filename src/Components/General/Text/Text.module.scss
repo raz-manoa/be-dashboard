@@ -1,33 +1,33 @@
 .text {
+  font-size: var(--font-size);
   &__size {
-    font-size: var(--font-size);
-    &--h1 {
+    &_h1 {
       @apply font-bold;
       font-size: 24px;
     }
-    &--h2 {
+    &_h2 {
       @apply font-bold;
       font-size: 19px;
     }
-    &--h3 {
+    &_h3 {
       @apply font-bold;
       font-size: 14px;
     }
   }
   &__color {
-    &--black {
+    &_black {
       color: #000;
     }
-    &--grey {
+    &_grey {
       color: var(--grey);
     }
-    &--green {
+    &_green {
       color: var(--green);
     }
-    &--red {
+    &_red {
       color: var(--red);
     }
-    &--white {
+    &_white {
       color: var(--white);
     }
   }
