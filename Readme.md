@@ -44,7 +44,7 @@ Or
 
 An optimized build will be created in `/dist` directory.
 
-## Preview  project for production
+## Preview project for production
 
 You can localy preview production build.
 
@@ -84,7 +84,7 @@ src/
 │   │
 │   └───LoginPage
 │       │   LoginPage.tsx
-│       │   LoginPage.scss
+│       │   LoginPage.scss // or LoginPage.module.scss (for css module)
 │       │   UseLoginPageLogic.ts
 │       │   ...
 │
@@ -104,3 +104,19 @@ All components are separated in folder discribed as below:
 - `Pages`: All pages of the site (Or components used in all routes that is not a layout)
 - `Routes`: All declarations of our routes that are grouped per Layout.
 - `Utils`: All utils functions.
+
+## Components
+
+### Text
+
+```javascript
+<Text tag="h1" type="h1" variant="green">Content</Text>
+// props
+interface TextProps extends React.HTMLAttributes<any> {
+  tag: keyof JSX.IntrinsicElements;
+  children: ReactNode;
+  type?: "h1" | "h2" | "h3" | "p";
+  variant?: "black" | "red" | "grey" | "green" | "white";
+  size?: number;
+}
+```
