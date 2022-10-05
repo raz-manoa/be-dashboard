@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --grey: #546e7a;
+  --red: #e02b59;
+  --grey_light: #90a4ae;
+  --green: #5cb85c;
+  --white: #fff;
+}
+
+.ant-layout-content {
+  background-color: #f5f5f5;
+}

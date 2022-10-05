@@ -1,6 +1,4 @@
 import Text from "@/Components/General/Text/Text";
-import React, { ReactNode } from "react";
-import Canada from "../../../Assets/Flags/canada.svg";
 import Card from "../Card/Card";
 import styles from "./CardSave.module.scss";
 

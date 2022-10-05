@@ -5,7 +5,7 @@
   height: 54px;
   width: 200px;
   border-radius: 8px;
-  &--primary {
+  &__primary {
     background-color: var(--red);
     &:hover {
       background-color: #bf244b;
@@ -15,7 +15,7 @@
       background-color: #e02b59;
     }
   }
-  &--secondary {
+  &__secondary {
     background-color: var(--grey);
     &:hover {
       background-color: #475d68;
@@ -25,7 +25,7 @@
       background-color: #546e7a;
     }
   }
-  &--default {
+  &__default {
     background-color: var(--grey_light);
     &:hover {
       background-color: #7a8b94;
@@ -35,7 +35,7 @@
       background-color: #90a4ae;
     }
   }
-  &--white {
+  &__white {
     background-color: #fff;
     color: var(--red);
     &:hover {

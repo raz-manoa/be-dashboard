@@ -1,10 +1,8 @@
 import React from "react";
-import Header from "~/Components/common/Header/Header";
-import InputField from "~/Components/DataEntry/Input/Input";
+import Header from "@/Components/Common/Header/Header";
 import CardSave from "@/Components/Display/CardSave/CardSave";
 import Button from "~/Components/General/Button/Button";
 import Text from "~/Components/General/Text/Text";
-import Sidebar from "~/Layouts/Sidebar/Sidebar";
 import UnitedState from "@/Assets/Flags/united states.svg";
 import EuropUnion from "@/Assets/Flags/european union.svg";
 import CurrentCardList from "@/Components/Display/CurrentCardList/CurrentCardList";
@@ -15,7 +13,9 @@ const StyleguidePage = () => {
   return (
     <div>
       <Header title="Styleguide" />
-      <Button type="primary">BUTTON</Button>
+      <Button tag="link" to="/" type="primary">
+        BUTTON
+      </Button>
       <Button type="secondary">BUTTON</Button>
       <Button type="white">BUTTON</Button>
       <Button type="default">BUTTON</Button>

@@ -1,8 +1,8 @@
 import React from "react";
-import Icon from "../../Components/General/Icon/Icon";
-import SidebarItem from "../../Components/General/SibarItem/SidebarItem";
-import TestIcon from "../../Components/Icons/TestIcon";
-import "./Sidebar.scss";
+import Icon from "@/Components/General/Icon/Icon";
+import SidebarItem from "@/Components/General/SibarItem/SidebarItem";
+import styles from "./Sidebar.module.scss";
+
 const datas = [
   { label: "Overview", icon: "dashboard", path: "/" },
   { label: "Transactions", icon: "transactions", path: "/" },
@@ -18,8 +18,8 @@ const datas = [
 ];
 export default function Sidebar() {
   return (
-    <div className="sidebar">
-      <div className="sidebar__list">
+    <div className={styles.sidebar}>
+      <div className={styles.sidebar__list}>
         {datas.map((data) => {
           return (
             <SidebarItem to={data.path} label={data.label}>
