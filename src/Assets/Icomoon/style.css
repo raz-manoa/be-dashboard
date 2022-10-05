@@ -1,0 +1,141 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?nfyf4e');
+  src:  url('fonts/icomoon.eot?nfyf4e#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?nfyf4e') format('truetype'),
+    url('fonts/icomoon.woff?nfyf4e') format('woff'),
+    url('fonts/icomoon.svg?nfyf4e#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-account:before {
+  content: "\e900";
+}
+.icon-bank-details:before {
+  content: "\e901";
+}
+.icon-bank-transfert:before {
+  content: "\e902";
+}
+.icon-calendar:before {
+  content: "\e903";
+}
+.icon-checkbox-off:before {
+  content: "\e904";
+}
+.icon-checkbox-on:before {
+  content: "\e905";
+}
+.icon-chevron:before {
+  content: "\e906";
+}
+.icon-clock:before {
+  content: "\e907";
+}
+.icon-close:before {
+  content: "\e908";
+}
+.icon-copy:before {
+  content: "\e909";
+}
+.icon-crypto:before {
+  content: "\e90a";
+}
+.icon-crypto-deposit:before {
+  content: "\e90b";
+}
+.icon-crypto-exchange:before {
+  content: "\e90c";
+}
+.icon-crypto-withdraw:before {
+  content: "\e90d";
+}
+.icon-dashboard:before {
+  content: "\e90e";
+}
+.icon-eye:before {
+  content: "\e90f";
+}
+.icon-fx:before {
+  content: "\e910";
+}
+.icon-home:before {
+  content: "\e911";
+}
+.icon-logout:before {
+  content: "\e912";
+}
+.icon-network:before {
+  content: "\e913";
+}
+.icon-otc:before {
+  content: "\e914";
+}
+.icon-password:before {
+  content: "\e915";
+}
+.icon-pin:before {
+  content: "\e916";
+}
+.icon-qr:before {
+  content: "\e917";
+}
+.icon-resfresh:before {
+  content: "\e918";
+}
+.icon-resquest-money:before {
+  content: "\e919";
+}
+.icon-saving:before {
+  content: "\e91a";
+}
+.icon-saving-deposit:before {
+  content: "\e91b";
+}
+.icon-saving-full:before {
+  content: "\e91c";
+}
+.icon-saving-half:before {
+  content: "\e91d";
+}
+.icon-saving-withdraw:before {
+  content: "\e91e";
+}
+.icon-search:before {
+  content: "\e91f";
+}
+.icon-setting:before {
+  content: "\e920";
+}
+.icon-top-up:before {
+  content: "\e921";
+}
+.icon-transactions:before {
+  content: "\e922";
+}
+.icon-transfert-intl:before {
+  content: "\e923";
+}
+.icon-user:before {
+  content: "\e924";
+}
+.icon-user-add:before {
+  content: "\e925";
+}
