@@ -28,7 +28,7 @@ Or
    npm run dev
 ```
 
-## Build project
+## Build project for production
 
 To run build you have to run the following commands:
 
@@ -43,6 +43,20 @@ Or
 ```
 
 An optimized build will be created in `/dist` directory.
+
+## Preview  project for production
+
+You can localy preview production build.
+
+```bash
+   yarn preview
+```
+
+Or
+
+```bash
+   npm run preview
+```
 
 # Components
 
