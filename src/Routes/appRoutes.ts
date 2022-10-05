@@ -1,5 +1,6 @@
 import React from "react";
 import { IRoute } from "../Interfaces/Routes";
+import StyleguidePage from "../Pages/StyleguidePage/StyleguidePage";
 
 // app page components
 const DashboardPage = React.lazy(
@@ -10,6 +11,9 @@ const TransactionPage = React.lazy(
 );
 const NotFoundPage = React.lazy(
   () => import("../Pages/NotFoundPage/NotFoundPage")
+);
+const Styleguide = React.lazy(
+  () => import("../Pages/StyleguidePage/StyleguidePage")
 );
 
 const appRoutes: IRoute[] = [
@@ -23,6 +27,12 @@ const appRoutes: IRoute[] = [
     path: `transactions`,
     name: "Transactions",
     component: TransactionPage,
+  },
+  {
+    index: true,
+    path: "styleguide",
+    name: "styleguide",
+    component: Styleguide,
   },
   {
     path: `*`,
