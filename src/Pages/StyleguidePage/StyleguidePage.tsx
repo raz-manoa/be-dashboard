@@ -8,6 +8,8 @@ import EuropUnion from "@/Assets/Flags/european union.svg";
 import CurrentCardList from "@/Components/Display/CurrentCardList/CurrentCardList";
 import TitleCard from "@/Components/General/TitleCard/TitleCard";
 import { Link } from "react-router-dom";
+import Card from "@/Components/Display/Card/Card";
+import CardModal from "@/Components/Display/CardModal/CardModal";
 
 const StyleguidePage = () => {
   return (
@@ -47,17 +49,19 @@ const StyleguidePage = () => {
         src={EuropUnion}
         money="EUR"
       />
-      <CurrentCardList
-        valor="398.00"
-        money="Euro (EUR)"
-        src={EuropUnion}
-        valorUSD="= USD 403.83"
-      />
-      <CurrentCardList
-        valor="150.00"
-        money="US Dollar (USD)"
-        src={UnitedState}
-      />
+      <Card>
+        <CurrentCardList
+          valor="150.00"
+          money="US Dollar (USD)"
+          src={UnitedState}
+        />
+        <CurrentCardList
+          valor="398.00"
+          money="Euro (EUR)"
+          src={EuropUnion}
+          valorUSD="= USD 403.83"
+        />
+      </Card>
       <TitleCard title="5% Savings Offering">
         <div>
           <Text tag="span" variant="grey">
@@ -65,6 +69,7 @@ const StyleguidePage = () => {
           </Text>
         </div>
       </TitleCard>
+      <CardModal />
     </div>
   );
 };

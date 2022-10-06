@@ -3,7 +3,7 @@ import styles from "./Text.module.scss";
 interface TextProps extends React.HTMLAttributes<any> {
   tag: keyof JSX.IntrinsicElements;
   children: ReactNode;
-  type?: "h1" | "h2" | "h3" | "p";
+  type?: "h1" | "h2" | "h3" | "p" | "span";
   variant?: "black" | "red" | "grey" | "green" | "white";
   size?: number;
 }
