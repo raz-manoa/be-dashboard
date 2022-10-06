@@ -1,5 +1,5 @@
 import React from "react";
-import { IRoute } from "@/Interfaces/Routes";
+import { IRoute } from "../Interfaces/Routes";
 
 interface ISidebarRoute extends IRoute {
   icon: string;
