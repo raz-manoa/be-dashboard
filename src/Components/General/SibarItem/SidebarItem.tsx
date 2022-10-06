@@ -10,7 +10,13 @@ interface SidebarItemProps {
 export default function SidebarItem(props: SidebarItemProps) {
   const { to, label, children } = props;
   return (
-    <Link to={to} title="" className={styles.sidebarItem}>
+    <Link
+      to={to}
+      state={{
+        headerLabel: label,
+      }}
+      className={styles.sidebarItem}
+    >
       {children}
       <span>{label}</span>
     </Link>
