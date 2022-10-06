@@ -15,12 +15,14 @@ const AppLayout = () => {
         <Layout.Sider>
           <Sidebar />
         </Layout.Sider>
-        <Layout.Content
-          style={{ marginLeft: "20%", padding: "0 32px", marginTop: 95 }}
-        >
-          <Header title={state ? state.headerLabel || "" : ""} />
-          <Outlet />
-        </Layout.Content>
+        <Layout>
+          <Layout.Header style={{ position: "sticky", top: 0 }}>
+            <Header title={state ? state.headerLabel || "" : ""} />
+          </Layout.Header>
+          <Layout.Content style={{ marginLeft: "20%", padding: "0 32px" }}>
+            <Outlet />
+          </Layout.Content>
+        </Layout>
       </Layout>
     </AppLayoutContext.Provider>
   );
