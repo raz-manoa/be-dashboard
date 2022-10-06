@@ -7,19 +7,24 @@ interface InputFieldProps {
   type: string;
   icon?: ReactNode;
   label?: string;
+  color?: string;
 }
 
 export default function InputField(props: InputFieldProps) {
-  const { placeholder, type, icon, label } = props;
+  const { placeholder, type, icon, label, color = "red" } = props;
   return (
-    <div className={styles.input}>
-      <label htmlFor="">{label}</label>
+    <div className={`${styles.input}`}>
+      <label htmlFor="" className={styles.label}>
+        {label}
+      </label>
       <Input
         size="large"
         placeholder={placeholder}
         prefix={icon}
         type={type}
-        className={styles.input__content}
+        className={`${styles.input__content} ${
+          styles[`input__content--${color}`]
+        }`}
       />
     </div>
   );

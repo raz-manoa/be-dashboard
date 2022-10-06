@@ -1,0 +1,48 @@
+.label {
+  font-size: 14px;
+  color: var(--grey);
+}
+.input {
+  &__content {
+    @apply items-center flex;
+    color: #fff;
+    padding: 9px 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+
+    &--red {
+      background-color: rgba(239, 149, 172, 0.5);
+      border: 1px solid #fff;
+      svg {
+        @apply fill-white;
+      }
+      input {
+        &::placeholder {
+          color: #fff;
+        }
+      }
+    }
+    &--grey {
+      background-color: var(--white);
+      border: solid 1px var(--grey_light);
+      color: var(--grey_light);
+      &::placeholder {
+        color: var(--grey_light);
+      }
+    }
+    span {
+      @apply flex items-center;
+      margin-right: 10px;
+    }
+  }
+}
+
+.input {
+  input {
+    @apply outline-none w-full;
+    background-color: transparent;
+    &::placeholder {
+      font-size: 16px;
+    }
+  }
+}

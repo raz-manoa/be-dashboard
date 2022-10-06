@@ -5,13 +5,14 @@ import UnitedState from "@/Assets/Flags/united states.svg";
 import EuropUnion from "@/Assets/Flags/european union.svg";
 import CurrentCardList from "@/Components/Display/CurrentCardList/CurrentCardList";
 import TitleCard from "@/Components/General/TitleCard/TitleCard";
-import FormInput from "@/Components/DataEntry/Input/FormInput";
+import FormInput from "@/Components/DataEntry/FormInput/FormInput";
 import { Link } from "react-router-dom";
 import Card from "@/Components/Display/Card/Card";
 import CardModal, {
   CardModelItem,
 } from "@/Components/Display/CardModal/CardModal";
 import Icon from "@/Components/General/Icon/Icon";
+import Amout from "@/Components/DataEntry/Amout/Amout";
 
 const StyleguidePage = () => {
   const data: CardModelItem[] = [
@@ -90,7 +91,14 @@ const StyleguidePage = () => {
       />
       <CardModal title="Access" btnPrimary="Annuler" data={data} />
       <CardModal title="Access" data={data} />
-      <FormInput type="email" placeholder="email" icon={<Icon icon="user" />} />
+      <FormInput type="text" placeholder="text" color="grey" />
+      <FormInput
+        type="email"
+        placeholder="email"
+        icon={<Icon icon="user" />}
+        color="red"
+      />
+      <Amout />
     </div>
   );
 };
