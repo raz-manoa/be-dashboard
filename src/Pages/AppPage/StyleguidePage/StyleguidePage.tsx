@@ -1,5 +1,3 @@
-import React from "react";
-import Header from "@/Components/Common/Header/Header";
 import CardSave from "@/Components/Display/CardSave/CardSave";
 import Button from "~/Components/General/Button/Button";
 import Text from "~/Components/General/Text/Text";
@@ -7,12 +5,10 @@ import UnitedState from "@/Assets/Flags/united states.svg";
 import EuropUnion from "@/Assets/Flags/european union.svg";
 import CurrentCardList from "@/Components/Display/CurrentCardList/CurrentCardList";
 import TitleCard from "@/Components/General/TitleCard/TitleCard";
-import { Link } from "react-router-dom";
 
 const StyleguidePage = () => {
   return (
     <div>
-      <Header title="Styleguide" />
       <Button tag="link" to="/" type="primary">
         BUTTON
       </Button>

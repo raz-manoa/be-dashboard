@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { memo } from "react";
 import { AppLayoutContext } from "./AppLayoutContext";
 import Sidebar from "@/Components/Common/Sidebar/Sidebar";
+import Header from "@/Components/Common/Header/Header";
 
 const AppLayout = () => {
   return (
@@ -15,6 +16,7 @@ const AppLayout = () => {
         <Layout.Content
           style={{ marginLeft: "20%", padding: "0 32px", marginTop: 95 }}
         >
+          <Header title="Styleguide" />
           <Outlet />
         </Layout.Content>
       </Layout>
