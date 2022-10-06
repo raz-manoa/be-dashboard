@@ -9,7 +9,7 @@
     border-bottom: solid 1px rgba(84, 110, 122, 0.2);
   }
   &__footer {
-    @apply flex items-center justify-between;
+    @apply flex items-center justify-between w-full;
     padding-top: 25px;
   }
 }

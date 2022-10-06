@@ -1,5 +1,3 @@
-import React from "react";
-import Header from "@/Components/Common/Header/Header";
 import CardSave from "@/Components/Display/CardSave/CardSave";
 import Button from "~/Components/General/Button/Button";
 import Text from "~/Components/General/Text/Text";
@@ -9,12 +7,25 @@ import CurrentCardList from "@/Components/Display/CurrentCardList/CurrentCardLis
 import TitleCard from "@/Components/General/TitleCard/TitleCard";
 import { Link } from "react-router-dom";
 import Card from "@/Components/Display/Card/Card";
-import CardModal from "@/Components/Display/CardModal/CardModal";
+import CardModal, {
+  CardModelItem,
+} from "@/Components/Display/CardModal/CardModal";
 
 const StyleguidePage = () => {
+  const data: CardModelItem[] = [
+    {
+      label: "Test",
+      value: "100",
+      color: "red",
+    },
+    {
+      label: "Test",
+      value: "120",
+      color: "black",
+    },
+  ];
   return (
     <div>
-      <Header title="Styleguide" />
       <Button tag="link" to="/" type="primary">
         BUTTON
       </Button>
@@ -69,7 +80,9 @@ const StyleguidePage = () => {
           </Text>
         </div>
       </TitleCard>
-      <CardModal />
+      <CardModal data={data}>
+        <Button type="primary">Button</Button>
+      </CardModal>
     </div>
   );
 };

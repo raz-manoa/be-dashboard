@@ -1,10 +1,25 @@
 import Button from "@/Components/General/Button/Button";
-import Text from "@/Components/General/Text/Text";
-import React from "react";
+import Text, { TextProps } from "@/Components/General/Text/Text";
+import React, { ReactNode } from "react";
 import Card from "../Card/Card";
 import styles from "./CardModal.module.scss";
+import CardModalItem from "./CardModalItem";
 
-export default function CardModal() {
+export interface CardModelItem {
+  label: string;
+  value: string;
+  color?: TextProps["variant"];
+}
+
+interface CardModalProps {
+  data: CardModelItem[];
+  btnPrimary?: string;
+  btnSecondary?: string;
+  children: ReactNode;
+}
+
+export default function CardModal(props: CardModalProps) {
+  const { data = [], btnPrimary, btnSecondary, children } = props;
   return (
     <Card className={styles.cardModal}>
       <div className={styles.cardModal__header}>
@@ -13,22 +28,20 @@ export default function CardModal() {
         </Text>
       </div>
       <div className={styles.cardModal__body}>
-        <div className={styles.cardModal__list}>
-          <Text tag="span" variant="grey" type="span">
-            Transaction Type
-          </Text>
-          <Text tag="h3" variant="black" type="h3">
-            Bank Transfer
-          </Text>
-        </div>
+        {data.map((d) => {
+          return (
+            <CardModalItem label={d.label} value={d.value} color={d.color} />
+          );
+        })}
       </div>
       <div className={styles.cardModal__footer}>
-        <Button type="primary" tag="link">
-          Button
+        {children}
+        {/* <Button type="primary" tag="link">
+          {btnPrimary}
         </Button>
         <Button type="secondary" tag="link">
-          Button
-        </Button>
+          {btnSecondary}
+        </Button> */}
       </div>
     </Card>
   );
