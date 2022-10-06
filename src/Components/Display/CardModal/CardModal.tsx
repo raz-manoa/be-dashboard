@@ -14,17 +14,17 @@ export interface CardModelItem {
 interface CardModalProps {
   data: CardModelItem[];
   btnPrimary?: string;
+  title: string;
   btnSecondary?: string;
-  children: ReactNode;
 }
 
 export default function CardModal(props: CardModalProps) {
-  const { data = [], btnPrimary, btnSecondary, children } = props;
+  const { data = [], btnPrimary = "", btnSecondary = "", title } = props;
   return (
     <Card className={styles.cardModal}>
       <div className={styles.cardModal__header}>
         <Text tag="h2" type="h2">
-          Foreign Exchange - Review
+          {title}
         </Text>
       </div>
       <div className={styles.cardModal__body}>
@@ -34,14 +34,23 @@ export default function CardModal(props: CardModalProps) {
           );
         })}
       </div>
-      <div className={styles.cardModal__footer}>
-        {children}
-        {/* <Button type="primary" tag="link">
-          {btnPrimary}
-        </Button>
-        <Button type="secondary" tag="link">
-          {btnSecondary}
-        </Button> */}
+      <div
+        className={`${styles.cardModal__footer} ${
+          btnPrimary === "" || btnSecondary === ""
+            ? styles.cardModal__footerSingle
+            : ""
+        }`}
+      >
+        {btnPrimary !== "" && (
+          <Button type="primary" tag="link" className="btn">
+            {btnPrimary}
+          </Button>
+        )}
+        {btnSecondary !== "" && (
+          <Button type="secondary" tag="link" className="btn">
+            {btnSecondary}
+          </Button>
+        )}
       </div>
     </Card>
   );

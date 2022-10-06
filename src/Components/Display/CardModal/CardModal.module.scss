@@ -11,5 +11,12 @@
   &__footer {
     @apply flex items-center justify-between w-full;
     padding-top: 25px;
+    &Single {
+      :global {
+        .btn {
+          flex: 0 0 100%;
+        }
+      }
+    }
   }
 }
