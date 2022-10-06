@@ -72,7 +72,7 @@ We will use the camel case naming convention for the components and folders.
 
 ## How to create component
 
-A component will be created in a folder named as the component name. So in the folder we have all the basic dependence of the component: the separated style file, the component file, component logic if separated in other file, sub child components (strucutured as his parent component) ...
+A component will be created in a folder named as the component name. So in the folder we have all the basic dependancy of the component: the separated style file, the component file, component logic if separated in other file, sub child components (strucutured as his parent component) ...
 
 #### Example:
 
