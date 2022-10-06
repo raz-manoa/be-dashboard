@@ -1,14 +1,41 @@
 import React, { ReactNode } from "react";
-import "./Button.scss";
+import { Link, To } from "react-router-dom";
+import styles from "./Button.module.scss";
 interface ButtonProps {
   type: "primary" | "secondary" | "white" | "default";
   className?: String;
   children: ReactNode;
+  tag?: "link" | "button";
+  to?: To;
 }
 
 export default function Button(props: ButtonProps) {
-  const { type = "default", className, children } = props;
+  const {
+    type = "default",
+    className = "",
+    children,
+    tag = "button",
+    to,
+  } = props;
+
+  const ButtonTag = tag;
+
   return (
-    <button className={`btn btn--${type} ${className}`}>{children}</button>
+    <>
+      {tag === "link" ? (
+        <Link
+          to={to as To}
+          className={`${styles.btn} ${styles[`btn__${type}`]} ${className}`}
+        >
+          {children}
+        </Link>
+      ) : (
+        <ButtonTag
+          className={`${styles.btn} ${styles[`btn__${type}`]} ${className}`}
+        >
+          {children}
+        </ButtonTag>
+      )}
+    </>
   );
 }

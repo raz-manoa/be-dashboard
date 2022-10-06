@@ -1,0 +1,37 @@
+.text {
+  font-size: var(--font-size);
+  &__size {
+    &_h1 {
+      @apply font-bold;
+      font-size: 24px;
+    }
+    &_h2 {
+      @apply font-bold;
+      font-size: 19px;
+    }
+    &_h3 {
+      @apply font-bold;
+      font-size: 14px;
+    }
+    &_span {
+      font-size: 12px;
+    }
+  }
+  &__color {
+    &_black {
+      color: #000;
+    }
+    &_grey {
+      color: var(--grey);
+    }
+    &_green {
+      color: var(--green);
+    }
+    &_red {
+      color: var(--red);
+    }
+    &_white {
+      color: var(--white);
+    }
+  }
+}

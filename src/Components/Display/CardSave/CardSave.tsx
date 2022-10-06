@@ -1,19 +1,66 @@
-import React from "react";
-import Canada from "../../../assets/Flags/canada.svg";
-import "./CardSave.scss";
-export default function CardSave() {
+import Text from "@/Components/General/Text/Text";
+import Card from "../Card/Card";
+import styles from "./CardSave.module.scss";
+
+interface CardSaveProps {
+  src: string;
+  money: string;
+  principal: string;
+  interest: string;
+}
+
+export default function CardSave(props: CardSaveProps) {
+  const { src, money, principal, interest } = props;
   return (
-    <div className="card">
-      <div className="card__flag">
-        <img src={Canada} alt="flag" />
-        <span>USA</span>
+    <Card className={styles.cardSave}>
+      <div className={styles.cardSave__flag}>
+        <img src={src} alt="flag" />
+        <Text
+          tag="h2"
+          type="h2"
+          variant="grey"
+          className={styles.cardSave__flagName}
+        >
+          {money}
+        </Text>
       </div>
-      <div className="card__txt">
-        <div className="card__info">
-          <span className="card__nbr">Principal</span>
-          <span className="card__nbr">10,248.00</span>
-        </div>
+
+      <div className={styles.cardSave__info}>
+        <Text
+          tag="h3"
+          type="h3"
+          variant="grey"
+          className={styles.cardSave__infoTitle}
+        >
+          Principal
+        </Text>
+        <Text
+          tag="p"
+          variant="grey"
+          size={23}
+          className={styles.cardSave__infoNbr}
+        >
+          {principal}
+        </Text>
       </div>
-    </div>
+      <div className={styles.cardSave__info}>
+        <Text
+          tag="h3"
+          type="h3"
+          variant="grey"
+          className={styles.cardSave__infoTitle}
+        >
+          Interest
+        </Text>
+        <Text
+          tag="p"
+          variant="red"
+          size={23}
+          className={styles.cardSave__infoNbr}
+        >
+          {interest}
+        </Text>
+      </div>
+    </Card>
   );
 }

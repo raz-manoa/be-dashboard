@@ -1,0 +1,11 @@
+.sidebar {
+  @apply fixed left-0 top-0;
+  z-index: 3;
+  height: 100vh;
+  background-color: var(--red);
+  width: 20%;
+  padding: 45px 18px;
+  &__list {
+    margin-top: 46px;
+  }
+}
