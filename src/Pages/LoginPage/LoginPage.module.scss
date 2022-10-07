@@ -1,0 +1,11 @@
+.login {
+  @apply grid grid-cols-3;
+  &__img {
+    @apply col-span-2 h-screen object-cover;
+  }
+  &__content {
+    @apply flex flex-col justify-center items-center;
+    padding: 0 55px;
+    background-color: var(--red);
+  }
+}
