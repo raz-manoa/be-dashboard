@@ -1,8 +1,9 @@
 .card {
   &__content {
-    @apply flex items-start justify-between;
-    padding: 25px;
+    @apply flex items-center justify-between;
+    padding: 9px 25px;
     border-bottom: solid 1px rgba(84, 110, 122, 0.2);
+    height: 88px;
   }
   &__money {
     @apply flex items-center;

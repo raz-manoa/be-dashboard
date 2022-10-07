@@ -63,17 +63,17 @@ const StyleguidePage = () => {
         src={EuropUnion}
         money="EUR"
       />
-      <Card>
+      <Card style={{ paddingTop: 10 }}>
         <CurrentCardList
-          valor="150.00"
+          value="150.00"
           money="US Dollar (USD)"
           src={UnitedState}
         />
         <CurrentCardList
-          valor="398.00"
+          value="398.00"
           money="Euro (EUR)"
           src={EuropUnion}
-          valorUSD="= USD 403.83"
+          valueUSD="= USD 403.83"
         />
       </Card>
       <TitleCard title="5% Savings Offering">

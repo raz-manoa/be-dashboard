@@ -1,5 +1,5 @@
 import Icon from "@/Components/General/Icon/Icon";
-import { Select } from "antd";
+import Select from "antd/es/select";
 import React from "react";
 import FormInput from "../FormInput/FormInput";
 
