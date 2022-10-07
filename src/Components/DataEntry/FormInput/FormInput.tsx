@@ -1,17 +1,15 @@
 import React, { ReactNode } from "react";
-import Input from "antd/lib/input";
+import Input, { InputProps } from "antd/lib/input";
 import { UserOutlined } from "@ant-design/icons";
 import styles from "./FormInput.module.scss";
-interface InputFieldProps {
-  placeholder?: string;
-  type: string;
+interface FormInputProps extends InputProps {
   icon?: ReactNode;
   label?: string;
   color?: string;
 }
 
-export default function InputField(props: InputFieldProps) {
-  const { placeholder, type, icon, label, color = "red" } = props;
+export default function FormInput(props: FormInputProps) {
+  const { placeholder, type, icon, label, color = "red", ...rest } = props;
   return (
     <div className={`${styles.input}`}>
       <label htmlFor="" className={styles.label}>
@@ -25,6 +23,7 @@ export default function InputField(props: InputFieldProps) {
         className={`${styles.input__content} ${
           styles[`input__content--${color}`]
         }`}
+        {...rest}
       />
     </div>
   );
