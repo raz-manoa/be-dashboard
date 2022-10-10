@@ -1,0 +1,23 @@
+.select {
+  :global {
+    .ant-select {
+      @apply flex items-center justify-center;
+      border-radius: 8px;
+      .ant-select-selector {
+        @apply flex items-center;
+        border-radius: 8px;
+        height: 52px;
+      }
+    }
+    .ant-select-arrow {
+      @apply relative flex items-center justify-center mt-0;
+      height: 52px;
+      width: 52px;
+      background-color: var(--red);
+      border-radius: 0 8px 8px 0;
+      svg {
+        fill: var(--white);
+      }
+    }
+  }
+}
