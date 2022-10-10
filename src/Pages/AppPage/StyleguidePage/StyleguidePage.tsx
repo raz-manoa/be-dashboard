@@ -15,6 +15,7 @@ import Icon from "@/Components/General/Icon/Icon";
 import FormSelect from "@/Components/DataEntry/FormSelect/FormSelect";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
 import { useForm } from "antd/es/form/Form";
+import FormSelectWithIcon from "@/Components/DataEntry/FormSelectWithIcon/FormSelectWithIcon";
 
 const StyleguidePage = () => {
   const [form] = useForm();
@@ -137,6 +138,20 @@ const StyleguidePage = () => {
           Validate
         </Button>
       </FormCustom>
+      <FormSelectWithIcon
+        name="select"
+        icon="transactions"
+        options={[
+          {
+            label: "Be Network",
+            value: "Be Network",
+          },
+          {
+            label: "Bank Transfer",
+            value: "Be Network",
+          },
+        ]}
+      />
     </div>
   );
 };
