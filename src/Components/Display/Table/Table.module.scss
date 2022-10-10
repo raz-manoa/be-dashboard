@@ -1,6 +1,7 @@
 .table {
   :global {
-    .ant-table-tbody > tr > td {
+    .ant-table-tbody > tr > td,
+    .ant-table-thead > tr > th {
       padding-top: 23px;
       padding-bottom: 23px;
     }
@@ -8,6 +9,11 @@
       background-color: transparent;
       color: #546e7a;
       font-weight: bold;
+      &.ant-table-cell {
+        &::before {
+          display: none;
+        }
+      }
     }
   }
 }
