@@ -19,6 +19,8 @@ import FormSelectWithIcon from "@/Components/DataEntry/FormSelectWithIcon/FormSe
 import FormDatePicker from "@/Components/DataEntry/FormDatePicker/FormDatePicker";
 import Table from "@/Components/Display/Table/Table";
 import type { ColumnType } from "antd/es/table";
+import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
+import { useEffect } from "react";
 
 interface TableSample {
   name: string;
@@ -135,6 +137,11 @@ const tableSampleColumn: () => Array<ColumnType<TableSample>> = () => {
 
 const StyleguidePage = () => {
   const [form] = useForm();
+  const { setHeaderTitle } = useAppLayoutContext();
+
+  useEffect(() => {
+    setHeaderTitle("Style Guide");
+  }, []);
 
   const data: CardModelItem[] = [
     {

@@ -1,10 +1,10 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import Icon from "@/Components/General/Icon/Icon";
 import Text from "@/Components/General/Text/Text";
 import styles from "./Header.module.scss";
 interface HeaderProps {
-  title: string;
+  title: ReactNode;
 }
 export default function Header(props: HeaderProps) {
   const { title } = props;

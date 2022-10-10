@@ -105,6 +105,19 @@ All components are separated in folder discribed as below:
 - `Routes`: All declarations of our routes that are grouped per Layout.
 - `Utils`: All utils functions.
 
+## Layout
+
+We have 2 page layout:
+
+- AppLayout
+- DefaultLayout
+
+### Layout Context
+
+In each Layout, we use Context to pass data from page content to Layout.
+
+For example, in AppLayout you can set the header title from page with the useAppLayoutContext (setHeaderTitle)
+
 ## Components
 
 ### Text (`Components/General/Text`)

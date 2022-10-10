@@ -1,15 +1,16 @@
 import { Layout } from "antd";
 import { Outlet, useLocation } from "react-router-dom";
-import { memo } from "react";
+import { memo, ReactNode, useState } from "react";
 import { AppLayoutContext } from "./AppLayoutContext";
 import Sidebar from "@/Components/Common/Sidebar/Sidebar";
 import Header from "@/Components/Common/Header/Header";
 
 const AppLayout = () => {
   let { state } = useLocation();
+  const [headerTitle, setHeaderTitle] = useState<ReactNode>("");
 
   return (
-    <AppLayoutContext.Provider value={{}}>
+    <AppLayoutContext.Provider value={{ headerTitle, setHeaderTitle }}>
       <Layout style={{ minHeight: "100vh" }}>
         {/* content */}
         <Layout.Sider width={"20%"}>
@@ -26,7 +27,9 @@ const AppLayout = () => {
               zIndex: 100,
             }}
           >
-            <Header title={state ? state.headerLabel || "" : ""} />
+            <Header
+              title={state ? state.headerLabel || headerTitle : headerTitle}
+            />
           </Layout.Header>
           <Layout.Content style={{ padding: "0 32px" }}>
             <Outlet />
