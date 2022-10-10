@@ -37,7 +37,12 @@ body {
   }
   .ant-picker-cell-in-view.ant-picker-cell-today
     .ant-picker-cell-inner::before {
-    border: 1px solid var(--red);
+    border: 1px solid var(--grey);
+    border-radius: 50%;
+    top: -3px;
+    left: -3px;
+    bottom: -3px;
+    right: -3px;
   }
   .ant-picker-today-btn {
     color: var(--red);
@@ -45,10 +50,57 @@ body {
 
   .ant-picker-cell-in-view.ant-picker-cell-in-range {
     color: var(--white);
+    &:last-child,
+    &.ant-picker-cell-end {
+      &::before {
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+      }
+    }
+    &:first-child,
+    &.ant-picker-cell-start {
+      &::before {
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+      }
+    }
     &::before {
       background-color: var(--pink) !important;
     }
   }
+
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover-start:not(.ant-picker-cell-in-range):not(.ant-picker-cell-range-start):not(.ant-picker-cell-range-end)::after,
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover-end:not(.ant-picker-cell-in-range):not(.ant-picker-cell-range-start):not(.ant-picker-cell-range-end)::after,
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover-start.ant-picker-cell-range-start-single::after,
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover-start.ant-picker-cell-range-start.ant-picker-cell-range-end.ant-picker-cell-range-end-near-hover::after,
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover-end.ant-picker-cell-range-start.ant-picker-cell-range-end.ant-picker-cell-range-start-near-hover::after,
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover-end.ant-picker-cell-range-end-single::after,
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover:not(.ant-picker-cell-in-range)::after {
+    background-color: var(--pink);
+    border: solid 1px var(--pink);
+    height: 32px;
+    transition: none;
+  }
+
+  .ant-picker-cell-in-view.ant-picker-cell-range-hover-start::after {
+    left: 16px;
+  }
+
+  .ant-picker-cell-range-hover-start::after,
+  .ant-picker-cell-range-hover-end::after,
+  .ant-picker-cell-range-hover::after {
+    left: 0;
+  }
+
+  .ant-picker-cell::before {
+    height: 32px;
+  }
+
+  .ant-picker-cell-in-view.ant-picker-cell-range-start:not(.ant-picker-cell-range-start-single)::before,
+  .ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-range-end-single)::before {
+    background-color: var(--pink);
+  }
+
   .ant-picker-range .ant-picker-active-bar {
     background-color: var(--red);
   }
