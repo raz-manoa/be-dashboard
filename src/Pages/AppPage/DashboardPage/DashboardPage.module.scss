@@ -32,3 +32,21 @@
 
 .dashboardRight {
 }
+
+.dashboardTransactionFilter {
+  @apply flex gap-3;
+  a {
+    position: relative;
+  }
+  .active {
+    &::after {
+      position: absolute;
+      content: "";
+      bottom: -2px;
+      height: 2px;
+      width: 100%;
+      left: 0;
+      background-color: var(--red);
+    }
+  }
+}

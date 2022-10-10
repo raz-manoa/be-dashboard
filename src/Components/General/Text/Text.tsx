@@ -4,7 +4,7 @@ export interface TextProps extends React.HTMLAttributes<any> {
   tag: keyof JSX.IntrinsicElements;
   children: ReactNode;
   type?: "h1" | "h2" | "h3" | "p" | "span";
-  variant?: "black" | "red" | "grey" | "green" | "white";
+  variant?: "black" | "red" | "grey" | "grey-light" | "green" | "white";
   weight?: 700 | 600 | 500 | 400 | 300;
   size?: number;
 }
