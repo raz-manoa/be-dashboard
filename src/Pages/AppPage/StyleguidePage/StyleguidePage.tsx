@@ -146,16 +146,8 @@ const StyleguidePage = () => {
   const transaction_data = [
     {
       company: "Company retreat",
-      people: "Juan Perez",
-      money: "454.00 CHF",
-      payement: "QR Code payment",
-      icon: "bank-transfert",
-      date: "11/06/2022",
-    },
-    {
-      company: "Company retreat",
-      people: "Juan Perez",
-      money: "454.00 CHF",
+      user: "Juan Perez",
+      transaction: "454.00 CHF",
       payement: "QR Code payment",
       icon: "bank-transfert",
       date: "11/06/2022",

@@ -7,9 +7,9 @@ interface dataProps {
   date: string;
   icon: string;
   company?: string;
-  people: string;
+  user: string;
   payement: string;
-  money: string;
+  transaction: string;
 }
 interface CardTransactionProps {
   data: dataProps[];
@@ -27,7 +27,7 @@ export default function CardTransaction(props: CardTransactionProps) {
                 {d.payement}
               </Text>
               <Text tag="p" type="p" variant="black" className={styles.name}>
-                {d.people}
+                {d.user}
               </Text>
               <Text tag="p" type="p" variant="black">
                 {d.company}
@@ -44,7 +44,7 @@ export default function CardTransaction(props: CardTransactionProps) {
               {d.date}
             </Text>
             <Text tag="h3" type="h3" variant="black">
-              {d.money}
+              {d.transaction}
             </Text>
           </div>
         </div>
