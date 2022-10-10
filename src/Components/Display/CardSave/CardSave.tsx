@@ -1,27 +1,28 @@
 import Text from "@/Components/General/Text/Text";
+import { AllHTMLAttributes } from "react";
 import Card from "../Card/Card";
 import styles from "./CardSave.module.scss";
 
-interface CardSaveProps {
-  src: string;
-  money: string;
+export interface CardSaveProps extends AllHTMLAttributes<HTMLDivElement> {
+  country: string;
+  currency: string;
   principal: string;
   interest: string;
 }
 
 export default function CardSave(props: CardSaveProps) {
-  const { src, money, principal, interest } = props;
+  const { className, country, currency, principal, interest, ...rest } = props;
   return (
-    <Card className={styles.cardSave}>
+    <Card className={`${styles.cardSave} ${className}`} {...rest}>
       <div className={styles.cardSave__flag}>
-        <img src={src} alt="flag" />
+        <img src={country} alt="flag" />
         <Text
           tag="h2"
           type="h2"
           variant="grey"
           className={styles.cardSave__flagName}
         >
-          {money}
+          {currency}
         </Text>
       </div>
 

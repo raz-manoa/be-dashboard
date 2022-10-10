@@ -5,7 +5,7 @@ export interface TextProps extends React.HTMLAttributes<any> {
   children: ReactNode;
   type?: "h1" | "h2" | "h3" | "p" | "span";
   variant?: "black" | "red" | "grey" | "green" | "white";
-  weight?: 600 | 500 | 400 | 300;
+  weight?: 700 | 600 | 500 | 400 | 300;
   size?: number;
 }
 
