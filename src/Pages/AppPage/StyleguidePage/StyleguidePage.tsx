@@ -12,9 +12,13 @@ import CardModal, {
   CardModelItem,
 } from "@/Components/Display/CardModal/CardModal";
 import Icon from "@/Components/General/Icon/Icon";
-import Amout from "@/Components/DataEntry/Amout/Amout";
+import FormSelect from "@/Components/DataEntry/FormSelect/FormSelect";
+import { FormCustom } from "@/Components/DataEntry/FormCustom";
+import { useForm } from "antd/es/form/Form";
 
 const StyleguidePage = () => {
+  const [form] = useForm();
+
   const data: CardModelItem[] = [
     {
       label: "Test",
@@ -91,14 +95,48 @@ const StyleguidePage = () => {
       />
       <CardModal title="Access" btnPrimary="Annuler" data={data} />
       <CardModal title="Access" data={data} />
-      <FormInput type="text" placeholder="text" color="grey" />
-      <FormInput
-        type="email"
-        placeholder="email"
-        icon={<Icon icon="user" />}
-        color="red"
-      />
-      <Amout />
+
+      <FormCustom form={form}>
+        <FormCustom.Input
+          name="example"
+          placeholder="test"
+          color="grey"
+          rules={[
+            {
+              required: true,
+              message: "Ce champ est requis",
+            },
+          ]}
+        />
+        <FormCustom.Input
+          name="example-2"
+          color="red"
+          placeholder="TEST"
+          icon="user"
+        />
+        <FormCustom.Select
+          name="select"
+          placeholder="Select"
+          options={[
+            {
+              label: "USD",
+              value: "usd",
+            },
+            {
+              label: "EUR",
+              value: "eur",
+            },
+          ]}
+        />
+        <Button
+          type="primary"
+          onClick={() => {
+            form.validateFields();
+          }}
+        >
+          Validate
+        </Button>
+      </FormCustom>
     </div>
   );
 };

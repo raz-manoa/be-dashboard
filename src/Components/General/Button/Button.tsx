@@ -7,6 +7,7 @@ interface ButtonProps {
   children: ReactNode;
   tag?: "link" | "button";
   to?: To;
+  onClick?(e: React.MouseEvent): void;
 }
 
 export default function Button(props: ButtonProps) {
@@ -16,6 +17,7 @@ export default function Button(props: ButtonProps) {
     children,
     tag = "button",
     to,
+    onClick,
   } = props;
 
   const ButtonTag = tag;
@@ -32,6 +34,7 @@ export default function Button(props: ButtonProps) {
       ) : (
         <ButtonTag
           className={`${styles.btn} ${styles[`btn__${type}`]} ${className}`}
+          onClick={onClick}
         >
           {children}
         </ButtonTag>
