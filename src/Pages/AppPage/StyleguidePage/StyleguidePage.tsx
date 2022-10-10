@@ -21,6 +21,7 @@ import Table from "@/Components/Display/Table/Table";
 import type { ColumnType } from "antd/es/table";
 import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useEffect } from "react";
+import CardTransaction from "@/Components/Display/CardTransaction/CardTransaction";
 
 interface TableSample {
   name: string;
@@ -142,7 +143,24 @@ const StyleguidePage = () => {
   useEffect(() => {
     setHeaderTitle("Style Guide");
   }, []);
-
+  const transaction_data = [
+    {
+      company: "Company retreat",
+      people: "Juan Perez",
+      money: "454.00 CHF",
+      payement: "QR Code payment",
+      icon: "bank-transfert",
+      date: "11/06/2022",
+    },
+    {
+      company: "Company retreat",
+      people: "Juan Perez",
+      money: "454.00 CHF",
+      payement: "QR Code payment",
+      icon: "bank-transfert",
+      date: "11/06/2022",
+    },
+  ];
   const data: CardModelItem[] = [
     {
       label: "Test",
@@ -284,6 +302,7 @@ const StyleguidePage = () => {
         dataSource={tableSampleData}
         columns={tableSampleColumn()}
       />
+      <CardTransaction data={transaction_data} />
     </div>
   );
 };
