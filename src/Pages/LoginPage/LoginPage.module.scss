@@ -2,6 +2,9 @@
   @apply grid grid-cols-3;
   &__img {
     @apply col-span-2 h-screen object-cover;
+    img {
+      @apply w-full h-full;
+    }
   }
   &__content {
     @apply flex flex-col justify-center;
