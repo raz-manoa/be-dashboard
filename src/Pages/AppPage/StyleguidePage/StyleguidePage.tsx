@@ -56,7 +56,7 @@ const tableSampleData: TableSample[] = [
   },
 ];
 
-const tableSampleColumn: () => ColumnType<TableSample> = () => {
+const tableSampleColumn: () => Array<ColumnType<TableSample>> = () => {
   return [
     {
       key: "transactionType",
