@@ -29,6 +29,15 @@
       &::placeholder {
         color: var(--grey_light);
       }
+      svg {
+        fill: var(--grey);
+      }
+      input {
+        color: var(--grey);
+        &::placeholder {
+          color: var(--grey);
+        }
+      }
     }
     span {
       @apply flex items-center;
@@ -41,8 +50,9 @@
   input {
     @apply outline-none w-full;
     background-color: transparent;
+    font-size: 14px;
     &::placeholder {
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 }

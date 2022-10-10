@@ -113,7 +113,7 @@ const StyleguidePage = () => {
         />
         <FormCustom.Input
           name="example-2"
-          color="red"
+          color="grey"
           placeholder="TEST"
           icon="user"
         />
