@@ -1,8 +1,10 @@
-import React from "react";
+import Text from "@/Components/General/Text/Text";
+import React, { ReactNode } from "react";
 import { IRoute } from "../Interfaces/Routes";
 
 interface ISidebarRoute extends IRoute {
   icon: string;
+  state?: string[];
 }
 
 const DashboardPage = React.lazy(
@@ -44,6 +46,7 @@ const sidebarRoutes: ISidebarRoute[] = [
     path: "dashboard",
     icon: "dashboard",
     name: "Overview",
+    state: ["Welcome", "(john@happydays.com)"],
     component: DashboardPage,
   },
   {

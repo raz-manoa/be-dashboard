@@ -13,6 +13,7 @@ export default function Sidebar() {
             <SidebarItem
               to={data.path || ""}
               label={data.name}
+              state={data.state}
               key={`d-${index}`}
             >
               <Icon icon={data.icon} color="#fff" />

@@ -6,8 +6,10 @@ import Sidebar from "@/Components/Common/Sidebar/Sidebar";
 import Header from "@/Components/Common/Header/Header";
 
 const AppLayout = () => {
-  let { state } = useLocation();
+  const { state } = useLocation();
   const [headerTitle, setHeaderTitle] = useState<ReactNode>("");
+
+  console.log(state);
 
   return (
     <AppLayoutContext.Provider value={{ headerTitle, setHeaderTitle }}>

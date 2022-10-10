@@ -5,15 +5,17 @@ interface SidebarItemProps {
   to: string;
   label: string;
   children: ReactNode;
+  state?: string[];
 }
 
 export default function SidebarItem(props: SidebarItemProps) {
-  const { to, label, children } = props;
+  const { to, label, state, children } = props;
+
   return (
     <Link
       to={to}
       state={{
-        headerLabel: label,
+        headerLabel: state || label,
       }}
       className={styles.sidebarItem}
     >
