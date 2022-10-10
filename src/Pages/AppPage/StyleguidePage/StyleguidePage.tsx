@@ -197,7 +197,14 @@ const StyleguidePage = () => {
           valueUSD="= USD 403.83"
         />
       </Card>
-      <TitleCard title="5% Savings Offering" label="balance" link="view all" />
+      <TitleCard
+        title="5% Savings Offering"
+        subtitle="balance"
+        link={{
+          url: "/",
+          label: "View all",
+        }}
+      />
 
       <CardModal
         title="Access"

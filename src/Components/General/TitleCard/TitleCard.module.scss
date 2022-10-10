@@ -3,6 +3,9 @@
     h2 {
       margin-bottom: 9px;
     }
+    &_wrap {
+      @apply flex items-center justify-between;
+    }
   }
   &__nav {
     .link {
