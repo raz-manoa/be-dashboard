@@ -1,6 +1,6 @@
 .cardSave {
   @apply grid grid-cols-8;
-  width: 550px;
+  max-width: 550px;
 
   &__flag {
     @apply flex items-center justify-center flex-col col-span-2;

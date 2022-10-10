@@ -136,6 +136,15 @@ const tableSampleColumn: () => Array<ColumnType<TableSample>> = () => {
   ];
 };
 
+const transactionData = {
+  company: "Company retreat",
+  user: "Juan Perez",
+  transaction: "454.00 CHF",
+  payment: "QR Code payment",
+  icon: "bank-transfert",
+  date: "11/06/2022",
+};
+
 const StyleguidePage = () => {
   const [form] = useForm();
   const { setHeaderTitle } = useAppLayoutContext();
@@ -143,16 +152,7 @@ const StyleguidePage = () => {
   useEffect(() => {
     setHeaderTitle("Style Guide");
   }, []);
-  const transaction_data = [
-    {
-      company: "Company retreat",
-      user: "Juan Perez",
-      transaction: "454.00 CHF",
-      payement: "QR Code payment",
-      icon: "bank-transfert",
-      date: "11/06/2022",
-    },
-  ];
+
   const data: CardModelItem[] = [
     {
       label: "Test",
@@ -294,7 +294,7 @@ const StyleguidePage = () => {
         dataSource={tableSampleData}
         columns={tableSampleColumn()}
       />
-      <CardTransaction data={transaction_data} />
+      <CardTransaction {...transactionData} />
     </div>
   );
 };
