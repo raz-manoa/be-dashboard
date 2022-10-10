@@ -9,6 +9,9 @@
         height: 52px;
       }
     }
+    .ant-select-single.ant-select-show-arrow .ant-select-selection-item {
+      color: var(--grey);
+    }
     .ant-select-arrow {
       @apply relative flex items-center justify-center mt-0;
       height: 52px;

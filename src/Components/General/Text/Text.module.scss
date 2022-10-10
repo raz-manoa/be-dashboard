@@ -1,5 +1,6 @@
 .text {
   font-size: var(--font-size);
+  font-weight: var(--font-weight);
   &__size {
     &_h1 {
       @apply font-bold;

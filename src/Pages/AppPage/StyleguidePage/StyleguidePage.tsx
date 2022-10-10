@@ -15,6 +15,123 @@ import Icon from "@/Components/General/Icon/Icon";
 import FormSelect from "@/Components/DataEntry/FormSelect/FormSelect";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
 import { useForm } from "antd/es/form/Form";
+import FormSelectWithIcon from "@/Components/DataEntry/FormSelectWithIcon/FormSelectWithIcon";
+import FormDatePicker from "@/Components/DataEntry/FormDatePicker/FormDatePicker";
+import Table from "@/Components/Display/Table/Table";
+import type { ColumnType } from "antd/es/table";
+
+interface TableSample {
+  name: string;
+  transactionType: string;
+  transactionFee: string;
+  transactionStatus: string;
+  amount: number;
+  timestamp: string;
+}
+
+const tableSampleData: TableSample[] = [
+  {
+    name: "John smith",
+    transactionType: "Savings withdrawal",
+    transactionFee: "0.00",
+    transactionStatus: "completed",
+    amount: -24.0,
+    timestamp: "11/06/2022",
+  },
+  {
+    name: "John smith",
+    transactionType: "Savings withdrawal",
+    transactionFee: "0.00",
+    transactionStatus: "completed",
+    amount: -24.0,
+    timestamp: "11/06/2022",
+  },
+  {
+    name: "John smith",
+    transactionType: "Savings withdrawal",
+    transactionFee: "0.00",
+    transactionStatus: "completed",
+    amount: -24.0,
+    timestamp: "11/06/2022",
+  },
+];
+
+const tableSampleColumn: () => Array<ColumnType<TableSample>> = () => {
+  return [
+    {
+      key: "transactionType",
+      dataIndex: "transactionType",
+      title: "Transaction type",
+      render: (value: TableSample["transactionType"]) => {
+        return (
+          <Text tag="span" size={12}>
+            {value}
+          </Text>
+        );
+      },
+    },
+    {
+      key: "name",
+      dataIndex: "name",
+      title: "Name",
+      render: (value: TableSample["name"]) => {
+        return (
+          <Text tag="span" weight={600} size={12}>
+            {value}
+          </Text>
+        );
+      },
+    },
+    {
+      key: "transactionStatus",
+      dataIndex: "transactionStatus",
+      title: "Transaction status",
+      render: (value: TableSample["transactionStatus"]) => {
+        return (
+          <Text tag="span" variant="green" size={12}>
+            {value}
+          </Text>
+        );
+      },
+    },
+    {
+      key: "transactionFee",
+      dataIndex: "transactionFee",
+      title: "Transaction Fee",
+      render: (value: TableSample["transactionStatus"]) => {
+        return (
+          <Text tag="span" size={12}>
+            {value}
+          </Text>
+        );
+      },
+    },
+    {
+      key: "amount",
+      dataIndex: "amount",
+      title: "Amount",
+      render: (value: TableSample["amount"]) => {
+        return (
+          <Text tag="span" weight={600} size={14}>
+            {value}
+          </Text>
+        );
+      },
+    },
+    {
+      key: "timestamp",
+      dataIndex: "timestamp",
+      title: "Timestamp",
+      render: (value: TableSample["timestamp"]) => {
+        return (
+          <Text tag="span" variant="grey" size={14}>
+            {value}
+          </Text>
+        );
+      },
+    },
+  ];
+};
 
 const StyleguidePage = () => {
   const [form] = useForm();
@@ -110,10 +227,19 @@ const StyleguidePage = () => {
         />
         <FormCustom.Input
           name="example-2"
-          color="red"
+          color="grey"
           placeholder="TEST"
           icon="user"
         />
+
+        <Button
+          type="primary"
+          onClick={() => {
+            form.validateFields();
+          }}
+        >
+          Validate
+        </Button>
         <FormCustom.Select
           name="select"
           placeholder="Select"
@@ -128,15 +254,27 @@ const StyleguidePage = () => {
             },
           ]}
         />
-        <Button
-          type="primary"
-          onClick={() => {
-            form.validateFields();
-          }}
-        >
-          Validate
-        </Button>
       </FormCustom>
+      <FormCustom.SelectIcon
+        name="select"
+        icon="transactions"
+        placeholder="Transaction type"
+        options={[
+          {
+            label: "Be Network",
+            value: "Be Network",
+          },
+          {
+            label: "Bank Transfer",
+            value: "Be Network",
+          },
+        ]}
+      />
+      <FormDatePicker />
+      <Table<TableSample>
+        dataSource={tableSampleData}
+        columns={tableSampleColumn()}
+      />
     </div>
   );
 };

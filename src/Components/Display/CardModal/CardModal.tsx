@@ -28,9 +28,14 @@ export default function CardModal(props: CardModalProps) {
         </Text>
       </div>
       <div className={styles.cardModal__body}>
-        {data.map((d) => {
+        {data.map((d, index) => {
           return (
-            <CardModalItem label={d.label} value={d.value} color={d.color} />
+            <CardModalItem
+              label={d.label}
+              value={d.value}
+              color={d.color}
+              key={`d-${index}`}
+            />
           );
         })}
       </div>
