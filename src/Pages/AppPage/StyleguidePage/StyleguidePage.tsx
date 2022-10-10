@@ -16,6 +16,7 @@ import FormSelect from "@/Components/DataEntry/FormSelect/FormSelect";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
 import { useForm } from "antd/es/form/Form";
 import FormSelectWithIcon from "@/Components/DataEntry/FormSelectWithIcon/FormSelectWithIcon";
+import FormDatePicker from "@/Components/DataEntry/FormDatePicker/FormDatePicker";
 
 const StyleguidePage = () => {
   const [form] = useForm();
@@ -141,6 +142,7 @@ const StyleguidePage = () => {
       <FormSelectWithIcon
         name="select"
         icon="transactions"
+        placeholder="Transaction type"
         options={[
           {
             label: "Be Network",
@@ -152,6 +154,7 @@ const StyleguidePage = () => {
           },
         ]}
       />
+      <FormDatePicker />
     </div>
   );
 };

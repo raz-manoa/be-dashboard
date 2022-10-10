@@ -15,14 +15,15 @@ interface FormSelectWithIconProps extends SelectProps {
   rules?: Rule[];
   name: NamePath;
   icon: string;
+  placeholder?: string;
 }
 export default function FormSelectWithIcon(props: FormSelectWithIconProps) {
-  const { options = [], icon = "", rules, name } = props;
+  const { options = [], icon = "", rules, name, placeholder } = props;
   const { Option } = Select;
   return (
     <Form.Item rules={rules} name={name} className={styles.select}>
       <Icon icon={icon} />
-      <Select suffixIcon={<Icon icon="" />}>
+      <Select suffixIcon={<Icon icon="" />} placeholder={placeholder}>
         {options.map((o, index) => (
           <Option key={`o-${index}`} value={o.value} className={styles.option}>
             {o.label}
