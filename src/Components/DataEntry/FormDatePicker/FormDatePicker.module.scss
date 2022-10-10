@@ -12,6 +12,10 @@
         fill: var(--grey_light);
       }
     }
+    .ant-picker-range {
+      width: 100%;
+      border: none;
+    }
 
     input {
       color: var(--grey);

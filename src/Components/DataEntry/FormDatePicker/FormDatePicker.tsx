@@ -8,15 +8,17 @@ import React from "react";
 interface FormDatePickerProps {}
 
 export default function FormDatePicker(props: FormDatePickerProps) {
+  const { RangePicker } = DatePicker;
   // const { icon } = props;
   return (
     <Form.Item className={styles.select}>
       <Icon icon="calendar" />
-      <DatePicker
+      {/* <DatePicker
         suffixIcon=""
         placeholder="Date Selection"
         className={styles.calendar}
-      />
+      /> */}
+      <RangePicker suffixIcon="" />
     </Form.Item>
   );
 }
