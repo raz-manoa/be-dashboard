@@ -17,6 +17,7 @@ import { FormCustom } from "@/Components/DataEntry/FormCustom";
 import { useForm } from "antd/es/form/Form";
 import FormSelectWithIcon from "@/Components/DataEntry/FormSelectWithIcon/FormSelectWithIcon";
 import FormDatePicker from "@/Components/DataEntry/FormDatePicker/FormDatePicker";
+import TableContent from "@/Components/Display/Table/Table";
 
 const StyleguidePage = () => {
   const [form] = useForm();
@@ -116,6 +117,15 @@ const StyleguidePage = () => {
           placeholder="TEST"
           icon="user"
         />
+
+        <Button
+          type="primary"
+          onClick={() => {
+            form.validateFields();
+          }}
+        >
+          Validate
+        </Button>
         <FormCustom.Select
           name="select"
           placeholder="Select"
@@ -130,16 +140,8 @@ const StyleguidePage = () => {
             },
           ]}
         />
-        <Button
-          type="primary"
-          onClick={() => {
-            form.validateFields();
-          }}
-        >
-          Validate
-        </Button>
       </FormCustom>
-      <FormSelectWithIcon
+      <FormCustom.SelectIcon
         name="select"
         icon="transactions"
         placeholder="Transaction type"
@@ -155,6 +157,7 @@ const StyleguidePage = () => {
         ]}
       />
       <FormDatePicker />
+      {/* <TableContent column={[{ title: "test1" }, { title: "test2" }]} /> */}
     </div>
   );
 };

@@ -12,7 +12,11 @@ export default function FormDatePicker(props: FormDatePickerProps) {
   return (
     <Form.Item className={styles.select}>
       <Icon icon="calendar" />
-      <DatePicker suffixIcon="" placeholder="Date Selection" />
+      <DatePicker
+        suffixIcon=""
+        placeholder="Date Selection"
+        className={styles.calendar}
+      />
     </Form.Item>
   );
 }

@@ -6,27 +6,23 @@
       box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04);
       border: solid 1px rgba(200, 199, 204, 0.4);
       background-color: var(--white);
-      padding: 5px 13px;
+      padding: 4 px 13px;
       svg {
         margin-right: 10px;
         fill: var(--grey_light);
       }
     }
-    .ant-picker {
-      width: 100%;
-      border: none;
-      .ant-picker-cell {
-        .ant-picker-cell-inner {
-          background-color: #000 !important;
-        }
-      }
-      input {
-        color: var(--grey);
-      }
+
+    input {
+      color: var(--grey);
     }
     .ant-picker-focused {
       border: none;
       box-shadow: none;
     }
   }
+}
+.calendar {
+  width: 100%;
+  border: none;
 }

@@ -8,9 +8,13 @@ export default function Sidebar() {
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebar__list}>
-        {sidebarRoutes.map((data) => {
+        {sidebarRoutes.map((data, index) => {
           return (
-            <SidebarItem to={data.path || ""} label={data.name}>
+            <SidebarItem
+              to={data.path || ""}
+              label={data.name}
+              key={`d-${index}`}
+            >
               <Icon icon={data.icon} color="#fff" />
             </SidebarItem>
           );
