@@ -197,13 +197,8 @@ const StyleguidePage = () => {
           valueUSD="= USD 403.83"
         />
       </Card>
-      <TitleCard title="5% Savings Offering">
-        <div>
-          <Text tag="span" variant="grey">
-            Balances
-          </Text>
-        </div>
-      </TitleCard>
+      <TitleCard title="5% Savings Offering" label="balance" link="view all" />
+
       <CardModal
         title="Access"
         btnPrimary="Annuler"

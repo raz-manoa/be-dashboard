@@ -50,11 +50,8 @@
   input {
     @apply outline-none w-full;
     background-color: transparent;
-<<<<<<< HEAD
-    color: var(--white);
-=======
     font-size: 14px;
->>>>>>> 2c18ad810beaaf212fb84843f53a2271d4a65632
+    color: var(--white);
     &::placeholder {
       font-size: 14px;
     }

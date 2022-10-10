@@ -6,6 +6,7 @@ import { FormCustom } from "@/Components/DataEntry/FormCustom";
 import { Form } from "antd";
 import Checkbox from "antd/lib/checkbox/Checkbox";
 import { Link } from "react-router-dom";
+import Button from "@/Components/General/Button/Button";
 const LoginPage = () => {
   const handleLogin = () => {
     localStorage.setItem("a", "logged");
@@ -23,7 +24,7 @@ const LoginPage = () => {
         >
           Sign In
         </Text>
-        <Form>
+        <FormCustom>
           <FormCustom.Input
             name="example-2"
             color="red"
@@ -36,12 +37,25 @@ const LoginPage = () => {
             placeholder="Password"
             icon="password"
           />
-        </Form>
-        <div className={styles.login__text}>
-          <Checkbox className={styles.checkbox}>Remember me</Checkbox>
-          <Link to="/">Forgot Password?</Link>
-        </div>
-        <button onClick={handleLogin}>Fake login</button>
+          <div className={styles.login__text}>
+            <Checkbox className={styles.checkbox}>Remember me</Checkbox>
+            <Link to="/">Forgot Password ?</Link>
+          </div>
+          <Button
+            type="white"
+            className={styles.login__btn}
+            onClick={handleLogin}
+          >
+            Sign in
+          </Button>
+        </FormCustom>
+        <Text tag="p" type="p" variant="white" className={styles.login__pg}>
+          By signing in, you agree to the terms and conditions.
+        </Text>
+        <Text tag="p" type="p" variant="white" className={styles.create}>
+          New here ?<Link to="/">Create an Account</Link>
+        </Text>
+        {/* <button onClick={handleLogin}>Fake login</button> */}
       </div>
     </div>
   );
