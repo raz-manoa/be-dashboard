@@ -8,6 +8,7 @@ export default function Amout() {
   return (
     <div>
       <FormInput label="from:" type="number" color="grey" />
+
       <Select suffixIcon={<Icon icon="chevron" />}>
         <Option value="test">test</Option>
         <Option value="test1">test2</Option>
