@@ -41,17 +41,15 @@ export default function CardModal(props: CardModalProps) {
       </div>
       <div
         className={`${styles.cardModal__footer} ${
-          btnPrimary === "" || btnSecondary === ""
-            ? styles.cardModal__footerSingle
-            : ""
+          !btnPrimary || !btnSecondary ? styles.cardModal__footerSingle : ""
         }`}
       >
-        {btnPrimary !== "" && (
+        {btnPrimary && (
           <Button type="primary" tag="link" className="btn">
             {btnPrimary}
           </Button>
         )}
-        {btnSecondary !== "" && (
+        {btnSecondary && (
           <Button type="secondary" tag="link" className="btn">
             {btnSecondary}
           </Button>
