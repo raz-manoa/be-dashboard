@@ -5,6 +5,7 @@ export interface TextProps extends React.HTMLAttributes<any> {
   children: ReactNode;
   type?: "h1" | "h2" | "h3" | "p" | "span";
   variant?: "black" | "red" | "grey" | "green" | "white";
+  weight?: 600 | 500 | 400 | 300;
   size?: number;
 }
 
@@ -16,6 +17,7 @@ export default function Text(props: TextProps) {
     variant = "black",
     className = "",
     size = 14,
+    weight,
     ...rest
   } = props;
   const TextTag = tag;
@@ -26,7 +28,12 @@ export default function Text(props: TextProps) {
         ${styles.text} 
         ${styles[`text__color_${variant}`]} 
         ${type ? `${styles[`text__size_${type}`]}` : ""} ${className}`}
-      style={{ "--font-size": `${size}px` } as React.CSSProperties}
+      style={
+        {
+          "--font-size": `${size}px`,
+          "--font-weight": weight,
+        } as React.CSSProperties
+      }
     >
       {children}
     </TextTag>
