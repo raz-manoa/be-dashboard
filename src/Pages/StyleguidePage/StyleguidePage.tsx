@@ -1,8 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
-=======
-
->>>>>>> 2c18ad810beaaf212fb84843f53a2271d4a65632
 import Button from "../../Components/General/Button/Button";
 
 const StyleguidePage = () => {
