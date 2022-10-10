@@ -13,3 +13,15 @@
 .ant-layout-content {
   background-color: #f5f5f5;
 }
+body {
+  .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner {
+    background-color: var(--red);
+  }
+  .ant-picker-cell-in-view.ant-picker-cell-today
+    .ant-picker-cell-inner::before {
+    border: 1px solid var(--red);
+  }
+  .ant-picker-today-btn {
+    color: var(--red);
+  }
+}
