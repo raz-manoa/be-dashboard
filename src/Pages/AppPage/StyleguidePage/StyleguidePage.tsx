@@ -182,26 +182,26 @@ const StyleguidePage = () => {
       <CardSave
         principal="10,248.0"
         interest="128.00"
-        src={UnitedState}
-        money="USD"
+        country={UnitedState}
+        currency="USD"
       />
       <CardSave
         principal="245,624.32"
         interest="12,439.79"
-        src={EuropUnion}
-        money="EUR"
+        country={EuropUnion}
+        currency="EUR"
       />
       <Card style={{ paddingTop: 10 }}>
         <CurrentCardList
           value="150.00"
-          money="US Dollar (USD)"
-          src={UnitedState}
+          currency="US Dollar (USD)"
+          country={UnitedState}
         />
         <CurrentCardList
           value="398.00"
-          money="Euro (EUR)"
-          src={EuropUnion}
-          valueUSD="= USD 403.83"
+          currency="Euro (EUR)"
+          country={EuropUnion}
+          convertValue="= USD 403.83"
         />
       </Card>
       <TitleCard

@@ -3,15 +3,15 @@
   font-weight: var(--font-weight);
   &__size {
     &_h1 {
-      @apply font-bold;
+      @apply font-semibold;
       font-size: 24px;
     }
     &_h2 {
-      @apply font-bold;
+      @apply font-semibold;
       font-size: 19px;
     }
     &_h3 {
-      @apply font-bold;
+      @apply font-semibold;
       font-size: 14px;
     }
     &_span {
