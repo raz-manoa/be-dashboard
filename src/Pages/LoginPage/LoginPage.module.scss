@@ -4,8 +4,24 @@
     @apply col-span-2 h-screen object-cover;
   }
   &__content {
-    @apply flex flex-col justify-center items-center;
+    @apply flex flex-col justify-center;
     padding: 0 55px;
     background-color: var(--red);
   }
+  &__text {
+    @apply flex items-center justify-between;
+    color: var(--white);
+  }
+  input[type="checkbox"]:enabled:checked {
+    background-color: #002b4e !important;
+    color: white;
+  }
+  :global {
+    .ant-input-affix-wrapper-lg {
+      margin-top: 0;
+    }
+  }
+}
+.title {
+  @apply text-left;
 }
