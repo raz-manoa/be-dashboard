@@ -14,7 +14,7 @@ const LoginPage = () => {
   return (
     <div className={styles.login}>
       <div className={styles.login__img}>
-        <img src={LoginImg} alt="login__img" />
+        <img src={LoginImg} alt="" loading="lazy" />
       </div>
       <div className={styles.login__content}>
         <Text

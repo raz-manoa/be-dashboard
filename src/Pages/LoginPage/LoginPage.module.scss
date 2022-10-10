@@ -3,7 +3,7 @@
   &__img {
     @apply col-span-2 h-screen object-cover;
     img {
-      @apply w-full h-full;
+      @apply w-full h-full object-cover;
     }
   }
   &__content {
