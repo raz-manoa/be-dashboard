@@ -37,6 +37,7 @@ export default function TitleCard(props: TitleCardProps) {
               variant="red"
               className={styles.link}
               size={14}
+              weight={500}
             >
               <Link to={link.url}>{link.label}</Link>
             </Text>

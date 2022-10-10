@@ -11,7 +11,23 @@
   margin-top: 25px;
 }
 
+.dashboardCurrentAccount {
+  position: relative;
+}
+
 .dashboardLeft {
+  :global {
+    .ps {
+      max-height: calc(100vh - 250px);
+      padding-right: 25px;
+    }
+    .ps__rail-y {
+      right: 10px !important;
+    }
+    .current-account {
+      padding-right: 0;
+    }
+  }
 }
 
 .dashboardRight {

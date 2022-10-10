@@ -6,6 +6,7 @@ import CurrentCardList, {
   CurrentCardListProps,
 } from "@/Components/Display/CurrentCardList/CurrentCardList";
 import TitleCard from "@/Components/Display/TitleCard/TitleCard";
+import Scrollbar from "@/Components/General/Scrollbar/Scrollbar";
 import Text from "@/Components/General/Text/Text";
 import React from "react";
 import styles from "./DashboardPage.module.scss";
@@ -73,10 +74,14 @@ const DashboardPage = () => {
           </Text>
         </TitleCard>
         <div className={styles.dashboardCurrentAccount}>
-          <Card style={{ paddingTop: 10 }}>
-            {currentAccountData.map((c, index) => (
-              <CurrentCardList {...c} key={`c-${index}`} />
-            ))}
+          <Card className="pt-3 current-account">
+            <Scrollbar>
+              <div>
+                {currentAccountData.map((c, index) => (
+                  <CurrentCardList {...c} key={`c-${index}`} />
+                ))}
+              </div>
+            </Scrollbar>
           </Card>
         </div>
       </div>
