@@ -1,2 +1,13 @@
 .table {
+  :global {
+    .ant-table-tbody > tr > td {
+      padding-top: 23px;
+      padding-bottom: 23px;
+    }
+    .ant-table-thead > tr > th {
+      background-color: transparent;
+      color: #546e7a;
+      font-weight: bold;
+    }
+  }
 }
