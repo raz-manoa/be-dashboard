@@ -5,6 +5,8 @@
     }
     &_wrap {
       @apply flex items-center justify-between;
+      padding-left: 25px;
+      padding-right: 25px;
     }
   }
   &__nav {

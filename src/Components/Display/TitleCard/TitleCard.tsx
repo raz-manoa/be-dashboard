@@ -1,6 +1,6 @@
 import React, { Children, ReactNode } from "react";
 import { Link } from "react-router-dom";
-import Text from "../Text/Text";
+import Text from "../../General/Text/Text";
 import styles from "./TitleCard.module.scss";
 interface TitleCardProps {
   title: string;

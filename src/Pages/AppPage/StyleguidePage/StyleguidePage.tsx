@@ -4,7 +4,7 @@ import Text from "~/Components/General/Text/Text";
 import UnitedState from "@/Assets/Flags/united states.svg";
 import EuropUnion from "@/Assets/Flags/european union.svg";
 import CurrentCardList from "@/Components/Display/CurrentCardList/CurrentCardList";
-import TitleCard from "@/Components/General/TitleCard/TitleCard";
+import TitleCard from "@/Components/Display/TitleCard/TitleCard";
 import FormInput from "@/Components/DataEntry/FormInput/FormInput";
 import { Link } from "react-router-dom";
 import Card from "@/Components/Display/Card/Card";

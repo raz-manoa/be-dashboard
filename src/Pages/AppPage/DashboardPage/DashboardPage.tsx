@@ -5,6 +5,7 @@ import CardSave, {
 import CurrentCardList, {
   CurrentCardListProps,
 } from "@/Components/Display/CurrentCardList/CurrentCardList";
+import TitleCard from "@/Components/Display/TitleCard/TitleCard";
 import Text from "@/Components/General/Text/Text";
 import React from "react";
 import styles from "./DashboardPage.module.scss";
@@ -48,13 +49,46 @@ const DashboardPage = () => {
   return (
     <div className={styles.dashboard}>
       <div className={styles.dashboardLeft}>
-        <Card style={{ paddingTop: 10 }}>
-          {currentAccountData.map((c, index) => (
-            <CurrentCardList {...c} key={`c-${index}`} />
-          ))}
-        </Card>
+        <TitleCard
+          title="Current Account"
+          subtitle="Balances"
+          link={{
+            url: "/",
+            label: "View all",
+          }}
+        >
+          <Text tag="div" variant="red" className="flex gap-2 items-end">
+            <Text tag="span" size={20} variant="red" weight={700}>
+              USD
+            </Text>
+            <Text
+              tag="span"
+              size={30}
+              variant="red"
+              weight={700}
+              className="relative top-1"
+            >
+              22,761
+            </Text>
+          </Text>
+        </TitleCard>
+        <div className={styles.dashboardCurrentAccount}>
+          <Card style={{ paddingTop: 10 }}>
+            {currentAccountData.map((c, index) => (
+              <CurrentCardList {...c} key={`c-${index}`} />
+            ))}
+          </Card>
+        </div>
       </div>
       <div className={styles.dashboardRight}>
+        <TitleCard
+          title="5% Savings Offering"
+          subtitle="Balances"
+          link={{
+            url: "/",
+            label: "View all",
+          }}
+        />
         <div className={styles.dashboardSaving}>
           {savingMoney.map((s, index) => (
             <CardSave {...s} key={`s-${index}`} className="mb-5" />

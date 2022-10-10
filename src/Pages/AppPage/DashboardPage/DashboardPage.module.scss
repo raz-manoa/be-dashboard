@@ -1,6 +1,14 @@
 .dashboard {
   @apply grid grid-cols-2;
   gap: 21px;
+  > div {
+    padding-top: 21px;
+  }
+}
+
+.dashboardCurrentAccount,
+.dashboardSaving {
+  margin-top: 25px;
 }
 
 .dashboardLeft {
