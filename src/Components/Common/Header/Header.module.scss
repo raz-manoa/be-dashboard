@@ -22,3 +22,11 @@
     }
   }
 }
+
+.headerNav {
+  &Active {
+    path {
+      fill: var(--red) !important;
+    }
+  }
+}
