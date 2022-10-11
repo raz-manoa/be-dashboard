@@ -31,7 +31,9 @@ const AppLayout = () => {
           >
             <Header
               title={
-                headerTitle ? headerTitle : state.headerLabel || headerTitle
+                headerTitle
+                  ? headerTitle
+                  : (state && state.headerLabel) || headerTitle
               }
             />
           </Layout.Header>
