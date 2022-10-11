@@ -12,6 +12,9 @@ const NotFoundPage = React.lazy(
 const StyleguidePage = React.lazy(
   () => import("../Pages/AppPage/StyleguidePage/StyleguidePage")
 );
+const SettingPage = React.lazy(
+  () => import("../Pages/AppPage/SettingPage/SettingPage")
+);
 
 const appRoutes: IRoute[] = [
   ...sidebarRoutes,
@@ -25,6 +28,7 @@ const appRoutes: IRoute[] = [
     name: "styleguide",
     component: StyleguidePage,
   },
+  { path: "setting", name: "setting", component: SettingPage },
   {
     path: `*`,
     name: "NotFoundPage",

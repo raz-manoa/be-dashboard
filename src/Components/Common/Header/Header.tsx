@@ -19,13 +19,21 @@ export default function Header(props: HeaderProps) {
         </div>
         <nav className={styles.header__nav}>
           <Link to="/">
-            <Icon icon="qr" color="#546e7a" />
+            <Icon icon="qr" color="#546e7a" className={styles.header__icon} />
+          </Link>
+          <Link to="setting">
+            <Icon
+              icon="setting"
+              color="#546e7a"
+              className={styles.header__icon}
+            />
           </Link>
           <Link to="/">
-            <Icon icon="setting" color="#546e7a" />
-          </Link>
-          <Link to="/">
-            <Icon icon="logout" color="#546e7a" />
+            <Icon
+              icon="logout"
+              color="#546e7a"
+              className={styles.header__icon}
+            />
           </Link>
           <Link to="/"></Link>
         </nav>

@@ -14,4 +14,11 @@
       }
     }
   }
+  &__icon {
+    &:hover {
+      path {
+        fill: var(--red) !important;
+      }
+    }
+  }
 }
