@@ -9,26 +9,3 @@
     }
   }
 }
-
-.field {
-  @apply col-span-2;
-  &__wrap {
-    @apply grid grid-cols-3 items-end;
-    gap: 12px;
-    margin-top: 25px;
-  }
-}
-.txt {
-  @apply text-center;
-  width: 50%;
-  margin: 40px auto 25px auto;
-  line-height: 1.43;
-  strong {
-    color: var(--red);
-  }
-}
-.info {
-    @apply text-center;
-    font-weight: 600;
-    line-height: 1.43;
-  }
