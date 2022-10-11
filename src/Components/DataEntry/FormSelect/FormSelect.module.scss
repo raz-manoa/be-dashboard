@@ -7,6 +7,7 @@
         @apply flex items-center;
         border-radius: 8px;
         height: 52px;
+        border: 1px solid var(--grey_light);
       }
     }
     .ant-select-single.ant-select-show-arrow .ant-select-selection-item {
@@ -15,7 +16,7 @@
     .ant-select-arrow {
       @apply relative flex items-center justify-center mt-0;
       height: 52px;
-      width: 52px;
+      width: 100px;
       background-color: var(--red);
       border-radius: 0 8px 8px 0;
       svg {

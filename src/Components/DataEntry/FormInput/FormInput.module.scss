@@ -1,15 +1,17 @@
 .label {
   font-size: 14px;
   color: var(--grey);
+  font-weight: 600;
 }
 .input {
   &__content {
     @apply items-center flex;
+    margin-top: 15px;
+
     color: #fff;
     padding: 9px 10px;
     border-radius: 8px;
-    margin-top: 15px;
-
+    height: 52px;
     &--red {
       background-color: rgba(239, 149, 172, 0.5);
       border: 1px solid #fff;
@@ -51,7 +53,6 @@
     @apply outline-none w-full;
     background-color: transparent;
     font-size: 14px;
-    color: var(--white);
     &::placeholder {
       font-size: 14px;
     }

@@ -15,7 +15,7 @@ interface FormInputProps extends InputProps {
 export default function FormInput(props: FormInputProps) {
   const {
     placeholder,
-    type,
+    type = "text",
     icon,
     label,
     color = "red",
