@@ -54,7 +54,12 @@ const sidebarRoutes: ISidebarRoute[] = [
     icon: "transactions",
     component: TransactionPage,
   },
-  { path: "", name: "Be Network", icon: "network", component: BeNetworkPage },
+  {
+    path: "be-network",
+    name: "Be Network",
+    icon: "network",
+    component: BeNetworkPage,
+  },
   {
     path: "foreign-exchange",
     name: "Foreign Exchange",

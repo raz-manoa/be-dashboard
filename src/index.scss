@@ -139,7 +139,7 @@ body {
 .common__txt {
   @apply text-center;
   width: 60%;
-  margin: 40px auto 25px auto;
+  margin: 16px auto 25px auto;
   line-height: 1.43;
   strong {
     color: var(--red);
@@ -147,7 +147,7 @@ body {
 }
 .common__info {
   @apply text-center;
-  font-weight: 600 !important;
+  font-weight: 600;
   line-height: 1.43;
 }
 
@@ -162,7 +162,7 @@ body {
 }
 .common__info_card {
   height: 132px;
-  padding: 16px 25px !important;
+  padding: 16px 25px;
 }
 
 .ant-alert {

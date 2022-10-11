@@ -4,7 +4,8 @@
   border-radius: 8px;
   transition: 0.3 ease-in-out;
   color: var(--white);
-  &:hover {
+  &:hover,
+  &.sidebarActive {
     background-color: #ef95ac;
   }
   span {

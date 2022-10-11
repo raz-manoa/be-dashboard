@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./SidebarItem.module.scss";
 interface SidebarItemProps {
   to: string;
@@ -12,15 +12,17 @@ export default function SidebarItem(props: SidebarItemProps) {
   const { to, label, state, children } = props;
 
   return (
-    <Link
+    <NavLink
+      className={({ isActive }) =>
+        `${styles.sidebarItem} ${isActive ? styles.sidebarActive : ""}`
+      }
       to={to}
       state={{
         headerLabel: state || label,
       }}
-      className={styles.sidebarItem}
     >
       {children}
       <span>{label}</span>
-    </Link>
+    </NavLink>
   );
 }

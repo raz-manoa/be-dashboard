@@ -3,7 +3,6 @@ import Card from "@/Components/Display/Card/Card";
 import Button from "@/Components/General/Button/Button";
 import Text from "@/Components/General/Text/Text";
 import { useForm } from "antd/es/form/Form";
-import styles from "./Otcpage.module.scss";
 import React, { useEffect } from "react";
 import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
 
@@ -27,6 +26,7 @@ const OtcPage = () => {
             color="grey"
             type="number"
             className="common__field"
+            placeholder="0.00"
             rules={[
               {
                 required: true,
@@ -36,6 +36,7 @@ const OtcPage = () => {
           />
           <FormCustom.Select
             name="select money"
+            placeholder="USD"
             options={[
               {
                 label: "USD",
@@ -55,6 +56,7 @@ const OtcPage = () => {
             color="grey"
             type="number"
             className="common__field"
+            placeholder="0.00"
             rules={[
               {
                 required: true,
@@ -64,6 +66,7 @@ const OtcPage = () => {
           />
           <FormCustom.Select
             name="select"
+            placeholder="USD"
             options={[
               {
                 label: "USDC",
