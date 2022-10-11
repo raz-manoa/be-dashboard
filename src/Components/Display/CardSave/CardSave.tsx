@@ -13,7 +13,10 @@ export interface CardSaveProps extends AllHTMLAttributes<HTMLDivElement> {
 export default function CardSave(props: CardSaveProps) {
   const { className, country, currency, principal, interest, ...rest } = props;
   return (
-    <Card className={`${styles.cardSave} ${className}`} {...rest}>
+    <Card
+      className={`${styles.cardSave} ${className} common__info_card`}
+      {...rest}
+    >
       <div className={styles.cardSave__flag}>
         <img src={country} alt="flag" />
         <Text

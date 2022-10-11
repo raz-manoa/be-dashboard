@@ -1,0 +1,29 @@
+.card {
+  margin-top: 5px;
+  h2 {
+    margin-bottom: 9px;
+  }
+  &__field {
+    @apply grid grid-cols-3;
+    gap: 12px;
+    margin-top: 11px;
+  }
+  &__header {
+    @apply flex items-center justify-between;
+  }
+  &__input {
+    @apply col-span-2;
+  }
+  &__btn {
+    width: 100% !important;
+  }
+}
+.txt {
+  strong {
+    color: var(--red);
+    margin-left: 5px;
+  }
+}
+.card__title {
+  margin-bottom: 9px;
+}

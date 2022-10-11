@@ -105,6 +105,27 @@ body {
     background-color: var(--red);
   }
 }
+//tabs style
+.ant-tabs-nav-list {
+  .ant-tabs-tab {
+    @apply uppercase;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--grey_light);
+    &:hover {
+      color: var(--grey);
+    }
+    &.ant-tabs-tab-active {
+      .ant-tabs-tab-btn {
+        color: var(--grey);
+      }
+    }
+  }
+  .ant-tabs-ink-bar {
+    background-color: var(--red);
+  }
+}
 
 //common style
 .common__field {
@@ -138,4 +159,8 @@ body {
     width: 100%;
     margin-top: 40px;
   }
+}
+.common__info_card {
+  height: 132px;
+  padding: 16px 25px !important;
 }

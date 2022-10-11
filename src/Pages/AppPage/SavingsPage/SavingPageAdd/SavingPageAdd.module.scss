@@ -1,0 +1,8 @@
+.card__title {
+  margin-bottom: 9px;
+}
+.card {
+  &:not(:first-child) {
+    margin-top: 20px;
+  }
+}
