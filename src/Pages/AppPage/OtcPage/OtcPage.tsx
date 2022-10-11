@@ -31,7 +31,6 @@ const OtcPage = () => {
           />
           <FormCustom.Select
             name="select money"
-            placeholder="Select"
             options={[
               {
                 label: "USD",
@@ -60,7 +59,6 @@ const OtcPage = () => {
           />
           <FormCustom.Select
             name="select"
-            placeholder="Select"
             options={[
               {
                 label: "USDC",
