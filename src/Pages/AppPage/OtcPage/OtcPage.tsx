@@ -87,10 +87,22 @@ const OtcPage = () => {
             Transaction fee <strong>0 USD</strong>
           </Text>
         </div>
-        <Text type="p" tag="p" variant="grey" className="common__info">
+        <Text
+          type="p"
+          tag="p"
+          variant="grey"
+          weight={600}
+          className="common__info"
+        >
           1 USDC equals 1 USD
         </Text>
-        <Text type="p" tag="p" variant="grey" className="common__info">
+        <Text
+          type="p"
+          tag="p"
+          variant="grey"
+          weight={600}
+          className="common__info"
+        >
           1 USD equals 1 USDC
         </Text>
         <Button
