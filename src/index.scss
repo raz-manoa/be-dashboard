@@ -164,3 +164,27 @@ body {
   height: 132px;
   padding: 16px 25px !important;
 }
+
+.ant-alert {
+  padding: 17px 16px;
+  &.ant-alert-error {
+    border-radius: 8px;
+    border: solid 1px #d9534f;
+    background-color: rgba(217, 83, 79, 0.1);
+    .ant-alert-message {
+      color: #d9534f;
+    }
+  }
+  &.ant-alert-success {
+    border-radius: 8px;
+    border: solid 1px #5cb85c;
+    background-color: rgba(92, 184, 92, 0.1);
+    .ant-alert-message {
+      color: #5cb85c;
+    }
+  }
+
+  .ant-alert-message {
+    font-size: 16px;
+  }
+}
