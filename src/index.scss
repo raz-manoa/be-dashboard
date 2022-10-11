@@ -117,7 +117,7 @@ body {
 }
 .common__txt {
   @apply text-center;
-  width: 50%;
+  width: 60%;
   margin: 40px auto 25px auto;
   line-height: 1.43;
   strong {
@@ -128,4 +128,14 @@ body {
   @apply text-center;
   font-weight: 600 !important;
   line-height: 1.43;
+}
+
+.common__card {
+  @apply mx-auto;
+  width: 550px;
+  margin-top: 20px;
+  .common__btn {
+    width: 100%;
+    margin-top: 40px;
+  }
 }

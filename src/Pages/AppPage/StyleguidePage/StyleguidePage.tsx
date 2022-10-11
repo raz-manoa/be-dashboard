@@ -22,6 +22,7 @@ import type { ColumnType } from "antd/es/table";
 import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useEffect } from "react";
 import CardTransaction from "@/Components/Display/CardTransaction/CardTransaction";
+import SwitchToggle from "@/Components/DataEntry/SwitchToggle/SwitchToggle";
 
 interface TableSample {
   name: string;
@@ -273,6 +274,11 @@ const StyleguidePage = () => {
             },
           ]}
         />
+        <FormCustom.TextArea
+          label="message : "
+          option="optional"
+          placeholder="messages"
+        />
       </FormCustom>
       <FormCustom.SelectIcon
         name="select"
@@ -295,6 +301,7 @@ const StyleguidePage = () => {
         columns={tableSampleColumn()}
       />
       <CardTransaction {...transactionData} />
+      <SwitchToggle label="By Phone Number" />
     </div>
   );
 };

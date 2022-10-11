@@ -4,13 +4,18 @@ import Button from "@/Components/General/Button/Button";
 import Text from "@/Components/General/Text/Text";
 import { useForm } from "antd/es/form/Form";
 import styles from "./Otcpage.module.scss";
-import React from "react";
+import React, { useEffect } from "react";
+import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
 
 const OtcPage = () => {
+  const { setHeaderTitle } = useAppLayoutContext();
   const [form] = useForm();
+  useEffect(() => {
+    setHeaderTitle("OTC");
+  });
 
   return (
-    <Card className={styles.otc__card}>
+    <Card className="common__card">
       <Text tag="h2" type="h2">
         Amount
       </Text>
@@ -71,10 +76,14 @@ const OtcPage = () => {
             ]}
           />
         </div>
-        <Text type="p" tag="p" variant="grey" className="common__txt">
-          <strong>174.75 USD</strong> 174.75 USD available to transfer
-          Transaction fee <strong>0 USD</strong>
-        </Text>
+        <div className="common__txt">
+          <Text type="p" tag="p" variant="grey">
+            <strong>174.75 USD</strong> 174.75 USD available to transfer
+          </Text>
+          <Text type="p" tag="p" variant="grey">
+            Transaction fee <strong>0 USD</strong>
+          </Text>
+        </div>
         <Text type="p" tag="p" variant="grey" className="common__info">
           1 USDC equals 1 USD
         </Text>
@@ -86,6 +95,7 @@ const OtcPage = () => {
           onClick={() => {
             form.validateFields();
           }}
+          className="common__btn"
         >
           Continuer
         </Button>

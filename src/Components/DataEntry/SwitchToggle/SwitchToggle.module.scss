@@ -1,0 +1,26 @@
+.switch {
+  @apply flex items-center;
+  p {
+    margin-left: 20px;
+  }
+}
+:global {
+  .ant-switch {
+    background-color: #f5f5f5;
+    &.ant-switch-checked {
+      background-color: var(--red) !important;
+      width: 40px;
+      height: 25px;
+    }
+  }
+  .ant-switch-handle {
+    left: 0;
+    width: 30px;
+    height: 30px;
+    top: -3px;
+    &::before {
+      @apply bg-white;
+      border-radius: 50%;
+    }
+  }
+}
