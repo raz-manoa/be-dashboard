@@ -7,6 +7,7 @@
         @apply flex items-center;
         border-radius: 8px;
         height: 52px;
+        border: 1px solid var(--grey_light);
       }
     }
     .ant-select-single.ant-select-show-arrow .ant-select-selection-item {
