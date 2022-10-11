@@ -46,7 +46,6 @@ const sidebarRoutes: ISidebarRoute[] = [
     path: "dashboard",
     icon: "dashboard",
     name: "Overview",
-    state: ["Welcome", "(john@happydays.com)"],
     component: DashboardPage,
   },
   {

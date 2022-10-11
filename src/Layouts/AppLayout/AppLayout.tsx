@@ -30,7 +30,9 @@ const AppLayout = () => {
             }}
           >
             <Header
-              title={state ? state.headerLabel || headerTitle : headerTitle}
+              title={
+                headerTitle ? headerTitle : state.headerLabel || headerTitle
+              }
             />
           </Layout.Header>
           <Layout.Content style={{ padding: "0 32px" }}>
