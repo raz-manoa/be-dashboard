@@ -1,23 +1,34 @@
 import Card from "@/Components/Display/Card/Card";
 import Text from "@/Components/General/Text/Text";
 import styles from "./SettingPage.module.scss";
-import React from "react";
+import React, { useEffect } from "react";
+import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
+import { Link } from "react-router-dom";
+
+const data = [
+  {
+    user: "John Smith",
+    email: "johnsmith@company.com",
+    path: "#",
+  },
+  {
+    user: "Jane Doe",
+    email: "johndoe@company.com",
+    path: "#",
+  },
+  {
+    user: "Tim Armstrong",
+    email: "timarmstrong@company.com",
+    path: "#",
+  },
+];
 
 const SettingPage = () => {
-  const data = [
-    {
-      user: "John Smith",
-      company: "johnsmith@company.com",
-    },
-    {
-      user: "Jane Doe",
-      company: "johndoe@company.com",
-    },
-    {
-      user: "Tim Armstrong",
-      company: "timarmstrong@company.com",
-    },
-  ];
+  const { setHeaderTitle } = useAppLayoutContext();
+
+  useEffect(() => {
+    setHeaderTitle("Settings");
+  }, []);
   return (
     <Card className={styles.card}>
       <Text tag="h2" type="h2" size={19} className={styles.card__title}>
@@ -28,9 +39,11 @@ const SettingPage = () => {
           <Text tag="span" type="span" variant="grey">
             {d.user}
           </Text>
-          <Text tag="p" type="p" variant="red" className={styles.company}>
-            {d.company}
-          </Text>
+          <Link to={d.path}>
+            <Text tag="p" type="p" variant="red" className={styles.company}>
+              {d.email}
+            </Text>
+          </Link>
         </div>
       ))}
     </Card>
