@@ -25,6 +25,7 @@ const BeNetworkPage = () => {
         <div className="common__field-wrap">
           <FormCustom.Input
             name="field to"
+            placeholder="0.00"
             label="Leaving Account:"
             color="grey"
             type="number"
@@ -38,10 +39,11 @@ const BeNetworkPage = () => {
           />
           <FormCustom.Select
             name="select"
+            placeholder="USD"
             options={[
               {
-                label: "USDC",
-                value: "usdc",
+                label: "USD",
+                value: "usd",
               },
               {
                 label: "EUR",
