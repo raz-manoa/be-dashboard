@@ -1,0 +1,49 @@
+.btn {
+  @apply flex items-center justify-center cursor-pointer uppercase;
+  color: #fff;
+  padding: 17px 11px 18px;
+  height: 54px;
+  width: 200px;
+  border-radius: 8px;
+  &__primary {
+    background-color: var(--red);
+    &:hover {
+      background-color: #bf244b;
+    }
+    &.active {
+      border: solid 2px #bf244b;
+      background-color: #e02b59;
+    }
+  }
+  &__secondary {
+    background-color: var(--grey);
+    &:hover {
+      background-color: #475d68;
+    }
+    &.active {
+      border: solid 2px #475d68;
+      background-color: #546e7a;
+    }
+  }
+  &__default {
+    background-color: var(--grey_light);
+    &:hover {
+      background-color: #7a8b94;
+    }
+    &.active {
+      border: solid 2px #7a8b94;
+      background-color: #90a4ae;
+    }
+  }
+  &__white {
+    background-color: #fff;
+    color: var(--red);
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+    &.active {
+      border: solid 2px #fff;
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+  }
+}

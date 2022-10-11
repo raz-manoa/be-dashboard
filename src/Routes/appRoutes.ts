@@ -1,29 +1,34 @@
 import React from "react";
 import { IRoute } from "../Interfaces/Routes";
+import sidebarRoutes from "./sidebarRoutes";
 
 // app page components
-const DashboardPage = React.lazy(
-  () => import("../Pages/AppPage/DashboardPage/DashboardPage")
-);
 const TransactionPage = React.lazy(
   () => import("../Pages/AppPage/TransactionPage/TransactionPage")
 );
 const NotFoundPage = React.lazy(
   () => import("../Pages/NotFoundPage/NotFoundPage")
 );
+const StyleguidePage = React.lazy(
+  () => import("../Pages/AppPage/StyleguidePage/StyleguidePage")
+);
+const SettingPage = React.lazy(
+  () => import("../Pages/AppPage/SettingPage/SettingPage")
+);
 
 const appRoutes: IRoute[] = [
-  {
-    index: true,
-    path: `dashboard`,
-    name: "Dashboard",
-    component: DashboardPage,
-  },
+  ...sidebarRoutes,
   {
     path: `transactions`,
     name: "Transactions",
     component: TransactionPage,
   },
+  {
+    path: "styleguide",
+    name: "styleguide",
+    component: StyleguidePage,
+  },
+  { path: "setting", name: "setting", component: SettingPage },
   {
     path: `*`,
     name: "NotFoundPage",

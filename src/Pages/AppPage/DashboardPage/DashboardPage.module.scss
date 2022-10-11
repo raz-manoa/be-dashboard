@@ -1,0 +1,70 @@
+.dashboard {
+  @apply grid grid-cols-2;
+  gap: 21px;
+  > div {
+    padding-top: 21px;
+  }
+}
+
+.dashboardCurrentAccount,
+.dashboardSaving {
+  margin-top: 25px;
+}
+
+.dashboardCurrentAccount {
+  position: relative;
+}
+
+.dashboardLeft {
+  :global {
+    .ps {
+      max-height: calc(100vh - 280px);
+      padding-right: 25px;
+    }
+
+    .current-account {
+      padding-right: 0;
+    }
+  }
+}
+
+.dashboardRight {
+  max-width: 550px;
+}
+
+.dashbaordTransactionHead {
+  padding-left: 25px;
+}
+
+.dashboardTransactionFilter {
+  @apply flex gap-3;
+  a {
+    position: relative;
+  }
+  .active {
+    &::after {
+      position: absolute;
+      content: "";
+      bottom: -2px;
+      height: 2px;
+      width: 100%;
+      left: 0;
+      background-color: var(--red);
+    }
+  }
+}
+
+.transactionCard {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 0;
+}
+
+.dashboardTransaction {
+  :global {
+    .ps {
+      padding-right: 25px;
+      max-height: calc(100vh - var(--offset-top));
+    }
+  }
+}

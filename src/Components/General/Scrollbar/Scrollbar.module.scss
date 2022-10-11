@@ -1,0 +1,13 @@
+.ps {
+  :global {
+    .ps__thumb-y {
+      opacity: 0.5;
+      border-radius: 4px;
+      width: 6px;
+      background-color: #c8c7cc;
+    }
+    .ps__rail-y {
+      right: 10px !important;
+    }
+  }
+}
