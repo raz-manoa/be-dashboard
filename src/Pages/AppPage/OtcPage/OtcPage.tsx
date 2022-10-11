@@ -15,13 +15,13 @@ const OtcPage = () => {
         Amount
       </Text>
       <FormCustom form={form}>
-        <div className={styles.field__wrap}>
+        <div className="common__field-wrap">
           <FormCustom.Input
             name="field from"
             label="From : "
             color="grey"
             type="number"
-            className={styles.field}
+            className="common__field"
             rules={[
               {
                 required: true,
@@ -43,13 +43,13 @@ const OtcPage = () => {
             ]}
           />
         </div>
-        <div className={styles.field__wrap}>
+        <div className="common__field-wrap">
           <FormCustom.Input
             name="field to"
             label="To : "
             color="grey"
             type="number"
-            className={styles.field}
+            className="common__field"
             rules={[
               {
                 required: true,
@@ -71,14 +71,14 @@ const OtcPage = () => {
             ]}
           />
         </div>
-        <Text type="p" tag="p" variant="grey" className={styles.otc__txt}>
+        <Text type="p" tag="p" variant="grey" className="common__txt">
           <strong>174.75 USD</strong> 174.75 USD available to transfer
           Transaction fee <strong>0 USD</strong>
         </Text>
-        <Text type="p" tag="p" variant="grey" className={styles.otc__info}>
+        <Text type="p" tag="p" variant="grey" className="common__info">
           1 USDC equals 1 USD
         </Text>
-        <Text type="p" tag="p" variant="grey" className={styles.otc__info}>
+        <Text type="p" tag="p" variant="grey" className="common__info">
           1 USD equals 1 USDC
         </Text>
         <Button

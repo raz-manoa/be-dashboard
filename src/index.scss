@@ -105,3 +105,27 @@ body {
     background-color: var(--red);
   }
 }
+
+//common style
+.common__field {
+  @apply col-span-2;
+  &-wrap {
+    @apply grid grid-cols-3 items-end;
+    gap: 12px;
+    margin-top: 25px;
+  }
+}
+.common__txt {
+  @apply text-center;
+  width: 50%;
+  margin: 40px auto 25px auto;
+  line-height: 1.43;
+  strong {
+    color: var(--red);
+  }
+}
+.common__info {
+  @apply text-center;
+  font-weight: 600 !important;
+  line-height: 1.43;
+}
