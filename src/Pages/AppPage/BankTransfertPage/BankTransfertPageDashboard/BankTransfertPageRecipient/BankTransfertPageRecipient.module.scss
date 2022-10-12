@@ -1,0 +1,33 @@
+.card {
+  margin-top: 20px;
+  &__header {
+    @apply flex items-center justify-between;
+  }
+  &__field {
+    @apply grid grid-cols-2 items-start;
+
+    gap: 26px;
+    .select {
+      margin-top: 0;
+    }
+  }
+}
+.btn__group {
+  @apply col-span-2 flex items-center justify-center w-full;
+  gap: 15px;
+}
+.search {
+  @apply flex items-center;
+  color: var(--red);
+  svg {
+    margin-right: 10px;
+  }
+  input {
+    @apply outline-none;
+    &::placeholder {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--red);
+    }
+  }
+}

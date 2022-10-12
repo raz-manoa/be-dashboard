@@ -2,17 +2,17 @@ import Button from "@/Components/General/Button/Button";
 import Text, { TextProps } from "@/Components/General/Text/Text";
 import React, { ReactNode } from "react";
 import Card from "../Card/Card";
-import styles from "./CardModal.module.scss";
-import CardModalItem from "./CardModalItem";
+import styles from "./CardConfirm.module.scss";
+import CardConfirmItem from "./CardConfirmItem";
 
-export interface CardModelItem {
+export interface CardConfirmItem {
   label: string;
   value: string;
   color?: TextProps["variant"];
 }
 
-interface CardModalProps {
-  data: CardModelItem[];
+interface CardConfirmProps {
+  data: CardConfirmItem[];
   btnPrimary?: string;
   title: string;
   btnSecondary?: string;
@@ -21,7 +21,7 @@ interface CardModalProps {
   onClickSecondBtn?(data?: any): void;
 }
 
-export default function CardModal(props: CardModalProps) {
+export default function CardConfirm(props: CardConfirmProps) {
   const {
     data = [],
     btnPrimary = "",
@@ -41,7 +41,7 @@ export default function CardModal(props: CardModalProps) {
       <div className={styles.cardModal__body}>
         {data.map((d, index) => {
           return (
-            <CardModalItem
+            <CardConfirmItem
               label={d.label}
               value={d.value}
               color={d.color}

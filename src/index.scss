@@ -150,6 +150,10 @@ body {
   font-weight: 600;
   line-height: 1.43;
 }
+.common__strong--red {
+  color: var(--red);
+  margin-left: 8px;
+}
 
 .common__card {
   @apply mx-auto;

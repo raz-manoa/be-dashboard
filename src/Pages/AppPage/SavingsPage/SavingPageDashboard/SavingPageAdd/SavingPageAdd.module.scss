@@ -5,4 +5,9 @@
   &:not(:first-child) {
     margin-top: 20px;
   }
+  :global {
+    .ant-input {
+      margin-top: 0;
+    }
+  }
 }

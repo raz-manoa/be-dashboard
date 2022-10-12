@@ -22,6 +22,18 @@ const ForeignExchangePage = React.lazy(
 const BankTransfertPage = React.lazy(
   () => import("../Pages/AppPage/BankTransfertPage/BankTransfertPage")
 );
+const BankTransfertPageDashboard = React.lazy(
+  () =>
+    import(
+      "@/Pages/AppPage/BankTransfertPage/BankTransfertPageDashboard/BankTransfertPageDashboard"
+    )
+);
+const BankTransfertPageAddBeneficiary = React.lazy(
+  () =>
+    import(
+      "@/Pages/AppPage/BankTransfertPage/BankTransfertPageDashboard/BankTransfertPageAddBeneficiary/BankTransfertPageAddBeneficiary"
+    )
+);
 const SavingsPage = React.lazy(
   () => import("../Pages/AppPage/SavingsPage/SavingsPage")
 );
@@ -85,6 +97,23 @@ const sidebarRoutes: ISidebarRoute[] = [
     name: "Bank Transfert",
     icon: "bank-transfert",
     component: BankTransfertPage,
+    children: [
+      {
+        path: "",
+        name: "bank-transfert-dashboard",
+        component: BankTransfertPageDashboard,
+      },
+      {
+        path: "add-beneficiary",
+        name: "add-beneficiary",
+        component: BankTransfertPageAddBeneficiary,
+      },
+      {
+        path: "bank-review",
+        name: "bank-review",
+        component: BankTransfertPageAddBeneficiary,
+      },
+    ],
   },
   {
     path: "savings",

@@ -1,38 +1,22 @@
 import CardConfirm, {
   CardConfirmItem,
 } from "@/Components/Display/CardConfirm/CardConfirm";
-import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 const data: CardConfirmItem[] = [
   {
-    label: "Amout",
-    value: "-100.00 USD",
+    label: "Test",
+    value: "100",
     color: "red",
   },
   {
-    label: "Recipient",
-    value: "Company Name",
-    color: "black",
-  },
-  {
-    label: "BE ID",
-    value: "30303",
-    color: "black",
-  },
-  {
-    label: "When",
-    value: "May 17, 2022",
+    label: "Test",
+    value: "120",
     color: "black",
   },
 ];
-
-export default function SavingPageReview() {
-  const { setHeaderTitle } = useAppLayoutContext();
+export default function BankTransfertPageReview() {
   const navigate = useNavigate();
-  useEffect(() => {
-    setHeaderTitle("Savings");
-  }, []);
   return (
     <CardConfirm
       data={data}

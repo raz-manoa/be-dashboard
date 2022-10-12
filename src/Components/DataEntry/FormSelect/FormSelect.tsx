@@ -15,14 +15,24 @@ interface FormSelectProps extends SelectProps {
   options: FormSelectOption[];
   rules?: Rule[];
   name: NamePath;
+  label?: string;
 }
 
 export default function FormSelect(props: FormSelectProps) {
-  const { options, rules, name, ...rest } = props;
+  const { options, rules, name, label = "", ...rest } = props;
   const { Option } = Select;
   return (
     <Form.Item rules={rules} name={name} className={styles.select}>
-      <Select suffixIcon={<Icon icon="chevron" />} {...rest}>
+      {label != "" && (
+        <label htmlFor="" className={styles.label}>
+          {label}
+        </label>
+      )}
+      <Select
+        suffixIcon={<Icon icon="chevron" />}
+        {...rest}
+        className={label != "" ? styles.select__item : ""}
+      >
         {options.map((o, index) => (
           <Option value={o.value} key={`o-${index}`}>
             {o.label}

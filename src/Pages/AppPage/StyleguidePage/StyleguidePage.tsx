@@ -8,9 +8,9 @@ import TitleCard from "@/Components/Display/TitleCard/TitleCard";
 import FormInput from "@/Components/DataEntry/FormInput/FormInput";
 import { Link } from "react-router-dom";
 import Card from "@/Components/Display/Card/Card";
-import CardModal, {
-  CardModelItem,
-} from "@/Components/Display/CardModal/CardModal";
+import CardConfirm, {
+  CardConfirmItem,
+} from "@/Components/Display/CardConfirm/CardConfirm";
 import Icon from "@/Components/General/Icon/Icon";
 import FormSelect from "@/Components/DataEntry/FormSelect/FormSelect";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
@@ -154,7 +154,7 @@ const StyleguidePage = () => {
     setHeaderTitle("Style Guide");
   }, []);
 
-  const data: CardModelItem[] = [
+  const data: CardConfirmItem[] = [
     {
       label: "Test",
       value: "100",
@@ -169,11 +169,11 @@ const StyleguidePage = () => {
   return (
     <div>
       <Button tag="link" to="/" type="primary">
-        BUTTON
+        Primary
       </Button>
-      <Button type="secondary">BUTTON</Button>
-      <Button type="white">BUTTON</Button>
-      <Button type="default">BUTTON</Button>
+      <Button type="secondary">Secondary</Button>
+      <Button type="white">White</Button>
+      <Button type="default">default</Button>
 
       <Text tag="h1" type="h1">
         Heading H1
@@ -224,14 +224,14 @@ const StyleguidePage = () => {
         }}
       />
 
-      <CardModal
+      <CardConfirm
         title="Access"
         btnPrimary="Annuler"
         btnSecondary="Confirmer"
         data={data}
       />
-      <CardModal title="Access" btnPrimary="Annuler" data={data} />
-      <CardModal title="Access" data={data} />
+      <CardConfirm title="Access" btnPrimary="Annuler" data={data} />
+      <CardConfirm title="Access" data={data} />
 
       <FormCustom form={form}>
         <FormCustom.Input
