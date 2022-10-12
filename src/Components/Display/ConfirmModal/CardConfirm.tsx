@@ -8,14 +8,14 @@ interface ConfirmModalProps {
   title: string;
   date: string;
   msg: string;
-  firstTxt?: string;
+  txt?: string;
   link?: {
     label: string;
     path: string;
   };
 }
 export default function CardConfirm(props: ConfirmModalProps) {
-  const { title, date, msg, firstTxt, link = "" } = props;
+  const { title, date, msg, txt, link = "" } = props;
   return (
     <div>
       <Text tag="h2" type="h2" className="mb-6">
@@ -27,7 +27,7 @@ export default function CardConfirm(props: ConfirmModalProps) {
       <Alert message={msg} type="success" className={styles.alert} />
       <div className="text-center">
         <Text tag="p" type="p" variant="grey">
-          {firstTxt}
+          {txt}
         </Text>
         {link != "" && (
           <Text tag="p" type="p" variant="grey" className={styles.txt}>
