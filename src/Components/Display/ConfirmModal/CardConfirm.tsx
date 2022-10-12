@@ -3,17 +3,19 @@ import Alert from "antd/es/alert";
 import React from "react";
 import { Link } from "react-router-dom";
 import Card from "../Card/Card";
-import styles from "./ConfirmModal.module.scss";
+import styles from "./CardConfirm.module.scss";
 interface ConfirmModalProps {
   title: string;
   date: string;
   msg: string;
   firstTxt?: string;
-  link?: string;
-  to: string;
+  link?: {
+    label: string;
+    path: string;
+  };
 }
-export default function ConfirModal(props: ConfirmModalProps) {
-  const { title, date, msg, firstTxt, link = "", to } = props;
+export default function CardConfirm(props: ConfirmModalProps) {
+  const { title, date, msg, firstTxt, link = "" } = props;
   return (
     <div>
       <Text tag="h2" type="h2" className="mb-6">
@@ -30,8 +32,8 @@ export default function ConfirModal(props: ConfirmModalProps) {
         {link != "" && (
           <Text tag="p" type="p" variant="grey" className={styles.txt}>
             the status of your request, please see
-            <Link to={to} title="">
-              {link}
+            <Link to={link.path} title="">
+              {link.label}
             </Link>
           </Text>
         )}
