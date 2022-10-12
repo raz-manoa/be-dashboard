@@ -14,6 +14,12 @@
 .ant-layout-content {
   background-color: #f5f5f5;
 }
+.ant-switch {
+  border: solid 1px #c8c7cc;
+}
+.ant-switch-handle::before {
+  border: solid 1px #c8c7cc;
+}
 body {
   .ant-picker-content {
     .ant-picker-cell {
