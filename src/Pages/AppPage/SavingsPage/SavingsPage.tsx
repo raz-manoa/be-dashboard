@@ -1,30 +1,14 @@
 import Alert from "antd/es/alert";
 import React from "react";
+import { Outlet } from "react-router-dom";
 import styles from "./SavingPage.module.scss";
-import SavingPageAdd from "./SavingPageAdd/SavingPageAdd";
-import SavingPageOffering from "./SavingPageOffering/SavingPageOffering";
-import SavingPageTable from "./SavingPageTable/SavingPageTable";
+import SavingPageAdd from "./SavingPageDashboard/SavingPageAdd/SavingPageAdd";
+import SavingPageOffering from "./SavingPageDashboard/SavingPageOffering/SavingPageOffering";
+import SavingPageTable from "./SavingPageDashboard/SavingPageTable/SavingPageTable";
 
 const showAlert = false;
 const SavingsPage = () => {
-  return (
-    <section className="mt-6">
-      {showAlert && (
-        <Alert
-          message="Insufficient USD funds."
-          type="error"
-          className="mb-8"
-        />
-      )}
-      <div className="grid grid-cols-2 gap-5">
-        <SavingPageOffering />
-        <SavingPageAdd />
-      </div>
-      <div>
-        <SavingPageTable />
-      </div>
-    </section>
-  );
+  return <Outlet></Outlet>;
 };
 
 export default SavingsPage;

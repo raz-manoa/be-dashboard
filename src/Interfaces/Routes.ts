@@ -5,4 +5,5 @@ export interface IRoute extends RouteObject {
   component: React.LazyExoticComponent<ComponentType>;
   skeleton?: ComponentType;
   exact?: boolean;
+  children?: IRoute[];
 }

@@ -25,6 +25,7 @@ const BankTransfertPage = React.lazy(
 const SavingsPage = React.lazy(
   () => import("../Pages/AppPage/SavingsPage/SavingsPage")
 );
+
 const TopUpPage = React.lazy(
   () => import("../Pages/AppPage/TopUpPage/TopUpPage")
 );
@@ -38,6 +39,19 @@ const CryptoExchangePage = React.lazy(
   () => import("../Pages/AppPage/CryptoExchangePage/CryptoExchangePage")
 );
 const OtcPage = React.lazy(() => import("../Pages/AppPage/OtcPage/OtcPage"));
+
+const SavingPageReview = React.lazy(
+  () => import("../Pages/AppPage/SavingsPage/SavingPageReview/SavingPageReview")
+);
+const SavingPageConfirm = React.lazy(
+  () => import("../Pages/AppPage/SavingsPage/SavingPageSucess/SavingPageSucess")
+);
+const SavingPageDashboard = React.lazy(
+  () =>
+    import(
+      "@/Pages/AppPage/SavingsPage/SavingPageDashboard/SavingPageDashboard"
+    )
+);
 
 // routes
 const sidebarRoutes: ISidebarRoute[] = [
@@ -77,6 +91,23 @@ const sidebarRoutes: ISidebarRoute[] = [
     name: "Savings",
     icon: "saving-deposit",
     component: SavingsPage,
+    children: [
+      {
+        path: "",
+        name: "savings-dashboard",
+        component: SavingPageDashboard,
+      },
+      {
+        path: "review",
+        name: "savings-review",
+        component: SavingPageReview,
+      },
+      {
+        path: "confirm",
+        name: "savings-confirm",
+        component: SavingPageConfirm,
+      },
+    ],
   },
   { path: "top-up", name: "Top Up", icon: "top-up", component: TopUpPage },
   {

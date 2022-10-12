@@ -9,8 +9,6 @@ const AppLayout = () => {
   const { state } = useLocation();
   const [headerTitle, setHeaderTitle] = useState<ReactNode>("");
 
-  console.log(state);
-
   return (
     <AppLayoutContext.Provider value={{ headerTitle, setHeaderTitle }}>
       <Layout style={{ minHeight: "100vh" }}>

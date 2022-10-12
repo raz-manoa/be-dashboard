@@ -11,9 +11,10 @@ interface CardDispositProps {
   save: string;
   className?: string;
   btnLabel: string;
+  onAction?(data?: any): void;
 }
 export default function CardDisposit(props: CardDispositProps) {
-  const { money, placeholder, save, className, btnLabel } = props;
+  const { money, placeholder, save, className, btnLabel, onAction } = props;
   const [form] = useForm();
   return (
     <Card className={`${styles.card} common__info_card ${className}`}>
@@ -44,6 +45,7 @@ export default function CardDisposit(props: CardDispositProps) {
           className={styles.card__btn}
           onClick={() => {
             form.validateFields();
+            onAction && onAction();
           }}
         >
           {btnLabel}

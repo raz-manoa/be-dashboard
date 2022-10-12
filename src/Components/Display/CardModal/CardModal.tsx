@@ -16,12 +16,23 @@ interface CardModalProps {
   btnPrimary?: string;
   title: string;
   btnSecondary?: string;
+  className?: string;
+  onClickFirstBtn?(data?: any): void;
+  onClickSecondBtn?(data?: any): void;
 }
 
 export default function CardModal(props: CardModalProps) {
-  const { data = [], btnPrimary = "", btnSecondary = "", title } = props;
+  const {
+    data = [],
+    btnPrimary = "",
+    btnSecondary = "",
+    title,
+    className,
+    onClickFirstBtn,
+    onClickSecondBtn,
+  } = props;
   return (
-    <Card className={styles.cardModal}>
+    <Card className={`${styles.cardModal} ${className}`}>
       <div className={styles.cardModal__header}>
         <Text tag="h2" type="h2">
           {title}
@@ -45,12 +56,12 @@ export default function CardModal(props: CardModalProps) {
         }`}
       >
         {btnPrimary && (
-          <Button type="primary" tag="link" className="btn">
+          <Button type="primary" className="btn" onClick={onClickFirstBtn}>
             {btnPrimary}
           </Button>
         )}
         {btnSecondary && (
-          <Button type="secondary" tag="link" className="btn">
+          <Button type="secondary" className="btn" onClick={onClickSecondBtn}>
             {btnSecondary}
           </Button>
         )}
