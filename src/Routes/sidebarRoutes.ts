@@ -62,6 +62,24 @@ const CryptoWithdrawal = React.lazy(
 const CryptoExchangePage = React.lazy(
   () => import("../Pages/AppPage/CryptoExchangePage/CryptoExchangePage")
 );
+const CryptoExchangePageConfirm = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/CryptoExchangePage/CryptoExchangePageSuccess/CryptoExchangePageSuccess"
+    )
+);
+const CryptoExchangePageReview = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/CryptoExchangePage/CryptoExchangePageReview/CryptoExchangePageReview"
+    )
+);
+const CryptoExchangePageDashboard = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/CryptoExchangePage/CryptoExchangePageDashboard/CryptoExchangePageDashboard"
+    )
+);
 const OtcPage = React.lazy(() => import("../Pages/AppPage/OtcPage/OtcPage"));
 
 const SavingPageReview = React.lazy(
@@ -173,6 +191,23 @@ const sidebarRoutes: ISidebarRoute[] = [
     name: "Crypto Exchange",
     icon: "crypto-exchange",
     component: CryptoExchangePage,
+    children: [
+      {
+        path: "",
+        name: "crypto-exchange-dashboard",
+        component: CryptoExchangePageDashboard,
+      },
+      {
+        path: "crypto-exchange-review",
+        name: "crypto-exchange-review",
+        component: CryptoExchangePageReview,
+      },
+      {
+        path: "crypto-exchange-confirm",
+        name: "crypto-exchange-confirm",
+        component: CryptoExchangePageConfirm,
+      },
+    ],
   },
   { path: "otc", name: "OTC", icon: "otc", component: OtcPage },
 ];
