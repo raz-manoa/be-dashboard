@@ -1,5 +1,5 @@
 import Text from "@/Components/General/Text/Text";
-import Alert from "antd/es/alert";
+import Alert, { AlertProps } from "antd/es/alert";
 import React from "react";
 import { Link } from "react-router-dom";
 import Card from "../Card/Card";
@@ -9,13 +9,14 @@ interface ConfirmModalProps {
   date: string;
   msg: string;
   txt?: string;
+  status?: AlertProps["type"];
   link?: {
     label: string;
     path: string;
   };
 }
 export default function CardConfirm(props: ConfirmModalProps) {
-  const { title, date, msg, txt, link = "" } = props;
+  const { title, date, msg, txt, link = "", status = "success" } = props;
   return (
     <div>
       <Text tag="h2" type="h2" className="mb-6">
@@ -24,7 +25,7 @@ export default function CardConfirm(props: ConfirmModalProps) {
       <Text tag="p" type="p" variant="grey" className="mb-4" size={14}>
         {date}
       </Text>
-      <Alert message={msg} type="success" className={styles.alert} />
+      <Alert message={msg} type={status} className={styles.alert} />
       <div className="text-center">
         <Text tag="p" type="p" variant="grey">
           {txt}
