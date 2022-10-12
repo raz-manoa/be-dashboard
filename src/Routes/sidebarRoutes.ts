@@ -19,6 +19,24 @@ const BeNetworkPage = React.lazy(
 const ForeignExchangePage = React.lazy(
   () => import("../Pages/AppPage/ForeignExchangePage/ForeignExchangePage")
 );
+const ForeignExchangePageSuccess = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/ForeignExchangePage/ForeignExchangePageSuccess/ForeignExchangePageSuccess"
+    )
+);
+const ForeignExchangePageReview = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/ForeignExchangePage/ForeignExchangePageReview/ForeignExchangePageReview"
+    )
+);
+const ForeignExchangePageDasboard = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/ForeignExchangePage/ForeignExchangePageDasboard/ForeignExchangePageDasboard"
+    )
+);
 const BankTransfertPage = React.lazy(
   () => import("../Pages/AppPage/BankTransfertPage/BankTransfertPage")
 );
@@ -121,6 +139,23 @@ const sidebarRoutes: ISidebarRoute[] = [
     name: "Foreign Exchange",
     icon: "transfert-intl",
     component: ForeignExchangePage,
+    children: [
+      {
+        path: "",
+        name: "foreign-exchange-dashboard",
+        component: ForeignExchangePageDasboard,
+      },
+      {
+        path: "foreign-exchange-review",
+        name: "foreign-exchange-review",
+        component: ForeignExchangePageReview,
+      },
+      {
+        path: "foreign-exchange-confirm",
+        name: "foreign-exchange-confirm",
+        component: ForeignExchangePageSuccess,
+      },
+    ],
   },
   {
     path: "bank-transfert",
