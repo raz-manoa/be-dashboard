@@ -1,5 +1,6 @@
+import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
 import Alert from "antd/es/alert";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./SavingPage.module.scss";
 import SavingPageAdd from "./SavingPageAdd/SavingPageAdd";
 import SavingPageOffering from "./SavingPageOffering/SavingPageOffering";
@@ -7,6 +8,10 @@ import SavingPageTable from "./SavingPageTable/SavingPageTable";
 
 const showAlert = false;
 const SavingPageDashboard = () => {
+  const { setHeaderTitle } = useAppLayoutContext();
+  useEffect(() => {
+    setHeaderTitle("Savings");
+  }, []);
   return (
     <section className="mt-6">
       {showAlert && (

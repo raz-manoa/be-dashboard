@@ -1,7 +1,8 @@
 import CardModal, {
   CardModelItem,
 } from "@/Components/Display/CardModal/CardModal";
-import React from "react";
+import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const data: CardModelItem[] = [
   {
@@ -27,7 +28,11 @@ const data: CardModelItem[] = [
 ];
 
 export default function SavingPageReview() {
+  const { setHeaderTitle } = useAppLayoutContext();
   const navigate = useNavigate();
+  useEffect(() => {
+    setHeaderTitle("Savings");
+  }, []);
   return (
     <CardModal
       data={data}
