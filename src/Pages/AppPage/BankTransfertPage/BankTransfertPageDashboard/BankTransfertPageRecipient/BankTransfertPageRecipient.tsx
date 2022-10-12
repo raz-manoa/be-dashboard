@@ -65,6 +65,7 @@ export default function BankTransfertPageRecipient() {
             label="BIC/SWIFT Code:"
             placeholder="Code"
             color="grey"
+            type="number"
             rules={[
               {
                 required: true,
@@ -77,6 +78,7 @@ export default function BankTransfertPageRecipient() {
             label="IBAN:"
             placeholder="Code"
             color="grey"
+            type="number"
             rules={[
               {
                 required: true,
@@ -139,7 +141,7 @@ export default function BankTransfertPageRecipient() {
             type="secondary"
             onClick={() => {
               form.validateFields();
-              navigate("/app/bank-transfert");
+              navigate({ pathname: "/app/bank-transfert" });
             }}
           >
             Back
@@ -157,7 +159,7 @@ export default function BankTransfertPageRecipient() {
             type="primary"
             onClick={() => {
               form.validateFields();
-              navigate("#");
+              navigate({ pathname: "/app/bank-transfert/bank-review" });
             }}
           >
             Continue

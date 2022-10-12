@@ -5,13 +5,58 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 const data: CardConfirmItem[] = [
   {
-    label: "Test",
-    value: "100",
-    color: "red",
+    label: "Amount from",
+    value: "12.00 USD",
+    color: "black",
   },
   {
-    label: "Test",
-    value: "120",
+    label: "Amount to",
+    value: "12.00 USD",
+    color: "black",
+  },
+  {
+    label: "Transaction Fee",
+    value: "0.50 USD",
+    color: "black",
+  },
+  {
+    label: "Recipient",
+    value: "John Smith",
+    color: "black",
+  },
+  {
+    label: "Country",
+    value: "USA",
+    color: "black",
+  },
+  {
+    label: "City",
+    value: "Washington",
+    color: "black",
+  },
+  {
+    label: "Bank Name",
+    value: "City Bank",
+    color: "black",
+  },
+  {
+    label: "Account Number",
+    value: "000449876447656",
+    color: "black",
+  },
+  {
+    label: "BIC/SWIFT Code",
+    value: "3003",
+    color: "black",
+  },
+  {
+    label: "IBAN",
+    value: "876165318323290823132",
+    color: "black",
+  },
+  {
+    label: "Message",
+    value: "this is a msg",
     color: "black",
   },
 ];
@@ -26,7 +71,7 @@ export default function BankTransfertPageReview() {
       btnSecondary="Confirm"
       onClickFirstBtn={() => {
         navigate({
-          pathname: "/app/savings",
+          pathname: "/app/bank-transfert/add-beneficiary",
         });
       }}
       onClickSecondBtn={() => {
