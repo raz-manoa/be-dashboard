@@ -76,7 +76,7 @@ export default function BankTransfertPageReview() {
       }}
       onClickSecondBtn={() => {
         navigate({
-          pathname: "/app/savings/confirm",
+          pathname: "/app/bank-transfert/bank-confirm",
         });
       }}
     />

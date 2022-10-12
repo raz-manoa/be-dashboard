@@ -22,6 +22,12 @@ const ForeignExchangePage = React.lazy(
 const BankTransfertPage = React.lazy(
   () => import("../Pages/AppPage/BankTransfertPage/BankTransfertPage")
 );
+const BankTransfertPageSuccess = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/BankTransfertPage/BankTransfertPageSuccess/BankTransfertPageSucces"
+    )
+);
 const BankTransfertPageReview = React.lazy(
   () =>
     import(
@@ -118,6 +124,11 @@ const sidebarRoutes: ISidebarRoute[] = [
         path: "bank-review",
         name: "bank-review-confirm",
         component: BankTransfertPageReview,
+      },
+      {
+        path: "bank-confirm",
+        name: "bank-success-confirm",
+        component: BankTransfertPageSuccess,
       },
     ],
   },

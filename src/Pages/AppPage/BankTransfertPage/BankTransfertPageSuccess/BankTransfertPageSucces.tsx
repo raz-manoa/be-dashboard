@@ -1,8 +1,13 @@
 import Card from "@/Components/Display/Card/Card";
 import CardConfirm from "@/Components/Display/ConfirmModal/CardConfirm";
-import React from "react";
+import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
+import React, { useEffect } from "react";
 
 export default function BankTransfertPageSucces() {
+  const { setHeaderTitle } = useAppLayoutContext();
+  useEffect(() => {
+    setHeaderTitle("Bank Transfers");
+  });
   return (
     <Card className="common__card">
       <CardConfirm

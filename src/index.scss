@@ -192,3 +192,49 @@ body {
     font-size: 16px;
   }
 }
+//modal
+.ant-modal-mask {
+  filter: blur(10px);
+  background-color: #c8c7cc;
+  opacity: 0.7;
+}
+.ant-modal-content {
+  padding: 0 26px;
+  border-radius: 8px;
+  box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.16);
+}
+.ant-modal-header {
+  padding-bottom: 25px;
+}
+.ant-modal-title {
+  font-size: 19px;
+  font-weight: 600;
+}
+.ant-modal-footer {
+  @apply flex items-center justify-between;
+  padding-top: 25px;
+}
+.ant-btn {
+  @apply flex items-center justify-center cursor-pointer uppercase;
+  color: #fff;
+  padding: 17px 11px 18px;
+  height: 54px;
+  width: 200px;
+  border-radius: 8px;
+  &:hover {
+    color: #fff;
+  }
+  &.ant-btn-default {
+    background-color: var(--grey);
+    &:hover {
+      background-color: #475d68;
+    }
+  }
+  &.ant-btn-primary {
+    background-color: var(--red);
+    border: none;
+    &:hover {
+      background-color: #bf244b;
+    }
+  }
+}

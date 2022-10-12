@@ -1,16 +1,89 @@
 import Card from "@/Components/Display/Card/Card";
 import styles from "./BankTransfertPageRecipient.module.scss";
-import React from "react";
+import React, { useState } from "react";
 import Text from "@/Components/General/Text/Text";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
 import { useForm } from "antd/es/form/Form";
 import Button from "@/Components/General/Button/Button";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/Components/General/Icon/Icon";
+import Modal from "antd/lib/modal";
+import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
+import { CardConfirmItem } from "@/Components/Display/CardConfirm/CardConfirm";
 
 export default function BankTransfertPageRecipient() {
   const navigate = useNavigate();
   const [form] = useForm();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+  const data: CardConfirmItem[] = [
+    {
+      label: "Amount from",
+      value: "12.00 USD",
+      color: "black",
+    },
+    {
+      label: "Amount to",
+      value: "12.00 USD",
+      color: "black",
+    },
+    {
+      label: "Transaction Fee",
+      value: "0.50 USD",
+      color: "black",
+    },
+    {
+      label: "Recipient",
+      value: "John Smith",
+      color: "black",
+    },
+    {
+      label: "Country",
+      value: "USA",
+      color: "black",
+    },
+    {
+      label: "City",
+      value: "Washington",
+      color: "black",
+    },
+    {
+      label: "Bank Name",
+      value: "City Bank",
+      color: "black",
+    },
+    {
+      label: "Account Number",
+      value: "000449876447656",
+      color: "black",
+    },
+    {
+      label: "BIC/SWIFT Code",
+      value: "3003",
+      color: "black",
+    },
+    {
+      label: "IBAN",
+      value: "876165318323290823132",
+      color: "black",
+    },
+    {
+      label: "Message",
+      value: "this is a msg",
+      color: "black",
+    },
+  ];
   return (
     <Card className={styles.card}>
       <div className={`${styles.card__header} mb-6`}>
@@ -146,13 +219,7 @@ export default function BankTransfertPageRecipient() {
           >
             Back
           </Button>
-          <Button
-            type="default"
-            onClick={() => {
-              form.validateFields();
-              navigate("#");
-            }}
-          >
+          <Button type="default" onClick={showModal}>
             ADD BENEFICIARY
           </Button>
           <Button
@@ -166,6 +233,14 @@ export default function BankTransfertPageRecipient() {
           </Button>
         </div>
       </FormCustom>
+      <Modal
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        title="Add Beneficiary"
+        width={550}
+        className={styles.modal}
+      ></Modal>
     </Card>
   );
 }
