@@ -41,15 +41,11 @@ export default function SavingPageReview() {
       btnPrimary="back"
       btnSecondary="Confirm"
       onClickFirstBtn={() => {
-        console.log("first");
-
         navigate({
           pathname: "/app/savings",
         });
       }}
       onClickSecondBtn={() => {
-        console.log("second");
-
         navigate({
           pathname: "/app/savings/confirm",
         });
