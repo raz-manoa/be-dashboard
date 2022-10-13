@@ -1,7 +1,12 @@
 import React from "react";
+import CryptoDepositPageItem from "./CryptoDepositPageItem/CryptoDepositPageItem";
 
 const CryptoDepositPage = () => {
-  return <div>CryptoDepositPage</div>;
+  return (
+    <div>
+      <CryptoDepositPageItem />
+    </div>
+  );
 };
 
 export default CryptoDepositPage;
