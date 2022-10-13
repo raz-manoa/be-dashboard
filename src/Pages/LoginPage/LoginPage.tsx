@@ -13,32 +13,25 @@ const LoginPage = () => {
     localStorage.setItem("a", "logged");
   };
   return (
-    <LoginInterface className={styles.login}>
-      <Text
-        tag="h1"
-        type="h1"
-        variant="white"
-        size={32}
-        className={styles.title}
-      >
-        Sign In
-      </Text>
+    <LoginInterface className={styles.login} title="login">
       <FormCustom>
         <FormCustom.Input
           name="example-2"
           color="red"
           placeholder="Email"
           icon="user"
+          type="email"
         />
         <FormCustom.Input
           name="example-2"
           color="red"
           placeholder="Password"
           icon="password"
+          type="password"
         />
         <div className={styles.login__text}>
           <Checkbox className={styles.checkbox}>Remember me</Checkbox>
-          <Link to="/">Forgot Password ?</Link>
+          <Link to="forgot-password">Forgot Password ?</Link>
         </div>
         <Button
           type="white"

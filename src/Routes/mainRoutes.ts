@@ -9,6 +9,9 @@ const Login = React.lazy(() => import("../Pages/LoginPage/LoginPage"));
 const ForgotPassword = React.lazy(
   () => import("../Pages/ForgotPasswordPage/ForgotPasswordPage")
 );
+const SecurityConfimation = React.lazy(
+  () => import("../Pages/SecurityConfimationPage/SecurityConfimationPage")
+);
 const Styleguide = React.lazy(
   () => import("../Pages/StyleguidePage/StyleguidePage")
 );
@@ -30,6 +33,12 @@ const mainRoutes: IRoute[] = [
     path: `forgot-password`,
     name: "Forgot-password",
     component: ForgotPassword,
+  },
+  {
+    index: true,
+    path: `confirmation`,
+    name: "Security-confirmation",
+    component: SecurityConfimation,
   },
   {
     index: true,
