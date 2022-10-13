@@ -3,14 +3,18 @@
     @apply grid grid-cols-5;
     gap: 25px;
     &:not(:last-child) {
-      margin-bottom: 25px;
+      margin-bottom: 40px;
     }
     :global {
       .ant-form-item {
+        @apply relative;
         margin-bottom: 0 !important;
       }
       .ant-input {
         @apply mt-0;
+      }
+      .ant-form-item-with-help .ant-form-item-explain {
+        @apply absolute;
       }
     }
   }

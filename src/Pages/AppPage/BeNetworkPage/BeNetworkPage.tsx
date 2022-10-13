@@ -9,7 +9,7 @@ import styles from "./BeNetworkPage.module.scss";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 
 const BeNetworkPage = () => {
-  useSetAppLayoutTitle("Bank Transfert");
+  useSetAppLayoutTitle("Be Network");
   const [form] = useForm();
   return (
     <Card className="common__card">
@@ -99,6 +99,12 @@ const BeNetworkPage = () => {
           label="Message : "
           option="optional"
           placeholder="Messages..."
+          rules={[
+            {
+              required: true,
+              message: "Ce champ est requis",
+            },
+          ]}
         />
         <Button
           type="primary"
