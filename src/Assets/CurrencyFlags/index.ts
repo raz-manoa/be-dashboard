@@ -1,0 +1,9 @@
+export { default as USDSvg } from "./USD.svg";
+export { default as EURSvg } from "./EUR.svg";
+export { default as GBPSvg } from "./GBP.svg";
+export { default as CADSvg } from "./CAD.svg";
+export { default as ZARSvg } from "./ZAR.svg";
+export { default as KESSvg } from "./KES.svg";
+export { default as UGXSvg } from "./UGX.svg";
+export { default as TZSSvg } from "./TZS.svg";
+export { default as MWKSvg } from "./MWK.svg";
