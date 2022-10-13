@@ -1,6 +1,4 @@
 import Text from "@/Components/General/Text/Text";
-import React from "react";
-import Card from "../Card/Card";
 import styles from "./CurrentCardList.module.scss";
 export interface CurrentCardListProps {
   currency: string;
