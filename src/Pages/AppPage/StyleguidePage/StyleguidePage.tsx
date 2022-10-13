@@ -164,6 +164,7 @@ const StyleguidePage = () => {
       label: "Test",
       value: "120",
       color: "black",
+      icon: "bank-transfert",
     },
   ];
   return (

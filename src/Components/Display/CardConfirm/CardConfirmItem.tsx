@@ -20,9 +20,9 @@ export default function CardConfirmItem(props: CardModalItemProps) {
         <Text tag="h3" variant={color} type="h3">
           {value}
         </Text>
-        {icon == "" && (
-          <span onClick={onClick}>
-            <Icon icon="icon" color="red" />
+        {icon != "" && (
+          <span onClick={onClick} className={styles.cardModal__icon}>
+            <Icon icon={icon} color="red" />
           </span>
         )}
       </div>

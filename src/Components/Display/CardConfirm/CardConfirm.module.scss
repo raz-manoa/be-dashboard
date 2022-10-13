@@ -20,6 +20,12 @@
     }
   }
   &__value {
-    @apply flex items-center;
+    @apply flex items-start;
+  }
+  &__icon {
+    @apply flex items-center justify-center;
+    width: 15.6px;
+    height: 19px;
+    margin-left: 15px;
   }
 }
