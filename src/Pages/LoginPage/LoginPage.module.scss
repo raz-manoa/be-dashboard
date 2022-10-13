@@ -14,6 +14,7 @@
   &__text {
     @apply flex items-center justify-between;
     color: var(--white);
+
     a {
       &:hover {
         @apply text-white;
@@ -30,42 +31,18 @@
     @apply text-center;
     margin: 20px 0;
   }
-
   :global {
-    .ant-input-affix-wrapper-lg {
-      margin-top: 0;
-    }
     .ant-checkbox-wrapper {
-      @apply flex items-start;
       color: var(--white);
-    }
-    .ant-checkbox {
-      width: 18px;
-      height: 18px;
-    }
-    .ant-checkbox-checked {
-      .ant-checkbox-inner {
-        background-color: var(--red);
+      &:hover .ant-checkbox-checked::after {
         border: 1px solid var(--white);
       }
+      .ant-checkbox-checked {
+        .ant-checkbox-inner {
+          background-color: var(--red);
+          border-color: var(--white);
+        }
+      }
     }
-    .ant-checkbox:hover .ant-checkbox-inner {
-      border: var(--white);
-    }
-    .ant-checkbox-checked::after {
-      border: 1px solid var(--white);
-    }
-  }
-}
-.title {
-  @apply text-left;
-  margin-bottom: 55px;
-}
-.create {
-  @apply text-center;
-  a {
-    font-weight: 600;
-    color: var(--white);
-    margin-left: 5px;
   }
 }

@@ -1,6 +1,10 @@
 import CardConfirm, {
   CardConfirmItem,
 } from "@/Components/Display/CardConfirm/CardConfirm";
+import {
+  useAppLayoutContext,
+  useSetAppLayoutTitle,
+} from "@/Layouts/AppLayout/AppLayoutContext";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 const data: CardConfirmItem[] = [
@@ -61,6 +65,7 @@ const data: CardConfirmItem[] = [
   },
 ];
 export default function BankTransfertPageReview() {
+  useSetAppLayoutTitle("Bank Transfert");
   const navigate = useNavigate();
   return (
     <CardConfirm

@@ -6,7 +6,7 @@ import SavingPageTable from "./SavingPageTable/SavingPageTable";
 
 const showAlert = false;
 const SavingPageDashboard = () => {
-  useSetAppLayoutTitle("OTC");
+  useSetAppLayoutTitle("Savings");
 
   return (
     <section className="mt-6">
