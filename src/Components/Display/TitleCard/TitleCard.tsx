@@ -13,7 +13,7 @@ interface TitleCardProps {
 }
 
 export default function TitleCard(props: TitleCardProps) {
-  const { title, subtitle, link = "", children } = props;
+  const { title, subtitle, link, children } = props;
   return (
     <div className={styles.card__title_wrap}>
       <div className={styles.card__title}>
@@ -30,7 +30,7 @@ export default function TitleCard(props: TitleCardProps) {
           >
             {subtitle}
           </Text>
-          {link != "" && (
+          {link && (
             <Text
               tag="span"
               type="span"

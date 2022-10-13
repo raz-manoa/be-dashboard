@@ -1,7 +1,7 @@
-import React from "react";
+import { Outlet } from "react-router-dom";
 
 const ForeignExchangePage = () => {
-  return <div>ForeignExchangePage</div>;
+  return <Outlet></Outlet>;
 };
 
 export default ForeignExchangePage;

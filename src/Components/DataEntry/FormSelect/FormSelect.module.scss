@@ -1,4 +1,7 @@
 .select {
+  &__item {
+    margin-top: 15px;
+  }
   :global {
     .ant-select {
       @apply flex items-center justify-center;
@@ -7,17 +10,20 @@
         @apply flex items-center;
         border-radius: 8px;
         height: 52px;
+        border: 1px solid var(--grey_light);
       }
     }
     .ant-select-single.ant-select-show-arrow .ant-select-selection-item {
       color: var(--grey);
     }
     .ant-select-arrow {
-      @apply relative flex items-center justify-center mt-0;
+      @apply absolute flex items-center justify-center mt-0;
       height: 52px;
-      width: 52px;
       background-color: var(--red);
       border-radius: 0 8px 8px 0;
+      top: 0;
+      right: 0;
+      width: 52px;
       svg {
         fill: var(--white);
       }

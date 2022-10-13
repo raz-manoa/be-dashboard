@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Icon from "@/Components/General/Icon/Icon";
 import Text from "@/Components/General/Text/Text";
 import styles from "./Header.module.scss";
@@ -18,24 +18,29 @@ export default function Header(props: HeaderProps) {
           </Text>
         </div>
         <nav className={styles.header__nav}>
-          <Link to="/">
-            <Icon icon="qr" color="#546e7a" className={styles.header__icon} />
-          </Link>
-          <Link to="setting">
+          <NavLink to="/">
+            <Icon icon="qr" color="#546e7a" />
+          </NavLink>
+          <NavLink
+            to="setting"
+            className={({ isActive }) =>
+              `${styles.headerNav} ${isActive ? styles.headerNavActive : ""}`
+            }
+          >
             <Icon
               icon="setting"
-              color="#546e7a"
               className={styles.header__icon}
+              color="#546e7a"
             />
-          </Link>
-          <Link to="/">
+          </NavLink>
+          <NavLink to="/">
             <Icon
               icon="logout"
               color="#546e7a"
               className={styles.header__icon}
             />
-          </Link>
-          <Link to="/"></Link>
+          </NavLink>
+          <NavLink to="/"></NavLink>
         </nav>
       </div>
     </div>

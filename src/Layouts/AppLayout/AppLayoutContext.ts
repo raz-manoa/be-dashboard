@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext } from "react";
+import React, { createContext, ReactNode, useContext, useEffect } from "react";
 
 interface IAppLayoutContextState {
   headerTitle: ReactNode;
@@ -11,3 +11,14 @@ export const AppLayoutContext = createContext<IAppLayoutContextState>({
 });
 
 export const useAppLayoutContext = () => useContext(AppLayoutContext);
+
+export const useSetAppLayoutTitle = (title: ReactNode) => {
+  const { setHeaderTitle } = useAppLayoutContext();
+
+  useEffect(() => {
+    setHeaderTitle(title);
+    return () => {
+      setHeaderTitle(null);
+    };
+  }, []);
+};

@@ -1,7 +1,7 @@
-import React from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const CryptoExchangePage = () => {
-  return <div>CryptoExchangePage</div>;
+  return <Outlet></Outlet>;
 };
 
 export default CryptoExchangePage;

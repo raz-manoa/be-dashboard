@@ -5,23 +5,18 @@ import UnitedState from "@/Assets/Flags/united states.svg";
 import EuropUnion from "@/Assets/Flags/european union.svg";
 import CurrentCardList from "@/Components/Display/CurrentCardList/CurrentCardList";
 import TitleCard from "@/Components/Display/TitleCard/TitleCard";
-import FormInput from "@/Components/DataEntry/FormInput/FormInput";
-import { Link } from "react-router-dom";
 import Card from "@/Components/Display/Card/Card";
-import CardModal, {
-  CardModelItem,
-} from "@/Components/Display/CardModal/CardModal";
-import Icon from "@/Components/General/Icon/Icon";
-import FormSelect from "@/Components/DataEntry/FormSelect/FormSelect";
+import CardConfirm, {
+  CardConfirmItem,
+} from "@/Components/Display/CardConfirm/CardConfirm";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
 import { useForm } from "antd/es/form/Form";
-import FormSelectWithIcon from "@/Components/DataEntry/FormSelectWithIcon/FormSelectWithIcon";
 import FormDatePicker from "@/Components/DataEntry/FormDatePicker/FormDatePicker";
 import Table from "@/Components/Display/Table/Table";
 import type { ColumnType } from "antd/es/table";
-import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
-import { useEffect } from "react";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import CardTransaction from "@/Components/Display/CardTransaction/CardTransaction";
+import SwitchToggle from "@/Components/DataEntry/SwitchToggle/SwitchToggle";
 
 interface TableSample {
   name: string;
@@ -147,13 +142,9 @@ const transactionData = {
 
 const StyleguidePage = () => {
   const [form] = useForm();
-  const { setHeaderTitle } = useAppLayoutContext();
+  useSetAppLayoutTitle("Style Guide");
 
-  useEffect(() => {
-    setHeaderTitle("Style Guide");
-  }, []);
-
-  const data: CardModelItem[] = [
+  const data: CardConfirmItem[] = [
     {
       label: "Test",
       value: "100",
@@ -168,11 +159,11 @@ const StyleguidePage = () => {
   return (
     <div>
       <Button tag="link" to="/" type="primary">
-        BUTTON
+        Primary
       </Button>
-      <Button type="secondary">BUTTON</Button>
-      <Button type="white">BUTTON</Button>
-      <Button type="default">BUTTON</Button>
+      <Button type="secondary">Secondary</Button>
+      <Button type="white">White</Button>
+      <Button type="default">default</Button>
 
       <Text tag="h1" type="h1">
         Heading H1
@@ -223,14 +214,14 @@ const StyleguidePage = () => {
         }}
       />
 
-      <CardModal
+      <CardConfirm
         title="Access"
         btnPrimary="Annuler"
         btnSecondary="Confirmer"
         data={data}
       />
-      <CardModal title="Access" btnPrimary="Annuler" data={data} />
-      <CardModal title="Access" data={data} />
+      <CardConfirm title="Access" btnPrimary="Annuler" data={data} />
+      <CardConfirm title="Access" data={data} />
 
       <FormCustom form={form}>
         <FormCustom.Input
@@ -273,6 +264,12 @@ const StyleguidePage = () => {
             },
           ]}
         />
+        <FormCustom.TextArea
+          name="message"
+          label="message : "
+          option="optional"
+          placeholder="messages"
+        />
       </FormCustom>
       <FormCustom.SelectIcon
         name="select"
@@ -295,6 +292,7 @@ const StyleguidePage = () => {
         columns={tableSampleColumn()}
       />
       <CardTransaction {...transactionData} />
+      <SwitchToggle label="By Phone Number" />
     </div>
   );
 };

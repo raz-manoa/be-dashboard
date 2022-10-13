@@ -4,21 +4,18 @@ import DashboardPageCurrentAccount from "./DashboardPageCurrentAccount";
 import styles from "./DashboardPage.module.scss";
 import DashboarPageSavingAccount from "./DashboarPageSavingAccount";
 import DashboardPageTransaction from "./DashboardPageTransaction";
-import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 
 const DashboardPage = () => {
-  const { setHeaderTitle } = useAppLayoutContext();
+  useSetAppLayoutTitle(
+    <>
+      <span>Welcome John</span>{" "}
+      <Text tag="span" size={14} weight={400} variant="grey-light">
+        (john@happydays.com)
+      </Text>
+    </>
+  );
 
-  useEffect(() => {
-    setHeaderTitle(
-      <>
-        <span>Welcome John</span>{" "}
-        <Text tag="span" size={14} weight={400} variant="grey-light">
-          (john@happydays.com)
-        </Text>
-      </>
-    );
-  }, []);
   return (
     <div className={styles.dashboard}>
       <DashboardPageCurrentAccount />
