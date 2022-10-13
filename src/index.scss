@@ -145,7 +145,7 @@ body {
 .common__txt {
   @apply text-center;
   width: 60%;
-  margin: 16px auto 25px auto;
+  margin: 16px auto 40px auto;
   line-height: 1.43;
   strong {
     color: var(--red);
@@ -243,4 +243,7 @@ body {
       background-color: #bf244b;
     }
   }
+}
+.ant-form-item-with-help .ant-form-item-explain {
+  @apply absolute;
 }

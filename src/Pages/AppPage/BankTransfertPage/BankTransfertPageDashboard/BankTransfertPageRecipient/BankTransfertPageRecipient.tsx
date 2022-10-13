@@ -208,6 +208,12 @@ export default function BankTransfertPageRecipient() {
             option="optional"
             placeholder="messages"
             className="textarea"
+            rules={[
+              {
+                required: true,
+                message: "Ce champ est requis",
+              },
+            ]}
           />
         </div>
         <div className={styles.btn__group}>
