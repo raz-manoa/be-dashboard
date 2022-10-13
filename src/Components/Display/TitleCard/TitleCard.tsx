@@ -17,7 +17,7 @@ export default function TitleCard(props: TitleCardProps) {
   return (
     <div className={styles.card__title_wrap}>
       <div className={styles.card__title}>
-        <Text tag="h2" type="h2" variant="black">
+        <Text tag="h2" type="h2" variant="black2">
           {title}
         </Text>
         <div className={styles.card__nav}>
