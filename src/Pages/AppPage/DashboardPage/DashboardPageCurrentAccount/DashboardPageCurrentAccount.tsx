@@ -4,7 +4,7 @@ import Scrollbar from "@/Components/General/Scrollbar/Scrollbar";
 import Text from "@/Components/General/Text/Text";
 import { ECurrency } from "@/Interfaces/Currency";
 import CurrencyItem, { ICurrencyItem } from "./CurrencyItem/CurrencyItem";
-import styles from "./DashboardPageCurrentAccount.module.scss";
+import styles from "../DashboardPage.module.scss";
 
 export default function DashboardCurrentAccount() {
   const currentAccount = {

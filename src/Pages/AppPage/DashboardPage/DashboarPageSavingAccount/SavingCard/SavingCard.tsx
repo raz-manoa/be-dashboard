@@ -1,6 +1,7 @@
 import Card from "@/Components/Display/Card/Card";
 import Text from "@/Components/General/Text/Text";
 import { ECurrency } from "@/Interfaces/Currency";
+import { currencyParser } from "@/Utils/currencyParser";
 import { currencyToFlag } from "@/Utils/currentyToFlag";
 import { AllHTMLAttributes } from "react";
 import styles from "./SavingCard.module.scss";
@@ -52,7 +53,7 @@ export default function SavingCard(props: SavingCardProps) {
           size={23}
           className={styles.cardSave__infoNbr}
         >
-          {principal}
+          {currencyParser(principal)}
         </Text>
       </div>
       <div className={styles.cardSave__info}>
@@ -70,7 +71,7 @@ export default function SavingCard(props: SavingCardProps) {
           size={23}
           className={styles.cardSave__infoNbr}
         >
-          {interest}
+          {currencyParser(interest)}
         </Text>
       </div>
     </Card>

@@ -14,7 +14,6 @@
 .dashboardCurrentAccount {
   position: relative;
 }
- 
 
 .dashboardRight {
   max-width: 550px;
@@ -53,6 +52,19 @@
     .ps {
       padding-right: 25px;
       max-height: calc(100vh - var(--offset-top));
+    }
+  }
+}
+
+.dashboardLeft {
+  :global {
+    .ps {
+      max-height: calc(100vh - 280px);
+      padding-right: 25px;
+    }
+
+    .current-account {
+      padding-right: 0;
     }
   }
 }

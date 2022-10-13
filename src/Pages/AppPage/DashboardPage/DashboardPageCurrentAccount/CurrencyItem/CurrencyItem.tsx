@@ -1,5 +1,6 @@
 import Text from "@/Components/General/Text/Text";
 import { ECurrency } from "@/Interfaces/Currency";
+import { currencyParser } from "@/Utils/currencyParser";
 import { currenctyToLabel, currencyToFlag } from "@/Utils/currentyToFlag";
 import styles from "./CurrencyItem.module.scss";
 
@@ -27,11 +28,11 @@ export default function CurrencyItem(props: CurrencyItemProps) {
       </div>
       <div className={styles.card__moneyNbr} style={{ textAlign: "right" }}>
         <Text size={31} tag="p" variant="grey" weight={600}>
-          {value}
+          {currencyParser(value)}
         </Text>
         {reference && (
           <Text size={13} tag="span" variant="grey-light">
-            = {reference.currency} {reference.value}
+            = {reference.currency} {currencyParser(reference.value)}
           </Text>
         )}
       </div>
