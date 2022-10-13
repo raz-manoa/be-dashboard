@@ -1,17 +1,4 @@
 .login {
-  @apply grid grid-cols-3;
-  &__img {
-    @apply col-span-2 h-screen object-cover;
-    img {
-      @apply w-full h-full object-cover;
-    }
-  }
-  &__content {
-    @apply flex flex-col justify-center;
-    padding: 0 55px;
-    box-shadow: -2px 0 12px 0 rgba(0, 0, 0, 0.21);
-    background-color: var(--red);
-  }
   &__text {
     @apply flex items-center justify-between;
     color: var(--white);
