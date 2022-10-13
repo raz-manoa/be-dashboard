@@ -110,7 +110,7 @@ export default function BankTransfertPageRecipient() {
             ]}
           />
           <FormCustom.Input
-            name="city or district"
+            name="city_or_district"
             label="Beneficiary City or District:"
             placeholder="City/District Name"
             color="grey"
@@ -134,7 +134,7 @@ export default function BankTransfertPageRecipient() {
             ]}
           />
           <FormCustom.Input
-            name="name"
+            name="bic"
             label="BIC/SWIFT Code:"
             placeholder="Code"
             color="grey"
@@ -147,7 +147,7 @@ export default function BankTransfertPageRecipient() {
             ]}
           />
           <FormCustom.Input
-            name="name"
+            name="iban"
             label="IBAN:"
             placeholder="Code"
             color="grey"
@@ -164,7 +164,7 @@ export default function BankTransfertPageRecipient() {
           <FormCustom.Select
             className={styles.select}
             label="Beneficiary Country:"
-            name="select"
+            name="country"
             placeholder="Select"
             options={[
               {
@@ -178,7 +178,7 @@ export default function BankTransfertPageRecipient() {
             ]}
           />
           <FormCustom.Input
-            name="name"
+            name="beneficiary_address"
             label="Beneficiary Address:"
             placeholder="Street Address"
             color="grey"
@@ -190,7 +190,7 @@ export default function BankTransfertPageRecipient() {
             ]}
           />
           <FormCustom.Input
-            name="name"
+            name="account_number"
             label="Account Number:"
             placeholder="Number"
             color="grey"
@@ -203,6 +203,7 @@ export default function BankTransfertPageRecipient() {
             ]}
           />
           <FormCustom.TextArea
+            name="message"
             label="message : "
             option="optional"
             placeholder="messages"

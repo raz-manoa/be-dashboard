@@ -3,15 +3,11 @@ import Card from "@/Components/Display/Card/Card";
 import Button from "@/Components/General/Button/Button";
 import Text from "@/Components/General/Text/Text";
 import { useForm } from "antd/es/form/Form";
-import React, { useEffect } from "react";
-import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 
 const OtcPage = () => {
-  const { setHeaderTitle } = useAppLayoutContext();
+  useSetAppLayoutTitle("OTC");
   const [form] = useForm();
-  useEffect(() => {
-    setHeaderTitle("OTC");
-  });
 
   return (
     <Card className="common__card">

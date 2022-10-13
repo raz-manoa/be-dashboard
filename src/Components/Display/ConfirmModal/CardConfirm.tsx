@@ -16,7 +16,7 @@ interface ConfirmModalProps {
   };
 }
 export default function CardConfirm(props: ConfirmModalProps) {
-  const { title, date, msg, txt, link = "", status = "success" } = props;
+  const { title, date, msg, txt, link, status = "success" } = props;
   return (
     <div>
       <Text tag="h2" type="h2" className="mb-6">
@@ -30,7 +30,7 @@ export default function CardConfirm(props: ConfirmModalProps) {
         <Text tag="p" type="p" variant="grey">
           {txt}
         </Text>
-        {link != "" && (
+        {link && (
           <Text tag="p" type="p" variant="grey" className={styles.txt}>
             the status of your request, please see
             <Link to={link.path} title="">

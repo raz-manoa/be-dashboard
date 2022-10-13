@@ -6,15 +6,10 @@ import Text from "@/Components/General/Text/Text";
 import { Switch } from "antd";
 import { useForm } from "antd/es/form/Form";
 import styles from "./BeNetworkPage.module.scss";
-import React, { useEffect } from "react";
-import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 
 const BeNetworkPage = () => {
-  const { setHeaderTitle } = useAppLayoutContext();
-
-  useEffect(() => {
-    setHeaderTitle("Be Network");
-  }, []);
+  useSetAppLayoutTitle("Bank Transfert");
   const [form] = useForm();
   return (
     <Card className="common__card">
@@ -24,7 +19,7 @@ const BeNetworkPage = () => {
       <FormCustom form={form}>
         <div className="common__field-wrap">
           <FormCustom.Input
-            name="field to"
+            name="account_number"
             placeholder="0.00"
             label="Leaving Account:"
             color="grey"
@@ -38,7 +33,7 @@ const BeNetworkPage = () => {
             ]}
           />
           <FormCustom.Select
-            name="select"
+            name="currency"
             placeholder="USD"
             options={[
               {
@@ -69,7 +64,7 @@ const BeNetworkPage = () => {
             className={styles.switch__toggle}
           />
           <FormCustom.Input
-            name="field to"
+            name="mobile_number"
             placeholder="Mobile number"
             color="grey"
             type="number"
@@ -85,7 +80,7 @@ const BeNetworkPage = () => {
         <div className={styles.switch__field}>
           <SwitchToggle label="By BE ID" className={styles.switch__toggle} />
           <FormCustom.Input
-            name="field to"
+            name="be_id"
             placeholder="BE ID"
             color="grey"
             type="number"
@@ -99,6 +94,7 @@ const BeNetworkPage = () => {
           />
         </div>
         <FormCustom.TextArea
+          name="message"
           className={styles.textarea}
           label="Message : "
           option="optional"

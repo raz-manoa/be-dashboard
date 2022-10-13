@@ -1,15 +1,12 @@
 import CardConfirm, {
   CardConfirmItem,
 } from "@/Components/Display/CardConfirm/CardConfirm";
-import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
-import React, { useEffect } from "react";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
 
 export default function ForeignExchangePageReview() {
-  const { setHeaderTitle } = useAppLayoutContext();
-  useEffect(() => {
-    setHeaderTitle("Foreign Exchange (FX)");
-  });
+  useSetAppLayoutTitle("Foreign Exchange (FX)");
+
   const navigate = useNavigate();
   const data: CardConfirmItem[] = [
     {

@@ -3,8 +3,6 @@ import Form, { Rule } from "antd/es/form";
 import styles from "./FormSelect.module.scss";
 import { NamePath } from "antd/es/form/interface";
 import Select, { SelectProps } from "antd/es/select";
-import React from "react";
-import FormInput from "../FormInput/FormInput";
 
 interface FormSelectOption {
   label: string;
@@ -19,11 +17,11 @@ interface FormSelectProps extends SelectProps {
 }
 
 export default function FormSelect(props: FormSelectProps) {
-  const { options, rules, name, label = "", ...rest } = props;
+  const { options, rules, name, label, ...rest } = props;
   const { Option } = Select;
   return (
     <Form.Item rules={rules} name={name} className={styles.select}>
-      {label != "" && (
+      {!!label && (
         <label htmlFor="" className={styles.label}>
           {label}
         </label>
@@ -31,7 +29,7 @@ export default function FormSelect(props: FormSelectProps) {
       <Select
         suffixIcon={<Icon icon="chevron" />}
         {...rest}
-        className={label != "" ? styles.select__item : ""}
+        className={!!label ? styles.select__item : ""}
       >
         {options.map((o, index) => (
           <Option value={o.value} key={`o-${index}`}>

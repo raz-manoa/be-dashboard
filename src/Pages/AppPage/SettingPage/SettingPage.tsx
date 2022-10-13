@@ -1,8 +1,7 @@
 import Card from "@/Components/Display/Card/Card";
 import Text from "@/Components/General/Text/Text";
 import styles from "./SettingPage.module.scss";
-import React, { useEffect } from "react";
-import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { Link } from "react-router-dom";
 
 const data = [
@@ -24,11 +23,7 @@ const data = [
 ];
 
 const SettingPage = () => {
-  const { setHeaderTitle } = useAppLayoutContext();
-
-  useEffect(() => {
-    setHeaderTitle("Settings");
-  }, []);
+  useSetAppLayoutTitle("Settings");
   return (
     <Card className={styles.card}>
       <Text tag="h2" type="h2" size={19} className={styles.card__title}>

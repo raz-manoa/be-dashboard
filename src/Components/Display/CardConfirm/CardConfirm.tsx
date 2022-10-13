@@ -25,8 +25,8 @@ interface CardConfirmProps {
 export default function CardConfirm(props: CardConfirmProps) {
   const {
     data = [],
-    btnPrimary = "",
-    btnSecondary = "",
+    btnPrimary,
+    btnSecondary,
     title,
     className,
     onClickFirstBtn,

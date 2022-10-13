@@ -3,16 +3,12 @@ import Card from "@/Components/Display/Card/Card";
 import Button from "@/Components/General/Button/Button";
 import Text from "@/Components/General/Text/Text";
 import { useForm } from "antd/es/form/Form";
-import React, { useEffect } from "react";
-import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
 
 const CryptoExchangePageDashboard = () => {
-  const { setHeaderTitle } = useAppLayoutContext();
+  useSetAppLayoutTitle("Crypto Exchange");
   const [form] = useForm();
-  useEffect(() => {
-    setHeaderTitle("Crypto Exchange");
-  });
   const navigate = useNavigate();
 
   return (
