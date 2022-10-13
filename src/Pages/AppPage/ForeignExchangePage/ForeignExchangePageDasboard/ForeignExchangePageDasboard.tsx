@@ -3,16 +3,13 @@ import Card from "@/Components/Display/Card/Card";
 import Button from "@/Components/General/Button/Button";
 import Text from "@/Components/General/Text/Text";
 import { useForm } from "antd/es/form/Form";
-import React, { useEffect } from "react";
-import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
 
 const ForeignExchangePageDashboard = () => {
-  const { setHeaderTitle } = useAppLayoutContext();
+  useSetAppLayoutTitle("Foreign Exchange (FX)");
+
   const [form] = useForm();
-  useEffect(() => {
-    setHeaderTitle("Foreign Exchange (FX)");
-  });
   const navigate = useNavigate();
   return (
     <Card className="common__card">

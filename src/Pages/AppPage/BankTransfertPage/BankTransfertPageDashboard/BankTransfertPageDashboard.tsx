@@ -3,17 +3,13 @@ import Card from "@/Components/Display/Card/Card";
 import Button from "@/Components/General/Button/Button";
 import Text from "@/Components/General/Text/Text";
 import { useForm } from "antd/es/form/Form";
-import React, { useEffect } from "react";
-import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
 import styles from "./BankTransfertPageDashboard.module.scss";
 
 const BankTransfertPageDashboard = () => {
-  const { setHeaderTitle } = useAppLayoutContext();
+  useSetAppLayoutTitle("Bank Transfert");
   const [form] = useForm();
-  useEffect(() => {
-    setHeaderTitle("Bank Transfert");
-  });
   const navigate = useNavigate();
 
   return (

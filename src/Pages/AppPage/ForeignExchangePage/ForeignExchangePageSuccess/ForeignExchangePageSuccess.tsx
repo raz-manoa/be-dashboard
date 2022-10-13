@@ -1,13 +1,10 @@
 import Card from "@/Components/Display/Card/Card";
 import CardConfirm from "@/Components/Display/ConfirmModal/CardConfirm";
-import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
-import React, { useEffect } from "react";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 
 export default function ForeignExchangePageSuccess() {
-  const { setHeaderTitle } = useAppLayoutContext();
-  useEffect(() => {
-    setHeaderTitle("Foreign Exchange (FX)");
-  });
+  useSetAppLayoutTitle("Foreign Exchange (FX)");
+
   return (
     <Card className="common__card">
       <CardConfirm

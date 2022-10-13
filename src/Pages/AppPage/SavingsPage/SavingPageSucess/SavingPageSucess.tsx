@@ -1,14 +1,9 @@
 import Card from "@/Components/Display/Card/Card";
 import CardConfirm from "@/Components/Display/ConfirmModal/CardConfirm";
-import Text from "@/Components/General/Text/Text";
-import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
-import React, { useEffect } from "react";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 
 export default function SavingPageSucess() {
-  const { setHeaderTitle } = useAppLayoutContext();
-  useEffect(() => {
-    setHeaderTitle("Savings");
-  }, []);
+  useSetAppLayoutTitle("Savings");
 
   return (
     <Card className="common__card">

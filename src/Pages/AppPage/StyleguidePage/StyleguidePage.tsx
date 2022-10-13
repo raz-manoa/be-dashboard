@@ -5,22 +5,16 @@ import UnitedState from "@/Assets/Flags/united states.svg";
 import EuropUnion from "@/Assets/Flags/european union.svg";
 import CurrentCardList from "@/Components/Display/CurrentCardList/CurrentCardList";
 import TitleCard from "@/Components/Display/TitleCard/TitleCard";
-import FormInput from "@/Components/DataEntry/FormInput/FormInput";
-import { Link } from "react-router-dom";
 import Card from "@/Components/Display/Card/Card";
 import CardConfirm, {
   CardConfirmItem,
 } from "@/Components/Display/CardConfirm/CardConfirm";
-import Icon from "@/Components/General/Icon/Icon";
-import FormSelect from "@/Components/DataEntry/FormSelect/FormSelect";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
 import { useForm } from "antd/es/form/Form";
-import FormSelectWithIcon from "@/Components/DataEntry/FormSelectWithIcon/FormSelectWithIcon";
 import FormDatePicker from "@/Components/DataEntry/FormDatePicker/FormDatePicker";
 import Table from "@/Components/Display/Table/Table";
 import type { ColumnType } from "antd/es/table";
-import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
-import { useEffect } from "react";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import CardTransaction from "@/Components/Display/CardTransaction/CardTransaction";
 import SwitchToggle from "@/Components/DataEntry/SwitchToggle/SwitchToggle";
 
@@ -148,11 +142,7 @@ const transactionData = {
 
 const StyleguidePage = () => {
   const [form] = useForm();
-  const { setHeaderTitle } = useAppLayoutContext();
-
-  useEffect(() => {
-    setHeaderTitle("Style Guide");
-  }, []);
+  useSetAppLayoutTitle("Style Guide");
 
   const data: CardConfirmItem[] = [
     {
@@ -275,6 +265,7 @@ const StyleguidePage = () => {
           ]}
         />
         <FormCustom.TextArea
+          name="message"
           label="message : "
           option="optional"
           placeholder="messages"

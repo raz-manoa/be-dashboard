@@ -1,8 +1,7 @@
 import CardConfirm, {
   CardConfirmItem,
 } from "@/Components/Display/CardConfirm/CardConfirm";
-import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
-import React, { useEffect } from "react";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
 const data: CardConfirmItem[] = [
   {
@@ -28,11 +27,9 @@ const data: CardConfirmItem[] = [
 ];
 
 export default function SavingPageReview() {
-  const { setHeaderTitle } = useAppLayoutContext();
+  useSetAppLayoutTitle("Savings");
+
   const navigate = useNavigate();
-  useEffect(() => {
-    setHeaderTitle("Savings");
-  }, []);
   return (
     <CardConfirm
       data={data}
