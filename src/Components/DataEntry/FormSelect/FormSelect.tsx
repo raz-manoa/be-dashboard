@@ -17,7 +17,7 @@ interface FormSelectProps extends SelectProps {
 }
 
 export default function FormSelect(props: FormSelectProps) {
-  const { options, rules, name, label = "", ...rest } = props;
+  const { options, rules, name, label, ...rest } = props;
   const { Option } = Select;
   return (
     <Form.Item rules={rules} name={name} className={styles.select}>
