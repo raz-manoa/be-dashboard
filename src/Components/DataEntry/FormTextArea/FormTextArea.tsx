@@ -12,7 +12,7 @@ interface FormTextAreaProps {
 }
 
 export default function FormTextArea(props: FormTextAreaProps) {
-  const { label, placeholder, className, option = "", name } = props;
+  const { label, placeholder, className, option, name } = props;
   return (
     <Form.Item
       name={name}
@@ -20,7 +20,7 @@ export default function FormTextArea(props: FormTextAreaProps) {
     >
       <div className={styles.textarea__label}>
         <label htmlFor="">{label}</label>
-        {option != "" && <span>({option})</span>}
+        {option && <span>({option})</span>}
       </div>
       <TextArea
         rows={4}
