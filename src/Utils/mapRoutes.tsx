@@ -12,20 +12,7 @@ export const mapRoutes = (routes: IRoute[]): RouteObject[] => [
           <C />
         </Suspense>
       ),
-      children:
-        children && children.length > 0
-          ? children.map<RouteObject>(
-              ({ index, path, component: C, skeleton: S }) => ({
-                index,
-                path,
-                element: (
-                  <Suspense fallback={S ? <S /> : <>...</>}>
-                    <C />
-                  </Suspense>
-                ),
-              })
-            )
-          : [],
+      children: children && children.length > 0 ? mapRoutes(children) : [],
     })
   ),
   {
