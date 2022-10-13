@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
 import Icon from "@/Components/General/Icon/Icon";
 import Text from "@/Components/General/Text/Text";
+import User from "@/Assets/user.svg";
 import styles from "./Header.module.scss";
 interface HeaderProps {
   title: ReactNode;
@@ -40,7 +41,9 @@ export default function Header(props: HeaderProps) {
               className={styles.header__icon}
             />
           </NavLink>
-          <NavLink to="/"></NavLink>
+          <NavLink to="#">
+            <img src={User} alt="user" className={styles.user__profil} />
+          </NavLink>
         </nav>
       </div>
     </div>
