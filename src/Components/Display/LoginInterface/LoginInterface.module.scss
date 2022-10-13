@@ -1,5 +1,5 @@
 .login {
-  @apply grid grid-cols-3;
+  @apply grid grid-cols-3 relative;
   &__img {
     @apply col-span-2 h-screen object-cover;
     img {
@@ -15,5 +15,12 @@
   .title {
     font-size: 32px;
     margin-bottom: 40px;
+  }
+  .logo {
+    @apply absolute;
+    top: 50px;
+    left: 50px;
+    width: 350px;
+    height: 135px;
   }
 }
