@@ -9,6 +9,7 @@
   &__content {
     @apply flex flex-col justify-center;
     padding: 0 55px;
+    box-shadow: -2px 0 12px 0 rgba(0, 0, 0, 0.21);
     background-color: var(--red);
   }
   &__text {
@@ -49,5 +50,12 @@
         }
       }
     }
+  }
+}
+.create {
+  @apply text-center;
+  a {
+    font-weight: 600;
+    margin-left: 5px;
   }
 }
