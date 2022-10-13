@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CryptoDepositPageItem from "./CryptoDepositPageItem/CryptoDepositPageItem";
 import Ethereum from "@/Assets/Logo/Ethereum.svg";
 import BitCoin from "@/Assets/Logo/BitCoin.svg";
 import Solana from "@/Assets/Logo/Solana.svg";
-import QRCode from "@/Assets/QR_code.png";
+import QRCode from "@/Assets/qr-code.svg";
+import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
 
 const data = [
   {
@@ -32,6 +33,10 @@ const data = [
   },
 ];
 const CryptoDepositPage = () => {
+  const { setHeaderTitle } = useAppLayoutContext();
+  useEffect(() => {
+    setHeaderTitle("Crypto Deposit");
+  });
   return (
     <div className="grid grid-cols-3 gap-5 mt-5">
       {data.map((d, index) => (

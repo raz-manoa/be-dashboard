@@ -1,9 +1,10 @@
 import Card from "@/Components/Display/Card/Card";
 import Text from "@/Components/General/Text/Text";
-import React from "react";
+import React, { useEffect } from "react";
 import TopUpPageNav from "./TopUpPageNav/TopUpPageNav";
 import styles from "./TopUpPage.module.scss";
 import CardConfirmItem from "@/Components/Display/CardConfirm/CardConfirmItem";
+import { useAppLayoutContext } from "@/Layouts/AppLayout/AppLayoutContext";
 const moneyData = [
   {
     label: "USD (Mauritius)",
@@ -64,6 +65,10 @@ const data = [
   },
 ];
 const TopUpPage = () => {
+  const { setHeaderTitle } = useAppLayoutContext();
+  useEffect(() => {
+    setHeaderTitle("Top Up");
+  });
   return (
     <Card className="common__card">
       <Text tag="p" type="p" className={styles.txt__header} variant="grey">
