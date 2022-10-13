@@ -1,7 +1,7 @@
 import Text from "@/Components/General/Text/Text";
 import DashboardPageCurrentAccount from "./DashboardPageCurrentAccount/DashboardPageCurrentAccount";
 import styles from "./DashboardPage.module.scss";
-import DashboarPageSavingAccount from "./DashboarPageSavingAccount";
+import DashboarPageSavingAccount from "./DashboarPageSavingAccount/DashboarPageSavingAccount";
 import DashboardPageTransaction from "./DashboardPageTransaction";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 

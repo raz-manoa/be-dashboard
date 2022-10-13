@@ -14,19 +14,7 @@
 .dashboardCurrentAccount {
   position: relative;
 }
-
-.dashboardLeft {
-  :global {
-    .ps {
-      max-height: calc(100vh - 280px);
-      padding-right: 25px;
-    }
-
-    .current-account {
-      padding-right: 0;
-    }
-  }
-}
+ 
 
 .dashboardRight {
   max-width: 550px;
