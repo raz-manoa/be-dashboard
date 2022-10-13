@@ -10,7 +10,7 @@ interface CardModalItemProps {
   onClick?(e: React.MouseEvent): void;
 }
 export default function CardConfirmItem(props: CardModalItemProps) {
-  const { color = "black", label, value, icon = "", onClick } = props;
+  const { color = "black", label, value, icon, onClick } = props;
   return (
     <div className={styles.cardModal__list}>
       <Text
@@ -26,7 +26,7 @@ export default function CardConfirmItem(props: CardModalItemProps) {
         <Text tag="h3" variant={color} type="h3" size={12}>
           {value}
         </Text>
-        {icon != "" && (
+        {icon && (
           <span onClick={onClick} className={styles.cardModal__icon}>
             <Icon icon={icon} color="red" />
           </span>
