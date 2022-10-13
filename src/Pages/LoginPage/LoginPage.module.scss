@@ -57,5 +57,8 @@
   a {
     font-weight: 600;
     margin-left: 5px;
+    &:hover {
+      color: var(--white);
+    }
   }
 }
