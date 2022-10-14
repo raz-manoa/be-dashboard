@@ -1,10 +1,6 @@
-import React from "react";
-import LoginImg from "@/Assets/login__img.jpg";
 import styles from "./LoginPage.module.scss";
 import Text from "@/Components/General/Text/Text";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
-import { Form } from "antd";
-import Checkbox from "antd/lib/checkbox/Checkbox";
 import { Link } from "react-router-dom";
 import Button from "@/Components/General/Button/Button";
 import LoginInterface from "@/Components/Display/LoginInterface/LoginInterface";
@@ -16,21 +12,21 @@ const LoginPage = () => {
     <LoginInterface className={styles.login} title="login">
       <FormCustom>
         <FormCustom.Input
-          name="example-2"
+          name="email"
           color="red"
           placeholder="Email"
           icon="user"
           type="email"
         />
         <FormCustom.Input
-          name="example-2"
+          name="password"
           color="red"
           placeholder="Password"
           icon="password"
           type="password"
         />
         <div className={styles.login__text}>
-          <Checkbox className={styles.checkbox}>Remember me</Checkbox>
+          <FormCustom.Checkbox>Remember me</FormCustom.Checkbox>
           <Link to="forgot-password">Forgot Password ?</Link>
         </div>
         <Button
@@ -40,13 +36,18 @@ const LoginPage = () => {
         >
           Sign in
         </Button>
+        <div style={{ textAlign: "center" }}>
+          <FormCustom.Checkbox>
+            <Text tag="p" type="p" variant="white" className={styles.login__pg}>
+              By signing in, you agree to the{" "}
+              <a href="#">terms and conditions</a>.
+            </Text>
+          </FormCustom.Checkbox>
+          <Text tag="p" type="p" variant="white" className={styles.create}>
+            New here ?<Link to="/">Create an Account</Link>
+          </Text>
+        </div>
       </FormCustom>
-      <Text tag="p" type="p" variant="white" className={styles.login__pg}>
-        By signing in, you agree to the terms and conditions.
-      </Text>
-      <Text tag="p" type="p" variant="white" className={styles.create}>
-        New here ?<Link to="/">Create an Account</Link>
-      </Text>
       {/* <button onClick={handleLogin}>Fake login</button> */}
     </LoginInterface>
   );
