@@ -27,7 +27,6 @@ export default function FormTextArea(props: FormTextAreaProps) {
       <TextArea
         rows={4}
         placeholder={placeholder}
-        maxLength={6}
         className={styles.textarea}
       />
     </Form.Item>
