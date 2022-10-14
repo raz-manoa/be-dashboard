@@ -1,15 +1,15 @@
 import React, { ReactNode } from "react";
-import styles from "./LoginInterface.module.scss";
+import styles from "./LoginLayout.module.scss";
 import LoginImg from "@/Assets/login__img.jpg";
 import Text from "@/Components/General/Text/Text";
 import BeLogo from "@/Assets/Be_Logos.svg";
-interface LoginInterfaceProps {
+interface LoginLayoutProps {
   children: ReactNode;
   className?: string;
   title: string;
 }
 
-export default function LoginInterface(props: LoginInterfaceProps) {
+export default function LoginLayout(props: LoginLayoutProps) {
   const { children, className, title } = props;
   return (
     <div className={`${styles.login} ${className}`}>
