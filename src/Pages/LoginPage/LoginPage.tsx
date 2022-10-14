@@ -3,13 +3,13 @@ import Text from "@/Components/General/Text/Text";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
 import { Link } from "react-router-dom";
 import Button from "@/Components/General/Button/Button";
-import LoginInterface from "@/Components/Display/LoginInterface/LoginInterface";
+import LoginLayout from "@/Components/Display/LoginLayout/LoginLayout";
 const LoginPage = () => {
   const handleLogin = () => {
     localStorage.setItem("a", "logged");
   };
   return (
-    <LoginInterface className={styles.login} title="login">
+    <LoginLayout className={styles.login} title="login">
       <FormCustom>
         <FormCustom.Input
           name="email"
@@ -26,7 +26,9 @@ const LoginPage = () => {
           type="password"
         />
         <div className={styles.login__text}>
-          <FormCustom.Checkbox>Remember me</FormCustom.Checkbox>
+          <FormCustom.Checkbox name="remember" className="mb-0">
+            Remember me
+          </FormCustom.Checkbox>
           <Link to="forgot-password">Forgot Password ?</Link>
         </div>
         <Button
@@ -49,7 +51,7 @@ const LoginPage = () => {
         </div>
       </FormCustom>
       {/* <button onClick={handleLogin}>Fake login</button> */}
-    </LoginInterface>
+    </LoginLayout>
   );
 };
 

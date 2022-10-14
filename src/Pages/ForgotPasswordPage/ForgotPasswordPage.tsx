@@ -1,5 +1,5 @@
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
-import LoginInterface from "@/Components/Display/LoginInterface/LoginInterface";
+import LoginLayout from "@/Components/Display/LoginLayout/LoginLayout";
 import styles from "./ForgotPasswordPage.module.scss";
 import Text from "@/Components/General/Text/Text";
 import { useForm } from "antd/es/form/Form";
@@ -16,10 +16,7 @@ export default function ForgotPasswordPage() {
     });
   };
   return (
-    <LoginInterface
-      className={styles.forgot__password}
-      title="Forgot Password?"
-    >
+    <LoginLayout className={styles.forgot__password} title="Forgot Password?">
       <FormCustom form={form}>
         <FormCustom.Input
           name="example-2"
@@ -32,6 +29,6 @@ export default function ForgotPasswordPage() {
           Reset password
         </Button>
       </FormCustom>
-    </LoginInterface>
+    </LoginLayout>
   );
 }
