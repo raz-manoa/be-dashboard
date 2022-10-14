@@ -8,6 +8,9 @@
     padding: 18px 15px;
     border-bottom: solid 1px rgba(84, 110, 122, 0.2);
   }
+  &__label {
+    width: 40%;
+  }
   &__footer {
     @apply flex items-center justify-between w-full;
     padding-top: 25px;
@@ -18,5 +21,14 @@
         }
       }
     }
+  }
+  &__value {
+    @apply flex items-start  text-right;
+  }
+  &__icon {
+    @apply flex items-center justify-center cursor-pointer;
+    width: 15.6px;
+    height: 19px;
+    margin-left: 15px;
   }
 }
