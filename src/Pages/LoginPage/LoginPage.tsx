@@ -12,14 +12,14 @@ const LoginPage = () => {
     <LoginInterface className={styles.login} title="login">
       <FormCustom>
         <FormCustom.Input
-          name="example-2"
+          name="email"
           color="red"
           placeholder="Email"
           icon="user"
           type="email"
         />
         <FormCustom.Input
-          name="example-2"
+          name="password"
           color="red"
           placeholder="Password"
           icon="password"
