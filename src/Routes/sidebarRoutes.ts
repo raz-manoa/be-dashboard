@@ -188,7 +188,7 @@ const sidebarRoutes: ISidebarRoute[] = [
   {
     path: "savings",
     name: "Savings",
-    icon: "saving-deposit",
+    icon: "saving",
     component: SavingsPage,
     children: [
       {
