@@ -1,6 +1,7 @@
 import React from "react";
 import Icon from "@/Components/General/Icon/Icon";
 import SidebarItem from "@/Components/General/SibarItem/SidebarItem";
+import BeLogoWhite from "@/Assets/Be-logo-white.svg";
 import styles from "./Sidebar.module.scss";
 import sidebarRoutes from "@/Routes/sidebarRoutes";
 import Text from "@/Components/General/Text/Text";
@@ -29,6 +30,9 @@ export default function Sidebar() {
             </SidebarItem>
           );
         })}
+      </div>
+      <div className={styles.be_logo}>
+        <img src={BeLogoWhite} alt="be-logo" />
       </div>
     </div>
   );
