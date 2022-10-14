@@ -4,10 +4,12 @@
   border-radius: 8px;
   transition: 0.3 ease-in-out;
   color: var(--white);
+  box-sizing: border-box;
   &:hover,
   &.sidebarActive {
     color: var(--white);
-    background-color: rgba(239, 149, 172, 0.51);
+    background-color: rgba(#ef95ac, 0.51);
+    box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.4);
   }
   span {
     margin-left: 23px;

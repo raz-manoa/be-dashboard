@@ -158,8 +158,14 @@ const sidebarRoutes: ISidebarRoute[] = [
     ],
   },
   {
+    path: "request-money",
+    name: "Request Money",
+    icon: "resquest-money",
+    component: BeNetworkPage,
+  },
+  {
     path: "bank-transfer",
-    name: "Bank Transfer",
+    name: "Bank Transfers",
     icon: "bank-transfert",
     component: BankTransfertPage,
     children: [
