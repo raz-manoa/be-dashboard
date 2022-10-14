@@ -221,7 +221,7 @@ export default function BankTransfertPageRecipient() {
             type="secondary"
             onClick={() => {
               form.validateFields();
-              navigate({ pathname: "/app/bank-transfert" });
+              navigate({ pathname: "/app/bank-transfer" });
             }}
           >
             Back
@@ -233,7 +233,7 @@ export default function BankTransfertPageRecipient() {
             type="primary"
             onClick={() => {
               form.validateFields();
-              navigate({ pathname: "/app/bank-transfert/bank-review" });
+              navigate({ pathname: "/app/bank-transfer/bank-review" });
             }}
           >
             Continue
