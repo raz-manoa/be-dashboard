@@ -30,7 +30,7 @@ const transaction: CardTransactionProps[] = [
   {
     user: "John Smith",
     transaction: "-24.00 USD",
-    payment: "",
+    payment: "Savings Withdrawal",
     icon: "saving-withdraw",
     date: "11/06/2022",
   },
