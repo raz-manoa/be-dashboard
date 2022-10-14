@@ -1,13 +1,15 @@
 .sidebar {
-  @apply fixed left-0 top-0;
+  @apply fixed left-0 top-0 flex flex-col;
   z-index: 3;
   height: 100vh;
   background-color: var(--red);
   width: 20%;
   padding: 45px 18px;
-  overflow: auto;
+  // overflow: auto;
   &__list {
     margin-top: 46px;
+    flex: 1;
+    overflow: auto;
   }
   &__header {
     @apply text-center;
@@ -22,7 +24,7 @@
 }
 .be_logo {
   @apply mx-auto;
-  margin-top: 185px;
+  margin-top: 46px;
   width: 139px;
   img {
     width: 139px;
