@@ -25,11 +25,7 @@ export default function FormInput(props: FormInputProps) {
     ...rest
   } = props;
   return (
-    <Form.Item
-      className={`${styles.input} ${className}`}
-      name={name}
-      rules={rules}
-    >
+    <Form.Item className={`${styles.input} ${className}`} rules={rules}>
       <label htmlFor="" className={styles.label}>
         {label}
       </label>
@@ -38,6 +34,7 @@ export default function FormInput(props: FormInputProps) {
         placeholder={placeholder}
         prefix={icon && <Icon icon={icon} />}
         type={type}
+        name={name}
         className={`${styles.input__content} ${
           styles[`input__content--${color}`]
         }`}

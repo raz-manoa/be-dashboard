@@ -13,10 +13,9 @@ interface FormTextAreaProps {
 }
 
 export default function FormTextArea(props: FormTextAreaProps) {
-  const { label, placeholder, className, option, name, rules } = props;
+  const { label, placeholder, className, option, rules } = props;
   return (
     <Form.Item
-      name={name}
       className={`${styles.textarea__container} ${className}`}
       rules={rules}
     >
