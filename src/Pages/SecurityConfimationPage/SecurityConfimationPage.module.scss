@@ -1,0 +1,12 @@
+.btn {
+  @apply w-full;
+}
+.field__confirm {
+  input {
+    background-color: rgba(239, 149, 172, 0.5);
+    &::placeholder {
+      color: var(--white);
+      text-align: center;
+    }
+  }
+}

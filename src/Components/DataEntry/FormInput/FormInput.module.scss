@@ -19,6 +19,7 @@ label {
         @apply fill-white;
       }
       input {
+        color: var(--white);
         &::placeholder {
           color: #fff;
         }
@@ -52,6 +53,7 @@ label {
   input {
     @apply outline-none w-full;
     background-color: transparent;
+
     font-size: 14px;
     &::placeholder {
       font-size: 14px;
