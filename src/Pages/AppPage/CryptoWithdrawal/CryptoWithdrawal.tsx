@@ -21,7 +21,7 @@ const CryptoWithdrawal = () => {
 
   const handleWithdrawal = () => {
     form.validateFields();
-    navigate("add-beneficiary");
+    navigate("");
   };
   return (
     <Card className="common__card">
