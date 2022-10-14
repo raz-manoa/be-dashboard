@@ -19,7 +19,7 @@ interface CurrencyItemProps extends ICurrencyItem {}
 export default function CurrencyItem(props: CurrencyItemProps) {
   const { currency, value, reference, currencyLabel } = props;
   return (
-    <div className={styles.card__content}>
+    <div className={`${styles.card__content} card-dashboard`}>
       <div className={styles.card__money}>
         <img src={currencyToFlag(currency)} alt="flag" />
         <Text tag="h3" type="h3" variant="grey">

@@ -113,6 +113,10 @@ const SavingPageDashboard = React.lazy(
     )
 );
 
+const RequestMoneyPage = React.lazy(
+  () => import("@/Pages/AppPage/RequestMoneyPage/RequestMoneyPage")
+);
+
 // routes
 const sidebarRoutes: ISidebarRoute[] = [
   {
@@ -158,8 +162,14 @@ const sidebarRoutes: ISidebarRoute[] = [
     ],
   },
   {
+    path: "request-money",
+    name: "Request Money",
+    icon: "resquest-money",
+    component: RequestMoneyPage,
+  },
+  {
     path: "bank-transfer",
-    name: "Bank Transfer",
+    name: "Bank Transfers",
     icon: "bank-transfert",
     component: BankTransfertPage,
     children: [
