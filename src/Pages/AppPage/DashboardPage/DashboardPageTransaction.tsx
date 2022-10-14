@@ -14,9 +14,40 @@ const transaction: CardTransactionProps[] = [
   {
     company: "Company retreat",
     user: "Juan Perez",
-    transaction: "454.00 CHF",
-    payment: "QR Code payment",
+    transaction: "+454.00 CHF",
+    payment: "Electronic Fund Transfer",
     icon: "bank-transfert",
+    date: "11/06/2022",
+  },
+
+  {
+    user: "John Smith",
+    transaction: "-330.00 GBP",
+    payment: "  QR Code Payment",
+    icon: "qr",
+    date: "11/06/2022",
+  },
+  {
+    user: "John Smith",
+    transaction: "-24.00 USD",
+    payment: "",
+    icon: "saving-withdraw",
+    date: "11/06/2022",
+  },
+  {
+    company: "Company retreat",
+    user: "Juan Perez",
+    transaction: "+454.00 CHF",
+    payment: "Savings Withdrawal",
+    icon: "bank-transfert",
+    date: "11/06/2022",
+  },
+  {
+    company: "Coffee",
+    user: "Russel Sprout",
+    transaction: "-25.00 USD",
+    payment: "Electronic Fund Transfer",
+    icon: "qr",
     date: "11/06/2022",
   },
 ];
@@ -88,6 +119,8 @@ export default function DashboardPageTransaction() {
                   payment={t.payment}
                   transaction={t.transaction}
                   user={t.user}
+                  company={t.company}
+                  key={`t-${index}`}
                 />
               ))}
             </div>
