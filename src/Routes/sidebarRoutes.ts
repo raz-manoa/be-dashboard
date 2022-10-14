@@ -137,7 +137,7 @@ const sidebarRoutes: ISidebarRoute[] = [
   {
     path: "foreign-exchange",
     name: "Foreign Exchange",
-    icon: "transfert-intl",
+    icon: "fx",
     component: ForeignExchangePage,
     children: [
       {
@@ -188,7 +188,7 @@ const sidebarRoutes: ISidebarRoute[] = [
   {
     path: "savings",
     name: "Savings",
-    icon: "saving-deposit",
+    icon: "saving",
     component: SavingsPage,
     children: [
       {
