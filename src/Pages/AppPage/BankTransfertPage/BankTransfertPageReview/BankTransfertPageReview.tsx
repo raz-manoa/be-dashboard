@@ -76,12 +76,12 @@ export default function BankTransfertPageReview() {
       btnSecondary="Confirm"
       onClickFirstBtn={() => {
         navigate({
-          pathname: "/app/bank-transfert/add-beneficiary",
+          pathname: "/app/bank-transfer/add-beneficiary",
         });
       }}
       onClickSecondBtn={() => {
         navigate({
-          pathname: "/app/bank-transfert/bank-confirm",
+          pathname: "/app/bank-transfer/bank-confirm",
         });
       }}
     />
