@@ -11,10 +11,12 @@ import Button from "@/Components/General/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 const CryptoWithdrawalDashboard = () => {
+  useSetAppLayoutTitle("Crypto Withdrawal");
+
   const [form] = useForm();
   const [value, setValue] = useState(1);
   const navigate = useNavigate();
-  useSetAppLayoutTitle();
+  useSetAppLayoutTitle("Crypto Withdrawal");
   const onChange = (e: RadioChangeEvent) => {
     console.log("radio checked", e.target.value);
     setValue(e.target.value);
