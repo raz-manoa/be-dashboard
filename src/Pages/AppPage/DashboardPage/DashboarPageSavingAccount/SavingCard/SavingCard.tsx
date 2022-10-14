@@ -30,8 +30,9 @@ export default function SavingCard(props: SavingCardProps) {
         <img src={currencyToFlag(currency)} alt="flag" />
         <Text
           tag="h2"
-          type="h2"
+          size={16}
           variant="grey"
+          weight={600}
           className={styles.cardSave__flagName}
         >
           {currency}
