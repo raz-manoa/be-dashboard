@@ -97,7 +97,7 @@ export default function DashboardCurrentAccount() {
           </Text>
           <Text
             tag="span"
-            size={30}
+            size={32}
             variant="red"
             weight={700}
             className="relative top-1"
