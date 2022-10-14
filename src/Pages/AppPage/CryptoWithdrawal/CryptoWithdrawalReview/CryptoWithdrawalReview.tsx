@@ -4,10 +4,11 @@ import CardConfirm, {
 } from "@/Components/Display/CardConfirm/CardConfirm";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CryptoWithdrawalReview() {
   useSetAppLayoutTitle("Crypto Withdrawal");
-
+  const navigate = useNavigate();
   const data: CardConfirmItem[] = [
     {
       label: "Sending",
@@ -42,6 +43,16 @@ export default function CryptoWithdrawalReview() {
       className="common__card"
       btnPrimary="back"
       btnSecondary="confirm"
+      onClickFirstBtn={() => {
+        navigate({
+          pathname: "/app/crypto-withdraw",
+        });
+      }}
+      onClickSecondBtn={() => {
+        navigate({
+          pathname: "/app/savings/confirm",
+        });
+      }}
     />
   );
 }
