@@ -1,12 +1,12 @@
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
-import LoginInterface from "@/Components/Display/LoginInterface/LoginInterface";
+import LoginLayout from "@/Components/Display/LoginLayout/LoginLayout";
 import Button from "@/Components/General/Button/Button";
 import styles from "./SecurityConfimationPage.module.scss";
 import React from "react";
 
 export default function SecurityConfimationPage() {
   return (
-    <LoginInterface title="Security  Confirmation">
+    <LoginLayout title="Security  Confirmation">
       <FormCustom>
         <FormCustom.Input
           name="example-2"
@@ -19,6 +19,6 @@ export default function SecurityConfimationPage() {
           Confirm
         </Button>
       </FormCustom>
-    </LoginInterface>
+    </LoginLayout>
   );
 }

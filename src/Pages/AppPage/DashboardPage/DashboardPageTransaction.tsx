@@ -10,14 +10,47 @@ import styles from "./DashboardPage.module.scss";
 
 const paires = ["All", "USD", "EUR", "CHF", "GBP"];
 
-const transaction: CardTransactionProps = {
-  company: "Company retreat",
-  user: "Juan Perez",
-  transaction: "454.00 CHF",
-  payment: "QR Code payment",
-  icon: "bank-transfert",
-  date: "11/06/2022",
-};
+const transaction: CardTransactionProps[] = [
+  {
+    company: "Company retreat",
+    user: "Juan Perez",
+    transaction: "+454.00 CHF",
+    payment: "Electronic Fund Transfer",
+    icon: "bank-transfert",
+    date: "11/06/2022",
+  },
+
+  {
+    user: "John Smith",
+    transaction: "-330.00 GBP",
+    payment: "  QR Code Payment",
+    icon: "qr",
+    date: "11/06/2022",
+  },
+  {
+    user: "John Smith",
+    transaction: "-24.00 USD",
+    payment: "Savings Withdrawal",
+    icon: "saving-withdraw",
+    date: "11/06/2022",
+  },
+  {
+    company: "Company retreat",
+    user: "Juan Perez",
+    transaction: "+454.00 CHF",
+    payment: "Savings Withdrawal",
+    icon: "bank-transfert",
+    date: "11/06/2022",
+  },
+  {
+    company: "Coffee",
+    user: "Russel Sprout",
+    transaction: "-25.00 USD",
+    payment: "Electronic Fund Transfer",
+    icon: "qr",
+    date: "11/06/2022",
+  },
+];
 
 export default function DashboardPageTransaction() {
   const [currentFilter, setCurrentFilter] = useState<number>(0);
@@ -79,11 +112,17 @@ export default function DashboardPageTransaction() {
         <Card className={styles.transactionCard}>
           <Scrollbar>
             <div>
-              {Array(5)
-                .fill(transaction)
-                .map((t, index) => (
-                  <CardTransaction {...t} key={`t-${index}`} />
-                ))}
+              {transaction.map((t, index) => (
+                <CardTransaction
+                  date={t.date}
+                  icon={t.icon}
+                  payment={t.payment}
+                  transaction={t.transaction}
+                  user={t.user}
+                  company={t.company}
+                  key={`t-${index}`}
+                />
+              ))}
             </div>
           </Scrollbar>
         </Card>

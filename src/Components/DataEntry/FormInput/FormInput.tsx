@@ -10,6 +10,7 @@ interface FormInputProps extends InputProps {
   label?: string;
   color?: string;
   rules?: Rule[];
+  inputStyle?: React.CSSProperties;
 }
 
 export default function FormInput(props: FormInputProps) {
@@ -22,25 +23,27 @@ export default function FormInput(props: FormInputProps) {
     name,
     rules,
     className = "",
+    style,
+    inputStyle,
     ...rest
   } = props;
   return (
     <Form.Item
+      // name={name}
+      style={style}
       className={`${styles.input} ${className}`}
-      name={name}
       rules={rules}
     >
-      <label htmlFor="" className={styles.label}>
-        {label}
-      </label>
       <Input
         size="large"
         placeholder={placeholder}
         prefix={icon && <Icon icon={icon} />}
         type={type}
+        name={name}
         className={`${styles.input__content} ${
           styles[`input__content--${color}`]
         }`}
+        style={inputStyle}
         {...rest}
       />
     </Form.Item>
