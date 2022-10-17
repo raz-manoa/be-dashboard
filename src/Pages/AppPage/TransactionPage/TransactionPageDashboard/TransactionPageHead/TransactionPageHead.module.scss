@@ -7,8 +7,12 @@
   &__item {
     height: 38px;
     margin-bottom: 0;
-    border: solid 1px rgba(200, 199, 204, 0.4);
+    // border: solid 1px rgba(200, 199, 204, 0.4);
+    &:not(.transaction__date) {
+      border: solid 1px rgba(200, 199, 204, 0.4);
+    }
     background-color: var(--white);
+
     &:not(:first-child) {
       margin-left: 15px;
     }

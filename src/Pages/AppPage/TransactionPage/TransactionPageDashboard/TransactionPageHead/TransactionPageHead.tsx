@@ -33,7 +33,9 @@ export default function TransactionPageHead() {
           options={optionSelect}
         />
 
-        <FormDatePicker className={styles.transaction__item} />
+        <FormDatePicker
+          className={`${styles.transaction__item} ${styles.transaction__date}`}
+        />
         <FormCustom.InputIcon
           icon="user"
           placeholder="Name"
