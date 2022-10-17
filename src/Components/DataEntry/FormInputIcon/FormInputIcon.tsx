@@ -11,7 +11,7 @@ export default function FormInputIcon(props: FormInputIconProps) {
   const { placeholder, icon, className = "" } = props;
   return (
     <div className={`${styles.field} ${className}`}>
-      <Icon icon={icon} color="grey" />
+      <Icon icon={icon} color="#90a4ae" />
       <input placeholder={placeholder} />
     </div>
   );

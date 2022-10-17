@@ -8,6 +8,7 @@
     height: 38px;
     margin-bottom: 0;
     // border: solid 1px rgba(200, 199, 204, 0.4);
+    // overflow: hidden;
     &:not(.transaction__date) {
       border: solid 1px rgba(200, 199, 204, 0.4);
     }
@@ -15,6 +16,24 @@
 
     &:not(:first-child) {
       margin-left: 15px;
+    }
+
+    :global {
+      .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+        background-color: transparent;
+        box-shadow: none;
+      }
+      .ant-select-single
+        .ant-select-selector
+        .ant-select-selection-placeholder {
+        padding-right: 0;
+        color: var(--grey_light);
+      }
+      input {
+        &::placeholder {
+          color: var(--grey_light);
+        }
+      }
     }
   }
   &__name {
