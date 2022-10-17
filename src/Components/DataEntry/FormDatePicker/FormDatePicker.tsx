@@ -31,7 +31,7 @@ export default function FormDatePicker(props: FormDatePickerProps) {
       const target = ev.target as HTMLDivElement;
       if (
         !target.closest(`.${styles.datepicker}`) &&
-        !target.closest(".ant-picker-dropdown-range")
+        !target.closest("[class*='ant-picker']")
       ) {
         setOpen(false);
       }
