@@ -9,13 +9,14 @@ interface TitleCardProps {
     label: string;
     url: string;
   };
+  className?: string;
   children?: ReactNode;
 }
 
 export default function TitleCard(props: TitleCardProps) {
-  const { title, subtitle, link, children } = props;
+  const { title, subtitle, link, children, className = "" } = props;
   return (
-    <div className={styles.card__title_wrap}>
+    <div className={`${styles.card__title_wrap} ${className}`}>
       <div className={styles.card__title}>
         <Text tag="h2" type="h2" variant="black2">
           {title}

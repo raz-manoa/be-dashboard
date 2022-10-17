@@ -56,12 +56,12 @@ const data = [
   {
     label: "Account Number",
     value: "000449876447656",
-    icon: "bank-transfert",
+    icon: "copy",
   },
   {
     label: "IBAN",
     value: "MU38MCBL876165318323290823132",
-    icon: "bank-transfert",
+    icon: "copy",
   },
 ];
 const TopUpPage = () => {
