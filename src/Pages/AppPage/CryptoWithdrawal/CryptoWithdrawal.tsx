@@ -1,7 +1,6 @@
-import React from "react";
-
+import { Outlet, useNavigate } from "react-router-dom";
 const CryptoWithdrawal = () => {
-  return <div>CryptoWithdrawal</div>;
+  return <Outlet></Outlet>;
 };
 
 export default CryptoWithdrawal;

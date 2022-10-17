@@ -77,6 +77,18 @@ const CryptoDepositPage = React.lazy(
 const CryptoWithdrawal = React.lazy(
   () => import("../Pages/AppPage/CryptoWithdrawal/CryptoWithdrawal")
 );
+const CryptoWithdrawalReview = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/CryptoWithdrawal/CryptoWithdrawalReview/CryptoWithdrawalReview"
+    )
+);
+const CryptoWithdrawalDashboard = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/CryptoWithdrawal/CryptoWithdrawalDashboard/CryptoWithdrawalDashboard"
+    )
+);
 const CryptoExchangePage = React.lazy(
   () => import("../Pages/AppPage/CryptoExchangePage/CryptoExchangePage")
 );
@@ -230,6 +242,18 @@ const sidebarRoutes: ISidebarRoute[] = [
     name: "Crypto Withdrawal",
     icon: "crypto-withdraw",
     component: CryptoWithdrawal,
+    children: [
+      {
+        path: "",
+        name: "crypto-withdrawal-dashboard",
+        component: CryptoWithdrawalDashboard,
+      },
+      {
+        path: "crypto-withdraw-review",
+        name: "crypto-withdraw-review",
+        component: CryptoWithdrawalReview,
+      },
+    ],
   },
   {
     path: "crypto-exchange",
