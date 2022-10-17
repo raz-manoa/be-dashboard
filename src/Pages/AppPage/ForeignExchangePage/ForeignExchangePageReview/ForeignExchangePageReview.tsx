@@ -44,7 +44,7 @@ export default function ForeignExchangePageReview() {
       }}
       onClickSecondBtn={() => {
         navigate({
-          pathname: "/app/foreign-exchange/foreign-exchange-confirm",
+          pathname: "/app/foreign-exchange/confirm",
         });
       }}
     />

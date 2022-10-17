@@ -90,7 +90,7 @@ const ForeignExchangePageDashboard = () => {
           onClick={() => {
             form.validateFields();
             navigate({
-              pathname: "foreign-exchange-review",
+              pathname: "review",
             });
           }}
           className="common__btn"
