@@ -14,7 +14,7 @@ export default function ButtonWithIcon(props: ButtonWithIconProps) {
   return (
     <button className={`${styles.button} ${className}`}>
       {icon && <Icon icon={icon} color="grey" className={styles.icon} />}
-      <Text tag="span" type="span" size={14} variant="grey">
+      <Text tag="p" type="p" size={14} variant="grey">
         {label}
       </Text>
     </button>

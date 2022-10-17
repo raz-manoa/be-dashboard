@@ -1,10 +1,10 @@
 .select {
-  @apply w-full;
-
+  margin-bottom: 0;
   border-radius: 4px;
   box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04);
   background-color: var(--white);
   padding: 3px 13px;
+
   svg {
     fill: var(--grey_light);
     margin-right: 9px;
@@ -29,6 +29,9 @@
 }
 .option {
   background-color: var(--white) !important;
+  // width: 164px !important;
+  // padding: 0px 14px !important;
+  // box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.16) !important;
   font-weight: 500;
   font-size: 14px;
   color: #90a4ae !important;

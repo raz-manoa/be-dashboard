@@ -1,5 +1,33 @@
 .transaction {
+  &__head {
+    @apply flex items-center justify-between;
+    padding: 0 25px;
+    margin: 21px 0;
+  }
   &__item {
     height: 40px;
+    margin-bottom: 0;
+    &:not(:first-child) {
+      margin-left: 15px;
+    }
   }
+  &__name {
+    width: 93px;
+  }
+  &__button {
+    @apply flex items-center;
+  }
+}
+.icon__relaod {
+  @apply flex items-center justify-center;
+  height: 38px;
+  width: 45px;
+  background-color: var(--red);
+  padding: 10px 14px 11px;
+  border-radius: 4px;
+  box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04);
+  margin-left: 15px;
+}
+.export {
+  @apply flex items-center;
 }
