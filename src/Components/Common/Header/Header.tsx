@@ -14,7 +14,7 @@ export default function Header(props: HeaderProps) {
     <div className={styles.header}>
       <div className={styles.header__inner}>
         <div className="flex gap-3">
-          <Text tag="h1" type="h1" variant="grey">
+          <Text tag="h1" type="h1" size={24} weight="bold" variant="grey">
             {title}
           </Text>
         </div>

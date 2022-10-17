@@ -8,8 +8,11 @@ const LoginPage = () => {
   const handleLogin = () => {
     localStorage.setItem("a", "logged");
   };
+  const sharedStyle = {
+    opacity: 0.8,
+  };
   return (
-    <LoginLayout className={styles.login} title="login">
+    <LoginLayout className={styles.login} title="Sign In">
       <FormCustom>
         <FormCustom.Input
           name="email"
@@ -17,6 +20,8 @@ const LoginPage = () => {
           placeholder="Email"
           icon="user"
           type="email"
+          inputStyle={sharedStyle}
+          style={{ marginBottom: 8 }}
         />
         <FormCustom.Input
           name="password"
@@ -24,12 +29,20 @@ const LoginPage = () => {
           placeholder="Password"
           icon="password"
           type="password"
+          inputStyle={sharedStyle}
+          style={{ marginBottom: 8 }}
         />
         <div className={styles.login__text}>
           <FormCustom.Checkbox name="remember" className="mb-0">
-            Remember me
+            <Text variant="white" weight={400} style={sharedStyle}>
+              Remember me
+            </Text>
           </FormCustom.Checkbox>
-          <Link to="forgot-password">Forgot Password ?</Link>
+          <Link to="forgot-password">
+            <Text variant="white" weight={400} style={sharedStyle}>
+              Forgot Password ?
+            </Text>
+          </Link>
         </div>
         <Button
           type="white"
@@ -40,13 +53,27 @@ const LoginPage = () => {
         </Button>
         <div style={{ textAlign: "center" }}>
           <FormCustom.Checkbox>
-            <Text tag="p" type="p" variant="white" className={styles.login__pg}>
+            <Text
+              tag="p"
+              type="p"
+              variant="white"
+              weight={400}
+              className={styles.login__pg}
+              style={sharedStyle}
+            >
               By signing in, you agree to the{" "}
               <a href="#">terms and conditions</a>.
             </Text>
           </FormCustom.Checkbox>
-          <Text tag="p" type="p" variant="white" className={styles.create}>
-            New here ?<Link to="/">Create an Account</Link>
+          <Text
+            tag="p"
+            type="p"
+            variant="white"
+            weight={400}
+            className={styles.create}
+          >
+            <span style={sharedStyle}>New here ?</span>
+            <Link to="/">Create an Account</Link>
           </Text>
         </div>
       </FormCustom>

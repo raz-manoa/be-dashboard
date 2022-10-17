@@ -162,12 +162,12 @@ const sidebarRoutes: ISidebarRoute[] = [
         component: ForeignExchangePageDasboard,
       },
       {
-        path: "foreign-exchange-review",
+        path: "review",
         name: "foreign-exchange-review",
         component: ForeignExchangePageReview,
       },
       {
-        path: "foreign-exchange-confirm",
+        path: "confirm",
         name: "foreign-exchange-confirm",
         component: ForeignExchangePageSuccess,
       },

@@ -5,6 +5,7 @@ import BeLogoWhite from "@/Assets/Be-logo-white.svg";
 import styles from "./Sidebar.module.scss";
 import sidebarRoutes from "@/Routes/sidebarRoutes";
 import Text from "@/Components/General/Text/Text";
+import Scrollbar from "@/Components/General/Scrollbar/Scrollbar";
 
 export default function Sidebar() {
   return (
@@ -18,18 +19,20 @@ export default function Sidebar() {
         </Text>
       </div>
       <div className={styles.sidebar__list}>
-        {sidebarRoutes.map((data, index) => {
-          return (
-            <SidebarItem
-              to={data.path || ""}
-              label={data.name}
-              state={data.state}
-              key={`d-${index}`}
-            >
-              <Icon icon={data.icon} color="#fff" />
-            </SidebarItem>
-          );
-        })}
+        <Scrollbar>
+          {sidebarRoutes.map((data, index) => {
+            return (
+              <SidebarItem
+                to={data.path || ""}
+                label={data.name}
+                state={data.state}
+                key={`d-${index}`}
+              >
+                <Icon icon={data.icon} color="#fff" />
+              </SidebarItem>
+            );
+          })}
+        </Scrollbar>
       </div>
       <div className={styles.be_logo}>
         <img src={BeLogoWhite} alt="be-logo" />

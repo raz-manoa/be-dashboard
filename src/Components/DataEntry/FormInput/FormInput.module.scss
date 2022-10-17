@@ -11,10 +11,10 @@ label {
     color: #fff;
     padding: 9px 10px;
     border-radius: 8px;
-    height: 52px;
+    height: 54px;
     &--red {
       background-color: rgba(239, 149, 172, 0.5);
-      border: 1px solid #fff;
+      border: 1px solid rgba(#fff, 0.8);
       svg {
         @apply fill-white;
       }
@@ -54,9 +54,9 @@ label {
     @apply outline-none w-full;
     background-color: transparent;
 
-    font-size: 14px;
+    font-size: 16px;
     &::placeholder {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
 }

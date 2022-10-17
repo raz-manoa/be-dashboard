@@ -8,12 +8,10 @@ interface IFormCheckBoxProps extends CheckboxProps {
 }
 
 const FormCheckBox = (props: IFormCheckBoxProps) => {
-  const { name, className = "", rules, children, checked } = props;
+  const { name, className = "", rules, ...restProps } = props;
   return (
     <Form.Item className={`${styles.input} ${className}`} rules={rules}>
-      <Checkbox {...props} checked={checked} className={styles.checkbox}>
-        {children}
-      </Checkbox>
+      <Checkbox {...restProps} className={styles.checkbox} />
     </Form.Item>
   );
 };

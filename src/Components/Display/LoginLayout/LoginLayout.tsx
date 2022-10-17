@@ -25,6 +25,7 @@ export default function LoginLayout(props: LoginLayoutProps) {
           type="h1"
           variant="white"
           size={32}
+          weight="bold"
           className={styles.title}
         >
           {title}
