@@ -16,7 +16,7 @@ export default function CardTransaction(props: CardTransactionProps) {
   return (
     <div className={styles.transaction}>
       <div className={styles.transaction__info}>
-        <Icon icon={icon} color="red" />
+        <Icon icon={icon} color="#e02b59" />
         <div className={styles.transaction__info_txt}>
           <Text tag="p" size={12} type="span" variant="black">
             {payment}
