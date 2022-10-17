@@ -39,7 +39,7 @@ export default function Text(props: TextProps) {
         ${type ? `${styles[`text__size_${type}`]}` : ""} ${className}`}
       style={
         {
-          "--font-size": size,
+          "--font-size": `${size}px`,
           "--font-weight": weight,
           ...style,
         } as React.CSSProperties
