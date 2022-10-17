@@ -9,7 +9,12 @@
   &__list {
     margin-top: 46px;
     flex: 1;
-    overflow: auto;
+    overflow: hidden;
+    :global {
+      .ps {
+        max-height: calc(100vh - 250px);
+      }
+    }
   }
   &__header {
     @apply text-center;
