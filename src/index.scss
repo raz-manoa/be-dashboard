@@ -275,4 +275,15 @@ body {
     text-align: center;
     color: #546e7a;
   }
+  .ant-picker-content {
+    th {
+      font-size: 16px;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      text-align: center;
+      color: var(--grey_light);
+    }
+  }
 }
