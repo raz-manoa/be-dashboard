@@ -9,7 +9,7 @@ export default function useTransactionPageTableLogic(): TransactionPageTableData
       status: "completed",
       amount: "+454.00 CHF",
       timestamp: "11/06/2022",
-      beId: 100000,
+      beId: "00000",
       icon: "bank-transfert",
     },
     {
@@ -19,7 +19,7 @@ export default function useTransactionPageTableLogic(): TransactionPageTableData
       status: "Initiated",
       amount: "-330.00 GBP",
       timestamp: "11/06/2022",
-      beId: 100000,
+      beId: "00000",
       icon: "qr",
     },
     {
@@ -29,7 +29,7 @@ export default function useTransactionPageTableLogic(): TransactionPageTableData
       status: "completed",
       amount: "-24.00 USD",
       timestamp: "11/06/2022",
-      beId: 100000,
+      beId: "00000",
       icon: "saving-withdraw",
     },
     {
@@ -39,7 +39,7 @@ export default function useTransactionPageTableLogic(): TransactionPageTableData
       status: "completed",
       amount: "+454.00 CHF",
       timestamp: "11/06/2022",
-      beId: 100000,
+      beId: "00000",
       icon: "bank-transfert",
     },
     {
