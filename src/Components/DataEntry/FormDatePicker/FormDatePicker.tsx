@@ -31,12 +31,6 @@ export default function FormDatePicker(props: FormDatePickerProps) {
 
   return (
     <Form.Item className={`${styles.datepicker} ${className}`}>
-      {/* <Icon icon="calendar" /> */}
-      {/* <DatePicker
-        suffixIcon=""
-        placeholder="Date Selection"
-        className={styles.calendar}
-      /> */}
       <button
         className={`${styles.datepickerTrigger} ${
           open
