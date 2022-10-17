@@ -11,8 +11,8 @@ export default function DashboarPageSavingAccount() {
       currency: ECurrency.USD,
     },
     {
-      principal: 10248.0,
-      interest: 128.0,
+      principal: 245624.32,
+      interest: 12439.79,
       currency: ECurrency.EUR,
     },
   ];

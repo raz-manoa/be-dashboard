@@ -107,7 +107,7 @@ export default function DashboardCurrentAccount() {
         </Text>
       </TitleCard>
       <div className={styles.dashboardCurrentAccount}>
-        <Card className="pt-3 current-account">
+        <Card className="current-account">
           <Scrollbar>
             <div>
               {currentAccountCurrencies.map((c, index) => (

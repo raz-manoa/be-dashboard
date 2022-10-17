@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "antd": "^4.23.4",
-    "format-number": "^3.0.0",
     "icomoon-react": "^3.0.0",
     "install": "^0.13.0",
+    "numbro": "^2.3.6",
     "perfect-scrollbar": "^1.5.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
