@@ -5,13 +5,16 @@ import { SelectProps } from "antd/es/select";
 import styles from "./FormDatePicker.module.scss";
 import React from "react";
 
-interface FormDatePickerProps {}
+interface FormDatePickerProps {
+  className?: string;
+}
 
 export default function FormDatePicker(props: FormDatePickerProps) {
   const { RangePicker } = DatePicker;
-  // const { icon } = props;
+  const { className } = props;
+
   return (
-    <Form.Item className={styles.select}>
+    <Form.Item className={`${styles.select} ${className}`}>
       <Icon icon="calendar" />
       {/* <DatePicker
         suffixIcon=""

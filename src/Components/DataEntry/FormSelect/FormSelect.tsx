@@ -14,13 +14,18 @@ interface FormSelectProps extends SelectProps {
   rules?: Rule[];
   name: NamePath;
   label?: string;
+  className?: string;
 }
 
 export default function FormSelect(props: FormSelectProps) {
-  const { options, rules, name, label, ...rest } = props;
+  const { options, rules, name, className = "", label, ...rest } = props;
   const { Option } = Select;
   return (
-    <Form.Item rules={rules} name={name} className={styles.select}>
+    <Form.Item
+      rules={rules}
+      name={name}
+      className={`${styles.select} ${className}`}
+    >
       {!!label && (
         <label htmlFor="" className={styles.label}>
           {label}
