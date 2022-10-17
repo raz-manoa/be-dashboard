@@ -37,9 +37,13 @@ export default function Text(props: TextProps) {
         ${styles.text} 
         ${styles[`text__color_${variant}`]} 
         ${type ? `${styles[`text__size_${type}`]}` : ""} ${className}`}
-      style={{
-        ...style,
-      }}
+      style={
+        {
+          "--font-size": size,
+          "--font-weight": weight,
+          ...style,
+        } as React.CSSProperties
+      }
     >
       {children}
     </TextTag>
