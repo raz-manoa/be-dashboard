@@ -9,7 +9,7 @@ const TransactionPage = () => {
   return (
     <div className={styles.transaction__head}>
       <TransactionPageHead />
-      <div>
+      <div className={styles.table}>
         <TransactionPageTable />
       </div>
     </div>

@@ -1,13 +1,17 @@
 .select {
+  @apply relative;
   margin-bottom: 0;
   border-radius: 4px;
   box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04);
   background-color: var(--white);
-  padding: 3px 13px;
 
   svg {
+    @apply absolute z-10;
     fill: var(--grey_light);
     margin-right: 9px;
+    left: 14.1px;
+    top: 50%;
+    transform: translateY(-50%);
   }
   :global {
     .ant-select {
@@ -16,7 +20,12 @@
         border: none !important;
         padding: 0;
         position: inherit;
-        box-shadow: none !important;
+        border-radius: 4px;
+        box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04);
+        border: solid 1px rgba(200, 199, 204, 0.4);
+        width: 164px;
+        height: 38px;
+        padding: 3px 12.9px 3px 40.1px;
       }
     }
     .ant-form-item-control-input-content {
@@ -24,6 +33,8 @@
     }
     .ant-select-selection-item {
       color: var(--grey);
+      overflow: visible;
+      padding-right: 0;
     }
   }
   svg {
@@ -33,9 +44,6 @@
 }
 .option {
   background-color: var(--white) !important;
-  // width: 164px !important;
-  // padding: 0px 14px !important;
-  // box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.16) !important;
   font-weight: 500;
   font-size: 14px;
   color: #90a4ae !important;
