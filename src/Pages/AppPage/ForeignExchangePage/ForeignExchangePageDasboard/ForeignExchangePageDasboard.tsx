@@ -79,7 +79,7 @@ const ForeignExchangePageDashboard = () => {
         </div>
         <div className="common__txt">
           <Text type="p" tag="p" variant="grey">
-            <strong>174.75 USD</strong> USD available to transfer
+            <strong>174.75 USD</strong> available to transfer
           </Text>
           <Text type="p" tag="p" variant="grey">
             Transaction fee <strong>0 USD</strong>
