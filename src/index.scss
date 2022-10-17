@@ -286,4 +286,13 @@ body {
       color: var(--grey_light);
     }
   }
+  .ant-picker-header {
+    .ant-picker-header-next-btn,
+    .ant-picker-header-prev-btn {
+      visibility: visible !important;
+    }
+    [class*="ant-picker-header-super"] {
+      visibility: hidden;
+    }
+  }
 }
