@@ -23,11 +23,20 @@ export default function FormDatePicker(props: FormDatePickerProps) {
 
   const handleChange = (values: any, dateString: [string, string]) => {
     onChange && onChange(values, dateString);
-    setHasDate(values.length > 0);
-    setOpen(false);
+    setHasDate(true);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    window.addEventListener("click", function (this: Window, ev: MouseEvent) {
+      const target = ev.target as HTMLDivElement;
+      if (
+        !target.closest(`.${styles.datepicker}`) &&
+        !target.closest(".ant-picker-dropdown-range")
+      ) {
+        setOpen(false);
+      }
+    });
+  }, []);
 
   return (
     <Form.Item className={`${styles.datepicker} ${className}`}>
@@ -46,7 +55,12 @@ export default function FormDatePicker(props: FormDatePickerProps) {
           Date Selection
         </Text>
       </button>
-      <RangePicker open={open} onChange={handleChange} suffixIcon="" />
+      <RangePicker
+        open={open}
+        autoFocus={true}
+        onChange={handleChange}
+        suffixIcon=""
+      />
     </Form.Item>
   );
 }
