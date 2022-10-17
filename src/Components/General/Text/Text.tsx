@@ -38,8 +38,6 @@ export default function Text(props: TextProps) {
         ${styles[`text__color_${variant}`]} 
         ${type ? `${styles[`text__size_${type}`]}` : ""} ${className}`}
       style={{
-        fontSize: size,
-        fontWeight: weight,
         ...style,
       }}
     >
