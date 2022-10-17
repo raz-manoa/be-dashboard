@@ -287,12 +287,38 @@ body {
     }
   }
   .ant-picker-header {
+    position: relative;
+    border-bottom: none;
     .ant-picker-header-next-btn,
     .ant-picker-header-prev-btn {
       visibility: visible !important;
     }
     [class*="ant-picker-header-super"] {
       visibility: hidden;
+    }
+    .ant-picker-header-prev-btn {
+      position: absolute;
+      right: 35px;
+      top: 2px;
+    }
+    .ant-picker-header-next-btn {
+      position: absolute;
+      right: 20px;
+      top: 2px;
+    }
+    .ant-picker-header-view {
+      position: absolute;
+      left: 20px;
+      top: 2px;
+    }
+    .ant-picker-prev-icon,
+    .ant-picker-next-icon {
+      &::before {
+        width: 10px;
+        height: 10px;
+        border-width: 2px 0 0 2px;
+        border-color: var(--grey_light);
+      }
     }
   }
 }
