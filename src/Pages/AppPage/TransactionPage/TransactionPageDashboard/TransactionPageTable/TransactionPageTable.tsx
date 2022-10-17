@@ -14,7 +14,6 @@ export default function TransactionPageTable() {
   return (
     <Card className="mt-5">
       <Table<TransactionPageTableData>
-        pagination={false}
         dataSource={transactionPageTableDataTmp}
         columns={transactionPageTableColumn()}
       />
