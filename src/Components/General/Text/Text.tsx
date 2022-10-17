@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import styles from "./Text.module.scss";
 export interface TextProps extends React.HTMLAttributes<any> {
-  tag: keyof JSX.IntrinsicElements;
+  tag?: keyof JSX.IntrinsicElements;
   children: ReactNode;
   type?: "h1" | "h2" | "h3" | "p" | "span";
   variant?:
@@ -12,8 +12,9 @@ export interface TextProps extends React.HTMLAttributes<any> {
     | "grey-light"
     | "green"
     | "white";
-  weight?: 700 | 600 | 500 | 400 | 300;
-  size?: number;
+  weight?: React.CSSProperties["fontWeight"];
+  size?: React.CSSProperties["fontSize"];
+  style?: React.CSSProperties;
 }
 
 export default function Text(props: TextProps) {
@@ -24,7 +25,8 @@ export default function Text(props: TextProps) {
     variant = "black",
     className = "",
     size = 14,
-    weight,
+    weight = 400,
+    style,
     ...rest
   } = props;
   const TextTag = tag;
@@ -37,8 +39,9 @@ export default function Text(props: TextProps) {
         ${type ? `${styles[`text__size_${type}`]}` : ""} ${className}`}
       style={
         {
-          "--font-size": `${size}px`,
+          "--font-size": size,
           "--font-weight": weight,
+          ...style,
         } as React.CSSProperties
       }
     >

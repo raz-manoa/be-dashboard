@@ -113,6 +113,10 @@ const SavingPageDashboard = React.lazy(
     )
 );
 
+const RequestMoneyPage = React.lazy(
+  () => import("@/Pages/AppPage/RequestMoneyPage/RequestMoneyPage")
+);
+
 // routes
 const sidebarRoutes: ISidebarRoute[] = [
   {
@@ -137,7 +141,7 @@ const sidebarRoutes: ISidebarRoute[] = [
   {
     path: "foreign-exchange",
     name: "Foreign Exchange",
-    icon: "transfert-intl",
+    icon: "fx",
     component: ForeignExchangePage,
     children: [
       {
@@ -146,20 +150,26 @@ const sidebarRoutes: ISidebarRoute[] = [
         component: ForeignExchangePageDasboard,
       },
       {
-        path: "foreign-exchange-review",
+        path: "review",
         name: "foreign-exchange-review",
         component: ForeignExchangePageReview,
       },
       {
-        path: "foreign-exchange-confirm",
+        path: "confirm",
         name: "foreign-exchange-confirm",
         component: ForeignExchangePageSuccess,
       },
     ],
   },
   {
+    path: "request-money",
+    name: "Request Money",
+    icon: "resquest-money",
+    component: RequestMoneyPage,
+  },
+  {
     path: "bank-transfer",
-    name: "Bank Transfer",
+    name: "Bank Transfers",
     icon: "bank-transfert",
     component: BankTransfertPage,
     children: [
@@ -188,7 +198,7 @@ const sidebarRoutes: ISidebarRoute[] = [
   {
     path: "savings",
     name: "Savings",
-    icon: "saving-deposit",
+    icon: "saving",
     component: SavingsPage,
     children: [
       {
