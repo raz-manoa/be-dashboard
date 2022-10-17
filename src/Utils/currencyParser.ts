@@ -1,3 +1,4 @@
-import format from "format-number";
+import numbro from "numbro";
 
-export const currencyParser = (value: number): string => format()(value);
+export const currencyParser = (value: number): string =>
+  numbro(value).format({ thousandSeparated: true, mantissa: 2 });
