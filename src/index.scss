@@ -10,6 +10,7 @@
   --white: #fff;
   --pink: #ef95ac;
   --black2: #21222c;
+  --yellow: #f0ad4e;
 }
 
 .ant-layout-content {
@@ -20,6 +21,8 @@
 }
 .ant-switch-handle::before {
   border: solid 1px #c8c7cc;
+  height: 23px;
+  width: 23px;
 }
 body {
   .ant-picker-content {
@@ -117,7 +120,7 @@ body {
   .ant-tabs-tab {
     @apply uppercase;
     padding: 0;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--grey_light);
     &:hover {
@@ -131,6 +134,12 @@ body {
   }
   .ant-tabs-ink-bar {
     background-color: var(--red);
+  }
+}
+.ant-tabs-top > .ant-tabs-nav {
+  margin: 0 0 24px 0;
+  &::before {
+    border: none;
   }
 }
 
@@ -242,6 +251,74 @@ body {
     border: none;
     &:hover {
       background-color: #bf244b;
+    }
+  }
+}
+
+.ant-picker-dropdown-range {
+  margin-top: 7px;
+  .ant-picker-range-arrow {
+    display: none;
+  }
+  .ant-picker-panel-container {
+    border-radius: 5px;
+    box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.16);
+    border: solid 1px rgba(84, 110, 122, 0.2);
+  }
+  .ant-picker-header-view {
+    font-size: 16px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: center;
+    color: #546e7a;
+  }
+  .ant-picker-content {
+    th {
+      font-size: 16px;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      text-align: center;
+      color: var(--grey_light);
+    }
+  }
+  .ant-picker-header {
+    position: relative;
+    border-bottom: none;
+    .ant-picker-header-next-btn,
+    .ant-picker-header-prev-btn {
+      visibility: visible !important;
+    }
+    [class*="ant-picker-header-super"] {
+      visibility: hidden;
+    }
+    .ant-picker-header-prev-btn {
+      position: absolute;
+      right: 35px;
+      top: 2px;
+    }
+    .ant-picker-header-next-btn {
+      position: absolute;
+      right: 20px;
+      top: 2px;
+    }
+    .ant-picker-header-view {
+      position: absolute;
+      left: 20px;
+      top: 2px;
+    }
+    .ant-picker-prev-icon,
+    .ant-picker-next-icon {
+      &::before {
+        width: 10px;
+        height: 10px;
+        border-width: 2px 0 0 2px;
+        border-color: var(--grey_light);
+      }
     }
   }
 }

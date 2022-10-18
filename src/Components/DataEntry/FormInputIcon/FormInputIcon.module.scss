@@ -1,0 +1,16 @@
+.field {
+  @apply flex items-center;
+  padding: 9px 14px 10px 9px;
+  border-radius: 4px;
+  box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04);
+  background-color: #fff;
+  input {
+    @apply outline-none w-full;
+    margin-left: 10px;
+    color: var(--grey);
+  }
+  svg {
+    width: 16px;
+    height: 17px;
+  }
+}

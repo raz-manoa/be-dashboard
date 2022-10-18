@@ -11,7 +11,8 @@ export interface TextProps extends React.HTMLAttributes<any> {
     | "grey"
     | "grey-light"
     | "green"
-    | "white";
+    | "white"
+    | "yellow";
   weight?: React.CSSProperties["fontWeight"];
   size?: React.CSSProperties["fontSize"];
   style?: React.CSSProperties;

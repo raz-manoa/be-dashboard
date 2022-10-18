@@ -1,20 +1,17 @@
-.select {
+.datepicker {
+  position: relative;
   :global {
-    .ant-form-item-control-input-content {
+    .ant-picker-range {
       @apply flex items-center;
-      border-radius: 4px;
-      box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04);
-      border: solid 1px rgba(200, 199, 204, 0.4);
-      background-color: var(--white);
-      padding: 4px 13px;
-      svg {
-        margin-right: 10px;
-        fill: var(--grey_light);
-      }
     }
     .ant-picker-range {
-      width: 100%;
-      border: none;
+      opacity: 0;
+      // visibility: hidden;
+      width: 0;
+      height: 38px;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     input {
@@ -29,4 +26,28 @@
 .calendar {
   width: 100%;
   border: none;
+}
+
+.datepickerTrigger {
+  @apply inline-flex items-center;
+  padding: 7px 13.6px 7px 14px;
+  border-radius: 4px;
+  box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04);
+  border: solid 1px rgba(200, 199, 204, 0.4);
+  background-color: #fff;
+  color: #90a4ae;
+  svg {
+    width: 17px;
+    height: 17px;
+    margin-right: 10px;
+    fill: var(--grey_light);
+  }
+}
+
+.datepickerTriggerActive {
+  background-color: var(--grey);
+}
+
+.datepickerTriggerFilled {
+  background-color: var(--red);
 }

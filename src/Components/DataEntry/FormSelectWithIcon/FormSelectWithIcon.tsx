@@ -18,10 +18,21 @@ interface FormSelectWithIconProps extends SelectProps {
   placeholder?: string;
 }
 export default function FormSelectWithIcon(props: FormSelectWithIconProps) {
-  const { options = [], icon = "", rules, name, placeholder } = props;
+  const {
+    options = [],
+    icon = "",
+    rules,
+    name,
+    placeholder,
+    className = "",
+  } = props;
   const { Option } = Select;
   return (
-    <Form.Item rules={rules} name={name} className={styles.select}>
+    <Form.Item
+      rules={rules}
+      name={name}
+      className={`${styles.select} ${className}`}
+    >
       <Icon icon={icon} />
       <Select suffixIcon={<Icon icon="" />} placeholder={placeholder}>
         {options.map((o, index) => (
