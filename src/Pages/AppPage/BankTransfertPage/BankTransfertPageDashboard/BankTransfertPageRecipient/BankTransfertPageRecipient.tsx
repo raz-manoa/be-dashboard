@@ -75,7 +75,7 @@ export default function BankTransfertPageRecipient() {
   return (
     <Card className={styles.card}>
       <div className={`${styles.card__header} mb-6`}>
-        <Text tag="h2" type="h2">
+        <Text tag="h2" type="h2" variant="black2">
           Recipient
         </Text>
         <div className={styles.search}>
