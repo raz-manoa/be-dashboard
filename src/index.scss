@@ -210,9 +210,8 @@ body {
 }
 //modal
 .ant-modal-mask {
-  filter: blur(10px);
-  background-color: #c8c7cc;
-  opacity: 0.7;
+  opacity: 0;
+  display: none !important;
 }
 .ant-modal-content {
   padding: 0 26px;
@@ -242,8 +241,12 @@ body {
   }
   &.ant-btn-default {
     background-color: var(--grey);
+    height: 54px;
+    border: 1px solid #475d68;
+
     &:hover {
       background-color: #475d68;
+      border: 1px solid #475d68;
     }
   }
   &.ant-btn-primary {
@@ -330,4 +333,18 @@ body {
 }
 .ant-modal-close-x {
   display: none;
+}
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
+  .ant-select-selector {
+  box-shadow: none !important;
+  border-color: var(--grey_light);
+}
+.ant-input:focus,
+.ant-input-focused {
+  box-shadow: none;
+  border: 1px solid var(--grey_light);
+}
+.eye-table {
+  width: 19.2px;
+  height: 14px;
 }

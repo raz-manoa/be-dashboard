@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import styles from "./Text.module.scss";
 export interface TextProps extends React.HTMLAttributes<any> {
   tag?: keyof JSX.IntrinsicElements;
-  children: ReactNode;
+  children?: ReactNode;
   type?: "h1" | "h2" | "h3" | "p" | "span";
   variant?:
     | "black"

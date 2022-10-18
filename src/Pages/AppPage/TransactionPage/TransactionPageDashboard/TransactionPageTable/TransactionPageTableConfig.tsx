@@ -42,6 +42,7 @@ export const transactionPageTableColumn: () => Array<
       key: "transactionType",
       dataIndex: "transactionType",
       title: "Transaction type",
+      width: 200,
       render: (value: TransactionPageTableData["transactionType"]) => {
         return (
           <Text tag="span" size={12}>
@@ -54,10 +55,21 @@ export const transactionPageTableColumn: () => Array<
       key: "name",
       dataIndex: "name",
       title: "Name",
+      width: 150,
       render: (value: TransactionPageTableData["name"]) => {
+        const splitValue = value.split("/");
         return (
-          <Text tag="span" weight={600} size={12}>
-            {value}
+          <Text tag="div" weight={600} size={12} className="text-center">
+            {splitValue[0]}{" "}
+            {splitValue[1] ? (
+              <>
+                /
+                <br />
+                {splitValue[1]}
+              </>
+            ) : (
+              <></>
+            )}
           </Text>
         );
       },
@@ -100,6 +112,7 @@ export const transactionPageTableColumn: () => Array<
       key: "transactionFee",
       dataIndex: "transactionFee",
       title: "Transaction Fee",
+      width: 150,
       render: (value: TransactionPageTableData["transactionFee"]) => {
         return (
           <Text tag="span" size={12}>
@@ -124,7 +137,7 @@ export const transactionPageTableColumn: () => Array<
       key: "timestamp",
       dataIndex: "timestamp",
       title: "Timestamp",
-      width: 100,
+      width: 150,
       render: (value: TransactionPageTableData["timestamp"]) => {
         return (
           <Text tag="span" variant="grey" size={14}>
@@ -139,7 +152,7 @@ export const transactionPageTableColumn: () => Array<
       title: "",
       width: 5,
       render: (value: TransactionPageTableData["transactionType"]) => {
-        return <Icon icon="eye" size={20} color="#546e7a" />;
+        return <Icon icon="eye" color="#546e7a" className="eye-table" />;
       },
     },
   ];

@@ -79,7 +79,7 @@ const BankTransfertPageDashboard = React.lazy(
 const BankTransfertPageAddBeneficiary = React.lazy(
   () =>
     import(
-      "@/Pages/AppPage/BankTransfertPage/BankTransfertPageDashboard/BankTransfertPageAddBeneficiary/BankTransfertPageAddBeneficiary"
+      "@/Pages/AppPage/BankTransfertPage/BankTransfertPageAddBeneficiary/BankTransfertPageAddBeneficiary"
     )
 );
 const SavingsPage = React.lazy(
