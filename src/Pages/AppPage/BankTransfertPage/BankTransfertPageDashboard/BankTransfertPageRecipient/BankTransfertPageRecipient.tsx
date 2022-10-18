@@ -29,27 +29,13 @@ export default function BankTransfertPageRecipient() {
     setIsModalOpen(false);
   };
 
-  const data: CardConfirmItemProps[] = [
-    {
-      label: "Amount from",
-      value: "12.00 USD",
-      color: "black",
-    },
-    {
-      label: "Amount to",
-      value: "12.00 USD",
-      color: "black",
-    },
-    {
-      label: "Transaction Fee",
-      value: "0.50 USD",
-      color: "black",
-    },
+  const dataModal: CardConfirmItemProps[] = [
     {
       label: "Recipient",
       value: "John Smith",
       color: "black",
     },
+
     {
       label: "Country",
       value: "USA",
@@ -58,6 +44,11 @@ export default function BankTransfertPageRecipient() {
     {
       label: "City",
       value: "Washington",
+      color: "black",
+    },
+    {
+      label: "Adresse",
+      value: "Street Address",
       color: "black",
     },
     {
@@ -78,11 +69,6 @@ export default function BankTransfertPageRecipient() {
     {
       label: "IBAN",
       value: "876165318323290823132",
-      color: "black",
-    },
-    {
-      label: "Message",
-      value: "this is a msg",
       color: "black",
     },
   ];
@@ -250,7 +236,7 @@ export default function BankTransfertPageRecipient() {
         width={550}
         className={styles.modal}
       >
-        {data.map((d, id) => (
+        {dataModal.map((d, id) => (
           <CardConfirmItem
             label={d.label}
             value={d.value}
