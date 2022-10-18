@@ -1,9 +1,9 @@
 import CardConfirm, {
-  CardConfirmItem,
+  CardConfirmItemProps,
 } from "@/Components/Display/CardConfirm/CardConfirm";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
-const data: CardConfirmItem[] = [
+const data: CardConfirmItemProps[] = [
   {
     label: "Amout",
     value: "-100.00 USD",

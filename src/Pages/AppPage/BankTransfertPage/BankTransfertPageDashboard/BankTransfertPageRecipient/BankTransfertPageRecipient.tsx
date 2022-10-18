@@ -73,7 +73,7 @@ export default function BankTransfertPageRecipient() {
     },
   ];
   return (
-    <Card className={styles.card}>
+    <Card className={`${styles.card} modal`}>
       <div className={`${styles.card__header} mb-6`}>
         <Text tag="h2" type="h2">
           Recipient
@@ -235,6 +235,7 @@ export default function BankTransfertPageRecipient() {
         title="Add Beneficiary"
         width={550}
         className={styles.modal}
+        getContainer={() => document.body}
       >
         {dataModal.map((d, id) => (
           <CardConfirmItem

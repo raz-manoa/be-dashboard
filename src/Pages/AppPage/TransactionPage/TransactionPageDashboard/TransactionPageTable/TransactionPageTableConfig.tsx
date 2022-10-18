@@ -139,7 +139,7 @@ export const transactionPageTableColumn: () => Array<
       title: "",
       width: 5,
       render: (value: TransactionPageTableData["transactionType"]) => {
-        return <Icon icon="eye" size={20} color="#546e7a" />;
+        return <Icon icon="eye" color="#546e7a" className="eye-table" />;
       },
     },
   ];
