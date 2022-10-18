@@ -10,6 +10,7 @@ interface CardModalItemProps {
   msg?: string;
   optional?: string;
   num?: number;
+  weight?: TextProps["weight"];
   onClick?(e: React.MouseEvent): void;
 }
 export default function CardConfirmItem(props: CardModalItemProps) {
@@ -22,6 +23,7 @@ export default function CardConfirmItem(props: CardModalItemProps) {
     msg = "",
     num,
     optional,
+    weight = 600,
   } = props;
   return (
     <>
@@ -65,7 +67,13 @@ export default function CardConfirmItem(props: CardModalItemProps) {
           }
         >
           <div>
-            <Text tag="span" variant={color} type="span" size={12} weight={600}>
+            <Text
+              tag="span"
+              variant={color}
+              type="span"
+              size={12}
+              weight={weight}
+            >
               {value}
             </Text>
             {num && (
