@@ -241,6 +241,8 @@ export default function BankTransfertPageRecipient() {
             label={d.label}
             value={d.value}
             icon={d.icon}
+            msg={d.msg}
+            optional={d.optional}
             key={`d-${id}`}
           />
         ))}

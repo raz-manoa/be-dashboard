@@ -7,9 +7,11 @@ import CardConfirmItem from "./CardConfirmItem";
 
 export interface CardConfirmItemProps {
   label: string;
-  value: string;
+  value?: string;
   color?: TextProps["variant"];
   icon?: string;
+  msg?: string;
+  optional?: string;
 }
 
 interface CardConfirmProps {
@@ -46,6 +48,8 @@ export default function CardConfirm(props: CardConfirmProps) {
             value={d.value}
             color={d.color}
             icon={d.icon}
+            msg={d.msg}
+            optional={d.optional}
             key={`d-${index}`}
           />
         ))}

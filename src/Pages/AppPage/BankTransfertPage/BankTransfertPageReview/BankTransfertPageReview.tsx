@@ -60,7 +60,7 @@ const data: CardConfirmItemProps[] = [
   },
   {
     label: "Message",
-    value: "this is a msg",
+    msg: "this is a msg",
     color: "black",
   },
 ];
