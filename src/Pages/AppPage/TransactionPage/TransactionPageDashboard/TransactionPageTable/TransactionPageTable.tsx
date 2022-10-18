@@ -5,15 +5,18 @@ import {
   TransactionPageTableData,
 } from "./TransactionPageTableConfig";
 import useTransactionPageTableLogic from "./TransactionPageTableLogic";
+import styles from "./TransactionPageTable.module.scss";
 
 export default function TransactionPageTable() {
   const transactionPageTableDataTmp = useTransactionPageTableLogic();
 
   return (
-    <Card className="mt-5">
+    <Card className={styles.tableTransaction}>
       <Table<TransactionPageTableData>
         dataSource={transactionPageTableDataTmp}
         columns={transactionPageTableColumn()}
+        scroll={{ x: undefined, y: window.innerHeight - 410 }}
+        tableLayout={"auto"}
       />
     </Card>
   );

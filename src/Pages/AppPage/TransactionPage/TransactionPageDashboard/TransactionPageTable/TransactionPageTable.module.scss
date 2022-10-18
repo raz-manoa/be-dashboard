@@ -1,0 +1,16 @@
+.tableTransaction {
+  @apply mt-5;
+  :global {
+    .ant-table-body {
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        opacity: 0.5;
+        border-radius: 4px;
+        background-color: #c8c7cc;
+      }
+    }
+  }
+}
