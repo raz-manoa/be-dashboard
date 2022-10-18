@@ -3,20 +3,10 @@ import Text, { TextProps } from "@/Components/General/Text/Text";
 import React, { ReactNode } from "react";
 import Card from "../Card/Card";
 import styles from "./CardConfirm.module.scss";
-import CardConfirmItem from "./CardConfirmItem";
-
-export interface CardConfirmItemProps {
-  label: string;
-  value?: string;
-  color?: TextProps["variant"];
-  icon?: string;
-  msg?: string;
-  optional?: string;
-  num?: number;
-}
+import CardConfirmItem, { CardModalItemProps } from "./CardConfirmItem";
 
 interface CardConfirmProps {
-  data: CardConfirmItemProps[];
+  data: CardModalItemProps[];
   btnPrimary?: string;
   title: string;
   btnSecondary?: string;
@@ -44,16 +34,7 @@ export default function CardConfirm(props: CardConfirmProps) {
       </div>
       <div className={styles.cardModal__body}>
         {data.map((d, index) => (
-          <CardConfirmItem
-            label={d.label}
-            value={d.value}
-            color={d.color}
-            icon={d.icon}
-            msg={d.msg}
-            num={d.num}
-            optional={d.optional}
-            key={`d-${index}`}
-          />
+          <CardConfirmItem {...d} key={`d-${index}`} />
         ))}
       </div>
       <div
@@ -62,12 +43,12 @@ export default function CardConfirm(props: CardConfirmProps) {
         }`}
       >
         {btnPrimary && (
-          <Button type="primary" className="btn" onClick={onClickFirstBtn}>
+          <Button type="secondary" className="btn" onClick={onClickFirstBtn}>
             {btnPrimary}
           </Button>
         )}
         {btnSecondary && (
-          <Button type="secondary" className="btn" onClick={onClickSecondBtn}>
+          <Button type="primary" className="btn" onClick={onClickSecondBtn}>
             {btnSecondary}
           </Button>
         )}

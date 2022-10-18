@@ -7,7 +7,7 @@ import CurrentCardList from "@/Components/Display/CurrentCardList/CurrentCardLis
 import TitleCard from "@/Components/Display/TitleCard/TitleCard";
 import Card from "@/Components/Display/Card/Card";
 import CardConfirm, {
-  CardConfirmItemProps,
+  CardModalItemProps,
 } from "@/Components/Display/CardConfirm/CardConfirm";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
 import { useForm } from "antd/es/form/Form";
@@ -144,7 +144,7 @@ const StyleguidePage = () => {
   const [form] = useForm();
   useSetAppLayoutTitle("Style Guide");
 
-  const data: CardConfirmItemProps[] = [
+  const data: CardModalItemProps[] = [
     {
       label: "Test",
       value: "100",

@@ -4,14 +4,21 @@
     border-bottom: solid 1px rgba(84, 110, 122, 0.2);
   }
   &__list {
-    @apply flex items-end justify-between;
+    @apply flex items-center justify-between;
     padding: 18px 15px;
     border-bottom: solid 1px rgba(84, 110, 122, 0.2);
+    .valueWrap {
+      text-align: right;
+    }
   }
   &__msg {
     @apply flex-col items-start justify-start;
     .msg {
       margin-top: 15px;
+    }
+    .valueWrap {
+      margin-top: 12px;
+      text-align: left;
     }
   }
   &__label {

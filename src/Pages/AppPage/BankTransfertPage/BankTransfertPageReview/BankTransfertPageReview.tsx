@@ -1,13 +1,13 @@
-import CardConfirm, {
-  CardConfirmItemProps,
-} from "@/Components/Display/CardConfirm/CardConfirm";
+import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
+import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirmItem";
+import Text from "@/Components/General/Text/Text";
 import {
   useAppLayoutContext,
   useSetAppLayoutTitle,
 } from "@/Layouts/AppLayout/AppLayoutContext";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-const data: CardConfirmItemProps[] = [
+const data: CardModalItemProps[] = [
   {
     label: "Amount from",
     value: "12.00 USD",
@@ -60,8 +60,14 @@ const data: CardConfirmItemProps[] = [
   },
   {
     label: "Message",
-    msg: "this is a msg",
+    value: (
+      <Text variant="black" size={14}>
+        this is a msg
+      </Text>
+    ),
     color: "black",
+    align: "row",
+    weight: 400,
   },
 ];
 export default function BankTransfertPageReview() {

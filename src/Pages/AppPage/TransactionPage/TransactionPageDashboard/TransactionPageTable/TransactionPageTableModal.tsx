@@ -1,5 +1,5 @@
 import CardConfirmItem from "@/Components/Display/CardConfirm/CardConfirmItem";
-import { TextProps } from "@/Components/General/Text/Text";
+import Text, { TextProps } from "@/Components/General/Text/Text";
 import Modal, { ModalProps } from "antd/lib/modal";
 import React from "react";
 import { TransactionPageTableData } from "./TransactionPageTableConfig";
@@ -53,7 +53,12 @@ export default function TransactionPageTableModal(
         weight={400}
         label="Description"
         color="grey"
-        msg="Lorem ipsum dolor sit amet, consectetur."
+        value={
+          <Text size={12} variant="black" weight={400}>
+            Lorem ipsum dolor sit amet, consectetur.
+          </Text>
+        }
+        align="row"
       />
     </Modal>
   );
