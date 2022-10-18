@@ -9,7 +9,8 @@ import { useNavigate } from "react-router-dom";
 import Icon from "@/Components/General/Icon/Icon";
 import Modal from "antd/lib/modal";
 import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
-import { CardConfirmItem } from "@/Components/Display/CardConfirm/CardConfirm";
+import { CardConfirmItemProps } from "@/Components/Display/CardConfirm/CardConfirm";
+import CardConfirmItem from "@/Components/Display/CardConfirm/CardConfirmItem";
 
 export default function BankTransfertPageRecipient() {
   const navigate = useNavigate();
@@ -27,27 +28,14 @@ export default function BankTransfertPageRecipient() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const data: CardConfirmItem[] = [
-    {
-      label: "Amount from",
-      value: "12.00 USD",
-      color: "black",
-    },
-    {
-      label: "Amount to",
-      value: "12.00 USD",
-      color: "black",
-    },
-    {
-      label: "Transaction Fee",
-      value: "0.50 USD",
-      color: "black",
-    },
+
+  const dataModal: CardConfirmItemProps[] = [
     {
       label: "Recipient",
       value: "John Smith",
       color: "black",
     },
+
     {
       label: "Country",
       value: "USA",
@@ -56,6 +44,11 @@ export default function BankTransfertPageRecipient() {
     {
       label: "City",
       value: "Washington",
+      color: "black",
+    },
+    {
+      label: "Adresse",
+      value: "Street Address",
       color: "black",
     },
     {
@@ -76,11 +69,6 @@ export default function BankTransfertPageRecipient() {
     {
       label: "IBAN",
       value: "876165318323290823132",
-      color: "black",
-    },
-    {
-      label: "Message",
-      value: "this is a msg",
       color: "black",
     },
   ];
@@ -233,7 +221,7 @@ export default function BankTransfertPageRecipient() {
             type="primary"
             onClick={() => {
               form.validateFields();
-              navigate({ pathname: "/app/bank-transfer/bank-review" });
+              navigate({ pathname: "/app/bank-transfer/review" });
             }}
           >
             Continue
@@ -247,7 +235,18 @@ export default function BankTransfertPageRecipient() {
         title="Add Beneficiary"
         width={550}
         className={styles.modal}
-      ></Modal>
+      >
+        {dataModal.map((d, id) => (
+          <CardConfirmItem
+            label={d.label}
+            value={d.value}
+            icon={d.icon}
+            msg={d.msg}
+            optional={d.optional}
+            key={`d-${id}`}
+          />
+        ))}
+      </Modal>
     </Card>
   );
 }

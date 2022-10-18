@@ -34,6 +34,7 @@ export default function FormInput(props: FormInputProps) {
       className={`${styles.input} ${className}`}
       rules={rules}
     >
+      <label htmlFor="">{label}</label>
       <Input
         size="large"
         placeholder={placeholder}

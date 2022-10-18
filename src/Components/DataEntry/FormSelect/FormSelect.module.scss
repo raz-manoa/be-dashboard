@@ -30,3 +30,17 @@
     }
   }
 }
+.option {
+  background-color: var(--white) !important;
+  font-weight: 500;
+  font-size: 14px;
+  color: #90a4ae !important;
+  transition: 0.2s ease-in-out;
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(84, 110, 122, 0.2);
+  }
+  &:hover {
+    font-weight: 600;
+    color: #546e7a !important;
+  }
+}
