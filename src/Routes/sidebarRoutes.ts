@@ -237,12 +237,12 @@ const sidebarRoutes: ISidebarRoute[] = [
         component: BankTransfertPageAddBeneficiary,
       },
       {
-        path: "bank-review",
+        path: "review",
         name: "bank-review-confirm",
         component: BankTransfertPageReview,
       },
       {
-        path: "bank-confirm",
+        path: "confirm",
         name: "bank-success-confirm",
         component: BankTransfertPageSuccess,
       },
@@ -313,12 +313,12 @@ const sidebarRoutes: ISidebarRoute[] = [
         component: CryptoExchangePageDashboard,
       },
       {
-        path: "crypto-exchange-review",
+        path: "review",
         name: "crypto-exchange-review",
         component: CryptoExchangePageReview,
       },
       {
-        path: "crypto-exchange-confirm",
+        path: "confirm",
         name: "crypto-exchange-confirm",
         component: CryptoExchangePageConfirm,
       },

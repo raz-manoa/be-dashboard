@@ -1,10 +1,12 @@
 import CardConfirm, {
   CardConfirmItemProps,
 } from "@/Components/Display/CardConfirm/CardConfirm";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function CryptoExchangePageReview() {
+  useSetAppLayoutTitle("Crypto Exchange");
   const navigate = useNavigate();
   const data: CardConfirmItemProps[] = [
     {
@@ -42,7 +44,7 @@ export default function CryptoExchangePageReview() {
       }}
       onClickSecondBtn={() => {
         navigate({
-          pathname: "/app/crypto-exchange/crypto-exchange-confirm",
+          pathname: "/app/crypto-exchange/confirm",
         });
       }}
     />

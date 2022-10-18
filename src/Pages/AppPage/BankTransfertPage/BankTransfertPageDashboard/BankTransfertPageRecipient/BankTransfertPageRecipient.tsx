@@ -221,7 +221,7 @@ export default function BankTransfertPageRecipient() {
             type="primary"
             onClick={() => {
               form.validateFields();
-              navigate({ pathname: "/app/bank-transfer/bank-review" });
+              navigate({ pathname: "/app/bank-transfer/review" });
             }}
           >
             Continue

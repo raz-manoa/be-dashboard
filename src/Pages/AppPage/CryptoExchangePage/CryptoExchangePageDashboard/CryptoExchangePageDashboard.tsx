@@ -107,7 +107,7 @@ const CryptoExchangePageDashboard = () => {
           type="primary"
           onClick={() => {
             form.validateFields();
-            navigate("crypto-exchange-review");
+            navigate("review");
           }}
           className="common__btn"
         >
