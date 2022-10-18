@@ -135,6 +135,17 @@ const CryptoExchangePageDashboard = React.lazy(
     )
 );
 const OtcPage = React.lazy(() => import("../Pages/AppPage/OtcPage/OtcPage"));
+const OtcPageSuccess = React.lazy(
+  () => import("../Pages/AppPage/OtcPage/OtcPageSuccess/OtcPageSuccess")
+);
+
+const OtcPageReview = React.lazy(
+  () => import("../Pages/AppPage/OtcPage/OtcPageReview/OtcPageReview")
+);
+
+const OtcPageDashboard = React.lazy(
+  () => import("../Pages/AppPage/OtcPage/OtcPageDashboard/OtcPageDashboard")
+);
 
 const SavingPageReview = React.lazy(
   () => import("../Pages/AppPage/SavingsPage/SavingPageReview/SavingPageReview")
@@ -324,7 +335,29 @@ const sidebarRoutes: ISidebarRoute[] = [
       },
     ],
   },
-  { path: "otc", name: "OTC", icon: "otc", component: OtcPage },
+  {
+    path: "otc",
+    name: "OTC",
+    icon: "otc",
+    component: OtcPage,
+    children: [
+      {
+        path: "",
+        name: "OTC-dashboard",
+        component: OtcPageDashboard,
+      },
+      {
+        path: "review",
+        name: "OTC-review",
+        component: OtcPageReview,
+      },
+      {
+        path: "confirm",
+        name: "OTC-success",
+        component: OtcPageSuccess,
+      },
+    ],
+  },
 ];
 
 export default sidebarRoutes;
