@@ -29,7 +29,10 @@
       }
     }
     .ant-select-focused {
-      box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04);
+      box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04) !important;
+      .ant-select-selector {
+        box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04) !important;
+      }
     }
     .ant-form-item-control-input-content {
       @apply flex items-center w-full;
