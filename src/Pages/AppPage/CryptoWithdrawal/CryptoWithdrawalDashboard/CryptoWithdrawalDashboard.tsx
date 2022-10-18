@@ -24,7 +24,7 @@ const CryptoWithdrawalDashboard = () => {
 
   const handleWithdrawal = () => {
     form.validateFields();
-    navigate("crypto-withdraw-review");
+    navigate("review");
   };
   return (
     <Card className="common__card">

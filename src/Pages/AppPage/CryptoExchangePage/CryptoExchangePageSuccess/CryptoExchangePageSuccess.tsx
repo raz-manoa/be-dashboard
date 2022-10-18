@@ -1,8 +1,10 @@
 import Card from "@/Components/Display/Card/Card";
 import CardConfirm from "@/Components/Display/ConfirmModal/CardConfirm";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import React from "react";
 
 export default function CryptoExchangePageSuccess() {
+  useSetAppLayoutTitle("Crypto Exchange");
   return (
     <Card className="common__card">
       <CardConfirm
