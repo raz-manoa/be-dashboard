@@ -1,6 +1,7 @@
 .tableTransaction {
   @apply mt-5;
   padding-top: 0;
+  padding-bottom: 27px;
   :global {
     .ant-table-body {
       &::-webkit-scrollbar {
@@ -12,6 +13,9 @@
         border-radius: 4px;
         background-color: #c8c7cc;
       }
+    }
+    .ant-pagination {
+      margin-bottom: 0;
     }
   }
 }
