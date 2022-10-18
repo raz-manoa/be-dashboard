@@ -322,3 +322,9 @@ body {
     }
   }
 }
+.ant-input:hover {
+  border: 1px solid var(--grey_light);
+}
+.ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+  border: 1px solid var(--grey_light);
+}
