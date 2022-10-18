@@ -6,6 +6,7 @@ import {
 } from "./TransactionPageTableConfig";
 import useTransactionPageTableLogic from "./TransactionPageTableLogic";
 import styles from "./TransactionPageTable.module.scss";
+import Modal from "antd/lib/modal/Modal";
 
 export default function TransactionPageTable() {
   const transactionPageTableDataTmp = useTransactionPageTableLogic();
@@ -18,6 +19,7 @@ export default function TransactionPageTable() {
         scroll={{ x: undefined, y: window.innerHeight - 410 }}
         tableLayout={"auto"}
       />
+      {/* <Modal title="Transaction Details" open={}></Modal> */}
     </Card>
   );
 }

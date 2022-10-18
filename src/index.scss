@@ -210,9 +210,8 @@ body {
 }
 //modal
 .ant-modal-mask {
-  filter: blur(10px);
-  background-color: #c8c7cc;
-  opacity: 0.7;
+  opacity: 0;
+  display: none !important;
 }
 .ant-modal-content {
   padding: 0 26px;

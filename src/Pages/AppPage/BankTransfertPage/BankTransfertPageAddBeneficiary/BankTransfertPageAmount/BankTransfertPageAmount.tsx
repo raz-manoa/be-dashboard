@@ -3,9 +3,16 @@ import Text from "@/Components/General/Text/Text";
 import styles from "./BankTransfertPageAmount.module.scss";
 import React from "react";
 
-export default function BankTransfertPageAmount() {
+interface BankTransfertPageAmountProps {
+  overlay?: boolean;
+}
+
+export default function BankTransfertPageAmount(
+  props: BankTransfertPageAmountProps
+) {
+  const { overlay } = props;
   return (
-    <Card>
+    <Card className={overlay ? styles.overlay : ""}>
       <Text tag="h2" type="h2">
         Amount
       </Text>

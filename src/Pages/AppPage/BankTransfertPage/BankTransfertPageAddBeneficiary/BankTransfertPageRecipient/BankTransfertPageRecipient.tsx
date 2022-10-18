@@ -11,69 +11,23 @@ import Modal from "antd/lib/modal";
 import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
 import { CardConfirmItemProps } from "@/Components/Display/CardConfirm/CardConfirm";
 import CardConfirmItem from "@/Components/Display/CardConfirm/CardConfirmItem";
+import BankTransfertPageDashboardModal from "../BankTransfertPageDashboardModal/BankTransfertPageDashboardModal";
 
-export default function BankTransfertPageRecipient() {
+interface BankTransfertPageRecipientProps {
+  onAddBeneficiary?(e: React.MouseEvent): void;
+  overlay: boolean;
+}
+
+export default function BankTransfertPageRecipient(
+  props: BankTransfertPageRecipientProps
+) {
+  const { onAddBeneficiary, overlay } = props;
+
   const navigate = useNavigate();
   const [form] = useForm();
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
-  const dataModal: CardConfirmItemProps[] = [
-    {
-      label: "Recipient",
-      value: "John Smith",
-      color: "black",
-    },
-
-    {
-      label: "Country",
-      value: "USA",
-      color: "black",
-    },
-    {
-      label: "City",
-      value: "Washington",
-      color: "black",
-    },
-    {
-      label: "Adresse",
-      value: "Street Address",
-      color: "black",
-    },
-    {
-      label: "Bank Name",
-      value: "City Bank",
-      color: "black",
-    },
-    {
-      label: "Account Number",
-      value: "000449876447656",
-      color: "black",
-    },
-    {
-      label: "BIC/SWIFT Code",
-      value: "3003",
-      color: "black",
-    },
-    {
-      label: "IBAN",
-      value: "876165318323290823132",
-      color: "black",
-    },
-  ];
   return (
-    <Card className={`${styles.card} modal`}>
+    <Card className={`${styles.card} modal ${overlay ? styles.overlay : ""}`}>
       <div className={`${styles.card__header} mb-6`}>
         <Text tag="h2" type="h2">
           Recipient
@@ -214,7 +168,7 @@ export default function BankTransfertPageRecipient() {
           >
             Back
           </Button>
-          <Button type="default" onClick={showModal}>
+          <Button type="default" onClick={onAddBeneficiary}>
             ADD BENEFICIARY
           </Button>
           <Button
@@ -228,26 +182,6 @@ export default function BankTransfertPageRecipient() {
           </Button>
         </div>
       </FormCustom>
-      <Modal
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        title="Add Beneficiary"
-        width={550}
-        className={styles.modal}
-        getContainer={() => document.body}
-      >
-        {dataModal.map((d, id) => (
-          <CardConfirmItem
-            label={d.label}
-            value={d.value}
-            icon={d.icon}
-            msg={d.msg}
-            optional={d.optional}
-            key={`d-${id}`}
-          />
-        ))}
-      </Modal>
     </Card>
   );
 }
