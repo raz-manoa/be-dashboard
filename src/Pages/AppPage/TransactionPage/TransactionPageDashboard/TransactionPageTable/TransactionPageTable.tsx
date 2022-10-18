@@ -16,7 +16,7 @@ export default function TransactionPageTable() {
       <Table<TransactionPageTableData>
         dataSource={transactionPageTableDataTmp}
         columns={transactionPageTableColumn()}
-        scroll={{ x: undefined, y: window.innerHeight - 410 }}
+        scroll={{ x: undefined, y: window.innerHeight - 380 }}
         tableLayout={"auto"}
       />
       {/* <Modal title="Transaction Details" open={}></Modal> */}

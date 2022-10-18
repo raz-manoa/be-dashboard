@@ -13,7 +13,7 @@ export default function SavingPageTable() {
 
   return (
     <Card className="mt-5">
-      <Text tag="h2" type="h2">
+      <Text tag="h2" type="h2" variant="black2">
         Savings Transactions
       </Text>
       <Table<SavingPageTableData>

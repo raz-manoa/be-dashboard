@@ -17,7 +17,7 @@ const OtcPageDashboard = () => {
 
   return (
     <Card className="common__card">
-      <Text tag="h2" type="h2">
+      <Text tag="h2" type="h2" variant="black2">
         Amount
       </Text>
       <FormCustom form={form}>

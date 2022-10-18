@@ -38,7 +38,7 @@ export default function CardConfirm(props: CardConfirmProps) {
   return (
     <Card className={`${styles.cardModal} ${className}`}>
       <div className={styles.cardModal__header}>
-        <Text tag="h2" type="h2">
+        <Text tag="h2" type="h2" variant="black2">
           {title}
         </Text>
       </div>

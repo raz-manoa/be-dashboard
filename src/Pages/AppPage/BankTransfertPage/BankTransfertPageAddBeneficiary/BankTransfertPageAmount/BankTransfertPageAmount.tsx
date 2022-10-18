@@ -13,7 +13,7 @@ export default function BankTransfertPageAmount(
   const { overlay } = props;
   return (
     <Card className={overlay ? styles.overlay : ""}>
-      <Text tag="h2" type="h2">
+      <Text tag="h2" type="h2" variant="black2">
         Amount
       </Text>
       <div className={styles.amount}>

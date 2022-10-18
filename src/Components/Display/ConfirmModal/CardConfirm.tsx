@@ -19,7 +19,7 @@ export default function CardConfirm(props: ConfirmModalProps) {
   const { title, date, msg, txt, link, status = "success" } = props;
   return (
     <div>
-      <Text tag="h2" type="h2" className="mb-6">
+      <Text tag="h2" variant="black2" className="mb-6">
         {title}
       </Text>
       <Text tag="p" type="p" variant="grey" className="mb-4" size={14}>
