@@ -50,7 +50,7 @@ export default function CryptoWithdrawalReview() {
       }}
       onClickSecondBtn={() => {
         navigate({
-          pathname: "/app/savings/confirm",
+          pathname: "",
         });
       }}
     />
