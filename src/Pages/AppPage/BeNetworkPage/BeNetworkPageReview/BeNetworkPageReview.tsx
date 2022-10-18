@@ -2,10 +2,12 @@ import Card from "@/Components/Display/Card/Card";
 import CardConfirm, {
   CardConfirmItemProps,
 } from "@/Components/Display/CardConfirm/CardConfirm";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function BeNetworkPageReview() {
+  useSetAppLayoutTitle("Be Network");
   const data: CardConfirmItemProps[] = [
     { label: "Amount", value: "+454.00 CHF", color: "red" },
     { label: "Transaction Fee", value: "0.00 USD", color: "black" },
@@ -28,7 +30,7 @@ export default function BeNetworkPageReview() {
     navigate("/app/be-network");
   };
   const handleConfirm = () => {
-    navigate("");
+    navigate("/app/be-network/confirm");
   };
   return (
     <CardConfirm

@@ -16,6 +16,12 @@ const TransactionPage = React.lazy(
 const BeNetworkPage = React.lazy(
   () => import("../Pages/AppPage/BeNetworkPage/BeNetworkPage")
 );
+const BeNetworkPageConfirm = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/BeNetworkPage/BeNetworkPageConfirm/BeNetworkPageConfirm"
+    )
+);
 const BeNetworkPageReview = React.lazy(
   () =>
     import(
@@ -169,8 +175,13 @@ const sidebarRoutes: ISidebarRoute[] = [
       },
       {
         path: "review",
-        name: "Be Network dashboard",
+        name: "Be Network review",
         component: BeNetworkPageReview,
+      },
+      {
+        path: "confirm",
+        name: "Be Network confirm",
+        component: BeNetworkPageConfirm,
       },
     ],
   },

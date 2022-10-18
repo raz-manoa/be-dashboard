@@ -1,12 +1,12 @@
 import CardConfirm, {
-  CardConfirmItem,
+  CardConfirmItemProps,
 } from "@/Components/Display/CardConfirm/CardConfirm";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function CryptoExchangePageReview() {
   const navigate = useNavigate();
-  const data: CardConfirmItem[] = [
+  const data: CardConfirmItemProps[] = [
     {
       label: "From",
       value: "100.00 SOL",
