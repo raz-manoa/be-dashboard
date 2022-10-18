@@ -331,3 +331,13 @@ body {
 .ant-modal-close-x {
   display: none;
 }
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
+  .ant-select-selector {
+  box-shadow: none !important;
+  border-color: var(--grey_light);
+}
+.ant-input:focus,
+.ant-input-focused {
+  box-shadow: none;
+  border: 1px solid var(--grey_light);
+}
