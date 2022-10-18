@@ -1,6 +1,6 @@
 import Card from "@/Components/Display/Card/Card";
 import CardConfirm, {
-  CardConfirmItem,
+  CardConfirmItemProps,
 } from "@/Components/Display/CardConfirm/CardConfirm";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import React from "react";
@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 export default function CryptoWithdrawalReview() {
   useSetAppLayoutTitle("Crypto Withdrawal");
   const navigate = useNavigate();
-  const data: CardConfirmItem[] = [
+  const data: CardConfirmItemProps[] = [
     {
       label: "Sending",
       value: "0.00111111 ETH",

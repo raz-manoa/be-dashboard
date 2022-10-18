@@ -5,7 +5,7 @@ import Card from "../Card/Card";
 import styles from "./CardConfirm.module.scss";
 import CardConfirmItem from "./CardConfirmItem";
 
-export interface CardConfirmItem {
+export interface CardConfirmItemProps {
   label: string;
   value: string;
   color?: TextProps["variant"];
@@ -13,7 +13,7 @@ export interface CardConfirmItem {
 }
 
 interface CardConfirmProps {
-  data: CardConfirmItem[];
+  data: CardConfirmItemProps[];
   btnPrimary?: string;
   title: string;
   btnSecondary?: string;
@@ -40,17 +40,15 @@ export default function CardConfirm(props: CardConfirmProps) {
         </Text>
       </div>
       <div className={styles.cardModal__body}>
-        {data.map((d, index) => {
-          return (
-            <CardConfirmItem
-              label={d.label}
-              value={d.value}
-              color={d.color}
-              icon={d.icon}
-              key={`d-${index}`}
-            />
-          );
-        })}
+        {data.map((d, index) => (
+          <CardConfirmItem
+            label={d.label}
+            value={d.value}
+            color={d.color}
+            icon={d.icon}
+            key={`d-${index}`}
+          />
+        ))}
       </div>
       <div
         className={`${styles.cardModal__footer} ${

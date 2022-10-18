@@ -9,7 +9,8 @@ import { useNavigate } from "react-router-dom";
 import Icon from "@/Components/General/Icon/Icon";
 import Modal from "antd/lib/modal";
 import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
-import { CardConfirmItem } from "@/Components/Display/CardConfirm/CardConfirm";
+import { CardConfirmItemProps } from "@/Components/Display/CardConfirm/CardConfirm";
+import CardConfirmItem from "@/Components/Display/CardConfirm/CardConfirmItem";
 
 export default function BankTransfertPageRecipient() {
   const navigate = useNavigate();
@@ -27,7 +28,8 @@ export default function BankTransfertPageRecipient() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const data: CardConfirmItem[] = [
+
+  const data: CardConfirmItemProps[] = [
     {
       label: "Amount from",
       value: "12.00 USD",
@@ -247,7 +249,16 @@ export default function BankTransfertPageRecipient() {
         title="Add Beneficiary"
         width={550}
         className={styles.modal}
-      ></Modal>
+      >
+        {data.map((d, id) => (
+          <CardConfirmItem
+            label={d.label}
+            value={d.value}
+            icon={d.icon}
+            key={`d-${id}`}
+          />
+        ))}
+      </Modal>
     </Card>
   );
 }
