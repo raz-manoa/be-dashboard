@@ -2,7 +2,7 @@ import Icon from "@/Components/General/Icon/Icon";
 import Select, { SelectProps } from "antd/es/select";
 import Form, { Rule } from "antd/es/form";
 import { NamePath } from "antd/es/form/interface";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./FormSelectWithIcon.module.scss";
 
 interface SelectOption {
@@ -25,16 +25,36 @@ export default function FormSelectWithIcon(props: FormSelectWithIconProps) {
     name,
     placeholder,
     className = "",
+    ...rest
   } = props;
   const { Option } = Select;
+  const [isFocus, setIsFocus] = useState(false);
+  const [currentValue, setCurrentValue] = useState<string>("");
+
+  const handleFocus = () => {
+    setIsFocus(!isFocus);
+  };
+
+  const handleChange = (value: string) => {
+    setCurrentValue(value);
+  };
+
   return (
     <Form.Item
       rules={rules}
       name={name}
-      className={`${styles.select} ${className}`}
+      className={`${styles.select} ${isFocus ? "focus" : ""} ${
+        currentValue !== "" ? "active" : ""
+      } ${className}`}
     >
       <Icon icon={icon} />
-      <Select suffixIcon={<Icon icon="" />} placeholder={placeholder}>
+      <Select
+        suffixIcon={<Icon icon="" />}
+        placeholder={placeholder}
+        onFocus={handleFocus}
+        onChange={handleChange}
+        onBlur={handleFocus}
+      >
         {options.map((o, index) => (
           <Option key={`o-${index}`} value={o.value} className={styles.option}>
             {o.label}

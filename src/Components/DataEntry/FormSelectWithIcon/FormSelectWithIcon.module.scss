@@ -28,6 +28,15 @@
         padding: 3px 12.9px 3px 40.1px;
       }
     }
+    .ant-select-focused {
+      box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04) !important;
+      .ant-select-selector {
+        box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04) !important;
+      }
+    }
+    .ant-select-show-arrow {
+      box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04) !important;
+    }
     .ant-form-item-control-input-content {
       @apply flex items-center w-full;
     }
@@ -44,8 +53,9 @@
 }
 .option {
   background-color: var(--white) !important;
-  font-weight: 500;
+  font-weight: normal;
   font-size: 14px;
+  margin: 0 14px;
   color: #90a4ae !important;
   transition: 0.2s ease-in-out;
   &:not(:last-child) {

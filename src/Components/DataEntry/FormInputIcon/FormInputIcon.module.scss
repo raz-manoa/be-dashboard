@@ -1,13 +1,25 @@
 .field {
-  @apply flex items-center;
-  padding: 9px 14px 10px 9px;
+  padding: 0 14px 0 9px;
   border-radius: 4px;
   box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04);
   background-color: #fff;
+  :global {
+    .ant-form-item-control-input-content {
+      @apply flex items-center;
+    }
+    .ant-form-item-control-input {
+      height: 36px;
+    }
+  }
   input {
-    @apply outline-none w-full;
+    @apply w-full;
     margin-left: 10px;
     color: var(--grey);
+    padding: 0;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent;
+    outline: none !important;
   }
   svg {
     width: 16px;

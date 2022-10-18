@@ -37,7 +37,7 @@ export default function FormSelect(props: FormSelectProps) {
         className={!!label ? styles.select__item : ""}
       >
         {options.map((o, index) => (
-          <Option value={o.value} key={`o-${index}`}>
+          <Option value={o.value} key={`o-${index}`} className={styles.option}>
             {o.label}
           </Option>
         ))}

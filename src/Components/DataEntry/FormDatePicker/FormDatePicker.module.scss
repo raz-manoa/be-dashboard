@@ -1,5 +1,7 @@
 .datepicker {
   position: relative;
+  background: transparent;
+
   :global {
     .ant-picker-range {
       @apply flex items-center;

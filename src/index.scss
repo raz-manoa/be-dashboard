@@ -220,7 +220,7 @@ body {
   box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.16);
 }
 .ant-modal-header {
-  padding-bottom: 25px;
+  padding: 26px 0 25px 0;
 }
 .ant-modal-title {
   font-size: 19px;
@@ -321,4 +321,13 @@ body {
       }
     }
   }
+}
+.ant-input:hover {
+  border: 1px solid var(--grey_light);
+}
+.ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+  border: 1px solid var(--grey_light);
+}
+.ant-modal-close-x {
+  display: none;
 }

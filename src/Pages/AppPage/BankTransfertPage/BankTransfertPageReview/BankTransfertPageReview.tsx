@@ -1,5 +1,5 @@
 import CardConfirm, {
-  CardConfirmItem,
+  CardConfirmItemProps,
 } from "@/Components/Display/CardConfirm/CardConfirm";
 import {
   useAppLayoutContext,
@@ -7,7 +7,7 @@ import {
 } from "@/Layouts/AppLayout/AppLayoutContext";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-const data: CardConfirmItem[] = [
+const data: CardConfirmItemProps[] = [
   {
     label: "Amount from",
     value: "12.00 USD",
@@ -60,7 +60,7 @@ const data: CardConfirmItem[] = [
   },
   {
     label: "Message",
-    value: "this is a msg",
+    msg: "this is a msg",
     color: "black",
   },
 ];
@@ -81,7 +81,7 @@ export default function BankTransfertPageReview() {
       }}
       onClickSecondBtn={() => {
         navigate({
-          pathname: "/app/bank-transfer/bank-confirm",
+          pathname: "/app/bank-transfer/confirm",
         });
       }}
     />

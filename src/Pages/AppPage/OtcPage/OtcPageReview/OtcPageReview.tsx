@@ -5,8 +5,8 @@ import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function CryptoExchangePageReview() {
-  useSetAppLayoutTitle("Crypto Exchange");
+export default function OtcPageReview() {
+  useSetAppLayoutTitle("OTC");
   const navigate = useNavigate();
   const data: CardConfirmItemProps[] = [
     {
@@ -33,18 +33,18 @@ export default function CryptoExchangePageReview() {
   return (
     <CardConfirm
       className="common__card"
-      title="Crypto Exchange - Review"
-      btnPrimary="Annuler"
-      btnSecondary="Confirmer"
+      title="Foreign Exchange - Review"
+      btnPrimary="back"
+      btnSecondary="Confirm"
       data={data}
       onClickFirstBtn={() => {
         navigate({
-          pathname: "/app/crypto-exchange/",
+          pathname: "/app/otc",
         });
       }}
       onClickSecondBtn={() => {
         navigate({
-          pathname: "/app/crypto-exchange/confirm",
+          pathname: "/app/otc/confirm",
         });
       }}
     />

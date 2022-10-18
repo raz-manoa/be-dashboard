@@ -6,10 +6,14 @@ import { useForm } from "antd/es/form/Form";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
 
-const CryptoExchangePageDashboard = () => {
-  useSetAppLayoutTitle("Crypto Exchange");
-  const [form] = useForm();
+const OtcPageDashboard = () => {
+  useSetAppLayoutTitle("OTC");
   const navigate = useNavigate();
+  const [form] = useForm();
+  const handleContinue = () => {
+    form.validateFields();
+    navigate({ pathname: "review" });
+  };
 
   return (
     <Card className="common__card">
@@ -103,14 +107,7 @@ const CryptoExchangePageDashboard = () => {
         >
           1 USD equals 1 USDC
         </Text>
-        <Button
-          type="primary"
-          onClick={() => {
-            form.validateFields();
-            navigate("review");
-          }}
-          className="common__btn"
-        >
+        <Button type="primary" onClick={handleContinue} className="common__btn">
           Continuer
         </Button>
       </FormCustom>
@@ -118,4 +115,4 @@ const CryptoExchangePageDashboard = () => {
   );
 };
 
-export default CryptoExchangePageDashboard;
+export default OtcPageDashboard;
