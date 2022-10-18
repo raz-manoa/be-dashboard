@@ -8,7 +8,10 @@ import { useForm } from "antd/es/form/Form";
 import styles from "./BeNetworkPageDashboard.module.scss";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
-
+const optionsData = [
+  { label: "USD", value: "US Dollar (USD)" },
+  { label: "EUR", value: "Euro (EUR)" },
+];
 const BeNetworkPageDashboard = () => {
   const navigate = useNavigate();
   useSetAppLayoutTitle("Be Network");
@@ -41,16 +44,7 @@ const BeNetworkPageDashboard = () => {
           <FormCustom.Select
             name="currency"
             placeholder="USD"
-            options={[
-              {
-                label: "USD",
-                value: "usd",
-              },
-              {
-                label: "EUR",
-                value: "eur",
-              },
-            ]}
+            options={optionsData}
           />
         </div>
         <div className="common__txt">
