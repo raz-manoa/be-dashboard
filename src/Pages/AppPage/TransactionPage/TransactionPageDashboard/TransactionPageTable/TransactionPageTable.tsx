@@ -1,7 +1,5 @@
 import Card from "@/Components/Display/Card/Card";
 import Table from "@/Components/Display/Table/Table";
-import Text from "@/Components/General/Text/Text";
-import React from "react";
 import {
   transactionPageTableColumn,
   TransactionPageTableData,
