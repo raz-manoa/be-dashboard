@@ -14,6 +14,10 @@
     }
     background-color: var(--white);
 
+    svg {
+      fill: var(--grey_light);
+    }
+
     &:not(:first-child) {
       margin-left: 15px;
     }
@@ -35,6 +39,29 @@
         }
       }
     }
+
+    &:global(.active) {
+      background-color: var(--red);
+      :global {
+        .ant-form-item-control-input {
+          .ant-form-item-control-input-content {
+            svg {
+              fill: #fff;
+            }
+          }
+          input {
+            color: #fff;
+          }
+        }
+        .ant-select-selector {
+          .ant-select-selection-placeholder,
+          .ant-select-selection-item {
+            color: #fff;
+          }
+        }
+      }
+    }
+
     &:global(.focus) {
       background-color: var(--grey);
       :global {
@@ -50,23 +77,8 @@
             color: #fff;
           }
         }
-      }
-    }
-    &:global(.active) {
-      background-color: var(--red);
-      :global {
-        .ant-form-item-control-input {
-          .ant-form-item-control-input-content {
-            svg {
-              fill: #fff;
-            }
-          }
-        }
-        .ant-select-selector {
-          .ant-select-selection-placeholder,
-          .ant-select-selection-item {
-            color: #fff;
-          }
+        input {
+          color: #fff;
         }
       }
     }
