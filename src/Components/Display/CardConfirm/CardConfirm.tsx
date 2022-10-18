@@ -12,6 +12,7 @@ export interface CardConfirmItemProps {
   icon?: string;
   msg?: string;
   optional?: string;
+  num?: number;
 }
 
 interface CardConfirmProps {
@@ -49,6 +50,7 @@ export default function CardConfirm(props: CardConfirmProps) {
             color={d.color}
             icon={d.icon}
             msg={d.msg}
+            num={d.num}
             optional={d.optional}
             key={`d-${index}`}
           />

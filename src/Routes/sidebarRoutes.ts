@@ -16,6 +16,18 @@ const TransactionPage = React.lazy(
 const BeNetworkPage = React.lazy(
   () => import("../Pages/AppPage/BeNetworkPage/BeNetworkPage")
 );
+const BeNetworkPageReview = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/BeNetworkPage/BeNetworkPageReview/BeNetworkPageReview"
+    )
+);
+const BeNetworkPageDashboard = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/BeNetworkPage/BeNetworkPageDashboard/BeNetworkPageDashboard"
+    )
+);
 const ForeignExchangePage = React.lazy(
   () => import("../Pages/AppPage/ForeignExchangePage/ForeignExchangePage")
 );
@@ -149,6 +161,18 @@ const sidebarRoutes: ISidebarRoute[] = [
     name: "Be Network",
     icon: "network",
     component: BeNetworkPage,
+    children: [
+      {
+        path: "",
+        name: "Be Network dashboard",
+        component: BeNetworkPageDashboard,
+      },
+      {
+        path: "review",
+        name: "Be Network dashboard",
+        component: BeNetworkPageReview,
+      },
+    ],
   },
   {
     path: "foreign-exchange",

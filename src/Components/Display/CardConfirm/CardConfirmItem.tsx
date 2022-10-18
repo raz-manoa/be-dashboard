@@ -9,6 +9,7 @@ interface CardModalItemProps {
   icon?: string;
   msg?: string;
   optional?: string;
+  num?: number;
   onClick?(e: React.MouseEvent): void;
 }
 export default function CardConfirmItem(props: CardModalItemProps) {
@@ -19,6 +20,7 @@ export default function CardConfirmItem(props: CardModalItemProps) {
     icon,
     onClick,
     msg = "",
+    num,
     optional,
   } = props;
   return (
@@ -55,10 +57,29 @@ export default function CardConfirmItem(props: CardModalItemProps) {
             </Text>
           )}
         </div>
-        <div className={styles.cardModal__value}>
-          <Text tag="span" variant={color} type="span" size={12} weight={600}>
-            {value}
-          </Text>
+        <div
+          className={
+            icon
+              ? ` flex items-center ${styles.cardModal__value}`
+              : `${styles.cardModal__value}`
+          }
+        >
+          <div>
+            <Text tag="span" variant={color} type="span" size={12} weight={600}>
+              {value}
+            </Text>
+            {num && (
+              <Text
+                tag="p"
+                type="p"
+                size={12}
+                weight={600}
+                className={styles.cardModal__num}
+              >
+                {num}
+              </Text>
+            )}
+          </div>
           {icon && (
             <span onClick={onClick} className={styles.cardModal__icon}>
               <Icon icon={icon} color="red" />
