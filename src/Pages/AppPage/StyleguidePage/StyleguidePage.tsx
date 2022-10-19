@@ -291,7 +291,7 @@ const StyleguidePage = () => {
           columns={tableSampleColumn()}
         />
         <CardTransaction {...transactionData} />
-        <SwitchToggle label="By Phone Number" />
+        <SwitchToggle name={""} label="By Phone Number" />
       </FormCustom>
     </div>
   );
