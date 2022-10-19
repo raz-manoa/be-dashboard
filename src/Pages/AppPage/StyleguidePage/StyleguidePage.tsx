@@ -270,29 +270,29 @@ const StyleguidePage = () => {
           option="optional"
           placeholder="messages"
         />
+        <FormCustom.SelectIcon
+          name="select"
+          icon="transactions"
+          placeholder="Transaction type"
+          options={[
+            {
+              label: "Be Network",
+              value: "Be Network",
+            },
+            {
+              label: "Bank Transfer",
+              value: "Be Network",
+            },
+          ]}
+        />
+        <FormDatePicker />
+        <Table<TableSample>
+          dataSource={tableSampleData}
+          columns={tableSampleColumn()}
+        />
+        <CardTransaction {...transactionData} />
+        <SwitchToggle label="By Phone Number" />
       </FormCustom>
-      <FormCustom.SelectIcon
-        name="select"
-        icon="transactions"
-        placeholder="Transaction type"
-        options={[
-          {
-            label: "Be Network",
-            value: "Be Network",
-          },
-          {
-            label: "Bank Transfer",
-            value: "Be Network",
-          },
-        ]}
-      />
-      <FormDatePicker />
-      <Table<TableSample>
-        dataSource={tableSampleData}
-        columns={tableSampleColumn()}
-      />
-      <CardTransaction {...transactionData} />
-      <SwitchToggle label="By Phone Number" />
     </div>
   );
 };
