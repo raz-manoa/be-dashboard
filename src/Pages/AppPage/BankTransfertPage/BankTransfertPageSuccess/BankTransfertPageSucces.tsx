@@ -3,7 +3,7 @@ import CardConfirm from "@/Components/Display/ConfirmModal/CardConfirm";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 
 export default function BankTransfertPageSucces() {
-  useSetAppLayoutTitle("Bank Transfert");
+  useSetAppLayoutTitle("Bank Transfers");
 
   return (
     <Card className="common__card">

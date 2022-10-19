@@ -4,7 +4,7 @@ export default function useTransactionPageTableLogic(): TransactionPageTableData
   return [
     {
       name: "Juan Perez / John Smith Smith Jr",
-      transactionType: "Bank Transfer",
+      transactionType: "Bank Transfers",
       transactionFee: "0.00",
       status: "Completed",
       amount: "+454.00 CHF",

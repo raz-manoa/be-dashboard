@@ -71,7 +71,7 @@ const data: CardModalItemProps[] = [
   },
 ];
 export default function BankTransfertPageReview() {
-  useSetAppLayoutTitle("Bank Transfert");
+  useSetAppLayoutTitle("Bank Transfers");
   const navigate = useNavigate();
   return (
     <CardConfirm

@@ -167,6 +167,10 @@ body {
     @apply flex items-end;
     gap: 12px;
     margin-top: 25px;
+
+    & > *:last-child {
+      width: 121px;
+    }
   }
 }
 .common__txt {
