@@ -1,8 +1,7 @@
 .textarea {
   border-radius: 8px;
-  border: solid 1px rgba(200, 199, 204, 0.4);
+  border: solid 1px var(--grey_light);
   color: var(--black);
-  opacity: 0.8;
   font-size: 16px;
   height: 164px !important;
   padding: 7.5px 16px;

@@ -3,6 +3,13 @@
   p {
     margin-left: 20px;
   }
+  :global {
+    .ant-form-item-control-input-content {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+  }
 }
 :global {
   .ant-switch {

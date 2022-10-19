@@ -24,6 +24,8 @@ const optionsData = [
 ];
 const BeNetworkPageDashboard = () => {
   const navigate = useNavigate();
+  const [currentPhone, setCurrentPhone] = useState(false);
+  const [currentBeId, setCurrentBeId] = useState(false);
 
   useSetAppLayoutTitle("Be Network");
 
@@ -75,9 +77,11 @@ const BeNetworkPageDashboard = () => {
           </Text>
         </div>
         <div className={styles.switch__field}>
-          <SwitchToggle
+          <FormCustom.Switch
             label="By Phone Number"
             className={styles.switch__toggle}
+            name="phone"
+            onChange={setCurrentPhone}
           />
           <FormCustom.Input
             name="mobile_number"
@@ -91,10 +95,16 @@ const BeNetworkPageDashboard = () => {
                 message: "Ce champ est requis",
               },
             ]}
+            disabled={!currentPhone}
           />
         </div>
         <div className={styles.switch__field}>
-          <SwitchToggle label="By BE ID" className={styles.switch__toggle} />
+          <FormCustom.Switch
+            label="By BE ID"
+            name="beid"
+            className={styles.switch__toggle}
+            onChange={setCurrentBeId}
+          />
           <FormCustom.Input
             name="be_id"
             placeholder="BE ID"
@@ -107,6 +117,7 @@ const BeNetworkPageDashboard = () => {
                 message: "Ce champ est requis",
               },
             ]}
+            disabled={!currentBeId}
           />
         </div>
         <FormCustom.TextArea
