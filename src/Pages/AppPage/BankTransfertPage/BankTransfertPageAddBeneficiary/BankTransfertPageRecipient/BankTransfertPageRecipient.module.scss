@@ -24,6 +24,9 @@
   }
   input {
     @apply outline-none;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--red);
     &::placeholder {
       font-size: 14px;
       font-weight: 500;

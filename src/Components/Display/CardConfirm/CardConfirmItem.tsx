@@ -14,6 +14,7 @@ export interface CardModalItemProps {
   align?: "row" | "col";
   extra?: string | number | ReactNode;
   first?: boolean;
+  style?: React.CSSProperties;
 }
 export default function CardConfirmItem(props: CardModalItemProps) {
   const {
@@ -24,6 +25,7 @@ export default function CardConfirmItem(props: CardModalItemProps) {
     extra,
     align = "col",
     first = false,
+    style,
   } = props;
   return (
     <>
@@ -35,6 +37,7 @@ export default function CardConfirmItem(props: CardModalItemProps) {
               : `${styles.cardModal__list}`
           }
         `}
+        style={style}
       >
         <Text
           tag="span"

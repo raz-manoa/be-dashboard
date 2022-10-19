@@ -20,7 +20,7 @@ const CryptoExchangePageDashboard = () => {
         <div className="common__field-wrap">
           <FormCustom.Input
             name="field from"
-            label="From : "
+            label="From: "
             color="grey"
             type="number"
             className="common__field"

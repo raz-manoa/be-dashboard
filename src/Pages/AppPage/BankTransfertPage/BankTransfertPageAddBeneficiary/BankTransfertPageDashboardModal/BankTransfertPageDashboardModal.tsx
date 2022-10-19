@@ -66,8 +66,10 @@ export default function BankTransfertPageDashboardModal(
           label={d.label}
           value={d.value}
           icon={d.icon}
+          first={true}
           optional={d.optional}
           key={`d-${id}`}
+          style={{ padding: "18px 15px" }}
         />
       ))}
     </Modal>

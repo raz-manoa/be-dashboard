@@ -10,9 +10,16 @@ export default function BankTransfertPageSucces() {
       <CardConfirm
         title="Request Submitted"
         date="11/06/2022, 10:27:41 PM"
-        msg="An international transfer to John Smith, from 12.00 USD to 12.00 USD has been submitted."
+        msg={
+          <>
+            An international transfer to John Smith, from{" "}
+            <span style={{ fontWeight: 600 }}>12.00 USD</span> to{" "}
+            <span style={{ fontWeight: 600 }}>12.00 USD</span> has been
+            submitted.
+          </>
+        }
         link={{
-          label: "Transaction",
+          label: "Transactions",
           path: "#",
         }}
       />

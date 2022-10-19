@@ -62,7 +62,7 @@ const data: CardModalItemProps[] = [
     label: "Message",
     value: (
       <Text variant="black" size={14}>
-        this is a msg
+        This is a message
       </Text>
     ),
     color: "black",
@@ -76,10 +76,11 @@ export default function BankTransfertPageReview() {
   return (
     <CardConfirm
       data={data}
-      title="Savings Withdrawal - Review"
+      title="Review"
       className="common__card"
       btnPrimary="back"
       btnSecondary="Confirm"
+      itemStyle={{ padding: "20px 15px" }}
       onClickFirstBtn={() => {
         navigate({
           pathname: "/app/bank-transfer/add-beneficiary",
