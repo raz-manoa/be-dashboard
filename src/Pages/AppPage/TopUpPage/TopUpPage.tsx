@@ -84,7 +84,7 @@ const data = [
         <Text tag="p" size={14} weight={600}>
           000449876447656
         </Text>
-        <Text tag="span" className="ml-4">
+        <Text tag="span" className="ml-4 cursor-pointer">
           <Icon icon="copy" color="red" size={19} />
         </Text>
       </div>
@@ -98,7 +98,7 @@ const data = [
         <Text tag="p" size={14} weight={600}>
           MU38MCBL876165318323290823132
         </Text>
-        <Text tag="span" className="ml-4">
+        <Text tag="span" className="ml-4 cursor-pointer">
           <Icon icon="copy" color="red" size={19} />
         </Text>
       </div>
