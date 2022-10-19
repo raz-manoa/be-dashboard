@@ -3,17 +3,10 @@ import Text, { TextProps } from "@/Components/General/Text/Text";
 import React, { ReactNode } from "react";
 import Card from "../Card/Card";
 import styles from "./CardConfirm.module.scss";
-import CardConfirmItem from "./CardConfirmItem";
-
-export interface CardConfirmItem {
-  label: string;
-  value: string;
-  color?: TextProps["variant"];
-  icon?: string;
-}
+import CardConfirmItem, { CardModalItemProps } from "./CardConfirmItem";
 
 interface CardConfirmProps {
-  data: CardConfirmItem[];
+  data: CardModalItemProps[];
   btnPrimary?: string;
   title: string;
   btnSecondary?: string;
@@ -35,22 +28,14 @@ export default function CardConfirm(props: CardConfirmProps) {
   return (
     <Card className={`${styles.cardModal} ${className}`}>
       <div className={styles.cardModal__header}>
-        <Text tag="h2" type="h2">
+        <Text tag="h2" type="h2" variant="black2">
           {title}
         </Text>
       </div>
       <div className={styles.cardModal__body}>
-        {data.map((d, index) => {
-          return (
-            <CardConfirmItem
-              label={d.label}
-              value={d.value}
-              color={d.color}
-              icon={d.icon}
-              key={`d-${index}`}
-            />
-          );
-        })}
+        {data.map((d, index) => (
+          <CardConfirmItem {...d} key={`d-${index}`} />
+        ))}
       </div>
       <div
         className={`${styles.cardModal__footer} ${
@@ -58,12 +43,12 @@ export default function CardConfirm(props: CardConfirmProps) {
         }`}
       >
         {btnPrimary && (
-          <Button type="primary" className="btn" onClick={onClickFirstBtn}>
+          <Button type="secondary" className="btn" onClick={onClickFirstBtn}>
             {btnPrimary}
           </Button>
         )}
         {btnSecondary && (
-          <Button type="secondary" className="btn" onClick={onClickSecondBtn}>
+          <Button type="primary" className="btn" onClick={onClickSecondBtn}>
             {btnSecondary}
           </Button>
         )}

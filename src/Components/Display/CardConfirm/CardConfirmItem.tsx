@@ -1,37 +1,61 @@
 import Text, { TextProps } from "@/Components/General/Text/Text";
 import styles from "./CardConfirm.module.scss";
-import React from "react";
+import React, { ReactNode } from "react";
 import Icon from "@/Components/General/Icon/Icon";
-interface CardModalItemProps {
+export interface CardModalItemProps {
   color?: TextProps["variant"];
-  label: string;
-  value: string;
+  label: string | ReactNode;
+  value?: string | number | ReactNode;
   icon?: string;
+  optional?: string;
+  num?: number;
+  weight?: TextProps["weight"];
   onClick?(e: React.MouseEvent): void;
+  align?: "row" | "col";
+  extra?: string | number | ReactNode;
 }
 export default function CardConfirmItem(props: CardModalItemProps) {
-  const { color = "black", label, value, icon, onClick } = props;
+  const {
+    color = "black",
+    label,
+    value,
+    weight = 600,
+    extra,
+    align = "col",
+  } = props;
   return (
-    <div className={styles.cardModal__list}>
-      <Text
-        tag="span"
-        variant="grey"
-        type="span"
-        size={12}
-        className={styles.cardModal__label}
+    <>
+      <div
+        className={`
+          ${
+            align === "row"
+              ? `${styles.cardModal__msg} ${styles.cardModal__list}`
+              : `${styles.cardModal__list}`
+          }
+        `}
       >
-        {label}
-      </Text>
-      <div className={styles.cardModal__value}>
-        <Text tag="h3" variant={color} type="h3" size={12}>
-          {value}
+        <Text
+          tag="span"
+          variant="grey"
+          type="span"
+          size={12}
+          className={styles.cardModal__label}
+        >
+          {label}
         </Text>
-        {icon && (
-          <span onClick={onClick} className={styles.cardModal__icon}>
-            <Icon icon={icon} color="red" />
-          </span>
-        )}
+        <div className={styles.valueWrap}>
+          <Text
+            tag="span"
+            variant={color}
+            type="span"
+            size={14}
+            weight={weight}
+          >
+            {value}
+          </Text>
+          {extra}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

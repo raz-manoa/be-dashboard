@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import styles from "./Text.module.scss";
 export interface TextProps extends React.HTMLAttributes<any> {
-  tag: keyof JSX.IntrinsicElements;
-  children: ReactNode;
+  tag?: keyof JSX.IntrinsicElements;
+  children?: ReactNode;
   type?: "h1" | "h2" | "h3" | "p" | "span";
   variant?:
     | "black"
@@ -11,9 +11,11 @@ export interface TextProps extends React.HTMLAttributes<any> {
     | "grey"
     | "grey-light"
     | "green"
-    | "white";
-  weight?: 700 | 600 | 500 | 400 | 300;
-  size?: number;
+    | "white"
+    | "yellow";
+  weight?: React.CSSProperties["fontWeight"];
+  size?: React.CSSProperties["fontSize"];
+  style?: React.CSSProperties;
 }
 
 export default function Text(props: TextProps) {
@@ -24,7 +26,8 @@ export default function Text(props: TextProps) {
     variant = "black",
     className = "",
     size = 14,
-    weight,
+    weight = 400,
+    style,
     ...rest
   } = props;
   const TextTag = tag;
@@ -39,6 +42,7 @@ export default function Text(props: TextProps) {
         {
           "--font-size": `${size}px`,
           "--font-weight": weight,
+          ...style,
         } as React.CSSProperties
       }
     >

@@ -1,13 +1,13 @@
-import CardConfirm, {
-  CardConfirmItem,
-} from "@/Components/Display/CardConfirm/CardConfirm";
+import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
+import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirmItem";
+import Text from "@/Components/General/Text/Text";
 import {
   useAppLayoutContext,
   useSetAppLayoutTitle,
 } from "@/Layouts/AppLayout/AppLayoutContext";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-const data: CardConfirmItem[] = [
+const data: CardModalItemProps[] = [
   {
     label: "Amount from",
     value: "12.00 USD",
@@ -60,8 +60,14 @@ const data: CardConfirmItem[] = [
   },
   {
     label: "Message",
-    value: "this is a msg",
+    value: (
+      <Text variant="black" size={14}>
+        this is a msg
+      </Text>
+    ),
     color: "black",
+    align: "row",
+    weight: 400,
   },
 ];
 export default function BankTransfertPageReview() {
@@ -76,12 +82,12 @@ export default function BankTransfertPageReview() {
       btnSecondary="Confirm"
       onClickFirstBtn={() => {
         navigate({
-          pathname: "/app/bank-transfert/add-beneficiary",
+          pathname: "/app/bank-transfer/add-beneficiary",
         });
       }}
       onClickSecondBtn={() => {
         navigate({
-          pathname: "/app/bank-transfert/bank-confirm",
+          pathname: "/app/bank-transfer/confirm",
         });
       }}
     />

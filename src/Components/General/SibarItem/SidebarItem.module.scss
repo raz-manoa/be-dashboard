@@ -2,12 +2,15 @@
   @apply flex items-center;
   padding: 17px 18px;
   border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0);
   transition: 0.3 ease-in-out;
   color: var(--white);
+  box-sizing: border-box;
   &:hover,
   &.sidebarActive {
     color: var(--white);
-    background-color: #ef95ac;
+    background-color: rgba(#ef95ac, 0.51);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
   span {
     margin-left: 23px;

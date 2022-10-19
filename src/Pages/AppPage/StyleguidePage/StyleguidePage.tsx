@@ -6,9 +6,7 @@ import EuropUnion from "@/Assets/Flags/european union.svg";
 import CurrentCardList from "@/Components/Display/CurrentCardList/CurrentCardList";
 import TitleCard from "@/Components/Display/TitleCard/TitleCard";
 import Card from "@/Components/Display/Card/Card";
-import CardConfirm, {
-  CardConfirmItem,
-} from "@/Components/Display/CardConfirm/CardConfirm";
+import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
 import { useForm } from "antd/es/form/Form";
 import FormDatePicker from "@/Components/DataEntry/FormDatePicker/FormDatePicker";
@@ -17,6 +15,7 @@ import type { ColumnType } from "antd/es/table";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import CardTransaction from "@/Components/Display/CardTransaction/CardTransaction";
 import SwitchToggle from "@/Components/DataEntry/SwitchToggle/SwitchToggle";
+import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirmItem";
 
 interface TableSample {
   name: string;
@@ -144,7 +143,7 @@ const StyleguidePage = () => {
   const [form] = useForm();
   useSetAppLayoutTitle("Style Guide");
 
-  const data: CardConfirmItem[] = [
+  const data: CardModalItemProps[] = [
     {
       label: "Test",
       value: "100",

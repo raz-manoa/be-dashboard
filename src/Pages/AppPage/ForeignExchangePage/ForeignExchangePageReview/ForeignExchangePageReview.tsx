@@ -1,6 +1,5 @@
-import CardConfirm, {
-  CardConfirmItem,
-} from "@/Components/Display/CardConfirm/CardConfirm";
+import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
+import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirmItem";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
 
@@ -8,7 +7,7 @@ export default function ForeignExchangePageReview() {
   useSetAppLayoutTitle("Foreign Exchange (FX)");
 
   const navigate = useNavigate();
-  const data: CardConfirmItem[] = [
+  const data: CardModalItemProps[] = [
     {
       label: "From",
       value: "170.00 USD",
@@ -44,7 +43,7 @@ export default function ForeignExchangePageReview() {
       }}
       onClickSecondBtn={() => {
         navigate({
-          pathname: "/app/foreign-exchange/foreign-exchange-confirm",
+          pathname: "/app/foreign-exchange/confirm",
         });
       }}
     />

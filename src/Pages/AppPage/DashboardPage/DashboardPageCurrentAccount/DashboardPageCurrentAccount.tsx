@@ -5,6 +5,7 @@ import Text from "@/Components/General/Text/Text";
 import { ECurrency } from "@/Interfaces/Currency";
 import CurrencyItem, { ICurrencyItem } from "./CurrencyItem/CurrencyItem";
 import styles from "../DashboardPage.module.scss";
+import { currencyParser } from "@/Utils/currencyParser";
 
 export default function DashboardCurrentAccount() {
   const currentAccount = {
@@ -54,9 +55,30 @@ export default function DashboardCurrentAccount() {
         value: 403.83,
       },
     },
-    { currency: ECurrency.UGX, value: 0 },
-    { currency: ECurrency.TZS, value: 0 },
-    { currency: ECurrency.MWK, value: 0 },
+    {
+      currency: ECurrency.UGX,
+      value: 0,
+      reference: {
+        currency: ECurrency.USD,
+        value: 0,
+      },
+    },
+    {
+      currency: ECurrency.TZS,
+      value: 0,
+      reference: {
+        currency: ECurrency.USD,
+        value: 0,
+      },
+    },
+    {
+      currency: ECurrency.MWK,
+      value: 0,
+      reference: {
+        currency: ECurrency.USD,
+        value: 0,
+      },
+    },
   ];
 
   return (
@@ -75,21 +97,21 @@ export default function DashboardCurrentAccount() {
           </Text>
           <Text
             tag="span"
-            size={30}
+            size={32}
             variant="red"
             weight={700}
             className="relative top-1"
           >
-            {currentAccount.total}
+            {currencyParser(currentAccount.total)}
           </Text>
         </Text>
       </TitleCard>
       <div className={styles.dashboardCurrentAccount}>
-        <Card className="pt-3 current-account">
+        <Card className="current-account">
           <Scrollbar>
             <div>
               {currentAccountCurrencies.map((c, index) => (
-                <CurrencyItem {...c} key={`c-${index}`} reference={c} />
+                <CurrencyItem {...c} key={`c-${index}`} />
               ))}
             </div>
           </Scrollbar>

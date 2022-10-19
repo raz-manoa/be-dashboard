@@ -1,0 +1,43 @@
+.table {
+  :global {
+    .ant-pagination-item-link {
+      @apply flex items-center justify-center;
+      width: 52px;
+      height: 52px;
+      padding: 17px 21px;
+      border-radius: 8px;
+      background-color: #e02b59;
+      border-color: transparent !important;
+
+      svg {
+        width: 15px;
+        height: 18px;
+        color: #fff;
+      }
+    }
+    .ant-pagination-prev {
+      height: 52px;
+    }
+    .ant-pagination-next {
+      height: 52px;
+    }
+    .ant-pagination {
+      @apply flex items-center justify-center;
+      margin-top: 29px;
+    }
+    .ant-pagination-item {
+      @apply flex items-center justify-center;
+      height: 52px;
+      border: none;
+      a {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      &-active {
+        a {
+          color: var(--red);
+        }
+      }
+    }
+  }
+}

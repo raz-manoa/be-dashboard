@@ -1,20 +1,19 @@
-.select {
+.datepicker {
+  position: relative;
+  background: transparent;
+
   :global {
-    .ant-form-item-control-input-content {
+    .ant-picker-range {
       @apply flex items-center;
-      border-radius: 4px;
-      box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04);
-      border: solid 1px rgba(200, 199, 204, 0.4);
-      background-color: var(--white);
-      padding: 4px 13px;
-      svg {
-        margin-right: 10px;
-        fill: var(--grey_light);
-      }
     }
     .ant-picker-range {
-      width: 100%;
-      border: none;
+      opacity: 0;
+      // visibility: hidden;
+      width: 0;
+      height: 38px;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     input {
@@ -29,4 +28,118 @@
 .calendar {
   width: 100%;
   border: none;
+}
+
+.datepickerTrigger {
+  @apply inline-flex items-center;
+  padding: 7px 13.6px 7px 14px;
+  border-radius: 4px;
+  box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04);
+  border: solid 1px rgba(200, 199, 204, 0.4);
+  background-color: #fff;
+  color: #90a4ae;
+  svg {
+    width: 17px;
+    height: 17px;
+    margin-right: 10px;
+    fill: var(--grey_light);
+  }
+}
+
+.datepickerTriggerActive {
+  background-color: var(--grey);
+}
+
+.datepickerTriggerFilled {
+  background-color: var(--red);
+}
+
+:global {
+  .ant-picker-panel-container .ant-picker-panels .ant-picker-panel:first-child {
+    .ant-picker-date-panel {
+      position: relative;
+      &::after {
+        content: " ";
+        display: block;
+        width: 1px;
+        height: 87%;
+        background-color: rgba(84, 110, 122, 0.2);
+        position: absolute;
+        top: 50%;
+        right: 0px;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .ant-picker-header-view::after {
+    content: "\e906";
+    font-family: "icomoon" !important;
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 6px;
+    color: #90a4ae;
+    transform: translateY(-2px);
+  }
+  .ant-picker-decade-panel,
+  .ant-picker-year-panel,
+  .ant-picker-quarter-panel,
+  .ant-picker-month-panel,
+  .ant-picker-week-panel,
+  .ant-picker-date-panel,
+  .ant-picker-time-panel {
+    width: 323px;
+  }
+
+  .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover::before,
+  .ant-picker-cell-in-view.ant-picker-cell-range-start.ant-picker-cell-range-hover::before,
+  .ant-picker-cell-in-view.ant-picker-cell-range-end.ant-picker-cell-range-hover::before,
+  .ant-picker-cell-in-view.ant-picker-cell-range-start:not(.ant-picker-cell-range-start-single).ant-picker-cell-range-hover-start::before,
+  .ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-range-end-single).ant-picker-cell-range-hover-end::before,
+  .ant-picker-panel
+    > :not(.ant-picker-date-panel)
+    .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-start::before,
+  .ant-picker-panel
+    > :not(.ant-picker-date-panel)
+    .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-end::before {
+    background: var(--pink) !important;
+  }
+  .ant-picker-date-panel
+    .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-start
+    .ant-picker-cell-inner::after,
+  .ant-picker-date-panel
+    .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-end
+    .ant-picker-cell-inner::after {
+    background: var(--pink) !important;
+  }
+
+  body .ant-picker-cell-in-view.ant-picker-cell-in-range:last-child::before,
+  body
+    .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-end::before {
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+  }
+  body .ant-picker-cell-in-view.ant-picker-cell-in-range:first-child::before,
+  body
+    .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-start::before {
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+  }
+
+  body
+    .ant-picker-cell-in-view.ant-picker-cell-range-hover-start:not(.ant-picker-cell-in-range):not(.ant-picker-cell-range-start):not(.ant-picker-cell-range-end)::after,
+  body
+    .ant-picker-cell-in-view.ant-picker-cell-range-hover-end:not(.ant-picker-cell-in-range):not(.ant-picker-cell-range-start):not(.ant-picker-cell-range-end)::after,
+  body
+    .ant-picker-cell-in-view.ant-picker-cell-range-hover-start.ant-picker-cell-range-start-single::after,
+  body
+    .ant-picker-cell-in-view.ant-picker-cell-range-hover-start.ant-picker-cell-range-start.ant-picker-cell-range-end.ant-picker-cell-range-end-near-hover::after,
+  body
+    .ant-picker-cell-in-view.ant-picker-cell-range-hover-end.ant-picker-cell-range-start.ant-picker-cell-range-end.ant-picker-cell-range-start-near-hover::after,
+  body
+    .ant-picker-cell-in-view.ant-picker-cell-range-hover-end.ant-picker-cell-range-end-single::after,
+  body
+    .ant-picker-cell-in-view.ant-picker-cell-range-hover:not(.ant-picker-cell-in-range)::after {
+    left: 0;
+  }
 }

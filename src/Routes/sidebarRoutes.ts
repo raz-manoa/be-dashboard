@@ -16,6 +16,24 @@ const TransactionPage = React.lazy(
 const BeNetworkPage = React.lazy(
   () => import("../Pages/AppPage/BeNetworkPage/BeNetworkPage")
 );
+const BeNetworkPageConfirm = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/BeNetworkPage/BeNetworkPageConfirm/BeNetworkPageConfirm"
+    )
+);
+const BeNetworkPageReview = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/BeNetworkPage/BeNetworkPageReview/BeNetworkPageReview"
+    )
+);
+const BeNetworkPageDashboard = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/BeNetworkPage/BeNetworkPageDashboard/BeNetworkPageDashboard"
+    )
+);
 const ForeignExchangePage = React.lazy(
   () => import("../Pages/AppPage/ForeignExchangePage/ForeignExchangePage")
 );
@@ -61,7 +79,7 @@ const BankTransfertPageDashboard = React.lazy(
 const BankTransfertPageAddBeneficiary = React.lazy(
   () =>
     import(
-      "@/Pages/AppPage/BankTransfertPage/BankTransfertPageDashboard/BankTransfertPageAddBeneficiary/BankTransfertPageAddBeneficiary"
+      "@/Pages/AppPage/BankTransfertPage/BankTransfertPageAddBeneficiary/BankTransfertPageAddBeneficiary"
     )
 );
 const SavingsPage = React.lazy(
@@ -76,6 +94,24 @@ const CryptoDepositPage = React.lazy(
 );
 const CryptoWithdrawal = React.lazy(
   () => import("../Pages/AppPage/CryptoWithdrawal/CryptoWithdrawal")
+);
+const CryptoWithdrawalSuccess = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/CryptoWithdrawal/CryptoWithdrawalSuccess/CryptoWithdrawalSuccess"
+    )
+);
+const CryptoWithdrawalReview = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/CryptoWithdrawal/CryptoWithdrawalReview/CryptoWithdrawalReview"
+    )
+);
+const CryptoWithdrawalDashboard = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/CryptoWithdrawal/CryptoWithdrawalDashboard/CryptoWithdrawalDashboard"
+    )
 );
 const CryptoExchangePage = React.lazy(
   () => import("../Pages/AppPage/CryptoExchangePage/CryptoExchangePage")
@@ -99,6 +135,17 @@ const CryptoExchangePageDashboard = React.lazy(
     )
 );
 const OtcPage = React.lazy(() => import("../Pages/AppPage/OtcPage/OtcPage"));
+const OtcPageSuccess = React.lazy(
+  () => import("../Pages/AppPage/OtcPage/OtcPageSuccess/OtcPageSuccess")
+);
+
+const OtcPageReview = React.lazy(
+  () => import("../Pages/AppPage/OtcPage/OtcPageReview/OtcPageReview")
+);
+
+const OtcPageDashboard = React.lazy(
+  () => import("../Pages/AppPage/OtcPage/OtcPageDashboard/OtcPageDashboard")
+);
 
 const SavingPageReview = React.lazy(
   () => import("../Pages/AppPage/SavingsPage/SavingPageReview/SavingPageReview")
@@ -111,6 +158,10 @@ const SavingPageDashboard = React.lazy(
     import(
       "@/Pages/AppPage/SavingsPage/SavingPageDashboard/SavingPageDashboard"
     )
+);
+
+const RequestMoneyPage = React.lazy(
+  () => import("@/Pages/AppPage/RequestMoneyPage/RequestMoneyPage")
 );
 
 // routes
@@ -133,11 +184,28 @@ const sidebarRoutes: ISidebarRoute[] = [
     name: "Be Network",
     icon: "network",
     component: BeNetworkPage,
+    children: [
+      {
+        path: "",
+        name: "Be Network dashboard",
+        component: BeNetworkPageDashboard,
+      },
+      {
+        path: "review",
+        name: "Be Network review",
+        component: BeNetworkPageReview,
+      },
+      {
+        path: "confirm",
+        name: "Be Network confirm",
+        component: BeNetworkPageConfirm,
+      },
+    ],
   },
   {
     path: "foreign-exchange",
     name: "Foreign Exchange",
-    icon: "transfert-intl",
+    icon: "fx",
     component: ForeignExchangePage,
     children: [
       {
@@ -146,20 +214,26 @@ const sidebarRoutes: ISidebarRoute[] = [
         component: ForeignExchangePageDasboard,
       },
       {
-        path: "foreign-exchange-review",
+        path: "review",
         name: "foreign-exchange-review",
         component: ForeignExchangePageReview,
       },
       {
-        path: "foreign-exchange-confirm",
+        path: "confirm",
         name: "foreign-exchange-confirm",
         component: ForeignExchangePageSuccess,
       },
     ],
   },
   {
+    path: "request-money",
+    name: "Request Money",
+    icon: "resquest-money",
+    component: RequestMoneyPage,
+  },
+  {
     path: "bank-transfer",
-    name: "Bank Transfer",
+    name: "Bank Transfers",
     icon: "bank-transfert",
     component: BankTransfertPage,
     children: [
@@ -174,12 +248,12 @@ const sidebarRoutes: ISidebarRoute[] = [
         component: BankTransfertPageAddBeneficiary,
       },
       {
-        path: "bank-review",
+        path: "review",
         name: "bank-review-confirm",
         component: BankTransfertPageReview,
       },
       {
-        path: "bank-confirm",
+        path: "confirm",
         name: "bank-success-confirm",
         component: BankTransfertPageSuccess,
       },
@@ -188,7 +262,7 @@ const sidebarRoutes: ISidebarRoute[] = [
   {
     path: "savings",
     name: "Savings",
-    icon: "saving-deposit",
+    icon: "saving",
     component: SavingsPage,
     children: [
       {
@@ -220,6 +294,23 @@ const sidebarRoutes: ISidebarRoute[] = [
     name: "Crypto Withdrawal",
     icon: "crypto-withdraw",
     component: CryptoWithdrawal,
+    children: [
+      {
+        path: "",
+        name: "crypto-withdrawal-dashboard",
+        component: CryptoWithdrawalDashboard,
+      },
+      {
+        path: "review",
+        name: "crypto-withdraw-review",
+        component: CryptoWithdrawalReview,
+      },
+      {
+        path: "confirm",
+        name: "crypto-withdraw-success",
+        component: CryptoWithdrawalSuccess,
+      },
+    ],
   },
   {
     path: "crypto-exchange",
@@ -233,18 +324,40 @@ const sidebarRoutes: ISidebarRoute[] = [
         component: CryptoExchangePageDashboard,
       },
       {
-        path: "crypto-exchange-review",
+        path: "review",
         name: "crypto-exchange-review",
         component: CryptoExchangePageReview,
       },
       {
-        path: "crypto-exchange-confirm",
+        path: "confirm",
         name: "crypto-exchange-confirm",
         component: CryptoExchangePageConfirm,
       },
     ],
   },
-  { path: "otc", name: "OTC", icon: "otc", component: OtcPage },
+  {
+    path: "otc",
+    name: "OTC",
+    icon: "otc",
+    component: OtcPage,
+    children: [
+      {
+        path: "",
+        name: "OTC-dashboard",
+        component: OtcPageDashboard,
+      },
+      {
+        path: "review",
+        name: "OTC-review",
+        component: OtcPageReview,
+      },
+      {
+        path: "confirm",
+        name: "OTC-success",
+        component: OtcPageSuccess,
+      },
+    ],
+  },
 ];
 
 export default sidebarRoutes;

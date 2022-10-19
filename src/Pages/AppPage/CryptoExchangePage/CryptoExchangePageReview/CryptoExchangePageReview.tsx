@@ -1,12 +1,12 @@
-import CardConfirm, {
-  CardConfirmItem,
-} from "@/Components/Display/CardConfirm/CardConfirm";
-import React from "react";
+import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
+import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirmItem";
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
 
 export default function CryptoExchangePageReview() {
+  useSetAppLayoutTitle("Crypto Exchange");
   const navigate = useNavigate();
-  const data: CardConfirmItem[] = [
+  const data: CardModalItemProps[] = [
     {
       label: "From",
       value: "100.00 SOL",
@@ -42,7 +42,7 @@ export default function CryptoExchangePageReview() {
       }}
       onClickSecondBtn={() => {
         navigate({
-          pathname: "/app/crypto-exchange/crypto-exchange-confirm",
+          pathname: "/app/crypto-exchange/confirm",
         });
       }}
     />

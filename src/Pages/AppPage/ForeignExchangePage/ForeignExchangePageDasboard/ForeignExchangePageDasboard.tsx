@@ -13,7 +13,7 @@ const ForeignExchangePageDashboard = () => {
   const navigate = useNavigate();
   return (
     <Card className="common__card">
-      <Text tag="h2" type="h2">
+      <Text tag="h2" type="h2" variant="black2">
         Amount
       </Text>
       <FormCustom form={form}>
@@ -79,7 +79,7 @@ const ForeignExchangePageDashboard = () => {
         </div>
         <div className="common__txt">
           <Text type="p" tag="p" variant="grey">
-            <strong>174.75 USD</strong> 174.75 USD available to transfer
+            <strong>174.75 USD</strong> available to transfer
           </Text>
           <Text type="p" tag="p" variant="grey">
             Transaction fee <strong>0 USD</strong>
@@ -90,7 +90,7 @@ const ForeignExchangePageDashboard = () => {
           onClick={() => {
             form.validateFields();
             navigate({
-              pathname: "foreign-exchange-review",
+              pathname: "review",
             });
           }}
           className="common__btn"
