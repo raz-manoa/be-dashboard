@@ -104,7 +104,12 @@ const CryptoWithdrawalDashboard = () => {
             ]}
           />
         </div>
-        <Text tag="p" type="p" className="common__txt" variant="grey">
+        <Text
+          tag="p"
+          type="p"
+          className={`${styles.txt__info} common__txt`}
+          variant="grey"
+        >
           <strong>0.00234129 ETH </strong>
           available to withdraw
         </Text>

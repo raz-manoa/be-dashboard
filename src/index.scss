@@ -173,7 +173,7 @@ body {
     gap: 12px;
     margin-top: 25px;
     .ant-form-item {
-      margin-bottom: 0;
+      margin-bottom: 0 !important;
       width: 130px;
     }
     .ant-input {
