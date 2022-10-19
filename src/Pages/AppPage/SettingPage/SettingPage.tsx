@@ -31,7 +31,7 @@ const SettingPage = () => {
       </Text>
       {data.map((d, index) => (
         <div className={styles.card__list} key={`d-${index}`}>
-          <Text tag="span" type="span" variant="grey">
+          <Text tag="span" type="span" variant="grey" size={12}>
             {d.user}
           </Text>
           <Link to={d.path}>
