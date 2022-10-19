@@ -174,12 +174,14 @@ body {
     margin-top: 25px;
     .ant-form-item {
       margin-bottom: 0;
+      width: 130px;
     }
     .ant-input {
       margin-top: 24px;
 
-    & > *:last-child {
-      width: 121px;
+      & > *:last-child {
+        width: 121px;
+      }
     }
   }
 }
