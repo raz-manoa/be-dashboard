@@ -1,8 +1,6 @@
-import CardConfirm, {
-  CardModalItemProps,
-} from "@/Components/Display/CardConfirm/CardConfirm";
+import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
+import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirmItem";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function CryptoExchangePageReview() {
