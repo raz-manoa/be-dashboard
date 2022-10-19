@@ -34,7 +34,7 @@ export const transactionPageTableColumn: (options: {
                 : "saving-withdraw"
             }`}
             size={16}
-            color="red"
+            color={"var(--red)"}
           />
         );
       },

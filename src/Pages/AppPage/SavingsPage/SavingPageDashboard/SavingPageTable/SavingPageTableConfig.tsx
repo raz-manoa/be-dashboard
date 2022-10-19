@@ -29,7 +29,7 @@ export const savingPageTableColumn: () => Array<
                 : "saving-deposit"
             }`}
             size={16}
-            color="red"
+            color="var(--red)"
           />
         );
       },
