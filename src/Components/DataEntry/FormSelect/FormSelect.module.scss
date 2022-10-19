@@ -2,6 +2,13 @@
   &__item {
     margin-top: 15px;
   }
+  &.selectActive {
+    :global {
+      .ant-select-selector {
+        border: 1px solid var(--grey_light);
+      }
+    }
+  }
   :global {
     .ant-select {
       @apply flex items-center justify-center;
@@ -10,7 +17,7 @@
         @apply flex items-center;
         border-radius: 8px;
         height: 52px;
-        border: 1px solid var(--grey_light);
+        // border: 1px solid var(--grey_light);
       }
     }
     .ant-select-single.ant-select-show-arrow .ant-select-selection-item {
@@ -34,6 +41,7 @@
   background-color: var(--white) !important;
   font-weight: 500;
   font-size: 14px;
+  margin: 0 14px;
   color: #90a4ae !important;
   transition: 0.2s ease-in-out;
   &:not(:last-child) {

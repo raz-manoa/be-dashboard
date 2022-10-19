@@ -8,18 +8,32 @@ import { useForm } from "antd/es/form/Form";
 import styles from "./BeNetworkPageDashboard.module.scss";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
+import Alert from "antd/es/alert";
+import { useState } from "react";
+import { DefaultOptionType } from "antd/es/select";
 const optionsData = [
-  { label: "USD", value: "US Dollar (USD)" },
-  { label: "EUR", value: "Euro (EUR)" },
+  { label: "US Dollar (USD)", value: "USD" },
+  { label: "Euro (EUR)", value: "EUR" },
+  { label: "Pound Sterling (GPB)", value: "GPB" },
+  { label: "Canadian Dollar (CAD)", value: "CAD" },
+  { label: "South African Rand (ZAR)", value: "ZAR" },
+  { label: "Kenyan Shilling (KES)", value: "KES" },
+  { label: "Ugandan Shilling (UGX)", value: "UGX" },
+  { label: "Tanzanian Shilling (TZS)", value: "TZS" },
+  { label: "Malawian Kwacha (MWK)", value: "MWK" },
 ];
 const BeNetworkPageDashboard = () => {
   const navigate = useNavigate();
+
   useSetAppLayoutTitle("Be Network");
+
   const [form] = useForm();
+
   const handleContinue = () => {
     form.validateFields();
     navigate("review");
   };
+
   return (
     <Card className="common__card">
       <Text tag="h2" type="h2">
@@ -45,6 +59,8 @@ const BeNetworkPageDashboard = () => {
             name="currency"
             placeholder="USD"
             options={optionsData}
+            optionLabelProp="value"
+            dropdownMatchSelectWidth={false}
           />
         </div>
         <div className="common__txt">
@@ -106,6 +122,8 @@ const BeNetworkPageDashboard = () => {
             },
           ]}
         />
+        <Alert message="The BE ID entered is incorrect." type="error" />
+
         <Button type="primary" onClick={handleContinue} className="common__btn">
           Continue
         </Button>
