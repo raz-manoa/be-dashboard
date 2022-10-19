@@ -4,8 +4,8 @@ import SavingPageAdd from "./SavingPageAdd/SavingPageAdd";
 import SavingPageOffering from "./SavingPageOffering/SavingPageOffering";
 import SavingPageTable from "./SavingPageTable/SavingPageTable";
 
-const showAlert = true;
 const SavingPageDashboard = () => {
+  const showAlert = true;
   useSetAppLayoutTitle("Savings");
 
   return (

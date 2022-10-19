@@ -19,7 +19,7 @@ const LoginPage = () => {
           color="red"
           placeholder="Email"
           icon="user"
-          type="email"
+          type="text"
           inputStyle={sharedStyle}
           style={{ marginBottom: 8 }}
         />
@@ -40,7 +40,7 @@ const LoginPage = () => {
           </FormCustom.Checkbox>
           <Link to="forgot-password">
             <Text variant="white" weight={400} style={sharedStyle}>
-              Forgot Password ?
+              Forgot Password?
             </Text>
           </Link>
         </div>
@@ -72,7 +72,7 @@ const LoginPage = () => {
             weight={400}
             className={styles.create}
           >
-            <span style={sharedStyle}>New here ?</span>
+            <span style={sharedStyle}>New here?</span>
             <Link to="/">Create an Account</Link>
           </Text>
         </div>
