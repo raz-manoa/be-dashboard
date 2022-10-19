@@ -42,7 +42,7 @@ const BeNetworkPageDashboard = () => {
         Transfer Amount
       </Text>
       <FormCustom form={form}>
-        <div className="common__field-wrap">
+        <div className={`${styles.select__field} common__field-wrap`}>
           <FormCustom.Input
             name="account_number"
             placeholder="0.00"
@@ -124,7 +124,7 @@ const BeNetworkPageDashboard = () => {
           name="message"
           className={styles.textarea}
           label="Message : "
-          option="optional"
+          option="Optional"
           placeholder="Messages..."
           rules={[
             {

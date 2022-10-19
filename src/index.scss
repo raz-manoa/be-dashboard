@@ -163,16 +163,23 @@ body {
 //common style
 .common__field {
   @apply col-span-2;
+  margin-bottom: 0;
   &-wrap {
     @apply grid grid-cols-3 items-end;
     gap: 12px;
     margin-top: 25px;
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+    .ant-input {
+      margin-top: 24px;
+    }
   }
 }
 .common__txt {
   @apply text-center;
   width: 60%;
-  margin: 16px auto 40px auto;
+  margin: 40px auto 40px auto;
   line-height: 1.43;
   strong {
     color: var(--red);

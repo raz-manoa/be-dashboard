@@ -27,7 +27,7 @@ export default function CurrencyItem(props: CurrencyItemProps) {
         </Text>
       </div>
       <div className={styles.card__moneyNbr} style={{ textAlign: "right" }}>
-        <Text size={26} tag="p" variant="grey" weight={600}>
+        <Text size={31} tag="p" variant="grey" weight={600}>
           {currencyParser(value)}
         </Text>
         {reference && (
