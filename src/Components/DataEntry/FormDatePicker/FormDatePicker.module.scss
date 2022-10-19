@@ -53,3 +53,29 @@
 .datepickerTriggerFilled {
   background-color: var(--red);
 }
+
+:global {
+  .ant-picker-panel-container .ant-picker-panels {
+    &::before {
+      content: " ";
+      display: block;
+      width: 1px;
+      height: 87%;
+      background-color: rgba(84, 110, 122, 0.2);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .ant-picker-header-view::after {
+    content: "\e906";
+    font-family: "icomoon" !important;
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 6px;
+    color: #90a4ae;
+    transform: translateY(-2px);
+  }
+}
