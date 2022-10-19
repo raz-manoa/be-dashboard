@@ -1,9 +1,6 @@
 import Card from "@/Components/Display/Card/Card";
 import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
-<<<<<<< HEAD
-=======
 import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirmItem";
->>>>>>> da1a4b3c231cee6410f5ce41af902ec248d69e3d
 import Text from "@/Components/General/Text/Text";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import React from "react";
