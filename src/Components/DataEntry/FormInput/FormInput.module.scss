@@ -7,11 +7,18 @@ label {
   &__content {
     margin-top: 15px;
     @apply items-center flex;
-
+    font-size: 16px;
+    font-weight: 600;
     color: #fff;
     padding: 9px 10px;
     border-radius: 8px;
     height: 54px;
+    &::placeholder {
+      opacity: 0.8;
+      font-size: 16px;
+      color: #c8c7cc;
+      font-weight: 500;
+    }
     &--red {
       background-color: rgba(239, 149, 172, 0.5);
       border: 1px solid rgba(#fff, 0.8);
@@ -28,9 +35,10 @@ label {
     &--grey {
       background-color: var(--white);
       border: solid 1px var(--grey_light);
-      color: var(--grey_light);
+      color: #000;
       &::placeholder {
         color: var(--grey_light);
+        font-weight: normal;
       }
       svg {
         fill: var(--grey);
@@ -59,12 +67,36 @@ label {
       font-size: 16px;
     }
   }
+  :global {
+    .ant-input-disabled {
+      background-color: #fff;
+      opacity: 0.8;
+      border: solid 1px rgba(200, 199, 204, 0.4);
+      color: rgba(#c8c7cc, 0.8);
+    }
+  }
 }
 body {
   :global {
     .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
       border: 1px solid #fff;
       box-shadow: none;
+    }
+  }
+}
+.active {
+  .input {
+    &__content {
+      color: rgba(0, 0, 0, 0.8);
+      &--grey {
+        border: solid 1px var(--grey_light);
+        input {
+          color: var(--grey);
+          &::placeholder {
+            color: var(--grey);
+          }
+        }
+      }
     }
   }
 }

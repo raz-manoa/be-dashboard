@@ -2,6 +2,7 @@ import Card from "@/Components/Display/Card/Card";
 import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
 import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirmItem";
 import Text from "@/Components/General/Text/Text";
+import styles from "./BeNetworkPageReview.module.scss";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -88,7 +89,7 @@ export default function BeNetworkPageReview() {
     <CardConfirm
       title="Review"
       data={data}
-      className="common__card"
+      className={`common__card ${styles.beNetwork_review}`}
       btnPrimary="back"
       btnSecondary="Confirm"
       onClickFirstBtn={handleBack}

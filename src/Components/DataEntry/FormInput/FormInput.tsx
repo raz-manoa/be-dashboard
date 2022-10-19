@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Input, { InputProps } from "antd/lib/input";
 import { UserOutlined } from "@ant-design/icons";
 import styles from "./FormInput.module.scss";
@@ -27,16 +27,23 @@ export default function FormInput(props: FormInputProps) {
     inputStyle,
     ...rest
   } = props;
+  const [currentValue, setCurrentValue] = useState<string>("");
+  const handleChange = (e: any) => {
+    setCurrentValue(e.target.value);
+  };
   return (
     <Form.Item
       // name={name}
       style={style}
-      className={`${styles.input} ${className}`}
+      className={`${styles.input} ${className} ${
+        currentValue !== "" ? `${styles.active}` : ""
+      }`}
       rules={rules}
     >
       <label htmlFor="">{label}</label>
       <Input
         size="large"
+        onChange={handleChange}
         placeholder={placeholder}
         prefix={icon && <Icon icon={icon} />}
         type={type}

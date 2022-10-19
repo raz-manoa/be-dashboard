@@ -1,8 +1,9 @@
 import Form, { Rule } from "antd/es/form";
 import TextArea from "antd/lib/input/TextArea";
 import styles from "./FormTextArea.module.scss";
-import React from "react";
+import React, { ChangeEventHandler, useState } from "react";
 import { NamePath } from "antd/es/form/interface";
+import { TextAreaProps } from "antd/es/input";
 interface FormTextAreaProps {
   label: string;
   placeholder?: string;
@@ -14,9 +15,16 @@ interface FormTextAreaProps {
 
 export default function FormTextArea(props: FormTextAreaProps) {
   const { label, placeholder, className, option, rules } = props;
+  const [currentValue, setCurrentValue] = useState<string>("");
+  const handleChange = (e: any) => {
+    setCurrentValue(e.target.value);
+  };
+
   return (
     <Form.Item
-      className={`${styles.textarea__container} ${className}`}
+      className={`${styles.textarea__container} ${className} ${
+        currentValue !== "" ? `${styles.active}` : ""
+      }`}
       rules={rules}
     >
       <div className={styles.textarea__label}>
@@ -26,7 +34,8 @@ export default function FormTextArea(props: FormTextAreaProps) {
       <TextArea
         rows={4}
         placeholder={placeholder}
-        className={styles.textarea}
+        onChange={handleChange}
+        className={` ${styles.textarea} `}
       />
     </Form.Item>
   );

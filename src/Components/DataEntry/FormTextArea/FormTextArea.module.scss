@@ -1,11 +1,13 @@
 .textarea {
   border-radius: 8px;
   border: solid 1px var(--grey_light);
-  color: var(--grey_light);
+  color: var(--black);
   font-size: 16px;
-  height: 164px !important;
+  height: 150px !important;
   padding: 7.5px 16px;
+  resize: none;
   &::placeholder {
+    opacity: 0.8;
     font-size: 16px;
     color: var(--grey_light);
   }
@@ -21,5 +23,11 @@
     span {
       color: #c8c7cc;
     }
+  }
+}
+.active {
+  .textarea {
+    border: solid 1px var(--grey_light);
+    opacity: 1;
   }
 }

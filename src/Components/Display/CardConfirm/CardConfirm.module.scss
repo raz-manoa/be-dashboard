@@ -30,7 +30,8 @@
     margin-left: 2px;
   }
   &__footer {
-    @apply flex items-center justify-between w-full;
+    @apply grid grid-cols-2  items-center justify-between w-full;
+    gap: 25px;
     padding-top: 25px;
     gap: 25px;
     .btn,
@@ -40,6 +41,7 @@
     &Single {
       :global {
         .btn {
+          width: 100% !important;
           flex: 0 0 100%;
         }
       }

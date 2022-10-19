@@ -5,6 +5,7 @@ import FormSelectWithIcon from "../FormSelectWithIcon/FormSelectWithIcon";
 import FormTextArea from "../FormTextArea/FormTextArea";
 import FormCheckBox from "../FormCheckBox/FormCheckBox";
 import FormInputIcon from "../FormInputIcon/FormInputIcon";
+import SwitchToggle from "../SwitchToggle/SwitchToggle";
 
 interface FormCustomProps<Values = any> extends FormProps<Values> {}
 
@@ -19,3 +20,4 @@ FormCustom.SelectIcon = FormSelectWithIcon;
 FormCustom.TextArea = FormTextArea;
 FormCustom.Checkbox = FormCheckBox;
 FormCustom.InputIcon = FormInputIcon;
+FormCustom.Switch = SwitchToggle;
