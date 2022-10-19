@@ -48,7 +48,7 @@ export default function CardConfirmItem(props: CardModalItemProps) {
             tag="span"
             variant={color}
             type="span"
-            size={12}
+            size={14}
             weight={weight}
           >
             {value}
