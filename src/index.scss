@@ -135,6 +135,9 @@ body {
 //tabs style
 .ant-tabs-nav-list {
   .ant-tabs-tab {
+    & + .ant-tabs-tab {
+      margin: 0 0 0 12px;
+    }
     @apply uppercase;
     padding: 0;
     font-size: 13px;

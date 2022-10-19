@@ -78,7 +78,13 @@ export default function SavingPageAdd() {
 
   return (
     <div>
-      <Text type="h2" tag="h2" variant="black2" className={styles.card__title}>
+      <Text
+        type="h2"
+        tag="h2"
+        variant="black2"
+        style={{ lineHeight: "normal" }}
+        className={styles.card__title}
+      >
         Add/Withdraw Funds
       </Text>
       <Tabs defaultActiveKey="1" items={tabItems} />
