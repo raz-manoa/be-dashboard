@@ -108,7 +108,7 @@ const OtcPageDashboard = () => {
           1 USD equals 1 USDC
         </Text>
         <Button type="primary" onClick={handleContinue} className="common__btn">
-          Continuer
+          Continue
         </Button>
       </FormCustom>
     </Card>

@@ -216,11 +216,11 @@ const StyleguidePage = () => {
 
       <CardConfirm
         title="Access"
-        btnPrimary="Annuler"
+        btnPrimary="Back"
         btnSecondary="Confirmer"
         data={data}
       />
-      <CardConfirm title="Access" btnPrimary="Annuler" data={data} />
+      <CardConfirm title="Access" btnPrimary="Back" data={data} />
       <CardConfirm title="Access" data={data} />
 
       <FormCustom form={form}>

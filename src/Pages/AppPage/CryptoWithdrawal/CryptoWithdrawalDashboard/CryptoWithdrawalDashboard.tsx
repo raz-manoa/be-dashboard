@@ -120,7 +120,7 @@ const CryptoWithdrawalDashboard = () => {
             onClick={handleWithdrawal}
             className="common__btn"
           >
-            Continuer
+            Continue
           </Button>
         </div>
       </FormCustom>

@@ -34,7 +34,7 @@ export default function CardConfirm(props: CardConfirmProps) {
       </div>
       <div className={styles.cardModal__body}>
         {data.map((d, index) => (
-          <CardConfirmItem {...d} key={`d-${index}`} />
+          <CardConfirmItem {...d} first={index === 0} key={`d-${index}`} />
         ))}
       </div>
       <div

@@ -14,7 +14,7 @@ const ForeignExchangePageDashboard = () => {
   return (
     <Card className="common__card">
       <Text tag="h2" type="h2" variant="black2">
-        Amount
+        Exchange Amount
       </Text>
       <FormCustom form={form}>
         <div className="common__field-wrap">
@@ -95,7 +95,7 @@ const ForeignExchangePageDashboard = () => {
           }}
           className="common__btn"
         >
-          Continuer
+          Continue
         </Button>
       </FormCustom>
     </Card>

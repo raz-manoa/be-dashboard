@@ -5,7 +5,7 @@
   }
   &__list {
     @apply flex items-center justify-between;
-    padding: 18px 15px;
+    padding: 27px 15px 26px;
     border-bottom: solid 1px rgba(84, 110, 122, 0.2);
     .valueWrap {
       text-align: right;
@@ -32,6 +32,10 @@
   &__footer {
     @apply flex items-center justify-between w-full;
     padding-top: 25px;
+    gap: 25px;
+    .btn {
+      flex: 1;
+    }
     &Single {
       :global {
         .btn {

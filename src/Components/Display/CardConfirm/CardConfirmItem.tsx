@@ -13,6 +13,7 @@ export interface CardModalItemProps {
   onClick?(e: React.MouseEvent): void;
   align?: "row" | "col";
   extra?: string | number | ReactNode;
+  first?: boolean;
 }
 export default function CardConfirmItem(props: CardModalItemProps) {
   const {
@@ -22,6 +23,7 @@ export default function CardConfirmItem(props: CardModalItemProps) {
     weight = 600,
     extra,
     align = "col",
+    first = false,
   } = props;
   return (
     <>
@@ -48,7 +50,7 @@ export default function CardConfirmItem(props: CardModalItemProps) {
             tag="span"
             variant={color}
             type="span"
-            size={14}
+            size={first ? 14 : 12}
             weight={weight}
           >
             {value}

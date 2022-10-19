@@ -94,7 +94,7 @@ const BankTransfertPageDashboard = () => {
           }}
           className="common__btn"
         >
-          Continuer
+          Continue
         </Button>
       </FormCustom>
     </Card>

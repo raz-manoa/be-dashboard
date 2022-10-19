@@ -111,7 +111,7 @@ const CryptoExchangePageDashboard = () => {
           }}
           className="common__btn"
         >
-          Continuer
+          Continue
         </Button>
       </FormCustom>
     </Card>
