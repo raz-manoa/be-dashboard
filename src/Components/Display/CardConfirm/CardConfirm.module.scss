@@ -5,7 +5,7 @@
   }
   &__list {
     @apply flex items-center justify-between;
-    padding: 18px 15px;
+    padding: 27px 15px 26px;
     border-bottom: solid 1px rgba(84, 110, 122, 0.2);
     .valueWrap {
       text-align: right;
@@ -17,7 +17,7 @@
       margin-top: 15px;
     }
     .valueWrap {
-      margin-top: 12px;
+      margin-top: 15px;
       text-align: left;
     }
   }
@@ -33,6 +33,11 @@
     @apply grid grid-cols-2  items-center justify-between w-full;
     gap: 25px;
     padding-top: 25px;
+    gap: 25px;
+    .btn,
+    & > button {
+      flex: 1;
+    }
     &Single {
       :global {
         .btn {

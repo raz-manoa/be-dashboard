@@ -135,6 +135,9 @@ body {
 //tabs style
 .ant-tabs-nav-list {
   .ant-tabs-tab {
+    & + .ant-tabs-tab {
+      margin: 0 0 0 12px;
+    }
     @apply uppercase;
     padding: 0;
     font-size: 13px;
@@ -164,8 +167,9 @@ body {
 .common__field {
   @apply col-span-2;
   margin-bottom: 0;
+  flex: 1;
   &-wrap {
-    @apply grid grid-cols-3 items-end;
+    @apply flex items-end;
     gap: 12px;
     margin-top: 25px;
     .ant-form-item {
@@ -173,6 +177,9 @@ body {
     }
     .ant-input {
       margin-top: 24px;
+
+    & > *:last-child {
+      width: 121px;
     }
   }
 }
@@ -252,7 +259,12 @@ body {
 .ant-modal-footer {
   @apply flex items-center justify-between;
   padding-top: 25px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 26px;
+  gap: 25px;
   button {
+    flex: 1;
     font-weight: 600;
   }
 }
@@ -378,4 +390,16 @@ body {
 .eye-table {
   width: 19.2px;
   height: 14px;
+}
+
+// Fix input type number
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }

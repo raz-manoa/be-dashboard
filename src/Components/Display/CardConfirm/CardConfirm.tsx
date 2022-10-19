@@ -13,6 +13,7 @@ interface CardConfirmProps {
   className?: string;
   onClickFirstBtn?(data?: any): void;
   onClickSecondBtn?(data?: any): void;
+  itemStyle?: React.CSSProperties;
 }
 
 export default function CardConfirm(props: CardConfirmProps) {
@@ -25,6 +26,7 @@ export default function CardConfirm(props: CardConfirmProps) {
     className,
     onClickFirstBtn,
     onClickSecondBtn,
+    itemStyle,
   } = props;
   return (
     <Card className={`${styles.cardModal} ${className}`}>
@@ -35,7 +37,12 @@ export default function CardConfirm(props: CardConfirmProps) {
       </div>
       <div className={styles.cardModal__body}>
         {data.map((d, index) => (
-          <CardConfirmItem {...d} key={`d-${index}`} />
+          <CardConfirmItem
+            {...d}
+            first={index === 0}
+            style={itemStyle}
+            key={`d-${index}`}
+          />
         ))}
       </div>
       <div

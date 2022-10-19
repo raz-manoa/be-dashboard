@@ -10,7 +10,12 @@ export default function SavingPageSucess() {
       <CardConfirm
         title="Savings Withdrawal - Request Submitted"
         date="11/06/2022, 10:27:41 PM"
-        msg="A withdrawal request of 100 USD has been submitted."
+        msg={
+          <>
+            A withdrawal request of <b style={{ fontWeight: 600 }}>100 USD</b>{" "}
+            has been submitted.
+          </>
+        }
         txt="You will be notified when the withdrawal has been completed."
         link={{
           label: "Transaction",

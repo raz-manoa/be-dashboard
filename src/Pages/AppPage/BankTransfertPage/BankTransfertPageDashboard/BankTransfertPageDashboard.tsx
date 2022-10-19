@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./BankTransfertPageDashboard.module.scss";
 
 const BankTransfertPageDashboard = () => {
-  useSetAppLayoutTitle("Bank Transfer");
+  useSetAppLayoutTitle("Bank Transfers");
   const [form] = useForm();
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const BankTransfertPageDashboard = () => {
         <div className={`${styles.select} common__field-wrap`}>
           <FormCustom.Input
             name="field from"
-            label="From : "
+            label="From: "
             color="grey"
             type="number"
             className="common__field"
@@ -36,6 +36,7 @@ const BankTransfertPageDashboard = () => {
           <FormCustom.Select
             name="select money"
             placeholder="USD"
+            style={{ width: 121 }}
             options={[
               {
                 label: "USD",
@@ -66,6 +67,7 @@ const BankTransfertPageDashboard = () => {
           <FormCustom.Select
             name="select"
             placeholder="USD"
+            style={{ width: 121 }}
             options={[
               {
                 label: "USDC",
@@ -94,7 +96,7 @@ const BankTransfertPageDashboard = () => {
           }}
           className="common__btn"
         >
-          Continuer
+          Continue
         </Button>
       </FormCustom>
     </Card>

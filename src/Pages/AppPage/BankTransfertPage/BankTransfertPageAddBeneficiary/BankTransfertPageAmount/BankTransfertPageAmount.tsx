@@ -22,6 +22,7 @@ export default function BankTransfertPageAmount(
           type="p"
           size={19}
           variant="grey"
+          weight="normal"
           className={styles.amount__list}
         >
           Amount from:

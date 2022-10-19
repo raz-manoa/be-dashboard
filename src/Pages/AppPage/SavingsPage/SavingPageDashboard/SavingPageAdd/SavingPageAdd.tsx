@@ -17,7 +17,7 @@ export default function SavingPageAdd() {
         <>
           <CardDisposit
             save="USD Savings"
-            placeholder="200.0 USD"
+            placeholder="0.0 USD"
             money="564.00 USD"
             btnLabel="Deposit"
             className={styles.card}
@@ -29,7 +29,7 @@ export default function SavingPageAdd() {
           />
           <CardDisposit
             save="EUR Savings"
-            placeholder="200.0 EUR"
+            placeholder="0.0 EUR"
             money="0.00 EUR"
             btnLabel="Deposit"
             className={styles.card}
@@ -78,7 +78,13 @@ export default function SavingPageAdd() {
 
   return (
     <div>
-      <Text type="h2" tag="h2" variant="black2" className={styles.card__title}>
+      <Text
+        type="h2"
+        tag="h2"
+        variant="black2"
+        style={{ lineHeight: "normal" }}
+        className={styles.card__title}
+      >
         Add/Withdraw Funds
       </Text>
       <Tabs defaultActiveKey="1" items={tabItems} />

@@ -33,7 +33,11 @@ export default function BankTransfertPageRecipient(
         </Text>
         <div className={styles.search}>
           <Icon icon="search" color="var(--red)" />
-          <input type="text" placeholder="Search Beneficiary" />
+          <input
+            type="text"
+            placeholder="Search Beneficiary"
+            style={{ width: 120 }}
+          />
         </div>
       </div>
       <FormCustom form={form} className={styles.card__field}>

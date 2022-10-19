@@ -18,7 +18,12 @@ export default function TitleCard(props: TitleCardProps) {
   return (
     <div className={`${styles.card__title_wrap} ${className}`}>
       <div className={styles.card__title}>
-        <Text tag="h2" type="h2" variant="black2">
+        <Text
+          tag="h2"
+          type="h2"
+          variant="black2"
+          style={{ lineHeight: "normal" }}
+        >
           {title}
         </Text>
         <div className={styles.card__nav}>

@@ -32,9 +32,9 @@ export default function ForeignExchangePageReview() {
   return (
     <CardConfirm
       className="common__card"
-      title="Access"
-      btnPrimary="Annuler"
-      btnSecondary="Confirmer"
+      title="Foreign Exchange - Review"
+      btnPrimary="Back"
+      btnSecondary="Confirm"
       data={data}
       onClickFirstBtn={() => {
         navigate({

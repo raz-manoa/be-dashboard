@@ -32,7 +32,7 @@ export default function CryptoExchangePageReview() {
     <CardConfirm
       className="common__card"
       title="Crypto Exchange - Review"
-      btnPrimary="Annuler"
+      btnPrimary="Back"
       btnSecondary="Confirmer"
       data={data}
       onClickFirstBtn={() => {

@@ -1,7 +1,7 @@
 label {
   font-size: 14px;
   color: var(--grey);
-  font-weight: 500;
+  font-weight: normal;
 }
 .input {
   &__content {
@@ -38,6 +38,7 @@ label {
       color: #000;
       &::placeholder {
         color: var(--grey_light);
+        font-weight: normal;
       }
       svg {
         fill: var(--grey);
@@ -86,6 +87,7 @@ body {
 .active {
   .input {
     &__content {
+      color: rgba(0, 0, 0, 0.8);
       &--grey {
         border: solid 1px var(--grey_light);
         input {

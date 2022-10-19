@@ -10,10 +10,16 @@ export default function ForeignExchangePageSuccess() {
       <CardConfirm
         title="Request Submitted"
         date="11/06/2022, 10:27:41 PM"
-        msg="An exchange request from 17.00 USD, to 15.64 EUR has been 
-submitted."
+        msg={
+          <>
+            An exchange request from{" "}
+            <span style={{ fontWeight: 600 }}>17.00 USD</span>, to{" "}
+            <span style={{ fontWeight: 600 }}>15.64 EUR</span> has been
+            submitted.
+          </>
+        }
         link={{
-          label: "Transaction",
+          label: "Transactions",
           path: "#",
         }}
       />

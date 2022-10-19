@@ -216,11 +216,11 @@ const StyleguidePage = () => {
 
       <CardConfirm
         title="Access"
-        btnPrimary="Annuler"
+        btnPrimary="Back"
         btnSecondary="Confirmer"
         data={data}
       />
-      <CardConfirm title="Access" btnPrimary="Annuler" data={data} />
+      <CardConfirm title="Access" btnPrimary="Back" data={data} />
       <CardConfirm title="Access" data={data} />
 
       <FormCustom form={form}>
@@ -270,28 +270,29 @@ const StyleguidePage = () => {
           option="optional"
           placeholder="messages"
         />
+        <FormCustom.SelectIcon
+          name="select"
+          icon="transactions"
+          placeholder="Transaction type"
+          options={[
+            {
+              label: "Be Network",
+              value: "Be Network",
+            },
+            {
+              label: "Bank Transfer",
+              value: "Be Network",
+            },
+          ]}
+        />
+        <FormDatePicker />
+        <Table<TableSample>
+          dataSource={tableSampleData}
+          columns={tableSampleColumn()}
+        />
+        <CardTransaction {...transactionData} />
+        <SwitchToggle name={""} label="By Phone Number" />
       </FormCustom>
-      <FormCustom.SelectIcon
-        name="select"
-        icon="transactions"
-        placeholder="Transaction type"
-        options={[
-          {
-            label: "Be Network",
-            value: "Be Network",
-          },
-          {
-            label: "Bank Transfer",
-            value: "Be Network",
-          },
-        ]}
-      />
-      <FormDatePicker />
-      <Table<TableSample>
-        dataSource={tableSampleData}
-        columns={tableSampleColumn()}
-      />
-      <CardTransaction {...transactionData} />
     </div>
   );
 };
