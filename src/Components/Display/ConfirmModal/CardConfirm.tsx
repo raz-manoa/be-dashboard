@@ -7,7 +7,7 @@ import styles from "./CardConfirm.module.scss";
 interface ConfirmModalProps {
   title: string;
   date: string;
-  msg: string;
+  msg: React.ReactNode;
   txt?: string;
   status?: AlertProps["type"];
   link?: {
@@ -19,10 +19,10 @@ export default function CardConfirm(props: ConfirmModalProps) {
   const { title, date, msg, txt, link, status = "success" } = props;
   return (
     <div>
-      <Text tag="h2" variant="black2" className="mb-6">
+      <Text tag="h2" type="h2" variant="black2" className="mb-6">
         {title}
       </Text>
-      <Text tag="p" type="p" variant="grey" className="mb-4" size={14}>
+      <Text tag="p" type="p" variant="grey-light" className="mb-4" size={14}>
         {date}
       </Text>
       <Alert message={msg} type={status} className={styles.alert} />
@@ -32,7 +32,7 @@ export default function CardConfirm(props: ConfirmModalProps) {
         </Text>
         {link && (
           <Text tag="p" type="p" variant="grey" className={styles.txt}>
-            the status of your request, please see
+            To check the status of your request, please see
             <Link to={link.path} title="">
               {link.label}
             </Link>
