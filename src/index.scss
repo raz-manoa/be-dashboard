@@ -37,16 +37,31 @@ body {
       padding: 5px;
     }
   }
-  .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner,
-  .ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner,
-  .ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner {
-    @apply flex items-center justify-center;
-    background-color: var(--red) !important;
-    border-radius: 50% !important;
-    padding: 10px !important;
-    height: 32px;
-    width: 39px;
+  .ant-picker-date-panel {
+    .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner,
+    .ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner,
+    .ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner {
+      @apply flex items-center justify-center;
+      background-color: var(--red) !important;
+      border-radius: 50% !important;
+      padding: 10px !important;
+      height: 32px;
+      width: 32px;
+    }
   }
+  .ant-picker-month-panel,
+  .ant-picker-year-panel {
+    .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner,
+    .ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner,
+    .ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner {
+      background-color: var(--red) !important;
+    }
+  }
+
+  .ant-picker-header-view button:hover {
+    color: var(--red) !important;
+  }
+
   .ant-picker-cell-in-view.ant-picker-cell-today
     .ant-picker-cell-inner::before {
     border: 1px solid var(--grey);
