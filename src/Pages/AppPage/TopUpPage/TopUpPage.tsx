@@ -81,7 +81,7 @@ const data = [
   {
     label: "Account Number",
     value: (
-      <div className="flex items-center">
+      <div className="flex items-center justify-end">
         <Text tag="p" size={14} weight={600}>
           000449876447656
         </Text>
@@ -95,7 +95,7 @@ const data = [
   {
     label: "IBAN",
     value: (
-      <div className="flex items-center">
+      <div className="flex items-center justify-end">
         <Text tag="p" size={14} weight={600}>
           MU38MCBL876165318323290823132
         </Text>
