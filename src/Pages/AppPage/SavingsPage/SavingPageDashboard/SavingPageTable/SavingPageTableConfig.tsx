@@ -7,7 +7,7 @@ export interface SavingPageTableData {
   transactionType: string;
   transactionFee: string;
   transactionStatus: string;
-  amount: number;
+  amount: string;
   timestamp: string;
 }
 
