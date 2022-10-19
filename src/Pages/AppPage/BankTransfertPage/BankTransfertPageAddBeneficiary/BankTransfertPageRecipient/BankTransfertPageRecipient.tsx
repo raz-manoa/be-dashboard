@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import Icon from "@/Components/General/Icon/Icon";
 import Modal from "antd/lib/modal";
 import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
-import { CardConfirmItemProps } from "@/Components/Display/CardConfirm/CardConfirm";
 import CardConfirmItem from "@/Components/Display/CardConfirm/CardConfirmItem";
 import BankTransfertPageDashboardModal from "../BankTransfertPageDashboardModal/BankTransfertPageDashboardModal";
 

@@ -1,10 +1,11 @@
-import { CardConfirmItemProps } from "@/Components/Display/CardConfirm/CardConfirm";
-import CardConfirmItem from "@/Components/Display/CardConfirm/CardConfirmItem";
+import CardConfirmItem, {
+  CardModalItemProps,
+} from "@/Components/Display/CardConfirm/CardConfirmItem";
 import Modal, { ModalProps } from "antd/lib/modal";
 import React from "react";
 import styles from "./BankTransfertPageDashboardModal.module.scss";
 
-const dataModal: CardConfirmItemProps[] = [
+const dataModal: CardModalItemProps[] = [
   {
     label: "Recipient",
     value: "John Smith",
@@ -65,7 +66,6 @@ export default function BankTransfertPageDashboardModal(
           label={d.label}
           value={d.value}
           icon={d.icon}
-          msg={d.msg}
           optional={d.optional}
           key={`d-${id}`}
         />

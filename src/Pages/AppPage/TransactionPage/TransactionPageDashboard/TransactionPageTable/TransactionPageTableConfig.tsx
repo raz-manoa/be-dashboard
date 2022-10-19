@@ -1,6 +1,7 @@
 import Icon from "@/Components/General/Icon/Icon";
 import Text from "@/Components/General/Text/Text";
 import { ColumnType } from "antd/es/table";
+import { statusColor } from "./TransactionPageTableModal";
 
 export interface TransactionPageTableData {
   name: string;
@@ -13,9 +14,9 @@ export interface TransactionPageTableData {
   icon: string;
 }
 
-export const transactionPageTableColumn: () => Array<
-  ColumnType<TransactionPageTableData>
-> = () => {
+export const transactionPageTableColumn: (options: {
+  onShowDetail: (data: TransactionPageTableData) => void;
+}) => Array<ColumnType<TransactionPageTableData>> = ({ onShowDetail }) => {
   return [
     {
       key: "icon",
@@ -92,17 +93,7 @@ export const transactionPageTableColumn: () => Array<
       title: "Status",
       render: (value: TransactionPageTableData["status"]) => {
         return (
-          <Text
-            tag="span"
-            variant={`${
-              value.includes("completed" || "Completed")
-                ? "green"
-                : value.includes("Initiated" || "initiated")
-                ? "yellow"
-                : "red"
-            }`}
-            size={12}
-          >
+          <Text tag="span" variant={statusColor[value.toLowerCase()]} size={12}>
             {value}
           </Text>
         );
@@ -151,8 +142,12 @@ export const transactionPageTableColumn: () => Array<
       dataIndex: "transactionType",
       title: "",
       width: 5,
-      render: (value: TransactionPageTableData["transactionType"]) => {
-        return <Icon icon="eye" color="#546e7a" className="eye-table" />;
+      render: (_, data: TransactionPageTableData) => {
+        return (
+          <span className="cursor-pointer" onClick={() => onShowDetail(data)}>
+            <Icon icon="eye" color="#546e7a" className="eye-table" />
+          </span>
+        );
       },
     },
   ];

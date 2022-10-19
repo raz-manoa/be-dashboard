@@ -22,37 +22,40 @@ const optionSelect = [
   { label: "FX", value: "FX" },
 ];
 export default function TransactionPageHead() {
+  const [form] = useForm();
   return (
-    <div className={styles.transaction__head}>
-      <div className={styles.transaction__button}>
-        <FormCustom.SelectIcon
-          name="select"
-          icon="transactions"
-          placeholder="Transaction type"
-          className={styles.transaction__item}
-          options={optionSelect}
-        />
+    <FormCustom form={form}>
+      <div className={styles.transaction__head}>
+        <div className={styles.transaction__button}>
+          <FormCustom.SelectIcon
+            name="select"
+            icon="transactions"
+            placeholder="Transaction type"
+            className={styles.transaction__item}
+            options={optionSelect}
+          />
 
-        <FormDatePicker
-          className={`${styles.transaction__item} ${styles.transaction__date}`}
-        />
-        <FormCustom.InputIcon
-          icon="user"
-          placeholder="Name"
-          className={`${styles.transaction__item} ${styles.transaction__name}`}
-        />
-        <ButtonWithIcon
-          icon="close"
-          label="Clear Filters"
-          className={`${styles.transaction__item}`}
-        />
+          <FormDatePicker
+            className={`${styles.transaction__item} ${styles.transaction__date}`}
+          />
+          <FormCustom.InputIcon
+            icon="user"
+            placeholder="Name"
+            className={`${styles.transaction__item} ${styles.transaction__name}`}
+          />
+          <ButtonWithIcon
+            icon="close"
+            label="Clear Filters"
+            className={`${styles.transaction__item}`}
+          />
+        </div>
+        <div className={styles.export}>
+          <ButtonWithIcon label="Export" className={styles.transaction__item} />
+          <button className={styles.icon__relaod}>
+            <Icon icon="resfresh" color="white" />
+          </button>
+        </div>
       </div>
-      <div className={styles.export}>
-        <ButtonWithIcon label="Export" className={styles.transaction__item} />
-        <button className={styles.icon__relaod}>
-          <Icon icon="resfresh" color="white" />
-        </button>
-      </div>
-    </div>
+    </FormCustom>
   );
 }

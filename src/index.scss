@@ -228,6 +228,9 @@ body {
 .ant-modal-footer {
   @apply flex items-center justify-between;
   padding-top: 25px;
+  button {
+    font-weight: 600;
+  }
 }
 .ant-btn {
   @apply flex items-center justify-center cursor-pointer uppercase;
@@ -236,6 +239,9 @@ body {
   height: 54px;
   width: 200px;
   border-radius: 8px;
+  font-size: 16px;
+  letter-spacing: 0.48px;
+
   &:hover {
     color: #fff;
   }
