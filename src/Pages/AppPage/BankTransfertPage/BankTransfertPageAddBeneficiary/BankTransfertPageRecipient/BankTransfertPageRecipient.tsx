@@ -32,7 +32,7 @@ export default function BankTransfertPageRecipient(
           Recipient
         </Text>
         <div className={styles.search}>
-          <Icon icon="search" color="red" />
+          <Icon icon="search" color="var(--red)" />
           <input type="text" placeholder="Search Beneficiary" />
         </div>
       </div>

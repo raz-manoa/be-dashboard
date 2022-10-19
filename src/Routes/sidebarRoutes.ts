@@ -225,12 +225,12 @@ const sidebarRoutes: ISidebarRoute[] = [
       },
     ],
   },
-  {
+  /* {
     path: "request-money",
     name: "Request Money",
     icon: "resquest-money",
     component: RequestMoneyPage,
-  },
+  }, */
   {
     path: "bank-transfer",
     name: "Bank Transfers",
