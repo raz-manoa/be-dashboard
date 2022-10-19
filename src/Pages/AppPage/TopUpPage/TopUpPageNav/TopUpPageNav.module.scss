@@ -11,8 +11,10 @@
   }
   &:hover {
     background-color: var(--red);
-    a {
-      color: var(--white);
-    }
+    color: var(--white);
+  }
+  &.navActive {
+    background-color: var(--red);
+    color: var(--white);
   }
 }

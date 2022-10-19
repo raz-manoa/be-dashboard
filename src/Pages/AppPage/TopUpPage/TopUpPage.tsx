@@ -1,6 +1,6 @@
 import Card from "@/Components/Display/Card/Card";
 import Text from "@/Components/General/Text/Text";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import TopUpPageNav from "./TopUpPageNav/TopUpPageNav";
 import styles from "./TopUpPage.module.scss";
 import CardConfirmItem from "@/Components/Display/CardConfirm/CardConfirmItem";
@@ -28,6 +28,7 @@ const moneyData = [
     path: "#",
   },
 ];
+
 const data = [
   {
     label: "Currency",
@@ -106,8 +107,12 @@ const data = [
     icon: "bank-transfert",
   },
 ];
+
 const TopUpPage = () => {
   const { setHeaderTitle } = useAppLayoutContext();
+
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
   useEffect(() => {
     setHeaderTitle("Top Up");
   });
@@ -117,8 +122,15 @@ const TopUpPage = () => {
         To top up, please use the account information below to transfer funds:
       </Text>
       <div className={styles.card__nav__list}>
-        {moneyData.map((m, id) => (
-          <TopUpPageNav label={m.label} to={m.path} key={`m-${id}`} />
+        {moneyData.map((m, id: number) => (
+          <TopUpPageNav
+            label={m.label}
+            key={`m-${id}`}
+            onclick={() => {
+              setCurrentIndex(id);
+            }}
+            active={id === currentIndex}
+          />
         ))}
       </div>
       {data.map((d, id) => (
