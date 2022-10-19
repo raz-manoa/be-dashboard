@@ -57,7 +57,7 @@ export default function SavingCard(props: SavingCardProps) {
           {currencyParser(principal)}
         </Text>
       </div>
-      <div className={styles.cardSave__info}>
+      <div className={styles.cardSave__info} style={{ paddingRight: 0 }}>
         <Text
           tag="h3"
           type="h3"
