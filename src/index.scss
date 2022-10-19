@@ -31,7 +31,7 @@ body {
     .ant-picker-cell {
       // @apply flex items-center justify-center;
       height: 32px;
-      width: 32px;
+      width: 42px;
       font-size: 16px;
       color: var(--grey);
       padding: 5px;
@@ -45,7 +45,7 @@ body {
     border-radius: 50% !important;
     padding: 10px !important;
     height: 32px;
-    width: 32px;
+    width: 39px;
   }
   .ant-picker-cell-in-view.ant-picker-cell-today
     .ant-picker-cell-inner::before {
@@ -295,6 +295,7 @@ body {
       letter-spacing: normal;
       text-align: center;
       color: var(--grey_light);
+      width: 42px;
     }
   }
   .ant-picker-header {

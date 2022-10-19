@@ -78,4 +78,13 @@
     color: #90a4ae;
     transform: translateY(-2px);
   }
+  .ant-picker-decade-panel,
+  .ant-picker-year-panel,
+  .ant-picker-quarter-panel,
+  .ant-picker-month-panel,
+  .ant-picker-week-panel,
+  .ant-picker-date-panel,
+  .ant-picker-time-panel {
+    width: 323px;
+  }
 }
