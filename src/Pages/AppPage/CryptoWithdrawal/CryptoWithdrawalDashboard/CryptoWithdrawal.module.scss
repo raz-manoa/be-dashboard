@@ -3,10 +3,13 @@
     padding: 0;
   }
   &__validation {
-    margin: 15px 0 26px 0;
+    margin: 0 0 20px 0;
     color: #c8c7cc;
   }
   &__form {
+    .adress {
+      margin-bottom: 10px;
+    }
     &.error {
       .adress {
         input {
@@ -29,8 +32,8 @@
     }
   }
   &__logo {
-    @apply flex flex-col justify-center items-center;
-    margin-bottom: 41px;
+    @apply flex flex-col justify-center items-center w-full;
+    margin-bottom: 31px;
     img {
       height: 100px;
       width: 100px;
