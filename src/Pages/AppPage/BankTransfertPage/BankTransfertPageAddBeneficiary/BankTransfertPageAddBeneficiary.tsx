@@ -6,7 +6,7 @@ import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import BankTransfertPageDashboardModal from "./BankTransfertPageDashboardModal/BankTransfertPageDashboardModal";
 
 export default function BankTransfertPageAddBeneficiary() {
-  useSetAppLayoutTitle("Bank Transfers");
+  useSetAppLayoutTitle("Bank Transfer");
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);

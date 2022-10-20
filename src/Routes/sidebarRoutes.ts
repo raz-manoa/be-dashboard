@@ -233,7 +233,7 @@ const sidebarRoutes: ISidebarRoute[] = [
   }, */
   {
     path: "bank-transfer",
-    name: "Bank Transfers",
+    name: "Bank Transfer",
     icon: "bank-transfert",
     component: BankTransfertPage,
     children: [
