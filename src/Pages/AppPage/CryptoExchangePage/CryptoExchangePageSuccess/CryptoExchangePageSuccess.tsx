@@ -8,9 +8,9 @@ export default function CryptoExchangePageSuccess() {
   return (
     <Card className="common__card">
       <CardConfirm
-        title="Transfer Complete"
+        title="Exchange Complete"
         date="11/06/2022, 10:27:41 PM"
-        msg="5.00 USD has been sent to YR Main"
+        msg="An exchange from 100.00 SOL, to 97 BTC has been approved."
       />
     </Card>
   );
