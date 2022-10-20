@@ -13,7 +13,7 @@ export default function ForeignExchangePageSuccess() {
         msg={
           <>
             An exchange request from{" "}
-            <span style={{ fontWeight: 600 }}>17.00 USD</span>, to{" "}
+            <span style={{ fontWeight: 600 }}>17.00 USD</span> to{" "}
             <span style={{ fontWeight: 600 }}>15.64 EUR</span> has been
             submitted.
           </>

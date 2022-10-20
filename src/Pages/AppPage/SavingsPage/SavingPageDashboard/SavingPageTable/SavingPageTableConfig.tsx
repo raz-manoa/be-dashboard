@@ -50,6 +50,7 @@ export const savingPageTableColumn: () => Array<
       key: "name",
       dataIndex: "name",
       title: "Name",
+      align: "center",
       render: (value: SavingPageTableData["name"]) => {
         return (
           <Text tag="span" weight={600} size={12}>
@@ -62,6 +63,7 @@ export const savingPageTableColumn: () => Array<
       key: "transactionStatus",
       dataIndex: "transactionStatus",
       title: "Transaction status",
+      align: "center",
       render: (value: SavingPageTableData["transactionStatus"]) => {
         return (
           <Text tag="span" variant="green" size={12}>
@@ -74,6 +76,7 @@ export const savingPageTableColumn: () => Array<
       key: "transactionFee",
       dataIndex: "transactionFee",
       title: "Transaction Fee",
+      align: "center",
       render: (value: SavingPageTableData["transactionStatus"]) => {
         return (
           <Text tag="span" size={12}>
@@ -86,6 +89,7 @@ export const savingPageTableColumn: () => Array<
       key: "amount",
       dataIndex: "amount",
       title: "Amount",
+      align: "center",
       render: (value: SavingPageTableData["amount"]) => {
         return (
           <Text tag="span" weight={600} size={14}>
@@ -98,6 +102,7 @@ export const savingPageTableColumn: () => Array<
       key: "timestamp",
       dataIndex: "timestamp",
       title: "Timestamp",
+      align: "center",
       render: (value: SavingPageTableData["timestamp"]) => {
         return (
           <Text tag="span" variant="grey-light" size={12}>
