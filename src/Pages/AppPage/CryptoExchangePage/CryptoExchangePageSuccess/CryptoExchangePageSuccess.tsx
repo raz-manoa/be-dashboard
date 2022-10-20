@@ -10,7 +10,13 @@ export default function CryptoExchangePageSuccess() {
       <CardConfirm
         title="Exchange Complete"
         date="11/06/2022, 10:27:41 PM"
-        msg="An exchange from 100.00 SOL, to 97 BTC has been approved."
+        msg={
+          <>
+            exchange from<span style={{ fontWeight: 600 }}> 100.00 SOL</span> ,
+            to
+            <span style={{ fontWeight: 600 }}> 97 BTC </span>has been approved.
+          </>
+        }
       />
     </Card>
   );

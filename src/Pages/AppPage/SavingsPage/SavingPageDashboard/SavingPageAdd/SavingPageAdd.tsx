@@ -23,7 +23,7 @@ export default function SavingPageAdd() {
             className={styles.card}
             onAction={() =>
               navigate({
-                pathname: "review",
+                pathname: "review-deposit",
               })
             }
           />
@@ -35,7 +35,7 @@ export default function SavingPageAdd() {
             className={styles.card}
             onAction={() =>
               navigate({
-                pathname: "review",
+                pathname: "review-deposit",
               })
             }
           />
@@ -55,7 +55,7 @@ export default function SavingPageAdd() {
             btnLabel="Withdraw"
             onAction={() =>
               navigate({
-                pathname: "review",
+                pathname: "review-withdrawal",
               })
             }
           />
@@ -67,7 +67,7 @@ export default function SavingPageAdd() {
             btnLabel="Withdraw"
             onAction={() =>
               navigate({
-                pathname: "review",
+                pathname: "review-withdrawal",
               })
             }
           />
