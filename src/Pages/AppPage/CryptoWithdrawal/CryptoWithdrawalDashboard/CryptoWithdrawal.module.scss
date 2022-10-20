@@ -54,6 +54,9 @@
     @apply flex items-center justify-center;
     margin: 44px 0 43px 0;
     :global {
+      .ant-radio {
+        top: 0;
+      }
       .ant-radio:hover {
         .ant-radio-inner {
           border-color: #d9d9d9;
