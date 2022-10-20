@@ -12,7 +12,7 @@ export default function BankTransfertPageSucces() {
         date="11/06/2022, 10:27:41 PM"
         msg={
           <>
-            An international transfer to John Smith, from{" "}
+            An international transfer to John Smith from{" "}
             <span style={{ fontWeight: 600 }}>12.00 USD</span> to{" "}
             <span style={{ fontWeight: 600 }}>12.00 USD</span> has been
             submitted.

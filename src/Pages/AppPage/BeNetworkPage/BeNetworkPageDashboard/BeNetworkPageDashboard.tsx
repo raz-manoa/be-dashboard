@@ -125,7 +125,7 @@ const BeNetworkPageDashboard = () => {
           className={styles.textarea}
           label="Message : "
           option="Optional"
-          placeholder="Messages..."
+          placeholder="Message..."
           rules={[
             {
               required: true,
