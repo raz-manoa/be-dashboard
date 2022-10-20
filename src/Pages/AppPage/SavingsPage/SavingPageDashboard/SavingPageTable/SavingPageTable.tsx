@@ -9,7 +9,7 @@ import {
 import useSavingPageTableLogic from "./SavingPageTableLogic";
 
 export default function SavingPageTable() {
-  const savingPageTableDataTmp = useSavingPageTableLogic();
+  const { savingList } = useSavingPageTableLogic();
 
   return (
     <Card className="mt-5">
@@ -18,8 +18,10 @@ export default function SavingPageTable() {
       </Text>
       <Table<SavingPageTableData>
         pagination={false}
-        dataSource={savingPageTableDataTmp}
+        dataSource={savingList}
         columns={savingPageTableColumn()}
+        scroll={{ x: undefined, y: 506 }}
+        tableLayout={"auto"}
       />
     </Card>
   );
