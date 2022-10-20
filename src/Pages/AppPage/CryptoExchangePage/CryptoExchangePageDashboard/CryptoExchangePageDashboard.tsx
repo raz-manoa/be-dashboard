@@ -5,6 +5,7 @@ import Text from "@/Components/General/Text/Text";
 import { useForm } from "antd/es/form/Form";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
+import styles from "./CryptoExchangePageDashboard.module.scss";
 
 const CryptoExchangePageDashboard = () => {
   useSetAppLayoutTitle("Crypto Exchange");
@@ -34,15 +35,15 @@ const CryptoExchangePageDashboard = () => {
           />
           <FormCustom.Select
             name="select money"
-            placeholder="USD"
+            placeholder="SOL"
             options={[
               {
-                label: "USD",
-                value: "usd",
+                label: "SOL",
+                value: "sol",
               },
               {
-                label: "EUR",
-                value: "eur",
+                label: "ETH",
+                value: "eth",
               },
             ]}
           />
@@ -64,22 +65,22 @@ const CryptoExchangePageDashboard = () => {
           />
           <FormCustom.Select
             name="select"
-            placeholder="USD"
+            placeholder="BTC"
             options={[
               {
-                label: "USDC",
-                value: "usdc",
+                label: "BTC",
+                value: "btc",
               },
               {
-                label: "EUR",
-                value: "eur",
+                label: "ETH",
+                value: "eth",
               },
             ]}
           />
         </div>
-        <div className="common__txt">
+        <div className={`${styles.exchange__txt} common__txt`}>
           <Text type="p" tag="p" variant="grey">
-            <strong>174.75 USD</strong> available to transfer
+            <strong>174.75 SOL</strong> available to transfer
           </Text>
           <Text type="p" tag="p" variant="grey">
             Transaction fee <strong>0 USD</strong>
@@ -92,7 +93,7 @@ const CryptoExchangePageDashboard = () => {
           weight={600}
           className="common__info"
         >
-          1 USDC equals 1 USD
+          1 USDC equals 1 SOL
         </Text>
         <Text
           type="p"
@@ -101,7 +102,7 @@ const CryptoExchangePageDashboard = () => {
           weight={600}
           className="common__info"
         >
-          1 USD equals 1 USDC
+          1 USD equals 1 BTC
         </Text>
         <Button
           type="primary"

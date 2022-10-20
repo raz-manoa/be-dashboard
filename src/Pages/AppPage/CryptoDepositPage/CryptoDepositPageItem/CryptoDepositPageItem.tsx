@@ -18,7 +18,7 @@ export default function CryptoDepositPageItem(
   const { title, logo, sup, code, identity, txt } = props;
   return (
     <Card className={styles.card__crypto}>
-      <Text type="h2" tag="h2" className={styles.title}>
+      <Text type="h2" tag="h2" variant="black2" className={styles.title}>
         {title}
         <sup>{sup}</sup>
       </Text>

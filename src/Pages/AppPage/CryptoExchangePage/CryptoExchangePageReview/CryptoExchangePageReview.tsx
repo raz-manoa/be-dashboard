@@ -34,6 +34,7 @@ export default function CryptoExchangePageReview() {
       title="Crypto Exchange - Review"
       btnPrimary="Back"
       btnSecondary="Confirmer"
+      itemStyle={{ padding: "25px 15px 24px" }}
       data={data}
       onClickFirstBtn={() => {
         navigate({

@@ -68,7 +68,7 @@ const CryptoWithdrawalDashboard = () => {
           className={styles.withdrawal__validation}
           size={12}
         >
-          validation :
+          Validation :
         </Text>
         <div className={`${styles.select}`}>
           <FormCustom.Input

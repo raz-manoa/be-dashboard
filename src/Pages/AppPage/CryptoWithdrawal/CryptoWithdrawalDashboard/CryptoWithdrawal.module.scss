@@ -32,6 +32,11 @@
     @apply flex items-center justify-center;
     margin: 44px 0 43px 0;
     :global {
+      .ant-radio:hover {
+        .ant-radio-inner {
+          border-color: #d9d9d9;
+        }
+      }
       .ant-radio-wrapper:hover .ant-radio,
       .ant-radio:hover .ant-radio-inner,
       .ant-radio-input:focus + .ant-radio-inner {

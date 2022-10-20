@@ -34,6 +34,7 @@ export default function OtcPageReview() {
       title="Foreign Exchange - Review"
       btnPrimary="back"
       btnSecondary="Confirm"
+      itemStyle={{ padding: "25px 15px 24px" }}
       data={data}
       onClickFirstBtn={() => {
         navigate({

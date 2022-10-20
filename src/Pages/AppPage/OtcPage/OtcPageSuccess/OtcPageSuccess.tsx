@@ -13,9 +13,9 @@ export default function OtcPageSuccess() {
         msg={
           <>
             An exchange request from{" "}
-            <span style={{ fontWeight: 600 }}>170.00 USD</span>, to{" "}
-            <span style={{ fontWeight: 600 }}>170.00 USDC</span>
-            has been submitted.
+            <span style={{ fontWeight: 600 }}>170.00 USD</span> to{" "}
+            <span style={{ fontWeight: 600 }}>170.00 USDC</span> has been
+            submitted.
           </>
         }
         link={{
