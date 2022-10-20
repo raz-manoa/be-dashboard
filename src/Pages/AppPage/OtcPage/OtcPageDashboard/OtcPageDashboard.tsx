@@ -5,7 +5,7 @@ import Text from "@/Components/General/Text/Text";
 import { useForm } from "antd/es/form/Form";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
-
+import styles from "./OtcPageDashboard.module.scss";
 const OtcPageDashboard = () => {
   useSetAppLayoutTitle("OTC");
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const OtcPageDashboard = () => {
   };
 
   return (
-    <Card className="common__card">
+    <Card className={`${styles.otc__card} common__card`}>
       <Text tag="h2" type="h2" variant="black2">
         Amount
       </Text>
@@ -81,7 +81,7 @@ const OtcPageDashboard = () => {
             ]}
           />
         </div>
-        <div className="common__txt">
+        <div className={`${styles.otc__txt} common__txt`}>
           <Text type="p" tag="p" variant="grey">
             <strong>174.75 USD</strong> available to transfer
           </Text>
