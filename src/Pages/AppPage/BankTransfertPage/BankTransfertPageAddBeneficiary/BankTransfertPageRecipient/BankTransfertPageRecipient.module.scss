@@ -34,6 +34,13 @@
     }
   }
 }
+.textarea {
+  :global {
+    .ant-input {
+      height: 164px !important;
+    }
+  }
+}
 
 .overlay {
   position: relative;

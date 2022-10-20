@@ -7,7 +7,7 @@ export interface SavingPageTableData {
   transactionType: string;
   transactionFee: string;
   transactionStatus: string;
-  amount: number;
+  amount: string;
   timestamp: string;
 }
 
@@ -100,7 +100,7 @@ export const savingPageTableColumn: () => Array<
       title: "Timestamp",
       render: (value: SavingPageTableData["timestamp"]) => {
         return (
-          <Text tag="span" variant="grey" size={14}>
+          <Text tag="span" variant="grey-light" size={12}>
             {value}
           </Text>
         );

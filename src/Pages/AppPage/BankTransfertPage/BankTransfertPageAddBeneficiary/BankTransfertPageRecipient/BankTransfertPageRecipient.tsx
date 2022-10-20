@@ -152,7 +152,7 @@ export default function BankTransfertPageRecipient(
             label="message : "
             option="optional"
             placeholder="messages"
-            className="textarea"
+            className={styles.textarea}
             rules={[
               {
                 required: true,

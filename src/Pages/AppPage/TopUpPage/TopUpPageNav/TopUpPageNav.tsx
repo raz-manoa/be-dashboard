@@ -1,16 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import styles from "./TopUpPageNav.module.scss";
 interface TopUpPageNavProps {
   label: string;
-  to: string;
+  active?: boolean;
+  onClick?: () => void;
 }
 
 export default function TopUpPageNav(props: TopUpPageNavProps) {
-  const { label, to } = props;
+  const { label, active, onClick } = props;
   return (
-    <button className={styles.nav}>
-      <Link to={to}>{label}</Link>
+    <button
+      className={`${styles.nav} ${active ? styles.nav__active : ""}`}
+      onClick={onClick}
+    >
+      {label}
     </button>
   );
 }

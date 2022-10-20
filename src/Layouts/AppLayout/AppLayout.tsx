@@ -35,7 +35,7 @@ const AppLayout = () => {
               }
             />
           </Layout.Header>
-          <Layout.Content style={{ padding: "0 32px" }} id="main-layout">
+          <Layout.Content style={{ padding: "0px 32px 32px" }} id="main-layout">
             <Outlet />
           </Layout.Content>
         </Layout>

@@ -4,6 +4,7 @@ import Button from "@/Components/General/Button/Button";
 import Text from "@/Components/General/Text/Text";
 import { useForm } from "antd/es/form/Form";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
+import styles from "./ForeignExchangePageDasboard.module.scss";
 import { useNavigate } from "react-router-dom";
 
 const ForeignExchangePageDashboard = () => {
@@ -17,7 +18,7 @@ const ForeignExchangePageDashboard = () => {
         Exchange Amount
       </Text>
       <FormCustom form={form}>
-        <div className="common__field-wrap">
+        <div className={`${styles.select__field} common__field-wrap`}>
           <FormCustom.Input
             name="field from"
             label="From: "
@@ -47,7 +48,7 @@ const ForeignExchangePageDashboard = () => {
             ]}
           />
         </div>
-        <div className="common__field-wrap">
+        <div className={`common__field-wrap`}>
           <FormCustom.Input
             name="field to"
             label="To : "

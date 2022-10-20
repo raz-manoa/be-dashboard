@@ -140,7 +140,7 @@ body {
     }
     @apply uppercase;
     padding: 0;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--grey_light);
     &:hover {
@@ -150,6 +150,9 @@ body {
       .ant-tabs-tab-btn {
         color: var(--grey);
       }
+    }
+    &:not(.ant-tabs-tab-active) {
+      font-weight: normal;
     }
   }
   .ant-tabs-ink-bar {
@@ -165,21 +168,30 @@ body {
 
 //common style
 .common__field {
+  @apply col-span-2;
+  margin-bottom: 0;
   flex: 1;
   &-wrap {
     @apply flex items-end;
     gap: 12px;
     margin-top: 25px;
+    .ant-form-item {
+      margin-bottom: 0 !important;
+      width: 130px;
+    }
+    .ant-input {
+      margin-top: 24px;
 
-    & > *:last-child {
-      width: 121px;
+      & > *:last-child {
+        width: 121px;
+      }
     }
   }
 }
 .common__txt {
   @apply text-center;
   width: 60%;
-  margin: 16px auto 40px auto;
+  margin: 40px auto 40px auto;
   line-height: 1.43;
   strong {
     color: var(--red);
@@ -199,6 +211,7 @@ body {
   @apply mx-auto;
   width: 550px;
   margin-top: 20px;
+  margin-bottom: 20px;
   .common__btn {
     width: 100%;
     margin-top: 40px;
