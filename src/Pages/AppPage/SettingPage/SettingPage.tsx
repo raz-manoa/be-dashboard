@@ -26,7 +26,13 @@ const SettingPage = () => {
   useSetAppLayoutTitle("Settings");
   return (
     <Card className={styles.card}>
-      <Text tag="h2" type="h2" size={19} className={styles.card__title}>
+      <Text
+        tag="h2"
+        type="h2"
+        size={19}
+        variant="black2"
+        className={styles.card__title}
+      >
         Access
       </Text>
       {data.map((d, index) => (
