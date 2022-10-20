@@ -5,6 +5,7 @@ import Text from "@/Components/General/Text/Text";
 import { useForm } from "antd/es/form/Form";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
+import styles from "./CryptoExchangePageDashboard.module.scss";
 
 const CryptoExchangePageDashboard = () => {
   useSetAppLayoutTitle("Crypto Exchange");
@@ -77,7 +78,7 @@ const CryptoExchangePageDashboard = () => {
             ]}
           />
         </div>
-        <div className="common__txt">
+        <div className={`${styles.exchange__txt} common__txt`}>
           <Text type="p" tag="p" variant="grey">
             <strong>174.75 USD</strong> available to transfer
           </Text>
