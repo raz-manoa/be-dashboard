@@ -15,6 +15,7 @@ const CryptoWithdrawalDashboard = () => {
 
   const [form] = useForm();
   const [value, setValue] = useState(1);
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
   useSetAppLayoutTitle("Crypto Withdrawal");
   const onChange = (e: RadioChangeEvent) => {
@@ -50,11 +51,17 @@ const CryptoWithdrawalDashboard = () => {
           </Text>
         </div>
       </div>
-      <FormCustom form={form}>
+      <FormCustom
+        form={form}
+        className={`${styles.withdrawal__form} ${
+          error ? styles.error : styles.success
+        }`}
+      >
         <FormCustom.Input
           name="example"
           label="Destination Address:"
           color="grey"
+          className={styles.adress}
           rules={[
             {
               required: true,
@@ -68,7 +75,7 @@ const CryptoWithdrawalDashboard = () => {
           className={styles.withdrawal__validation}
           size={12}
         >
-          Validation :
+          Validation : <span></span>
         </Text>
         <div className={`${styles.select}`}>
           <FormCustom.Input

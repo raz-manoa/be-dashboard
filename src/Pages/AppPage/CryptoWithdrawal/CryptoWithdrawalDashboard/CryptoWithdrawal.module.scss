@@ -6,6 +6,28 @@
     margin: 15px 0 26px 0;
     color: #c8c7cc;
   }
+  &__form {
+    &.error {
+      .adress {
+        input {
+          border: solid 1px #d9534f;
+        }
+      }
+      .withdrawal__validation {
+        color: #d9534f;
+      }
+    }
+    &.success {
+      .adress {
+        input {
+          border: solid 1px #5cb85c;
+        }
+      }
+      .withdrawal__validation {
+        color: #5cb85c;
+      }
+    }
+  }
   &__logo {
     @apply flex flex-col justify-center items-center;
     margin-bottom: 41px;
