@@ -268,7 +268,7 @@ const StyleguidePage = () => {
           name="message"
           label="message : "
           option="optional"
-          placeholder="messages"
+          placeholder="message"
         />
         <FormCustom.SelectIcon
           name="select"

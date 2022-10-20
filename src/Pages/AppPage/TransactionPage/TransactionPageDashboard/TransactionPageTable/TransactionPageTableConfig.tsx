@@ -43,7 +43,7 @@ export const transactionPageTableColumn: (options: {
       key: "transactionType",
       dataIndex: "transactionType",
       title: "Transaction type",
-      width: 200,
+      width: 150,
       render: (value: TransactionPageTableData["transactionType"]) => {
         return (
           <Text tag="span" size={12}>
@@ -56,7 +56,8 @@ export const transactionPageTableColumn: (options: {
       key: "name",
       dataIndex: "name",
       title: "Name",
-      width: 150,
+      align: "center",
+      width: 200,
       render: (value: TransactionPageTableData["name"]) => {
         const splitValue = value.split("/");
         return (

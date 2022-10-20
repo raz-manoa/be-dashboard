@@ -10,8 +10,14 @@ export default function OtcPageSuccess() {
       <CardConfirm
         title="Request Submitted"
         date="11/06/2022, 10:27:41 PM"
-        msg="An exchange request from 170.00 USD, to 170.00 USDC has 
-been submitted."
+        msg={
+          <>
+            An exchange request from{" "}
+            <span style={{ fontWeight: 600 }}>170.00 USD</span>, to{" "}
+            <span style={{ fontWeight: 600 }}>170.00 USDC</span>
+            has been submitted.
+          </>
+        }
         link={{
           label: "Transaction",
           path: "#",

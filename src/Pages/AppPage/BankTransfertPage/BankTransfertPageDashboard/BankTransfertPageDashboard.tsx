@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./BankTransfertPageDashboard.module.scss";
 
 const BankTransfertPageDashboard = () => {
-  useSetAppLayoutTitle("Bank Transfers");
+  useSetAppLayoutTitle("Bank Transfer");
   const [form] = useForm();
   const navigate = useNavigate();
 
