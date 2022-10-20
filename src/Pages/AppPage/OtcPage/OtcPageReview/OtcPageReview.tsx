@@ -9,12 +9,12 @@ export default function OtcPageReview() {
   const data: CardModalItemProps[] = [
     {
       label: "From",
-      value: "100.00 SOL",
+      value: "170.00 USD",
       color: "red",
     },
     {
       label: "To",
-      value: "97.00 BTC",
+      value: "170.00 USDC",
       color: "red",
     },
     {

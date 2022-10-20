@@ -3,7 +3,6 @@ import Text from "@/Components/General/Text/Text";
 import styles from "./SavingPageAdd.module.scss";
 import { Tabs, TabsProps } from "antd";
 import React from "react";
-import SavingPageSucess from "../../SavingPageSucess/SavingPageSucess";
 import { useNavigate } from "react-router-dom";
 
 export default function SavingPageAdd() {
