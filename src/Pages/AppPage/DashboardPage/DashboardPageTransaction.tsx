@@ -74,7 +74,7 @@ export default function DashboardPageTransaction() {
 
   const tabItems: TabsProps["items"] = paires.map((paire, index) => {
     return {
-      label: paire,
+      label: <span style={{ textTransform: "none" }}>{paire}</span>,
       key: `${index}`,
       children: (
         <div
