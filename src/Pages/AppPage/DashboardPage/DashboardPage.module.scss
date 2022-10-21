@@ -3,6 +3,9 @@
   gap: 21px;
   > div {
     padding-top: 21px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }
 
@@ -13,6 +16,13 @@
 
 .dashboardCurrentAccount {
   position: relative;
+  @apply flex flex-col;
+  flex-grow: 1;
+  :global {
+    .current-account {
+      height: 100%;
+    }
+  }
 }
 
 .dashboardRight {
@@ -60,7 +70,7 @@
 .dashboardLeft {
   :global {
     .ps {
-      max-height: calc(100vh - 280px);
+      max-height: calc(100vh - 250px);
       padding-right: 25px;
     }
 
