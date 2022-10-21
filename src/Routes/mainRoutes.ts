@@ -12,9 +12,7 @@ const ForgotPassword = React.lazy(
 const SecurityConfimation = React.lazy(
   () => import("../Pages/SecurityConfimationPage/SecurityConfimationPage")
 );
-const Styleguide = React.lazy(
-  () => import("../Pages/StyleguidePage/StyleguidePage")
-);
+
 const mainRoutes: IRoute[] = [
   {
     index: true,
