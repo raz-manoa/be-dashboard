@@ -12,13 +12,13 @@ export default function SavingPageSucess() {
         date="11/06/2022, 10:27:41 PM"
         msg={
           <>
-            A withdrawal request of <b style={{ fontWeight: 600 }}>100 USD</b>{" "}
-            has been submitted.
+            A deposit request of <b style={{ fontWeight: 600 }}>100 USD</b> has
+            been submitted.
           </>
         }
-        txt="You will be notified when the withdrawal has been completed."
+        txt="You will be notified when the deposit has been completed."
         link={{
-          label: "Transaction",
+          label: "Transactions",
           path: "#",
         }}
       />

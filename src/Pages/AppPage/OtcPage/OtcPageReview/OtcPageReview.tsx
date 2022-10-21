@@ -23,7 +23,7 @@ export default function OtcPageReview() {
       color: "black",
     },
     {
-      label: "Recipient Deatils",
+      label: "Recipient Details",
       value: "Company Name",
       color: "black",
     },

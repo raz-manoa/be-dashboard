@@ -24,7 +24,6 @@ const CryptoWithdrawalDashboard = () => {
   useSetAppLayoutTitle("Crypto Withdrawal");
 
   const onChange = (e: RadioChangeEvent) => {
-    console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
 
@@ -142,8 +141,8 @@ const CryptoWithdrawalDashboard = () => {
                 value: "btc",
               },
               {
-                label: "SQL",
-                value: "sql",
+                label: "SOL",
+                value: "sol",
               },
             ]}
           />

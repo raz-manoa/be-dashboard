@@ -15,8 +15,8 @@ export default function CryptoWithdrawalSuccess() {
         date="11/06/2022, 10:27:41 PM"
         msg={
           <>
-            <span style={{ fontWeight: 600 }}> 5.00 USD </span> has been sent
-            <span style={{ fontWeight: 600 }}> to YR </span>Main
+            <span style={{ fontWeight: 600 }}> 0.00111111 ETH </span> has been
+            sent.
           </>
         }
       />

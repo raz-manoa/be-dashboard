@@ -19,7 +19,7 @@ export default function OtcPageSuccess() {
           </>
         }
         link={{
-          label: "Transaction",
+          label: "Transactions",
           path: "#",
         }}
       />
