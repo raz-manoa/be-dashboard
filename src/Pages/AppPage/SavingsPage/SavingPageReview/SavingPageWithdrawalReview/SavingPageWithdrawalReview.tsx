@@ -44,7 +44,7 @@ export default function SavingPageReview() {
       }}
       onClickSecondBtn={() => {
         navigate({
-          pathname: "/app/savings/confirm",
+          pathname: "/app/savings/confirm-withdrawal",
         });
       }}
     />

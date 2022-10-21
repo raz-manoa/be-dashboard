@@ -159,8 +159,18 @@ const SavingPageWithdrawalReview = React.lazy(
       "../Pages/AppPage/SavingsPage/SavingPageReview/SavingPageWithdrawalReview/SavingPageWithdrawalReview"
     )
 );
-const SavingPageConfirm = React.lazy(
-  () => import("../Pages/AppPage/SavingsPage/SavingPageSucess/SavingPageSucess")
+
+const SavingPageDepositConfirm = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/SavingsPage/SavingPageSucess/SavingPageDepositSucess"
+    )
+);
+const SavingPageWithdrawalConfirm = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/SavingsPage/SavingPageSucess/SavingPageWithdrawalSucess"
+    )
 );
 const SavingPageDashboard = React.lazy(
   () =>
@@ -290,9 +300,14 @@ const sidebarRoutes: ISidebarRoute[] = [
         component: SavingPageDepositReview,
       },
       {
-        path: "confirm",
+        path: "confirm-deposit",
         name: "savings-confirm",
-        component: SavingPageConfirm,
+        component: SavingPageDepositConfirm,
+      },
+      {
+        path: "confirm-withdrawal",
+        name: "savings-confirm",
+        component: SavingPageWithdrawalConfirm,
       },
     ],
   },

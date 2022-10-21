@@ -5,6 +5,8 @@ import React, { useState } from "react";
 import Radio, { RadioChangeEvent } from "antd/es/radio";
 import Text from "@/Components/General/Text/Text";
 import Ethereum from "@/Assets/Logo/Ethereum.svg";
+import Btc from "@/Assets/Logo/BitCoin.svg";
+import Solana from "@/Assets/Logo/Solana.svg";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
 import { useForm } from "antd/es/form/Form";
 import Button from "@/Components/General/Button/Button";
@@ -15,10 +17,13 @@ const CryptoWithdrawalDashboard = () => {
 
   const [form] = useForm();
   const [value, setValue] = useState(1);
+  const [error, setError] = useState(false);
+  const [currentValue, setCurrentValue] = useState("");
+
   const navigate = useNavigate();
   useSetAppLayoutTitle("Crypto Withdrawal");
+
   const onChange = (e: RadioChangeEvent) => {
-    console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
 
@@ -44,23 +49,54 @@ const CryptoWithdrawalDashboard = () => {
           <Radio value={3}>SOL</Radio>
         </Radio.Group>
         <div className={styles.withdrawal__logo}>
-          <img src={Ethereum} alt="logo ethereum" />
-          <Text tag="h2" type="h2" variant="grey">
-            Ethereum <sup> ETH</sup>
-          </Text>
+          {value === 1 && (
+            <>
+              <img src={Ethereum} alt="logo ethereum" />
+              <Text tag="h2" type="h2" variant="grey">
+                Ethereum <sup> ETH</sup>
+              </Text>
+            </>
+          )}
+          {value === 2 && (
+            <>
+              <img src={Btc} alt="logo ethereum" />
+              <Text tag="h2" type="h2" variant="grey">
+                BitCoin <sup> BTC</sup>
+              </Text>
+            </>
+          )}
+          {value === 3 && (
+            <>
+              <img src={Solana} alt="logo ethereum" />
+              <Text tag="h2" type="h2" variant="grey">
+                Solana <sup> SOL</sup>
+              </Text>
+            </>
+          )}
         </div>
       </div>
-      <FormCustom form={form}>
+      <FormCustom
+        form={form}
+        className={`${styles.withdrawal__form} ${
+          currentValue === "error"
+            ? styles.error
+            : currentValue === "success"
+            ? styles.success
+            : ""
+        }`}
+      >
         <FormCustom.Input
           name="example"
           label="Destination Address:"
           color="grey"
+          className={styles.adress}
           rules={[
             {
               required: true,
               message: "Ce champ est requis",
             },
           ]}
+          onInput={(e) => setCurrentValue((e.target as any).value)}
         />
         <Text
           tag="p"
@@ -68,7 +104,14 @@ const CryptoWithdrawalDashboard = () => {
           className={styles.withdrawal__validation}
           size={12}
         >
-          Validation :
+          Validation:{" "}
+          {currentValue === "error" ? (
+            <>Address is incorrect</>
+          ) : currentValue === "success" ? (
+            <>Address is correct</>
+          ) : (
+            <></>
+          )}
         </Text>
         <div className={`${styles.select}`}>
           <FormCustom.Input
@@ -98,8 +141,8 @@ const CryptoWithdrawalDashboard = () => {
                 value: "btc",
               },
               {
-                label: "SQL",
-                value: "sql",
+                label: "SOL",
+                value: "sol",
               },
             ]}
           />

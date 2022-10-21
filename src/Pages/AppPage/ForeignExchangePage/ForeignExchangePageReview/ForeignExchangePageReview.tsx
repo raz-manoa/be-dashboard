@@ -24,7 +24,7 @@ export default function ForeignExchangePageReview() {
       color: "black",
     },
     {
-      label: "Recipient Deatils",
+      label: "Recipient Details",
       value: "Company Name",
       color: "black",
     },
