@@ -1,3 +1,4 @@
+import Spin from "@/Components/General/Spin/Spin";
 import { Suspense } from "react";
 import { Navigate, RouteObject } from "react-router-dom";
 import { IRoute } from "../Interfaces/Routes";
@@ -8,7 +9,7 @@ export const mapRoutes = (routes: IRoute[]): RouteObject[] => [
       index,
       path,
       element: (
-        <Suspense fallback={S ? <S /> : <>...</>}>
+        <Suspense fallback={S ? <S /> : <Spin variant="fill" />}>
           <C />
         </Suspense>
       ),

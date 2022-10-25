@@ -3,12 +3,37 @@
     padding: 0;
   }
   &__validation {
-    margin: 15px 0 26px 0;
+    margin: 0 0 20px 0;
     color: #c8c7cc;
   }
+  &__form {
+    .adress {
+      margin-bottom: 10px;
+    }
+    &.error {
+      .adress {
+        input {
+          border: solid 1px #d9534f;
+        }
+      }
+      .withdrawal__validation {
+        color: #d9534f;
+      }
+    }
+    &.success {
+      .adress {
+        input {
+          border: solid 1px #5cb85c;
+        }
+      }
+      .withdrawal__validation {
+        color: #5cb85c;
+      }
+    }
+  }
   &__logo {
-    @apply flex flex-col justify-center items-center;
-    margin-bottom: 41px;
+    @apply flex flex-col justify-center items-center w-full;
+    margin-bottom: 31px;
     img {
       height: 100px;
       width: 100px;
@@ -32,6 +57,14 @@
     @apply flex items-center justify-center;
     margin: 44px 0 43px 0;
     :global {
+      .ant-radio {
+        top: 0;
+      }
+      .ant-radio:hover {
+        .ant-radio-inner {
+          border-color: #d9d9d9;
+        }
+      }
       .ant-radio-wrapper:hover .ant-radio,
       .ant-radio:hover .ant-radio-inner,
       .ant-radio-input:focus + .ant-radio-inner {

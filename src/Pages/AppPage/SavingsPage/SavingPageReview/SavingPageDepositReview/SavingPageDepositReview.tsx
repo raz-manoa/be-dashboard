@@ -32,7 +32,7 @@ export default function SavingPageReview() {
   return (
     <CardConfirm
       data={data}
-      title="Savings Withdrawal - Review"
+      title="Savings Deposit - Review"
       className="common__card"
       btnPrimary="back"
       btnSecondary="Confirm"
@@ -43,7 +43,7 @@ export default function SavingPageReview() {
       }}
       onClickSecondBtn={() => {
         navigate({
-          pathname: "/app/savings/confirm",
+          pathname: "/app/savings/confirm-deposit",
         });
       }}
     />

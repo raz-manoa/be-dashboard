@@ -13,7 +13,12 @@ export default function CryptoWithdrawalSuccess() {
       <CardConfirm
         title="Transfer Complete"
         date="11/06/2022, 10:27:41 PM"
-        msg="5.00 USD has been sent to YR Main"
+        msg={
+          <>
+            <span style={{ fontWeight: 600 }}> 0.00111111 ETH </span> has been
+            sent.
+          </>
+        }
       />
     </Card>
   );

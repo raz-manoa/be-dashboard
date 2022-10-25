@@ -23,7 +23,7 @@ export default function CryptoExchangePageReview() {
       color: "black",
     },
     {
-      label: "Recipient Deatils",
+      label: "Recipient Details",
       value: "Company Name",
       color: "black",
     },
@@ -34,6 +34,7 @@ export default function CryptoExchangePageReview() {
       title="Crypto Exchange - Review"
       btnPrimary="Back"
       btnSecondary="Confirmer"
+      itemStyle={{ padding: "25px 15px 24px" }}
       data={data}
       onClickFirstBtn={() => {
         navigate({

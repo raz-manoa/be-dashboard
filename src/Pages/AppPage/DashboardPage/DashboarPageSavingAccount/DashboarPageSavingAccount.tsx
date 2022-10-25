@@ -18,7 +18,7 @@ export default function DashboarPageSavingAccount() {
   ];
 
   return (
-    <>
+    <div>
       <TitleCard
         title="5% Savings Offering"
         subtitle="Balances"
@@ -32,6 +32,6 @@ export default function DashboarPageSavingAccount() {
           <SavingCard data={s} key={`s-${index}`} className="mb-5" />
         ))}
       </div>
-    </>
+    </div>
   );
 }

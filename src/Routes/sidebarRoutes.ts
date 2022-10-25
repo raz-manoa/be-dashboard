@@ -147,11 +147,30 @@ const OtcPageDashboard = React.lazy(
   () => import("../Pages/AppPage/OtcPage/OtcPageDashboard/OtcPageDashboard")
 );
 
-const SavingPageReview = React.lazy(
-  () => import("../Pages/AppPage/SavingsPage/SavingPageReview/SavingPageReview")
+const SavingPageDepositReview = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/SavingsPage/SavingPageReview/SavingPageDepositReview/SavingPageDepositReview"
+    )
 );
-const SavingPageConfirm = React.lazy(
-  () => import("../Pages/AppPage/SavingsPage/SavingPageSucess/SavingPageSucess")
+const SavingPageWithdrawalReview = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/SavingsPage/SavingPageReview/SavingPageWithdrawalReview/SavingPageWithdrawalReview"
+    )
+);
+
+const SavingPageDepositConfirm = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/SavingsPage/SavingPageSucess/SavingPageDepositSucess"
+    )
+);
+const SavingPageWithdrawalConfirm = React.lazy(
+  () =>
+    import(
+      "../Pages/AppPage/SavingsPage/SavingPageSucess/SavingPageWithdrawalSucess"
+    )
 );
 const SavingPageDashboard = React.lazy(
   () =>
@@ -271,14 +290,24 @@ const sidebarRoutes: ISidebarRoute[] = [
         component: SavingPageDashboard,
       },
       {
-        path: "review",
+        path: "review-withdrawal",
         name: "savings-review",
-        component: SavingPageReview,
+        component: SavingPageWithdrawalReview,
       },
       {
-        path: "confirm",
+        path: "review-deposit",
+        name: "savings-review",
+        component: SavingPageDepositReview,
+      },
+      {
+        path: "confirm-deposit",
         name: "savings-confirm",
-        component: SavingPageConfirm,
+        component: SavingPageDepositConfirm,
+      },
+      {
+        path: "confirm-withdrawal",
+        name: "savings-confirm",
+        component: SavingPageWithdrawalConfirm,
       },
     ],
   },

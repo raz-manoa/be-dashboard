@@ -16,9 +16,12 @@ export default function CryptoDepositPageItem(
   props: CryptoDepositPageItemProps
 ) {
   const { title, logo, sup, code, identity, txt } = props;
+  const handleCopy = () => {
+    navigator.clipboard.writeText(identity);
+  };
   return (
     <Card className={styles.card__crypto}>
-      <Text type="h2" tag="h2" className={styles.title}>
+      <Text type="h2" tag="h2" variant="black2" className={styles.title}>
         {title}
         <sup>{sup}</sup>
       </Text>
@@ -34,7 +37,7 @@ export default function CryptoDepositPageItem(
           {identity}
         </Text>
       </div>
-      <Button type="primary" className={styles.btn}>
+      <Button type="primary" className={styles.btn} onClick={handleCopy}>
         Copy Address
       </Button>
       <img src={code} alt="QR_Code" className={styles.QR_code} />

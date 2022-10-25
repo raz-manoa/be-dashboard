@@ -18,7 +18,7 @@ export default function SavingPageSucess() {
         }
         txt="You will be notified when the withdrawal has been completed."
         link={{
-          label: "Transaction",
+          label: "Transactions",
           path: "#",
         }}
       />

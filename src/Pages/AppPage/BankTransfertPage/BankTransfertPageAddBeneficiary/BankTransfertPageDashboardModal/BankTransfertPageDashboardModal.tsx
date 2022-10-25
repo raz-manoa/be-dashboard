@@ -23,7 +23,7 @@ const dataModal: CardModalItemProps[] = [
     color: "black",
   },
   {
-    label: "Adresse",
+    label: "Adress",
     value: "Street Address",
     color: "black",
   },

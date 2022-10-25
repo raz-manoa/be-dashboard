@@ -1,23 +1,22 @@
 import Card from "@/Components/Display/Card/Card";
 import CardConfirm from "@/Components/Display/ConfirmModal/CardConfirm";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
-import React from "react";
 
-export default function OtcPageSuccess() {
-  useSetAppLayoutTitle("OTC");
+export default function SavingPageSucess() {
+  useSetAppLayoutTitle("Savings");
+
   return (
     <Card className="common__card">
       <CardConfirm
-        title="Request Submitted"
+        title="Savings Deposit - Request Submitted"
         date="11/06/2022, 10:27:41 PM"
         msg={
           <>
-            An exchange request from{" "}
-            <span style={{ fontWeight: 600 }}>170.00 USD</span> to{" "}
-            <span style={{ fontWeight: 600 }}>170.00 USDC</span> has been
-            submitted.
+            A deposit request of <b style={{ fontWeight: 600 }}>100 USD</b> has
+            been submitted.
           </>
         }
+        txt="You will be notified when the deposit has been completed."
         link={{
           label: "Transactions",
           path: "#",

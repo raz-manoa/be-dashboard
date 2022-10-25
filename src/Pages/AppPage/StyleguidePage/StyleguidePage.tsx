@@ -16,6 +16,7 @@ import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import CardTransaction from "@/Components/Display/CardTransaction/CardTransaction";
 import SwitchToggle from "@/Components/DataEntry/SwitchToggle/SwitchToggle";
 import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirmItem";
+import Spin from "@/Components/General/Spin/Spin";
 
 interface TableSample {
   name: string;
@@ -156,15 +157,18 @@ const StyleguidePage = () => {
       icon: "bank-transfert",
     },
   ];
+
   return (
     <div>
+      <Spin variant="fill" />
+      <Spin variant="fill" icon="simple" />
+      <hr />
       <Button tag="link" to="/" type="primary">
         Primary
       </Button>
       <Button type="secondary">Secondary</Button>
       <Button type="white">White</Button>
       <Button type="default">default</Button>
-
       <Text tag="h1" type="h1">
         Heading H1
       </Text>
@@ -213,7 +217,6 @@ const StyleguidePage = () => {
           label: "View all",
         }}
       />
-
       <CardConfirm
         title="Access"
         btnPrimary="Back"
@@ -222,7 +225,6 @@ const StyleguidePage = () => {
       />
       <CardConfirm title="Access" btnPrimary="Back" data={data} />
       <CardConfirm title="Access" data={data} />
-
       <FormCustom form={form}>
         <FormCustom.Input
           name="example"

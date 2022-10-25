@@ -40,10 +40,11 @@ export default function CryptoWithdrawalReview() {
 
   return (
     <CardConfirm
-      title="Access"
+      title="Crypto Withdrawal - Review"
       data={data}
       className="common__card"
       btnPrimary="back"
+      itemStyle={{ padding: "25px 15px 24px" }}
       btnSecondary="confirm"
       onClickFirstBtn={() => {
         navigate({
