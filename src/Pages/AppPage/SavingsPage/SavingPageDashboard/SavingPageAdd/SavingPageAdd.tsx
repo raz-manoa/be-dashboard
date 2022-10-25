@@ -42,7 +42,7 @@ export default function SavingPageAdd() {
       ),
     },
     {
-      label: "Withdrawal",
+      label: "Withdraw",
       key: "2",
       children: (
         <>
