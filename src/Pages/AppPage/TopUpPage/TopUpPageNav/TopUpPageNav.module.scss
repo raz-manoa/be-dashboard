@@ -1,0 +1,20 @@
+.nav {
+  padding: 11px 16px;
+  box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04);
+  border: solid 1px rgba(200, 199, 204, 0.4);
+  background-color: var(--white);
+  border-radius: 4px;
+  transition: 0.3s ease-in-out;
+  color: var(--grey);
+  a {
+    @apply h-full w-full;
+  }
+  &:hover {
+    background-color: var(--red);
+    color: var(--white);
+  }
+  &__active {
+    background-color: var(--red);
+    color: var(--white);
+  }
+}

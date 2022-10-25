@@ -1,0 +1,23 @@
+.card {
+  &__content {
+    @apply flex items-center justify-between;
+    padding: 9px 25px;
+    border-bottom: solid 1px rgba(84, 110, 122, 0.2);
+    height: 88px;
+  }
+  &__money {
+    @apply flex items-center;
+    h3 {
+      margin-left: 16px;
+    }
+    &-nbr {
+      @apply text-right;
+      p {
+        line-height: 1.2;
+      }
+      span {
+        color: var(--grey_light);
+      }
+    }
+  }
+}

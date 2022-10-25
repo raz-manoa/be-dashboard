@@ -1,0 +1,32 @@
+.login {
+  &__text {
+    @apply flex items-center justify-between;
+    color: var(--white);
+
+    a {
+      &:hover {
+        @apply text-white;
+      }
+    }
+  }
+  &__btn {
+    body & {
+      @apply w-full;
+    }
+    margin-top: 50px;
+  }
+  &__pg {
+    @apply text-center;
+    margin: 20px 0;
+  }
+}
+.create {
+  @apply text-center;
+  a {
+    font-weight: 600;
+    margin-left: 5px;
+    &:hover {
+      color: var(--white);
+    }
+  }
+}

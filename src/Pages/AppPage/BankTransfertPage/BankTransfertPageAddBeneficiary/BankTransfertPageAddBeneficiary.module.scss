@@ -1,0 +1,9 @@
+.card__container {
+  margin-top: 20px;
+  position: relative;
+  :global {
+    .ant-modal-wrap {
+      left: 314px;
+    }
+  }
+}

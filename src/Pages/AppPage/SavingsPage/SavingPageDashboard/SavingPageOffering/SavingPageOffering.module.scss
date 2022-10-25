@@ -1,0 +1,11 @@
+.card {
+  &__offering {
+    margin-top: 24px;
+  }
+}
+.offering {
+  width: 100%;
+  &:not(:first-child) {
+    margin-top: 20px;
+  }
+}

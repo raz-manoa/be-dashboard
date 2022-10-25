@@ -1,0 +1,21 @@
+body {
+  .ant-input-affix-wrapper {
+    @apply items-center flex;
+    padding: 9px 10px;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 8px;
+    background-color: rgba(239, 149, 172, 0.5);
+    input {
+      @apply outline-none;
+      background-color: transparent;
+      &::placeholder {
+        color: #fff;
+      }
+    }
+  }
+  .ant-input-prefix {
+    @apply flex;
+    margin-right: 10px;
+  }
+}

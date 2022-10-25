@@ -1,0 +1,120 @@
+.withdrawal {
+  &__title {
+    padding: 0;
+  }
+  &__validation {
+    margin: 0 0 20px 0;
+    color: #c8c7cc;
+  }
+  &__form {
+    .adress {
+      margin-bottom: 10px;
+    }
+    &.error {
+      .adress {
+        input {
+          border: solid 1px #d9534f;
+        }
+      }
+      .withdrawal__validation {
+        color: #d9534f;
+      }
+    }
+    &.success {
+      .adress {
+        input {
+          border: solid 1px #5cb85c;
+        }
+      }
+      .withdrawal__validation {
+        color: #5cb85c;
+      }
+    }
+  }
+  &__logo {
+    @apply flex flex-col justify-center items-center w-full;
+    margin-bottom: 31px;
+    img {
+      height: 100px;
+      width: 100px;
+    }
+    h2 {
+      font-weight: 600;
+      margin-top: 25px;
+      sup {
+        font-weight: 500;
+        font-weight: 14px;
+      }
+    }
+  }
+  &__info {
+    @apply text-center;
+    p {
+      @apply font-semibold;
+    }
+  }
+  &__radio {
+    @apply flex items-center justify-center;
+    margin: 44px 0 43px 0;
+    :global {
+      .ant-radio {
+        top: 0;
+      }
+      .ant-radio:hover {
+        .ant-radio-inner {
+          border-color: #d9d9d9;
+        }
+      }
+      .ant-radio-wrapper:hover .ant-radio,
+      .ant-radio:hover .ant-radio-inner,
+      .ant-radio-input:focus + .ant-radio-inner {
+        box-shadow: none;
+      }
+      .ant-radio-wrapper {
+        @apply items-center;
+        color: var(--grey);
+        font-size: 14px;
+        &:not(:last-child) {
+          margin-right: 43px;
+        }
+      }
+      .ant-radio-inner {
+        width: 23px;
+        height: 23px;
+      }
+      .ant-radio-checked {
+        .ant-radio-inner {
+          border: solid 1px #c8c7cc;
+
+          &::after {
+            background-color: var(--red);
+            box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.44);
+            transform: scale(1);
+            top: 2px;
+            left: 2px;
+            width: 17px;
+            height: 17px;
+            margin-top: 0;
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+.select {
+  @apply grid grid-cols-4 items-end;
+  gap: 12px;
+  &__input {
+    @apply col-span-3;
+    margin-bottom: 0;
+  }
+  :global {
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+  }
+}
+.txt__info {
+  margin: 40px auto 25px;
+}

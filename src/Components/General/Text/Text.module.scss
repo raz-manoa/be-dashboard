@@ -1,0 +1,44 @@
+.text {
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  &__size {
+    &_h1 {
+      @apply font-semibold;
+      font-size: 24px;
+    }
+    &_h2 {
+      @apply font-semibold;
+      font-size: 19px;
+    }
+    &_h3 {
+      @apply font-semibold;
+      font-size: 14px;
+    }
+  }
+  &__color {
+    &_black {
+      color: #000;
+    }
+    &_black2 {
+      color: var(--black2);
+    }
+    &_grey {
+      color: var(--grey);
+    }
+    &_grey-light {
+      color: var(--grey_light);
+    }
+    &_green {
+      color: var(--green);
+    }
+    &_red {
+      color: var(--red);
+    }
+    &_white {
+      color: var(--white);
+    }
+    &_yellow {
+      color: var(--yellow);
+    }
+  }
+}

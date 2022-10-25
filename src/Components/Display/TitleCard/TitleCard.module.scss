@@ -1,0 +1,25 @@
+.card {
+  &__title {
+    h2 {
+      margin-bottom: 9px;
+    }
+    &_wrap {
+      @apply flex items-center justify-between;
+      padding: 0 25px;
+    }
+  }
+  &__nav {
+    .link {
+      border-left: 2px solid var(--grey_light);
+    }
+    a {
+      padding-left: 12px;
+      &:hover {
+        color: var(--red);
+      }
+    }
+  }
+}
+.balance {
+  padding-right: 12px;
+}

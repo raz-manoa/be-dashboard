@@ -1,0 +1,55 @@
+.tableTransaction {
+  padding-top: 0;
+  padding-bottom: 27px;
+  :global {
+    .ant-table-body {
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        opacity: 0.5;
+        border-radius: 4px;
+        background-color: #c8c7cc;
+      }
+    }
+    .ant-pagination {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.tableWrap {
+  @apply mt-5;
+
+  :global {
+    .ant-modal-wrap {
+      left: 314px;
+    }
+    .ant-modal-footer {
+      justify-content: center;
+      padding-left: 0;
+      padding-right: 0;
+      button {
+        flex: 0 0 100%;
+      }
+    }
+    .ant-modal-body {
+      padding: 0;
+      > div:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
+.tableOverlay {
+  position: relative;
+  &::after {
+    content: "";
+    @apply absolute inset-0;
+    border-radius: 8px;
+    opacity: 0.7;
+    background-color: #c8c7cc;
+  }
+}

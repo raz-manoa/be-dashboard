@@ -1,0 +1,36 @@
+.textarea__container {
+  .textarea {
+    border-radius: 8px;
+    border: solid 1px var(--grey_light);
+    color: var(--black);
+    font-size: 16px;
+    height: 150px;
+    min-height: 150px;
+    padding: 7.5px 16px;
+    resize: none;
+    &::placeholder {
+      opacity: 0.8;
+      font-size: 16px;
+      color: var(--grey_light);
+    }
+    &__container {
+      label {
+        font-size: 14px;
+        color: var(--grey);
+      }
+    }
+    &__label {
+      margin-bottom: 15px;
+      @apply flex items-center;
+      span {
+        color: #c8c7cc;
+      }
+    }
+  }
+}
+.active {
+  .textarea {
+    border: solid 1px var(--grey_light);
+    opacity: 1;
+  }
+}

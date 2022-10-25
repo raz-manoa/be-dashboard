@@ -1,0 +1,22 @@
+.transaction {
+  @apply flex items-center justify-between;
+  padding: 0 0 0;
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(84, 110, 122, 0.2);
+  }
+  &__info {
+    @apply flex items-center;
+    &_txt {
+      padding-top: 19px;
+      height: 87px;
+      margin-left: 25px;
+      line-height: 16px;
+    }
+  }
+  &__date {
+    margin-bottom: 12px;
+  }
+}
+.name {
+  @apply font-semibold;
+}

@@ -1,0 +1,33 @@
+.switch {
+  &__field {
+    @apply grid grid-cols-5;
+    gap: 25px;
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+    :global {
+      .ant-form-item {
+        @apply relative;
+        margin-bottom: 0 !important;
+      }
+      .ant-input {
+        @apply mt-0;
+      }
+      .ant-form-item-with-help .ant-form-item-explain {
+        @apply absolute;
+      }
+    }
+  }
+  &__toggle {
+    @apply col-span-2;
+  }
+}
+.input__field {
+  @apply col-span-3;
+}
+.textarea {
+  margin-top: 40px;
+}
+.select__field {
+  margin-top: 6px;
+}

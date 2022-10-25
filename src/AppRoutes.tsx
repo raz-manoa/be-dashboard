@@ -1,10 +1,6 @@
 import { Suspense, lazy } from "react";
-import {
-  createBrowserRouter,
-  redirect,
-  RouterProvider,
-  useRoutes,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Spin from "./Components/General/Spin/Spin";
 import { appRoutes, mainRoutes } from "./Routes";
 import { mapRoutes } from "./Utils/mapRoutes";
 
@@ -18,7 +14,9 @@ function AppRoutes() {
     {
       path: "/",
       element: (
-        <Suspense fallback={<>loading layout ...</>}>
+        <Suspense
+          fallback={<Spin variant="fill" style={{ height: "100vh" }} />}
+        >
           <DefaultLayout />
         </Suspense>
       ),
@@ -28,7 +26,9 @@ function AppRoutes() {
     {
       path: "app",
       element: (
-        <Suspense fallback={<>loading layout ...</>}>
+        <Suspense
+          fallback={<Spin variant="fill" style={{ height: "100vh" }} />}
+        >
           <AppLayout />
         </Suspense>
       ),

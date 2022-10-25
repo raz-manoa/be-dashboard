@@ -1,0 +1,57 @@
+.card {
+  margin-top: 20px;
+  &__header {
+    @apply flex items-center justify-between;
+  }
+  &__field {
+    @apply grid grid-cols-2 items-start;
+
+    gap: 26px;
+    .select {
+      margin-top: 0;
+    }
+  }
+}
+.btn__group {
+  @apply col-span-2 flex items-center justify-center w-full;
+  gap: 15px;
+}
+.search {
+  @apply flex items-center;
+  color: var(--red);
+  svg {
+    margin-right: 10px;
+  }
+  input {
+    @apply outline-none;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--red);
+    &::placeholder {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--red);
+    }
+  }
+}
+.textarea {
+  :global {
+    .ant-input {
+      height: 164px !important;
+    }
+  }
+}
+
+.overlay {
+  position: relative;
+  border: none;
+  &::after {
+    content: "";
+    @apply absolute inset-0;
+    border-radius: 8px;
+    box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04);
+    border: solid 1px #f5f5f5;
+    background-color: #c8c7cc;
+    opacity: 0.7;
+  }
+}

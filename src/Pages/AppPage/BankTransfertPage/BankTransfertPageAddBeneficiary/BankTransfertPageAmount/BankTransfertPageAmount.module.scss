@@ -1,0 +1,23 @@
+.amount {
+  @apply grid grid-cols-3;
+  margin-top: 28px;
+  gap: 26px;
+  &__list {
+    padding: 3px 25px;
+    border-left: 1px solid rgba(200, 199, 204, 0.4);
+  }
+}
+
+.overlay {
+  position: relative;
+  border: none;
+  &::after {
+    content: "";
+    @apply absolute inset-0;
+    border-radius: 8px;
+    box-shadow: 1.5px 1.5px 6px 0 rgba(0, 0, 0, 0.04);
+    border: solid 1px #f5f5f5;
+    background-color: #c8c7cc;
+    opacity: 0.7;
+  }
+}
