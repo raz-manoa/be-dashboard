@@ -22,7 +22,7 @@ export default function SavingPageAdd() {
             className={styles.card}
             onAction={() =>
               navigate({
-                pathname: "review-deposit",
+                pathname: "confirm-deposit",
               })
             }
           />
@@ -34,7 +34,7 @@ export default function SavingPageAdd() {
             className={styles.card}
             onAction={() =>
               navigate({
-                pathname: "review-deposit",
+                pathname: "confirm-deposit",
               })
             }
           />
