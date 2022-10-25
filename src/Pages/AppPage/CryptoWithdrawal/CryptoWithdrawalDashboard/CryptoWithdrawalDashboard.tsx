@@ -156,10 +156,29 @@ const CryptoWithdrawalDashboard = () => {
           <strong>0.00234129 ETH </strong>
           available to withdraw
         </Text>
+
         <div className={styles.withdrawal__info}>
-          <Text tag="p" type="p" variant="grey">
-            1 BTC equals 1.07398994 SOL
-          </Text>
+          {value === 1 && (
+            <>
+              <Text tag="p" type="p" variant="grey">
+                1 ETH equals 1400 USDC
+              </Text>
+            </>
+          )}
+          {value === 2 && (
+            <>
+              <Text tag="p" type="p" variant="grey">
+                1 BTC equals 30000 USDC
+              </Text>
+            </>
+          )}
+          {value === 3 && (
+            <>
+              <Text tag="p" type="p" variant="grey">
+                1 SOL equals 50 USDC
+              </Text>
+            </>
+          )}
           <Text tag="p" type="p" variant="grey">
             Estimated transaction fee: 0.00050000
           </Text>
