@@ -59,6 +59,7 @@ const TopUpPage = () => {
       label: "Bank Country",
       value: "Mauritius",
     },
+
     {
       label: "Account Number",
       value: <CopyTextDisplay value={"000449876447656"} />,
@@ -67,6 +68,11 @@ const TopUpPage = () => {
     {
       label: "IBAN",
       value: <CopyTextDisplay value={"MU38MCBL876165318323290823132"} />,
+      icon: "copy",
+    },
+    {
+      label: "Reference",
+      value: <CopyTextDisplay value={"user BE_ID"} />,
       icon: "copy",
     },
   ];
