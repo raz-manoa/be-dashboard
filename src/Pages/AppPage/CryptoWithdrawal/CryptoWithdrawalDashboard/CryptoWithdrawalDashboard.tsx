@@ -153,7 +153,9 @@ const CryptoWithdrawalDashboard = () => {
           className={`${styles.txt__info} common__txt`}
           variant="grey"
         >
-          <strong>0.00234129 ETH </strong>
+          {value === 1 && <strong>0.00234129 ETH </strong>}
+          {value === 2 && <strong>0.00234129 BTC </strong>}
+          {value === 3 && <strong>0.00234129 SOL </strong>}
           available to withdraw
         </Text>
 
