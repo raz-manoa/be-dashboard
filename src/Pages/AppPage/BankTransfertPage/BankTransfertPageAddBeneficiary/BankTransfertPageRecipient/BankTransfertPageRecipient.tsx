@@ -148,10 +148,10 @@ export default function BankTransfertPageRecipient(
             ]}
           />
           <FormCustom.TextArea
-            name="message"
-            label="message : "
+            name="Message"
+            label="Message : "
             option="optional"
-            placeholder="message"
+            placeholder="Message"
             className={styles.textarea}
             rules={[
               {

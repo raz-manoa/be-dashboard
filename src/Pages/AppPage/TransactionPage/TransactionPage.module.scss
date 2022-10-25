@@ -15,6 +15,11 @@
         color: #fff;
       }
     }
+    .ant-pagination-disabled {
+      .ant-pagination-item-link {
+        opacity: 0.7;
+      }
+    }
     .ant-pagination-prev {
       height: 52px;
     }
@@ -29,6 +34,11 @@
       @apply flex items-center justify-center;
       height: 52px;
       border: none;
+      &:hover {
+        a {
+          color: var(--red);
+        }
+      }
       a {
         font-size: 16px;
         font-weight: bold;
