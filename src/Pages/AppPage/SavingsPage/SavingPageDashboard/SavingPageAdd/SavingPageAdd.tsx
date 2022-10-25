@@ -42,7 +42,7 @@ export default function SavingPageAdd() {
       ),
     },
     {
-      label: "Withdraw",
+      label: "Withdrawal",
       key: "2",
       children: (
         <>
@@ -51,7 +51,7 @@ export default function SavingPageAdd() {
             placeholder="0.0 USD"
             money="564.00 USD"
             className={styles.card}
-            btnLabel="Withdraw"
+            btnLabel="Withdrawal"
             onAction={() =>
               navigate({
                 pathname: "review-withdrawal",
@@ -63,7 +63,7 @@ export default function SavingPageAdd() {
             placeholder="0.0 EUR"
             money="0.00 EUR"
             className={styles.card}
-            btnLabel="Withdraw"
+            btnLabel="Withdrawal"
             onAction={() =>
               navigate({
                 pathname: "review-withdrawal",
