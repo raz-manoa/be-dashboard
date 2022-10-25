@@ -1,9 +1,9 @@
 .cardSave {
-  @apply grid grid-cols-8;
+  @apply grid grid-cols-12;
 
   &__flag {
     @apply flex items-center justify-center flex-col col-span-2;
-    padding: 0 20px 0 20px;
+
     &Name {
       margin-top: 10px;
     }
@@ -16,9 +16,9 @@
     @apply grid col-span-6;
   }
   &__info {
-    @apply col-span-3;
+    @apply col-span-5;
     border-left: solid 1px rgba(84, 110, 122, 0.2);
-    padding: 0 25px;
+    padding-left: 25px;
     &Title {
       @apply relative;
       &::after {
