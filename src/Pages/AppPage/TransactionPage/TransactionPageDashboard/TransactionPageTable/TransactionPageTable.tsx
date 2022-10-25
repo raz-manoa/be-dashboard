@@ -35,6 +35,13 @@ export default function TransactionPageTable() {
           })}
           scroll={{ x: undefined, y: window.innerHeight - 380 }}
           tableLayout={"auto"}
+          pagination={
+            transactionPageTableDataTmp.length <= 10
+              ? false
+              : {
+                  defaultPageSize: 10,
+                }
+          }
         />
         <TransactionPageTableModal
           open={showModal}
