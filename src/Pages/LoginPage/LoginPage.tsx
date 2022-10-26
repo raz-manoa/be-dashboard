@@ -4,21 +4,45 @@ import { FormCustom } from "@/Components/DataEntry/FormCustom";
 import { Link } from "react-router-dom";
 import Button from "@/Components/General/Button/Button";
 import LoginLayout from "@/Components/Display/LoginLayout/LoginLayout";
+import api from "@/Api/api";
+import { useForm } from "antd/lib/form/Form";
+import { ISignInArgs } from "@/Api/endpoints/auth.endpoint";
+
 const LoginPage = () => {
-  const handleLogin = () => {
-    localStorage.setItem("a", "logged");
+  const [form] = useForm<ISignInArgs>();
+
+  const handleLogin = async () => {
+    try {
+      const data = await form.validateFields();
+      console.log("data", data);
+      const response = await api.auth.signIn({
+        ...data,
+      });
+
+      if (response && response.data.token) {
+        localStorage.setItem("tkn", response.data.token);
+      }
+    } catch (error) {}
   };
+
   const sharedStyle = {
     opacity: 0.8,
   };
+
   return (
     <LoginLayout className={styles.login} title="Sign In">
-      <FormCustom>
+      <FormCustom form={form}>
         <FormCustom.Input
           name="email"
           color="red"
           placeholder="Email"
           icon="user"
+          rules={[
+            {
+              required: true,
+              message: "Please enter your email",
+            },
+          ]}
           className={styles.login__input}
           type="text"
           inputStyle={sharedStyle}
@@ -33,6 +57,15 @@ const LoginPage = () => {
           type="password"
           inputStyle={sharedStyle}
           style={{ marginBottom: 8 }}
+          rules={[
+            {
+              required: true,
+              message: "Please enter your password",
+            },
+            {
+              min: 6,
+            },
+          ]}
         />
         <div className={styles.login__text}>
           <FormCustom.Checkbox name="remember" className="mb-0">
