@@ -19,7 +19,7 @@ export default function Sidebar() {
         </Text>
       </div>
       <div className={styles.sidebar__list}>
-        <Scrollbar style={{ padding: "0 23px" }}>
+        <Scrollbar style={{ padding: "0 16px" }}>
           {sidebarRoutes.map((data, index) => {
             return (
               <SidebarItem

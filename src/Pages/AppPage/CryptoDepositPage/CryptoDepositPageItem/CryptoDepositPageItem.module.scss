@@ -16,10 +16,13 @@
 }
 .card__crypto {
   padding: 26px 27px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 .identity {
   @apply text-center;
-  width: 70%;
+  width: 100%;
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: 0.1px;
@@ -27,6 +30,7 @@
 }
 .btn {
   @apply mx-auto;
+  margin-top: auto;
   margin-bottom: 40px;
   max-width: 200px;
   width: 100%;
