@@ -12,7 +12,7 @@ type IGetAllTransactionResponse = ITransaction[];
 
 const transactionsEndpoint = {
   getAll: async (
-    args: IGetAllTransactionArgs
+    args: IGetAllTransactionArgs = {}
   ): Promise<AxiosResponse<IGetAllTransactionResponse>> => {
     return apiInstance.get<IGetAllTransactionResponse>(
       `/transactions?${queryString.stringify(args)}`
