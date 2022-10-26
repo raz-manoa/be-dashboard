@@ -13,6 +13,7 @@ interface ConfirmModalProps {
   link?: {
     label: string;
     path: string;
+    beforeText?: React.ReactNode;
   };
 }
 export default function CardConfirm(props: ConfirmModalProps) {
@@ -32,7 +33,8 @@ export default function CardConfirm(props: ConfirmModalProps) {
         </Text>
         {link && (
           <Text tag="p" type="p" variant="grey" className={styles.txt}>
-            To check the status of your request, please see
+            {link.beforeText ||
+              "To check the status of your request, please see"}
             <Link to={link.path} title="">
               {link.label}
             </Link>

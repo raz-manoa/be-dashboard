@@ -3,18 +3,32 @@
   padding: 17px 18px;
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0);
-  transition: 0.3 ease-in-out;
+  transition: all 0.3 ease-in-out;
   color: var(--white);
+  font-weight: 400;
   box-sizing: border-box;
-  &:hover,
+  &:hover {
+    color: var(--red);
+    background-color: rgba(255, 255, 255, 0.85);
+    svg {
+      path {
+        fill: var(--red) !important;
+      }
+    }
+  }
   &.sidebarActive {
     color: var(--white);
     background-color: rgba(#ef95ac, 0.51);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    svg {
+      path {
+        fill: var(--white) !important;
+      }
+    }
   }
   span {
     margin-left: 23px;
     font-size: 16px;
-    font-weight: 500;
+    // font-weight: 500;
   }
 }

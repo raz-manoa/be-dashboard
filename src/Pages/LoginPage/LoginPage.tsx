@@ -19,6 +19,7 @@ const LoginPage = () => {
           color="red"
           placeholder="Email"
           icon="user"
+          className={styles.login__input}
           type="text"
           inputStyle={sharedStyle}
           style={{ marginBottom: 8 }}
@@ -27,6 +28,7 @@ const LoginPage = () => {
           name="password"
           color="red"
           placeholder="Password"
+          className={styles.login__input}
           icon="password"
           type="password"
           inputStyle={sharedStyle}
