@@ -2,7 +2,7 @@ import { AxiosResponse } from "axios";
 import apiInstance from "../apiInstance";
 
 export interface ISignInArgs {
-  username: string;
+  email: string;
   password: string;
 }
 

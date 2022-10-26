@@ -32,28 +32,30 @@ export default function FormInput(props: FormInputProps) {
     setCurrentValue(e.target.value);
   };
   return (
-    <Form.Item
-      // name={name}
-      style={style}
-      className={`${styles.input} ${className} ${
-        currentValue !== "" ? `${styles.active}` : ""
-      }`}
-      rules={rules}
-    >
+    <>
       <label htmlFor="">{label}</label>
-      <Input
-        size="large"
-        onChange={handleChange}
-        placeholder={placeholder}
-        prefix={icon && <Icon icon={icon} />}
-        type={type}
+      <Form.Item
         name={name}
-        className={`${styles.input__content} ${
-          styles[`input__content--${color}`]
+        style={style}
+        className={`${styles.input} ${className} ${
+          currentValue !== "" ? `${styles.active}` : ""
         }`}
-        style={inputStyle}
-        {...rest}
-      />
-    </Form.Item>
+        rules={rules}
+      >
+        <Input
+          size="large"
+          onChange={handleChange}
+          placeholder={placeholder}
+          prefix={icon && <Icon icon={icon} />}
+          type={type}
+          // name={name}
+          className={`${styles.input__content} ${
+            styles[`input__content--${color}`]
+          }`}
+          style={inputStyle}
+          {...rest}
+        />
+      </Form.Item>
+    </>
   );
 }
