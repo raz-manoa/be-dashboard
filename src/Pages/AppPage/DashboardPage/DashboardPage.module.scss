@@ -2,7 +2,7 @@
   @apply grid grid-cols-2;
   gap: 21px;
   > div {
-    padding-top: 21px;
+    padding-top: 25px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -76,7 +76,7 @@
 
     .current-account {
       padding-right: 0;
-      padding-top: 10px;
+      padding-top: 0;
       padding-bottom: 24px;
     }
 

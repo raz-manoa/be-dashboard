@@ -8,18 +8,18 @@ export default function SavingPageSucess() {
   return (
     <Card className="common__card">
       <CardConfirm
-        title="Savings Deposit - Request Submitted"
+        title="Savings Deposit - Deposit Completed"
         date="11/06/2022, 10:27:41 PM"
         msg={
           <>
-            A deposit request of <b style={{ fontWeight: 600 }}>100 USD</b> has
-            been submitted.
+            A deposit of <b style={{ fontWeight: 600 }}>100 USD</b> has been
+            made.
           </>
         }
-        txt="You will be notified when the deposit has been completed."
         link={{
           label: "Transactions",
           path: "#",
+          beforeText: "To check the status of your transaction, please see",
         }}
       />
     </Card>

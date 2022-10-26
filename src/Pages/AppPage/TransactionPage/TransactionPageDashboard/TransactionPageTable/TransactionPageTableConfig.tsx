@@ -57,7 +57,7 @@ export const transactionPageTableColumn: (options: {
       dataIndex: "name",
       title: "Name",
       align: "center",
-      width: 200,
+      width: 250,
       render: (value: TransactionPageTableData["name"]) => {
         const splitValue = value.split("/");
         return (
@@ -80,6 +80,7 @@ export const transactionPageTableColumn: (options: {
       key: "beId",
       dataIndex: "beId",
       title: "BE ID",
+      width: 100,
       render: (value: TransactionPageTableData["beId"]) => {
         return (
           <Text tag="span" variant="grey" size={12}>
@@ -92,9 +93,16 @@ export const transactionPageTableColumn: (options: {
       key: "status",
       dataIndex: "status",
       title: "Status",
+      align: "center",
+      width: 150,
       render: (value: TransactionPageTableData["status"]) => {
         return (
-          <Text tag="span" variant={statusColor[value.toLowerCase()]} size={12}>
+          <Text
+            tag="p"
+            variant={statusColor[value.toLowerCase()]}
+            size={12}
+            className="text-center"
+          >
             {value}
           </Text>
         );
@@ -104,7 +112,7 @@ export const transactionPageTableColumn: (options: {
       key: "transactionFee",
       dataIndex: "transactionFee",
       title: "Transaction Fee",
-      width: 150,
+      width: 200,
       render: (value: TransactionPageTableData["transactionFee"]) => {
         return (
           <Text tag="span" size={12}>
@@ -117,6 +125,7 @@ export const transactionPageTableColumn: (options: {
       key: "amount",
       dataIndex: "amount",
       title: "Amount",
+      width: 200,
       render: (value: TransactionPageTableData["amount"]) => {
         return (
           <Text tag="span" weight={600} size={14}>

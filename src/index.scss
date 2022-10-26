@@ -14,7 +14,11 @@
   --black2: #21222c;
   --yellow: #f0ad4e;
 }
-
+.ant-layout-sider {
+  max-width: 260px !important;
+  min-width: 260px !important;
+  width: 260px !important;
+}
 .ant-layout-content {
   background-color: #f5f5f5;
 }
