@@ -133,3 +133,14 @@ interface TextProps extends React.HTMLAttributes<any> {
   size?: number;
 }
 ```
+
+
+## Env variables
+
+Create .env file and set value of variable env
+
+Set value to VITE_API_HOST for the base url of the api
+
+```env
+   VITE_API_HOST=http://localhost:3002
+```

@@ -2,17 +2,9 @@ import Icon from "@/Components/General/Icon/Icon";
 import Text from "@/Components/General/Text/Text";
 import { ColumnType } from "antd/es/table";
 import { statusColor } from "./TransactionPageTableModal";
+import { ITransaction } from "@/Interfaces/Transaction";
 
-export interface TransactionPageTableData {
-  name: string;
-  transactionType: string;
-  transactionFee: string;
-  status: string;
-  beId: string;
-  amount: string;
-  timestamp: string;
-  icon: string;
-}
+export interface TransactionPageTableData extends ITransaction {}
 
 export const transactionPageTableColumn: (options: {
   onShowDetail: (data: TransactionPageTableData) => void;

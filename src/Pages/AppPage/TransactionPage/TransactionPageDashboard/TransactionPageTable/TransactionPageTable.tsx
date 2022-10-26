@@ -4,14 +4,25 @@ import {
   transactionPageTableColumn,
   TransactionPageTableData,
 } from "./TransactionPageTableConfig";
-import useTransactionPageTableLogic from "./TransactionPageTableLogic";
 import styles from "./TransactionPageTable.module.scss";
-import Modal from "antd/lib/modal/Modal";
 import TransactionPageTableModal from "./TransactionPageTableModal";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ITransaction } from "@/Interfaces/Transaction";
+import api from "@/Api/api";
+import { transactionsMock } from "@/Api/mock/transactions.mock";
 
 export default function TransactionPageTable() {
-  const transactionPageTableDataTmp = useTransactionPageTableLogic();
+  const [transactions, setTransactions] =
+    // TODO: remove useState default value if you do not want to use mocked transactions
+    useState<ITransaction[]>(transactionsMock);
+
+  useEffect(() => {
+    api.transactions.getAll().then((response) => {
+      if (response && response.data) {
+        setTransactions(response.data);
+      }
+    });
+  }, []);
 
   const [currentData, setCurrentData] = useState<TransactionPageTableData>();
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -29,14 +40,14 @@ export default function TransactionPageTable() {
     >
       <Card className={styles.tableTransaction}>
         <Table<TransactionPageTableData>
-          dataSource={transactionPageTableDataTmp}
+          dataSource={transactions}
           columns={transactionPageTableColumn({
             onShowDetail: handleShowDetail,
           })}
           scroll={{ x: undefined, y: window.innerHeight - 380 }}
           tableLayout={"auto"}
           pagination={
-            transactionPageTableDataTmp.length <= 10
+            transactions.length <= 10
               ? false
               : {
                   defaultPageSize: 10,
