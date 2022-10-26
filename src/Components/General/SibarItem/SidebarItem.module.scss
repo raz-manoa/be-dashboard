@@ -5,8 +5,12 @@
   border: 1px solid rgba(0, 0, 0, 0);
   transition: 0.3 ease-in-out;
   color: var(--white);
+  font-weight: 400;
   box-sizing: border-box;
-  &:hover,
+  &:hover {
+    color: var(--white);
+    background-color: rgba(255, 255, 255, 0.85);
+  }
   &.sidebarActive {
     color: var(--white);
     background-color: rgba(#ef95ac, 0.51);
