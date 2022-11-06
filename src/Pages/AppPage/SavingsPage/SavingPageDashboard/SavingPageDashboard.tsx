@@ -5,7 +5,7 @@ import SavingPageOffering from "./SavingPageOffering/SavingPageOffering";
 import SavingPageTable from "./SavingPageTable/SavingPageTable";
 
 const SavingPageDashboard = () => {
-  const showAlert = true;
+  const showAlert = false;
   useSetAppLayoutTitle("Savings");
 
   return (

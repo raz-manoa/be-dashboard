@@ -17,14 +17,14 @@ export const savingPageTableColumn: () => Array<
   return [
     {
       key: "icon",
-      dataIndex: "transactionType",
+      dataIndex: "type",
       title: "",
       width: 40,
-      render: (value: SavingPageTableData["transactionType"]) => {
+      render: (value: SavingPageTableData["type"]) => {
         return (
           <Icon
             icon={`${
-              value.includes("withdrawal")
+              value.includes("withdraw")
                 ? "saving-withdraw"
                 : "saving-deposit"
             }`}
@@ -60,11 +60,11 @@ export const savingPageTableColumn: () => Array<
       },
     },
     {
-      key: "transactionStatus",
-      dataIndex: "transactionStatus",
+      key: "status",
+      dataIndex: "status",
       title: "Transaction status",
       align: "center",
-      render: (value: SavingPageTableData["transactionStatus"]) => {
+      render: (value: SavingPageTableData["status"]) => {
         return (
           <Text tag="span" variant="green" size={12}>
             {value}
@@ -73,11 +73,11 @@ export const savingPageTableColumn: () => Array<
       },
     },
     {
-      key: "transactionFee",
-      dataIndex: "transactionFee",
+      key: "fee",
+      dataIndex: "fee",
       title: "Transaction Fee",
       align: "center",
-      render: (value: SavingPageTableData["transactionStatus"]) => {
+      render: (value: SavingPageTableData["fee"]) => {
         return (
           <Text tag="span" size={12}>
             {value}
@@ -99,11 +99,11 @@ export const savingPageTableColumn: () => Array<
       },
     },
     {
-      key: "timestamp",
-      dataIndex: "timestamp",
-      title: "Timestamp",
+      key: "createdAt",
+      dataIndex: "createdAt",
+      title: "Created At",
       align: "center",
-      render: (value: SavingPageTableData["timestamp"]) => {
+      render: (value: SavingPageTableData["createdAt"]) => {
         return (
           <Text tag="span" variant="grey-light" size={12}>
             {value}

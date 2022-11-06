@@ -33,6 +33,10 @@ const companyDataEndpoint = {
     return apiInstance.get(`api/admin/users/${id}/transactions?limit=10`)
         .then(({ data }) => data.transactions);
   },
+  getSavingsTransactions: async (id: string): Promise<ITransaction[]> => {
+    return apiInstance.get(`api/admin/users/${id}/savings?limit=10`)
+        .then(({ data }) => data.transactions);
+  },
   getSavings: async (id: string): Promise<ISaving[]> => {
     return apiInstance.get<ISaving[]>(`api/admin/companies/${id}/savings`)
         .then(({ data }) => data);
