@@ -11,17 +11,41 @@ import { ITransaction } from "@/Interfaces/Transaction";
 import api from "@/Api/api";
 import { transactionsMock } from "@/Api/mock/transactions.mock";
 
+function getTransfer(transaction: ITransaction) {
+  return transaction.Saving || transaction.BebankTransfer || transaction.InviteTransfer || transaction.Exchange || transaction.OtherBankTransfer || transaction.RemittanceTransfer;
+}
+
+function getAmount(transaction: ITransaction, companyId: string) {
+  const transfer = transaction.Saving || transaction.BebankTransfer || transaction.InviteTransfer || transaction.Exchange || transaction.OtherBankTransfer || transaction.RemittanceTransfer;
+  if (companyId === transaction.sender.id) {
+    // @ts-ignore
+    return `-${transfer.amount || transfer.amountFromWithCommission} ${transfer.currency || transfer.currencyFrom}`
+  }
+  // @ts-ignore
+  return `+${transfer.amount || transfer.amountTo} ${transfer.currency || transfer.currencyTo}`
+}
+
 export default function TransactionPageTable() {
-  const [transactions, setTransactions] =
-    // TODO: remove useState default value if you do not want to use mocked transactions
-    useState<ITransaction[]>(transactionsMock);
+  const [transactions, setTransactions] = useState<TransactionPageTableData[]>([]);
 
   useEffect(() => {
-    api.transactions.getAll().then((response) => {
-      if (response && response.data) {
-        setTransactions(response.data);
-      }
-    });
+    async function getInfo() {
+      const companyId = localStorage.getItem('companyId');
+      // @ts-ignore
+      const transactions = await api.companyData.getTransactions(companyId);
+      const changed = transactions.map(item => {
+        // @ts-ignore
+        item.transfer = getTransfer(item);
+        item.beid = item.sender.identifyNumber.toString().padStart(8, `${item.sender.identifyPrefix}000000`);
+        // @ts-ignore
+        item.amount = getAmount(item, companyId);
+        // @ts-ignore
+        item.fee = item.transfer.fee || 0;
+        return item;
+      })
+      setTransactions(changed);
+    }
+    getInfo();
   }, []);
 
   const [currentData, setCurrentData] = useState<TransactionPageTableData>();
@@ -39,7 +63,7 @@ export default function TransactionPageTable() {
       className={`${styles.tableWrap} ${showModal ? styles.tableOverlay : ""}`}
     >
       <Card className={styles.tableTransaction}>
-        <Table<TransactionPageTableData>
+        {transactions && transactions.length > 0 && <Table<TransactionPageTableData>
           dataSource={transactions}
           columns={transactionPageTableColumn({
             onShowDetail: handleShowDetail,
@@ -53,7 +77,7 @@ export default function TransactionPageTable() {
                   defaultPageSize: 10,
                 }
           }
-        />
+        />}
         <TransactionPageTableModal
           open={showModal}
           onCancel={() => setShowModal(false)}

@@ -4,7 +4,12 @@ import { ColumnType } from "antd/es/table";
 import { statusColor } from "./TransactionPageTableModal";
 import { ITransaction } from "@/Interfaces/Transaction";
 
-export interface TransactionPageTableData extends ITransaction {}
+export interface TransactionPageTableData extends ITransaction {
+  transfer: object;
+  beid: string;
+  amount: number;
+  fee: number;
+}
 
 export const transactionPageTableColumn: (options: {
   onShowDetail: (data: TransactionPageTableData) => void;
@@ -15,7 +20,7 @@ export const transactionPageTableColumn: (options: {
       dataIndex: "transactionType",
       title: "",
       width: 40,
-      render: (value: TransactionPageTableData["icon"]) => {
+      render: (value: TransactionPageTableData["transactionType"]) => {
         return (
           <Icon
             icon={`${
@@ -45,12 +50,12 @@ export const transactionPageTableColumn: (options: {
       },
     },
     {
-      key: "name",
-      dataIndex: "name",
+      key: "accountVersionType",
+      dataIndex: "accountVersionType",
       title: "Name",
       align: "center",
       width: 250,
-      render: (value: TransactionPageTableData["name"]) => {
+      render: (value: TransactionPageTableData["accountVersionType"]) => {
         const splitValue = value.split("/");
         return (
           <Text tag="div" weight={600} size={12} className="text-center">
@@ -69,11 +74,11 @@ export const transactionPageTableColumn: (options: {
       },
     },
     {
-      key: "beId",
-      dataIndex: "beId",
+      key: "beid",
+      dataIndex: "beid",
       title: "BE ID",
       width: 100,
-      render: (value: TransactionPageTableData["beId"]) => {
+      render: (value: TransactionPageTableData["beid"]) => {
         return (
           <Text tag="span" variant="grey" size={12}>
             {value}
@@ -102,10 +107,10 @@ export const transactionPageTableColumn: (options: {
     },
     {
       key: "transactionFee",
-      dataIndex: "transactionFee",
+      dataIndex: "fee",
       title: "Transaction Fee",
       width: 200,
-      render: (value: TransactionPageTableData["transactionFee"]) => {
+      render: (value: TransactionPageTableData["fee"]) => {
         return (
           <Text tag="span" size={12}>
             {value}
@@ -127,11 +132,11 @@ export const transactionPageTableColumn: (options: {
       },
     },
     {
-      key: "timestamp",
-      dataIndex: "timestamp",
-      title: "Timestamp",
+      key: "createdAt",
+      dataIndex: "createdAt",
+      title: "Created At",
       width: 150,
-      render: (value: TransactionPageTableData["timestamp"]) => {
+      render: (value: TransactionPageTableData["createdAt"]) => {
         return (
           <Text tag="span" variant="grey" size={14}>
             {value}

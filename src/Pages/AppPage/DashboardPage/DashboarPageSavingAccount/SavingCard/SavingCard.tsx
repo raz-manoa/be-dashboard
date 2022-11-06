@@ -6,20 +6,23 @@ import { currencyToFlag } from "@/Utils/currentyToFlag";
 import { AllHTMLAttributes } from "react";
 import styles from "./SavingCard.module.scss";
 
-export interface ISavinItem {
+export interface ISaving {
   currency: ECurrency;
-  principal: number;
-  interest: number;
+  amount: number;
+  interestAmount: number;
+  interestPercent: number;
+  companyName: string
 }
 
 export interface SavingCardProps
   extends Omit<AllHTMLAttributes<HTMLDivElement>, "data"> {
-  data: ISavinItem;
+  data: ISaving;
 }
 
 export default function SavingCard(props: SavingCardProps) {
   const { className, data, ...rest } = props;
-  const { currency, principal, interest } = data;
+  const { currency, amount, interestAmount } = data;
+  const cur = currency.id;
 
   return (
     <Card
@@ -27,7 +30,7 @@ export default function SavingCard(props: SavingCardProps) {
       {...rest}
     >
       <div className={styles.cardSave__flag}>
-        <img src={currencyToFlag(currency)} alt="flag" />
+        <img src={currencyToFlag(cur)} alt="flag" />
         <Text
           tag="h2"
           size={16}
@@ -35,7 +38,7 @@ export default function SavingCard(props: SavingCardProps) {
           weight={600}
           className={styles.cardSave__flagName}
         >
-          {currency}
+          {cur}
         </Text>
       </div>
 
@@ -54,7 +57,7 @@ export default function SavingCard(props: SavingCardProps) {
           size={23}
           className={styles.cardSave__infoNbr}
         >
-          {currencyParser(principal)}
+          {currencyParser(amount)}
         </Text>
       </div>
       <div className={styles.cardSave__info} style={{ paddingRight: 0 }}>
@@ -72,7 +75,7 @@ export default function SavingCard(props: SavingCardProps) {
           size={23}
           className={styles.cardSave__infoNbr}
         >
-          {currencyParser(interest)}
+          {currencyParser(interestAmount)}
         </Text>
       </div>
     </Card>

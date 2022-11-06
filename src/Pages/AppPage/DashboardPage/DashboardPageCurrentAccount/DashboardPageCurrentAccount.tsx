@@ -2,121 +2,51 @@ import Card from "@/Components/Display/Card/Card";
 import TitleCard from "@/Components/Display/TitleCard/TitleCard";
 import Scrollbar from "@/Components/General/Scrollbar/Scrollbar";
 import Text from "@/Components/General/Text/Text";
-import { ECurrency } from "@/Interfaces/Currency";
 import CurrencyItem, { ICurrencyItem } from "./CurrencyItem/CurrencyItem";
 import styles from "../DashboardPage.module.scss";
 import { currencyParser } from "@/Utils/currencyParser";
+import CompanyData, {AccountsResponse} from "@/Api/endpoints/companyData.endpoint";
 
-export default function DashboardCurrentAccount() {
-  const currentAccount = {
-    currency: ECurrency.USD,
-    total: 22761,
-  };
-
-  const currentAccountCurrencies: ICurrencyItem[] = [
-    { currency: ECurrency.USD, value: 150 },
-    {
-      currency: ECurrency.EUR,
-      value: 398,
-      reference: {
-        currency: ECurrency.USD,
-        value: 403.83,
-      },
-    },
-    {
-      currency: ECurrency.GBP,
-      value: 1502.3,
-      reference: {
-        currency: ECurrency.USD,
-        value: 403.83,
-      },
-    },
-    {
-      currency: ECurrency.CAD,
-      value: 1988.12,
-      reference: {
-        currency: ECurrency.USD,
-        value: 403.83,
-      },
-    },
-    {
-      currency: ECurrency.ZAR,
-      value: 200678.88,
-      reference: {
-        currency: ECurrency.USD,
-        value: 403.83,
-      },
-    },
-    {
-      currency: ECurrency.KES,
-      value: 40217700.0,
-      reference: {
-        currency: ECurrency.USD,
-        value: 403.83,
-      },
-    },
-    {
-      currency: ECurrency.UGX,
-      value: 0,
-      reference: {
-        currency: ECurrency.USD,
-        value: 0,
-      },
-    },
-    {
-      currency: ECurrency.TZS,
-      value: 0,
-      reference: {
-        currency: ECurrency.USD,
-        value: 0,
-      },
-    },
-    {
-      currency: ECurrency.MWK,
-      value: 0,
-      reference: {
-        currency: ECurrency.USD,
-        value: 0,
-      },
-    },
-  ];
+export default function DashboardCurrentAccount(accounts: AccountsResponse[]) {
+    const data = accounts.accounts;
+  const defaultAccount = data.find(account => account.isDefaultCurrency) || accounts[0];
 
   return (
-    <div className={styles.dashboardLeft}>
-      <TitleCard
-        title="Current Account"
-        subtitle="Balances"
-        link={{
-          url: "/",
-          label: "View all",
-        }}
-      >
-        <Text tag="div" variant="red" className="flex gap-2 items-end">
-          <Text tag="span" size={20} variant="red" weight={700}>
-            {currentAccount.currency}
+      <div className={styles.dashboardLeft}>
+        <TitleCard
+            title="Current Account"
+            subtitle="Balances"
+            link={{
+              url: "/",
+              label: "View all",
+            }}
+        >
+          <Text tag="div" variant="red" className="flex gap-2 items-end">
+            <Text tag="span" size={20} variant="red" weight={700}>
+              {defaultAccount.currency}
+            </Text>
+            <Text
+                tag="span"
+                size={32}
+                variant="red"
+                weight={700}
+                className="relative top-1"
+            >
+              {currencyParser(defaultAccount.balance)}
+            </Text>
           </Text>
-          <Text
-            tag="span"
-            size={32}
-            variant="red"
-            weight={700}
-            className="relative top-1"
-          >
-            {currencyParser(currentAccount.total)}
-          </Text>
-        </Text>
-      </TitleCard>
-      <div className={styles.dashboardCurrentAccount}>
-        <Card className="current-account">
-          <Scrollbar>
-            <div>
-              {currentAccountCurrencies.map((c, index) => (
-                <CurrencyItem {...c} key={`c-${index}`} />
-              ))}
-            </div>
-          </Scrollbar>
-        </Card>
+        </TitleCard>
+        <div className={styles.dashboardCurrentAccount}>
+          <Card className="current-account">
+            <Scrollbar>
+              <div>
+                {data.map((c, index) => (
+                    <CurrencyItem {...c} key={`c-${index}`}/>
+                ))}
+              </div>
+            </Scrollbar>
+          </Card>
+        </div>
       </div>
-    </div>
   );
 }

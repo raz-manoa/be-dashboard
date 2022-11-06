@@ -1,7 +1,7 @@
 import authEndpoint from "./endpoints/auth.endpoint";
-import transactionsEndpoint from "./endpoints/transactions.endpoint";
+import companyDataEndpoint from "./endpoints/companyData.endpoint";
 
 export default {
-  transactions: transactionsEndpoint,
+  companyData: companyDataEndpoint,
   auth: authEndpoint,
 };

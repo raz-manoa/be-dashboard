@@ -8,6 +8,9 @@ import { Tabs, TabsProps } from "antd";
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./DashboardPage.module.scss";
+import CompanyData from "@/Api/endpoints/companyData.endpoint";
+import {ITransaction} from "@/Interfaces/Transaction";
+import {IUser} from "@/Interfaces/IUser";
 
 const paires = ["All", "USD", "EUR", "CHF", "GBP"];
 
@@ -53,12 +56,25 @@ const transaction: CardTransactionProps[] = [
   },
 ];
 
-export default function DashboardPageTransaction() {
+function getFullName(user: IUser) {
+  return `${user.firstName} ${user.lastName}`;
+}
+
+function getAmount(transaction: ITransaction) {
+  const transfer = transaction.Saving || transaction.BebankTransfer || transaction.InviteTransfer || transaction.Exchange || transaction.OtherBankTransfer || transaction.RemittanceTransfer;
+  const companyId = localStorage.getItem('companyId');
+  if (companyId === transaction.sender.id) {
+    // @ts-ignore
+    return `-${transfer.amount} ${transfer.currency}`
+  }
+  // @ts-ignore
+  return `+${transfer.amount} ${transfer.currency}`
+}
+
+export default function DashboardPageTransaction(transactions: ITransaction[]) {
   const [currentFilter, setCurrentFilter] = useState<number>(0);
   const [offsetTop, setOffsetTop] = useState<number>(0);
-
   const psWrapRef = useRef<HTMLDivElement>(null);
-
   const handleFilter = (e: React.MouseEvent, index: number) => {
     e.preventDefault();
     setCurrentFilter(index);
@@ -84,14 +100,14 @@ export default function DashboardPageTransaction() {
           <Card className={styles.transactionCard}>
             <Scrollbar>
               <div>
-                {transaction.map((t, index) => (
+                {transactions.transactions.map((t, index) => (
                   <CardTransaction
                     date={t.date}
-                    icon={t.icon}
-                    payment={t.payment}
-                    transaction={t.transaction}
-                    user={t.user}
-                    company={t.company}
+                    icon={t.transactionType}
+                    payment={t.transactionType}
+                    transaction={getAmount(t)}
+                    user={getFullName(t.sender)}
+                    company={getFullName(t.recipient)}
                     key={`t-${index}`}
                   />
                 ))}

@@ -1,28 +1,34 @@
 import styles from "./LoginPage.module.scss";
 import Text from "@/Components/General/Text/Text";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import Button from "@/Components/General/Button/Button";
 import LoginLayout from "@/Components/Display/LoginLayout/LoginLayout";
 import api from "@/Api/api";
 import { useForm } from "antd/lib/form/Form";
 import { ISignInArgs } from "@/Api/endpoints/auth.endpoint";
+import sha256 from 'crypto-js/sha256';
 
 const LoginPage = () => {
   const [form] = useForm<ISignInArgs>();
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
       const data = await form.validateFields();
       console.log("data", data);
-      const response = await api.auth.signIn({
-        ...data,
-      });
+      data.password = sha256(data.password).toString()
+      const response = await api.auth.login(data);
 
-      if (response && response.data.token) {
-        localStorage.setItem("tkn", response.data.token);
+      if (response && response.data.email) {
+        localStorage.setItem('email', response.data.email);
+        navigate({
+          pathname: "confirmation",
+        });
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log('login error', error);
+    }
   };
 
   const sharedStyle = {

@@ -8,4 +8,8 @@ export enum ECurrency {
   UGX = "UGX",
   TZS = "TZS",
   MWK = "MWK",
+  ETH = 'ETH',
+  BTC = 'BTC',
+  SOL = 'SOL',
+  USDC = 'USDC'
 }
