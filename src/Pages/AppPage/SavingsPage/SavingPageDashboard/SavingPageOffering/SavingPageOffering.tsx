@@ -7,18 +7,16 @@ import React, {useEffect, useState} from "react";
 import api from "@/Api/api";
 import {ISaving} from "@/Pages/AppPage/DashboardPage/DashboarPageSavingAccount/SavingCard/SavingCard";
 
-export default function SavingPageOffering() {
+export default function SavingPageOffering(savings: { savings: ISaving[] }) {
     const [usdSaving, setUSDSaving] = useState<ISaving>(null);
     const [eurSaving, setEURSaving] = useState<ISaving>(null);
     useEffect(() => {
         async function getInfo() {
-            const companyId = localStorage.getItem('companyId');
+            const data = savings.savings;
             // @ts-ignore
-            const savings = await api.companyData.getSavings(companyId);
+            setUSDSaving(data.find(item => item.currency.id === 'USD'));
             // @ts-ignore
-            setUSDSaving(savings.find(item => item.currency.id === 'USD'));
-            // @ts-ignore
-            setEURSaving(savings.find(item => item.currency.id === 'EUR'));
+            setEURSaving(data.find(item => item.currency.id === 'EUR'));
         }
         getInfo();
     },[]);

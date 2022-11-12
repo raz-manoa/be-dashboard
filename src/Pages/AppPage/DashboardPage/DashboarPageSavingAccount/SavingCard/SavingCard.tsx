@@ -7,7 +7,7 @@ import { AllHTMLAttributes } from "react";
 import styles from "./SavingCard.module.scss";
 
 export interface ISaving {
-  currency: ECurrency;
+  currency: ECurrency | any;
   amount: number;
   interestAmount: number;
   interestPercent: number;

@@ -9,8 +9,9 @@ import styles from "./BeNetworkPageDashboard.module.scss";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
 import Alert from "antd/es/alert";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { DefaultOptionType } from "antd/es/select";
+import api from "@/Api/api";
 const optionsData = [
   { label: "US Dollar (USD)", value: "USD" },
   { label: "Euro (EUR)", value: "EUR" },
@@ -26,6 +27,27 @@ const BeNetworkPageDashboard = () => {
   const navigate = useNavigate();
   const [currentPhone, setCurrentPhone] = useState(false);
   const [currentBeId, setCurrentBeId] = useState(false);
+  const [accounts, setAccounts] = useState([]);
+  const [currencies, setCurrencies] = useState([]);
+  const [currency, setCurrency] = useState(null);
+  useEffect(() => {
+        async function getInfo() {
+          const companyId = localStorage.getItem('companyId');
+          // @ts-ignore
+          const company = await api.companyData.getCompany(companyId);
+          const accounts = company.Accounts;
+          const currencies = accounts.map(item => {
+            return {label: item.currency, value: item.currency}
+          });
+          setCurrencies(currencies);
+          setAccounts(accounts);
+          setCurrency(accounts[0].currency);
+          console.log('all settled', currencies, currency);
+        }
+        if (!accounts.length) {
+          getInfo();
+        }
+      })
 
   useSetAppLayoutTitle("Be Network");
 
@@ -41,7 +63,7 @@ const BeNetworkPageDashboard = () => {
       <Text tag="h2" type="h2" variant="black2">
         Transfer Amount
       </Text>
-      <FormCustom form={form}>
+      {accounts.length && <FormCustom form={form}>
         <div className={`${styles.select__field} common__field-wrap`}>
           <FormCustom.Input
             name="account_number"
@@ -53,21 +75,30 @@ const BeNetworkPageDashboard = () => {
             rules={[
               {
                 required: true,
-                message: "Ce champ est requis",
+                message: "Amount is required",
+              },
+              {
+                max: accounts.find(item => item.currency === currency).balance,
+                message: "Amount is required",
+              },
+              {
+                min: 0,
+                message: "Amount is required",
               },
             ]}
           />
           <FormCustom.Select
             name="currency"
             placeholder="USD"
-            options={optionsData}
+            options={currencies}
             optionLabelProp="value"
             dropdownMatchSelectWidth={false}
+            onChange={value => setCurrency(value)}
           />
         </div>
         <div className="common__txt">
           <Text type="p" tag="p" variant="grey">
-            <strong>174.75 USD</strong> available to transfer
+            <strong>{`100 ${currency}`}</strong> available to transfer
           </Text>
           <Text type="p" tag="p" variant="grey">
             Transaction fee <strong>0 USD</strong>
@@ -138,7 +169,7 @@ const BeNetworkPageDashboard = () => {
         <Button type="primary" onClick={handleContinue} className="common__btn">
           Continue
         </Button>
-      </FormCustom>
+      </FormCustom>}
     </Card>
   );
 };

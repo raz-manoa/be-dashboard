@@ -48,7 +48,11 @@ const companyDataEndpoint = {
   getCompany: async (id: string): Promise<IUser> => {
     return apiInstance.get<{ company: IUser }>(`api/admin/companies/${id}`)
         .then(({ data }) => data.company);
-  }
+  },
+  getAccounts1: async (id: string): Promise<ITransaction[]> => {
+    return apiInstance.get(`api/admin/users/${id}/transactions?limit=10`)
+        .then(({ data }) => data.transactions);
+  },
 
 };
 

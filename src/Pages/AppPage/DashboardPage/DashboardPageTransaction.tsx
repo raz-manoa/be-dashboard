@@ -71,7 +71,7 @@ function getAmount(transaction: ITransaction) {
   return `+${transfer.amount} ${transfer.currency}`
 }
 
-export default function DashboardPageTransaction(transactions: ITransaction[]) {
+export default function DashboardPageTransaction(transactions: { transactions: ITransaction[] }) {
   const [currentFilter, setCurrentFilter] = useState<number>(0);
   const [offsetTop, setOffsetTop] = useState<number>(0);
   const psWrapRef = useRef<HTMLDivElement>(null);

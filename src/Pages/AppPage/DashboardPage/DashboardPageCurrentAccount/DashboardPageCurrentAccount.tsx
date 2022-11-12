@@ -7,46 +7,46 @@ import styles from "../DashboardPage.module.scss";
 import { currencyParser } from "@/Utils/currencyParser";
 import CompanyData, {AccountsResponse} from "@/Api/endpoints/companyData.endpoint";
 
-export default function DashboardCurrentAccount(accounts: AccountsResponse[]) {
+export default function DashboardCurrentAccount(accounts: { accounts: AccountsResponse[] }) {
     const data = accounts.accounts;
-  const defaultAccount = data.find(account => account.isDefaultCurrency) || accounts[0];
+    const defaultAccount = data.find(account => account.isDefaultCurrency) || data[0];
 
-  return (
-      <div className={styles.dashboardLeft}>
-        <TitleCard
-            title="Current Account"
-            subtitle="Balances"
-            link={{
-              url: "/",
-              label: "View all",
-            }}
-        >
-          <Text tag="div" variant="red" className="flex gap-2 items-end">
-            <Text tag="span" size={20} variant="red" weight={700}>
-              {defaultAccount.currency}
-            </Text>
-            <Text
-                tag="span"
-                size={32}
-                variant="red"
-                weight={700}
-                className="relative top-1"
+    return (
+        <div className={styles.dashboardLeft}>
+            <TitleCard
+                title="Current Account"
+                subtitle="Balances"
+                link={{
+                    url: "/",
+                    label: "View all",
+                }}
             >
-              {currencyParser(defaultAccount.balance)}
-            </Text>
-          </Text>
-        </TitleCard>
-        <div className={styles.dashboardCurrentAccount}>
-          <Card className="current-account">
-            <Scrollbar>
-              <div>
-                {data.map((c, index) => (
-                    <CurrencyItem {...c} key={`c-${index}`}/>
-                ))}
-              </div>
-            </Scrollbar>
-          </Card>
+                <Text tag="div" variant="red" className="flex gap-2 items-end">
+                    <Text tag="span" size={20} variant="red" weight={700}>
+                        {defaultAccount.currency}
+                    </Text>
+                    <Text
+                        tag="span"
+                        size={32}
+                        variant="red"
+                        weight={700}
+                        className="relative top-1"
+                    >
+                        {currencyParser(defaultAccount.balance)}
+                    </Text>
+                </Text>
+            </TitleCard>
+            <div className={styles.dashboardCurrentAccount}>
+                <Card className="current-account">
+                    <Scrollbar>
+                        <div>
+                            {data.map((c, index) => (
+                                <CurrencyItem {...c} key={`c-${index}`}/>
+                            ))}
+                        </div>
+                    </Scrollbar>
+                </Card>
+            </div>
         </div>
-      </div>
-  );
+    );
 }

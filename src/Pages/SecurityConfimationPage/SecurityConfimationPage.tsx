@@ -15,7 +15,6 @@ export default function SecurityConfimationPage() {
     const verify = async () => {
         try {
             const data = await form.validateFields();
-            console.log("VERIFY DATA ", data);
             const email = localStorage.getItem('email');
             if (email) {
                 const payload = {
@@ -28,6 +27,7 @@ export default function SecurityConfimationPage() {
                 await localStorage.setItem('token', response.data.token);
                 const company = await api.companyData.getCompany(response.data.company);
                 await localStorage.setItem('company', JSON.stringify(company));
+                await localStorage.setItem('fullName', company.firstName + ' ' + company.lastName);
                 navigate({
                     pathname: "app/dashboard",
                 });

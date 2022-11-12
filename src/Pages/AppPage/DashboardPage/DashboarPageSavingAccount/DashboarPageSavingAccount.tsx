@@ -3,7 +3,6 @@ import SavingCard, {ISaving } from "./SavingCard/SavingCard";
 import styles from "../DashboardPage.module.scss";
 
 export default function DashboarPageSavingAccount(savings: ISaving[]) {
-    const data = savings.savings;
     return (
         <div>
             <TitleCard

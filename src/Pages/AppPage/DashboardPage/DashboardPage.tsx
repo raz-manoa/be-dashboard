@@ -14,34 +14,25 @@ const DashboardPage = () => {
     const [accounts, setAccounts] = useState<IAccount[]>([]);
     const [transactions, setTransactions] = useState<ITransaction[]>([]);
     const [savings, setSavings] = useState<ISaving[]>([]);
-    const [fullName, setFullname] = useState('');
 
     useEffect(() => {
         async function getInfo() {
             const companyId = localStorage.getItem('companyId');
-            const company = localStorage.getItem('company');
             // @ts-ignore
-            const info = JSON.parse(company);
-            setFullname(info.firstName + ' ' + info.lastName);
+            api.companyData.getAccounts(companyId).then(data => setAccounts(data));
             // @ts-ignore
-            const data = await api.companyData.getAccounts(companyId);
+            api.companyData.getTransactions(companyId).then(data => setTransactions(data));
             // @ts-ignore
-            const data1 = await api.companyData.getTransactions(companyId);
-            // @ts-ignore
-            const data2 = await api.companyData.getSavings(companyId);
-            // @ts-ignore
-            setAccounts(data);
-            setTransactions(data1);
-            setSavings(data2);
+            api.companyData.getSavings(companyId).then(data => setSavings(data));
         }
         getInfo();
     },[]);
 
     useSetAppLayoutTitle(
     <>
-      <span>{`Welcome ${fullName}`}</span>{" "}
+      <span>{`Welcome ${localStorage.getItem('fullName')}`}</span>{" "}
       <Text tag="span" size={14} weight={400} variant="grey-light">
-        (john@happydays.com)
+          {localStorage.getItem('email')}
       </Text>
     </>
   );
