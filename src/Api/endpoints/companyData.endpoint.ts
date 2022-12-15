@@ -53,6 +53,11 @@ const companyDataEndpoint = {
     return apiInstance.get(`api/admin/users/${id}/transactions?limit=10`)
         .then(({ data }) => data.transactions);
   },
+  getRates: async (id: string, currencyFrom: string, currencyTo: string, amount: number): Promise<any> => {
+    return apiInstance
+        .get(`api/admin/companies/${id}/exchange/rates?currencyFrom=${currencyFrom}&currencyTo=${currencyTo}&amount=${amount}`)
+        .then(({ data }) => data);
+  }
 
 };
 
