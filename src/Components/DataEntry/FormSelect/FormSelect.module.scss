@@ -42,6 +42,7 @@
     }
   }
 }
+
 .option {
   background-color: var(--white) !important;
   font-weight: 500;
@@ -55,5 +56,12 @@
   &:hover {
     font-weight: 600;
     color: #546e7a !important;
+  }
+  &__disabled {
+    opacity: 0.4;
+    &:hover {
+      font-weight: 500;
+      color: #90a4ae !important;
+    }
   }
 }

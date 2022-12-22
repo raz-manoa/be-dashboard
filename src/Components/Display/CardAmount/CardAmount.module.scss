@@ -1,0 +1,13 @@
+.exchange__txt {
+  margin: 40px auto 25px;
+}
+
+:global {
+  .ant-form-horizontal .ant-form-item-control {
+    @apply relative;
+  }
+  .ant-form-item-explain-error {
+    @apply absolute left-0;
+    height: 22px;
+  }
+}
