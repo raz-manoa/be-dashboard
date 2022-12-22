@@ -32,4 +32,14 @@ export const accountsMock: AccountsResponse[] = [
     createdAt: "2020-12-17T15:28:27.554Z",
     updatedAt: "2022-02-04T09:45:46.047Z",
   },
+  {
+    id: "de1ea2dd-0907-4a54-a2e4-2b0a66b88ae9",
+    userId: "490bc618-6006-4409-afdd-a53e917b36b9",
+    balance: 0.54342546,
+    lockBalance: 2.49001361117932,
+    currency: ECurrency.ETH,
+    isDefaultCurrency: false,
+    createdAt: "2020-12-17T15:28:27.554Z",
+    updatedAt: "2022-02-04T09:45:46.047Z",
+  },
 ];

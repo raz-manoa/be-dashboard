@@ -6,13 +6,14 @@ import { useForm } from "antd/es/form/Form";
 import styles from "./CardAmount.module.scss";
 import { useState } from "react";
 import { SelectProps } from "antd/es/select";
+import { ECurrency } from "@/Interfaces/Currency";
 
 interface SelectData {
   id: string;
   userId: string;
   balance: number;
   lockBalance: number;
-  currency: string;
+  currency: ECurrency;
   isDefaultCurrency: Boolean;
   createdAt: string;
   updatedAt: string;

@@ -10,13 +10,13 @@ export interface IGetAllTransactionArgs {
   page?: number;
   perPage?: number;
 }
-interface CurrencyInfo {
+export interface CurrencyInfo {
   id: string;
-  sign: string;
+  sign: ECurrency;
   name: string;
   isCrypto: boolean;
   precision: number;
-  countryCode: string | null;
+  countryCode?: string;
 }
 
 interface UsdBalance {
