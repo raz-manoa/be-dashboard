@@ -8,36 +8,31 @@ import companyDataEndpoint, {
 import { useState, useEffect, useMemo } from "react";
 import { ECurrency } from "@/Interfaces/Currency";
 
-const currencyData = [
-  { from: "1 BTC", to: "1.04 SOL" },
-  { from: "1 SOL", to: "0.97 BTC" },
-];
-
 const cryptoData: CurrencyInfo[] = [
   {
-    id: "SOL",
-    sign: ECurrency.SOL,
+    id: ECurrency.SOL,
+    sign: "SOL",
     name: "Solana",
     isCrypto: true,
     precision: 8,
   },
   {
-    id: "USDC",
-    sign: ECurrency.USDC,
+    id: ECurrency.USDC,
+    sign: "USDC",
     name: "USD//Coin",
     isCrypto: true,
     precision: 8,
   },
   {
-    id: "BTC",
-    sign: ECurrency.BTC,
+    id: ECurrency.BTC,
+    sign: "₿",
     name: "Bitcoin",
     isCrypto: true,
     precision: 8,
   },
   {
-    id: "ETH",
-    sign: ECurrency.ETH,
+    id: ECurrency.ETH,
+    sign: "Ξ",
     name: "Ethereum",
     isCrypto: true,
     precision: 8,
@@ -70,7 +65,7 @@ const CryptoExchangePageDashboard = () => {
   }, []);
 
   const availableCurrency = useMemo(() => {
-    const availableSign: ECurrency[] = cryptoData.map((item) => item.sign);
+    const availableSign: ECurrency[] = cryptoData.map((item) => item.id);
     return accounts.filter((account) =>
       availableSign.includes(account.currency)
     );
@@ -81,9 +76,9 @@ const CryptoExchangePageDashboard = () => {
       title="Amount"
       selectFrom={availableCurrency}
       selectTo={availableCurrency}
-      currency={currencyData}
       transactionFee="0 USD"
       onSubmit={handleSubmit}
+      showRate={true}
       loading={isLoading}
     />
   );

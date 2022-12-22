@@ -5,18 +5,19 @@ import { IUser } from "@/Interfaces/IUser";
 import { ECurrency } from "@/Interfaces/Currency";
 import { ISaving } from "@/Pages/AppPage/DashboardPage/DashboarPageSavingAccount/SavingCard/SavingCard";
 import { accountsMock } from "../mock/account.mock";
+import { IRate } from "@/Interfaces/Rate";
 
 export interface IGetAllTransactionArgs {
   page?: number;
   perPage?: number;
 }
 export interface CurrencyInfo {
-  id: string;
-  sign: ECurrency;
+  id: ECurrency;
+  sign: string;
   name: string;
   isCrypto: boolean;
   precision: number;
-  countryCode?: string;
+  countryCode?: string | null;
 }
 
 interface UsdBalance {
@@ -75,6 +76,44 @@ const companyDataEndpoint = {
   mocks: {
     getAccounts: async (id: string): Promise<AccountsResponse[]> => {
       return Promise.resolve(accountsMock);
+    },
+    getRates: async (
+      id: string,
+      currencyFrom: string,
+      currencyTo: string,
+      amount: number
+    ): Promise<IRate> => {
+      return Promise.resolve({
+        id: "1",
+        rate: 1954.09389006,
+        rateWithCommission: 1563.2751120479998,
+        withoutCommission: 1,
+        destinationAmount: 1563.275112048,
+        commission: 0.2,
+        percentageFee: 20,
+        directRate: {
+          amountFrom: {
+            value: 0.0006396826715228198,
+            currency: {
+              id: ECurrency.ETH,
+              sign: "Ξ",
+              name: "Ethereum",
+              isCrypto: true,
+              precision: 8,
+            },
+          },
+          amountTo: {
+            value: 1,
+            currency: {
+              id: ECurrency.USDC,
+              sign: "USDC",
+              name: "USD//Coin",
+              isCrypto: true,
+              precision: 8,
+            },
+          },
+        },
+      });
     },
   },
 };

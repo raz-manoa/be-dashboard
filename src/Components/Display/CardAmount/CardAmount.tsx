@@ -7,6 +7,8 @@ import styles from "./CardAmount.module.scss";
 import { useState } from "react";
 import { SelectProps } from "antd/es/select";
 import { ECurrency } from "@/Interfaces/Currency";
+import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
+import { IRate } from "@/Interfaces/Rate";
 
 interface SelectData {
   id: string;
@@ -17,10 +19,6 @@ interface SelectData {
   isDefaultCurrency: Boolean;
   createdAt: string;
   updatedAt: string;
-}
-interface Currency {
-  from: string;
-  to: string;
 }
 
 export interface ICartAmountForm {
@@ -37,10 +35,10 @@ interface CardAmountProps {
   title: string;
   selectFrom: SelectData[];
   selectTo: SelectData[];
-  currency?: Currency[];
   transactionFee: string;
   onSubmit?: (data: ICartAmountForm) => void;
   loading?: boolean;
+  showRate?: boolean;
 }
 
 export function CardAmount(props: CardAmountProps) {
@@ -48,17 +46,53 @@ export function CardAmount(props: CardAmountProps) {
     title,
     selectFrom,
     selectTo,
-    currency,
     transactionFee = null,
+    showRate = false,
     onSubmit,
   } = props;
 
   const [form] = useForm<ICartAmountForm>();
   const [selectValue, setSelectValue] = useState<SelectData>();
+  const [fromRate, setFromRate] = useState<IRate>();
+
+  const fetchRate = async () => {
+    const fieldValue = form.getFieldsValue();
+    // TODO: rates
+    const rates = await companyDataEndpoint.mocks.getRates(
+      "",
+      fieldValue.from.currencyId,
+      fieldValue.to.currencyId,
+      fieldValue.from.value
+    );
+    if (rates) {
+      setFromRate(rates);
+    }
+  };
 
   const handleChange: SelectProps["onChange"] = (id) => {
     const selectedItem = selectFrom.find((item) => item.id === id);
     setSelectValue(selectedItem);
+
+    const formData = form.getFieldsValue();
+    console.log("change", selectedItem, formData);
+    if (selectedItem && selectedItem.id === formData.to.currencyId) {
+      console.log("setFields value");
+      form.setFields([
+        {
+          name: ["to", "currencyId"],
+          value: null,
+        },
+      ]);
+    }
+
+    if (showRate) {
+      fetchRate();
+    }
+  };
+  const handleToCurrencChange: SelectProps["onChange"] = () => {
+    if (showRate) {
+      fetchRate();
+    }
   };
 
   const handleSubmit = async (e: any) => {
@@ -121,7 +155,7 @@ export function CardAmount(props: CardAmountProps) {
             ]}
           />
           <FormCustom.Select
-            name={["to", "currencyID"]}
+            name={["to", "currencyId"]}
             placeholder="currency"
             rules={[
               {
@@ -129,6 +163,7 @@ export function CardAmount(props: CardAmountProps) {
                 message: "This field is required",
               },
             ]}
+            onChange={handleToCurrencChange}
             options={selectTo.map((st) => ({
               label: st.currency,
               value: st.id,
@@ -154,7 +189,7 @@ export function CardAmount(props: CardAmountProps) {
         </div>
         {/* )} */}
 
-        {currency?.map((c) => (
+        {fromRate && (
           <Text
             type="p"
             tag="p"
@@ -162,9 +197,14 @@ export function CardAmount(props: CardAmountProps) {
             weight={600}
             className="common__info"
           >
-            {c.from} equals {c.to}
+            <>
+              {fromRate.directRate?.amountFrom?.value}{" "}
+              {fromRate.directRate?.amountFrom?.currency?.sign} equals{" "}
+              {fromRate.directRate?.amountTo?.value}{" "}
+              {fromRate.directRate?.amountTo?.currency.sign}
+            </>
           </Text>
-        ))}
+        )}
 
         <Button type="primary" onClick={handleSubmit} className="common__btn">
           Continue
