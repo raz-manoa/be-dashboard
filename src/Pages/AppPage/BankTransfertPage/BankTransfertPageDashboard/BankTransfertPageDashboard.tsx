@@ -42,6 +42,7 @@ const BankTransfertPageDashboard = () => {
       transactionFee="0 USD"
       loading={isLoading}
       onSubmit={handleSubmit}
+      allowSameCurrency={true}
     />
   );
 };

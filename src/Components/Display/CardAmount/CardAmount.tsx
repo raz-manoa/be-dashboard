@@ -39,6 +39,7 @@ interface CardAmountProps {
   onSubmit?: (data: ICartAmountForm) => void;
   loading?: boolean;
   showRate?: boolean;
+  allowSameCurrency?: boolean;
 }
 
 export function CardAmount(props: CardAmountProps) {
@@ -48,6 +49,7 @@ export function CardAmount(props: CardAmountProps) {
     selectTo,
     transactionFee = null,
     showRate = false,
+    allowSameCurrency = false,
     onSubmit,
   } = props;
 
@@ -74,9 +76,12 @@ export function CardAmount(props: CardAmountProps) {
     setSelectValue(selectedItem);
 
     const formData = form.getFieldsValue();
-    console.log("change", selectedItem, formData);
-    if (selectedItem && selectedItem.id === formData.to.currencyId) {
-      console.log("setFields value");
+
+    if (
+      !allowSameCurrency &&
+      selectedItem &&
+      selectedItem.id === formData.to.currencyId
+    ) {
       form.setFields([
         {
           name: ["to", "currencyId"],
@@ -120,6 +125,15 @@ export function CardAmount(props: CardAmountProps) {
               {
                 required: true,
                 message: "This field is required",
+              },
+              {
+                validator: (rule, value, callback) => {
+                  const data = parseFloat(value) || 0;
+                  if (selectValue && data > selectValue.balance) {
+                    callback("The amount is not available");
+                  }
+                  callback();
+                },
               },
             ]}
           />
@@ -167,7 +181,8 @@ export function CardAmount(props: CardAmountProps) {
             options={selectTo.map((st) => ({
               label: st.currency,
               value: st.id,
-              optionDisable: !!selectValue && selectValue.id === st.id,
+              optionDisable:
+                !allowSameCurrency && !!selectValue && selectValue.id === st.id,
             }))}
           />
         </div>
