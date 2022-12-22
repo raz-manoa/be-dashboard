@@ -58,6 +58,7 @@ const CryptoExchangePageDashboard = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    // TODO: set account id
     companyDataEndpoint.mocks
       .getAccounts("")
       .then((data) => {
@@ -74,8 +75,6 @@ const CryptoExchangePageDashboard = () => {
       availableSign.includes(account.currency)
     );
   }, [cryptoData, accounts]);
-  console.log("availableCurrency", availableCurrency);
-  console.log("accounts", accounts);
 
   return (
     <CardAmount

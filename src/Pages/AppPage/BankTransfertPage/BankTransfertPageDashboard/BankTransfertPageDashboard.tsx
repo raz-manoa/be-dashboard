@@ -24,6 +24,7 @@ const BankTransfertPageDashboard = () => {
   useEffect(() => {
     setIsLoading(true);
     companyDataEndpoint.mocks
+      // TODO: set account id
       .getAccounts("")
       .then((data) => {
         if (data) {
