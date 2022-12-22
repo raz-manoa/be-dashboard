@@ -1,6 +1,9 @@
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
-import { CardAmount } from "@/Components/Display/CardAmount/CardAmount";
+import {
+  CardAmount,
+  ICartAmountForm,
+} from "@/Components/Display/CardAmount/CardAmount";
 import companyDataEndpoint, {
   AccountsResponse,
 } from "@/Api/endpoints/companyData.endpoint";
@@ -13,8 +16,9 @@ const BankTransfertPageDashboard = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    navigate("review");
+  const handleSubmit = (data: ICartAmountForm) => {
+    console.log(data);
+    navigate("add-beneficiary");
   };
 
   useEffect(() => {
@@ -35,7 +39,6 @@ const BankTransfertPageDashboard = () => {
       selectFrom={accounts}
       selectTo={accounts}
       transactionFee="0 USD"
-      path="add-beneficiary"
       loading={isLoading}
       onSubmit={handleSubmit}
     />

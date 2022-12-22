@@ -6,7 +6,6 @@ import { useForm } from "antd/es/form/Form";
 import styles from "./CardAmount.module.scss";
 import { useState } from "react";
 import { SelectProps } from "antd/es/select";
-import { Navigate, useNavigate } from "react-router-dom";
 
 interface SelectData {
   id: string;
@@ -22,14 +21,24 @@ interface Currency {
   from: string;
   to: string;
 }
+
+export interface ICartAmountForm {
+  from: {
+    value: number;
+    currencyId: string;
+  };
+  to: {
+    value: number;
+    currencyId: string;
+  };
+}
 interface CardAmountProps {
   title: string;
   selectFrom: SelectData[];
   selectTo: SelectData[];
   currency?: Currency[];
   transactionFee: string;
-  onSubmit?: () => void;
-  path?: string;
+  onSubmit?: (data: ICartAmountForm) => void;
   loading?: boolean;
 }
 
@@ -40,12 +49,11 @@ export function CardAmount(props: CardAmountProps) {
     selectTo,
     currency,
     transactionFee = null,
-    path = "review",
+    onSubmit,
   } = props;
 
-  const [form] = useForm<{}>();
+  const [form] = useForm<ICartAmountForm>();
   const [selectValue, setSelectValue] = useState<SelectData>();
-  const navigate = useNavigate();
 
   const handleChange: SelectProps["onChange"] = (id) => {
     const selectedItem = selectFrom.find((item) => item.id === id);
@@ -55,7 +63,7 @@ export function CardAmount(props: CardAmountProps) {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const data = await form.validateFields();
-    navigate(path);
+    onSubmit && onSubmit(data);
   };
 
   // TODO: handle loading props
@@ -67,7 +75,7 @@ export function CardAmount(props: CardAmountProps) {
       <FormCustom form={form}>
         <div className="common__field-wrap">
           <FormCustom.Input
-            name="from"
+            name={["from", "value"]}
             label="From: "
             color="grey"
             type="number"
@@ -81,8 +89,14 @@ export function CardAmount(props: CardAmountProps) {
             ]}
           />
           <FormCustom.Select
-            name="fromCurrency"
+            name={["from", "currencyId"]}
             placeholder="currency"
+            rules={[
+              {
+                required: true,
+                message: "This field is required",
+              },
+            ]}
             onChange={handleChange}
             options={selectFrom.map((s) => ({
               label: s.currency,
@@ -92,7 +106,7 @@ export function CardAmount(props: CardAmountProps) {
         </div>
         <div className="common__field-wrap">
           <FormCustom.Input
-            name="to"
+            name={["to", "value"]}
             label="To : "
             color="grey"
             type="number"
@@ -106,8 +120,14 @@ export function CardAmount(props: CardAmountProps) {
             ]}
           />
           <FormCustom.Select
-            name="toCurrency"
+            name={["to", "currencyID"]}
             placeholder="currency"
+            rules={[
+              {
+                required: true,
+                message: "This field is required",
+              },
+            ]}
             options={selectTo.map((st) => ({
               label: st.currency,
               value: st.id,

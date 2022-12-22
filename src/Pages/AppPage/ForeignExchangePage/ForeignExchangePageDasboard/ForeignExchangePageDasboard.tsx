@@ -1,6 +1,9 @@
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
-import { CardAmount } from "@/Components/Display/CardAmount/CardAmount";
+import {
+  CardAmount,
+  ICartAmountForm,
+} from "@/Components/Display/CardAmount/CardAmount";
 import companyDataEndpoint, {
   AccountsResponse,
 } from "@/Api/endpoints/companyData.endpoint";
@@ -13,7 +16,8 @@ const ForeignExchangePageDashboard = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = (data: ICartAmountForm) => {
+    console.log(data);
     navigate("review");
   };
 
@@ -36,7 +40,6 @@ const ForeignExchangePageDashboard = () => {
       selectTo={accounts}
       transactionFee="0 USD"
       onSubmit={handleSubmit}
-      path="review"
       loading={isLoading}
     />
   );

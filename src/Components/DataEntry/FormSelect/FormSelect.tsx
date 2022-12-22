@@ -37,8 +37,6 @@ export default function FormSelect(props: FormSelectProps) {
 
   return (
     <Form.Item
-      rules={rules}
-      name={name}
       className={`${styles.select} ${className} ${
         currentValue !== "" ? styles.selectActive : ""
       }`}
@@ -48,28 +46,30 @@ export default function FormSelect(props: FormSelectProps) {
           {label}
         </label>
       )}
-      <Select
-        suffixIcon={<Icon icon="chevron" />}
-        {...rest}
-        className={!!label ? styles.select__item : ""}
-        onChange={(e, option) => {
-          setCurrentValue(e);
-          onChange && onChange(e, option);
-        }}
-      >
-        {options.map((o, index) => (
-          <Option
-            value={o.value}
-            key={`o-${index}`}
-            className={clsx(styles.option, {
-              [styles.option__disabled]: o.optionDisable,
-            })}
-            disabled={o.optionDisable}
-          >
-            {o.label}
-          </Option>
-        ))}
-      </Select>
+      <Form.Item noStyle rules={rules} name={name}>
+        <Select
+          suffixIcon={<Icon icon="chevron" />}
+          {...rest}
+          className={!!label ? styles.select__item : ""}
+          onChange={(e, option) => {
+            setCurrentValue(e);
+            onChange && onChange(e, option);
+          }}
+        >
+          {options.map((o, index) => (
+            <Option
+              value={o.value}
+              key={`o-${index}`}
+              className={clsx(styles.option, {
+                [styles.option__disabled]: o.optionDisable,
+              })}
+              disabled={o.optionDisable}
+            >
+              {o.label}
+            </Option>
+          ))}
+        </Select>
+      </Form.Item>
     </Form.Item>
   );
 }

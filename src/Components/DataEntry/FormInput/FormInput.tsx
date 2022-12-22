@@ -5,12 +5,13 @@ import styles from "./FormInput.module.scss";
 import Form, { Rule } from "antd/es/form";
 import { NamePath } from "antd/es/form/interface";
 import Icon from "@/Components/General/Icon/Icon";
-interface FormInputProps extends InputProps {
+interface FormInputProps extends Omit<InputProps, "name"> {
   icon?: string;
   label?: string;
   color?: string;
   rules?: Rule[];
   inputStyle?: React.CSSProperties;
+  name?: NamePath;
 }
 
 export default function FormInput(props: FormInputProps) {
