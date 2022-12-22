@@ -30,6 +30,7 @@ interface CardAmountProps {
   transactionFee: string;
   onSubmit?: () => void;
   path?: string;
+  loading?: boolean;
 }
 
 export function CardAmount(props: CardAmountProps) {
@@ -57,6 +58,7 @@ export function CardAmount(props: CardAmountProps) {
     navigate(path);
   };
 
+  // TODO: handle loading props
   return (
     <Card className="common__card">
       <Text tag="h2" type="h2" variant="black2">
