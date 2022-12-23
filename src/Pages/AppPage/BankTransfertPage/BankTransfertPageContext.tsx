@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import { IBeneficiaryForm } from "./BankTransfertPageAddBeneficiary/BankTransfertPageAddBeneficiary";
 
 export interface BankTransfertFormType extends ICardAmountForm {
-  // TODO: static type
   beneficiary?: IBeneficiaryForm;
 }
 interface IState {

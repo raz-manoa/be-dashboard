@@ -6,6 +6,7 @@ import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import BankTransfertPageDashboardModal from "./BankTransfertPageDashboardModal/BankTransfertPageDashboardModal";
 import { useNavigate } from "react-router-dom";
 
+// TODO: define beneficiary type
 export interface IBeneficiaryForm {}
 
 export default function BankTransfertPageAddBeneficiary() {
