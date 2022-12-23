@@ -8,12 +8,13 @@ import CardConfirm from "@/Components/Display/ConfirmModal/CardConfirm";
 
 interface ICartAmountConfirmProps<T> {
   form?: T;
+  title?: string;
 }
 
 const CartAmountConfirm = <T extends ICardAmountForm>(
   props: ICartAmountConfirmProps<T>
 ) => {
-  const { form } = props;
+  const { form, title = "Exchange Complete" } = props;
   if (!form) {
     return <Navigate to="" />;
   }
@@ -21,7 +22,7 @@ const CartAmountConfirm = <T extends ICardAmountForm>(
   return (
     <Card className="common__card">
       <CardConfirm
-        title="Exchange Complete"
+        title={title}
         date="11/06/2022, 10:27:41 PM"
         msg={
           <>

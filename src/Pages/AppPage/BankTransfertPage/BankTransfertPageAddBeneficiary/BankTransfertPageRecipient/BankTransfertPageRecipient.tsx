@@ -1,29 +1,30 @@
 import Card from "@/Components/Display/Card/Card";
 import styles from "./BankTransfertPageRecipient.module.scss";
-import React, { useState } from "react";
+import React from "react";
 import Text from "@/Components/General/Text/Text";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
 import { useForm } from "antd/es/form/Form";
 import Button from "@/Components/General/Button/Button";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/Components/General/Icon/Icon";
-import Modal from "antd/lib/modal";
-import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
-import CardConfirmItem from "@/Components/Display/CardConfirm/CardConfirmItem";
-import BankTransfertPageDashboardModal from "../BankTransfertPageDashboardModal/BankTransfertPageDashboardModal";
 
 interface BankTransfertPageRecipientProps {
   onAddBeneficiary?(e: React.MouseEvent): void;
   overlay: boolean;
+  onContinue?: () => void;
 }
 
 export default function BankTransfertPageRecipient(
   props: BankTransfertPageRecipientProps
 ) {
-  const { onAddBeneficiary, overlay } = props;
+  const { onAddBeneficiary, onContinue, overlay } = props;
 
   const navigate = useNavigate();
   const [form] = useForm();
+  const handleContinue = async () => {
+    await form.validateFields();
+    onContinue && onContinue();
+  };
 
   return (
     <Card className={`${styles.card} modal ${overlay ? styles.overlay : ""}`}>
@@ -67,7 +68,7 @@ export default function BankTransfertPageRecipient(
             ]}
           />
           <FormCustom.Input
-            name="name"
+            name="bank_name"
             label="Bank Name:"
             placeholder="Bank"
             color="grey"
@@ -148,7 +149,7 @@ export default function BankTransfertPageRecipient(
             ]}
           />
           <FormCustom.TextArea
-            name="Message"
+            name="message"
             label="Message : "
             option="optional"
             placeholder="Message"
@@ -174,13 +175,7 @@ export default function BankTransfertPageRecipient(
           <Button type="default" onClick={onAddBeneficiary}>
             ADD BENEFICIARY
           </Button>
-          <Button
-            type="primary"
-            onClick={() => {
-              form.validateFields();
-              navigate({ pathname: "/app/bank-transfer/review" });
-            }}
-          >
+          <Button type="primary" onClick={handleContinue}>
             Continue
           </Button>
         </div>

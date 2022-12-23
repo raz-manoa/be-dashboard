@@ -8,16 +8,20 @@ import companyDataEndpoint, {
   AccountsResponse,
 } from "@/Api/endpoints/companyData.endpoint";
 import { useState, useEffect } from "react";
+import { useBankTransfertPageContext } from "../BankTransfertPageContext";
 
 const BankTransfertPageDashboard = () => {
   useSetAppLayoutTitle("Bank Transfer");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [accounts, setAccounts] = useState<AccountsResponse[]>([]);
+  const { setForm } = useBankTransfertPageContext();
 
   const navigate = useNavigate();
 
   const handleSubmit = (data: ICardAmountForm) => {
-    console.log(data);
+    if (setForm) {
+      setForm(data);
+    }
     navigate("add-beneficiary");
   };
 

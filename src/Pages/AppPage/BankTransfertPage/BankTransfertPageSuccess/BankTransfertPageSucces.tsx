@@ -1,9 +1,18 @@
 import Card from "@/Components/Display/Card/Card";
+import { formatCardAmount } from "@/Components/Display/CardAmount/CardAmount";
+import CartAmountConfirm from "@/Components/Display/CardAmount/CartAmountConfirm/CartAmountConfirm";
 import CardConfirm from "@/Components/Display/ConfirmModal/CardConfirm";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
+import { Navigate } from "react-router-dom";
+import { useBankTransfertPageContext } from "../BankTransfertPageContext";
 
 export default function BankTransfertPageSucces() {
   useSetAppLayoutTitle("Bank Transfer");
+  const { form } = useBankTransfertPageContext();
+
+  if (!form) {
+    return <Navigate to="/app/bank-transfer" />;
+  }
 
   return (
     <Card className="common__card">
@@ -13,9 +22,14 @@ export default function BankTransfertPageSucces() {
         msg={
           <>
             An international transfer to John Smith from{" "}
-            <span style={{ fontWeight: 600 }}>12.00 USD</span> to{" "}
-            <span style={{ fontWeight: 600 }}>12.00 USD</span> has been
-            submitted.
+            <span style={{ fontWeight: 600 }}>
+              {formatCardAmount("from", form)}
+            </span>{" "}
+            to{" "}
+            <span style={{ fontWeight: 600 }}>
+              {formatCardAmount("to", form)}
+            </span>{" "}
+            has been submitted.
           </>
         }
         link={{

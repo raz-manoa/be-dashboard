@@ -5,5 +5,5 @@ import { useForeignExchangePageContext } from "../ForeignExchangePageContext";
 export default function ForeignExchangePageSuccess() {
   useSetAppLayoutTitle("Foreign Exchange (FX)");
   const context = useForeignExchangePageContext();
-  return <CartAmountConfirm form={context.form} />;
+  return <CartAmountConfirm form={context.form} title="Request Submitted" />;
 }
