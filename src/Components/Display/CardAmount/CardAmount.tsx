@@ -177,6 +177,7 @@ export function CardAmount(props: CardAmountProps) {
           value: selectFrom[0] && selectFrom[0].id,
         },
       ]);
+      setSelectValue(selectFrom[0]);
     }
 
     if (!fieldValue.to.currencyId) {
