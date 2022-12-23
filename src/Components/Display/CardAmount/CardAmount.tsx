@@ -29,12 +29,10 @@ interface ITransactionFree {
 export interface ICardAmountForm {
   from: {
     value: number;
-    currencyId: string;
     currency: ECurrency;
   };
   to: {
     value: number;
-    currencyId: string;
     currency: ECurrency;
   };
   transactionFee?: ITransactionFree;
@@ -79,13 +77,13 @@ export function CardAmount(props: CardAmountProps) {
 
   const findFirstAvailableTo = (): SelectData | undefined => {
     const fieldValue = form.getFieldsValue();
-    const fromItemId =
-      fieldValue.from.currencyId || selectFrom[0] ? selectFrom[0].id : "";
+    const fromItemCurrency =
+      fieldValue.from.currency || selectFrom[0] ? selectFrom[0].currency : "";
     return selectTo.find((item) => {
       if (!!allowSameCurrency) {
         return true;
       }
-      if (!!fromItemId && item.id !== fromItemId) {
+      if (!!fromItemCurrency && item.currency !== fromItemCurrency) {
         return true;
       }
       return false;
@@ -97,8 +95,8 @@ export function CardAmount(props: CardAmountProps) {
     // TODO: rates
     const rates = await companyDataEndpoint.mocks.getRates(
       "",
-      fieldValue.from.currencyId,
-      fieldValue.to.currencyId,
+      fieldValue.from.currency,
+      fieldValue.to.currency,
       fieldValue.from.value
     );
     if (rates) {
@@ -106,8 +104,8 @@ export function CardAmount(props: CardAmountProps) {
     }
   };
 
-  const handleChange: SelectProps["onChange"] = (id) => {
-    const selectedItem = selectFrom.find((item) => item.id === id);
+  const handleChange: SelectProps["onChange"] = (currency) => {
+    const selectedItem = selectFrom.find((item) => item.currency === currency);
     setSelectValue(selectedItem);
 
     const formData = form.getFieldsValue();
@@ -115,13 +113,13 @@ export function CardAmount(props: CardAmountProps) {
     if (
       !allowSameCurrency &&
       selectedItem &&
-      selectedItem.id === formData.to.currencyId
+      selectedItem.currency === formData.to.currency
     ) {
       const toItem = findFirstAvailableTo();
       form.setFields([
         {
-          name: ["to", "currencyId"],
-          value: toItem ? toItem.id : null,
+          name: ["to", "currency"],
+          value: toItem ? toItem.currency : null,
         },
       ]);
     }
@@ -130,8 +128,8 @@ export function CardAmount(props: CardAmountProps) {
       fetchRate();
     }
   };
-  const handleToCurrencChange: SelectProps["onChange"] = (id) => {
-    const selectedItem = selectTo.find((item) => item.id === id);
+  const handleToCurrencChange: SelectProps["onChange"] = (currency) => {
+    const selectedItem = selectTo.find((item) => item.currency === currency);
     form.setFields([
       {
         name: ["to", "currency"],
@@ -147,45 +145,33 @@ export function CardAmount(props: CardAmountProps) {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const data = await form.validateFields();
-    const selectedFrom = selectFrom.find(
-      (item) => item.id === data.from.currencyId
-    );
-    const selectedTo = selectTo.find((item) => item.id === data.to.currencyId);
-    if (selectedTo && selectedFrom) {
-      onSubmit &&
-        onSubmit({
-          from: {
-            ...data.from,
-            currency: selectedFrom.currency,
-          },
-          to: {
-            ...data.to,
-            currency: selectedTo.currency,
-          },
-          transactionFee,
-        });
-    }
+
+    onSubmit &&
+      onSubmit({
+        ...data,
+        transactionFee,
+      });
   };
 
   useEffect(() => {
     const fieldValue = form.getFieldsValue();
 
-    if (!fieldValue.from.currencyId && selectFrom[0]) {
+    if (!fieldValue.from.currency && selectFrom[0]) {
       form.setFields([
         {
-          name: ["from", "currencyId"],
-          value: selectFrom[0] && selectFrom[0].id,
+          name: ["from", "currency"],
+          value: selectFrom[0] && selectFrom[0].currency,
         },
       ]);
       setSelectValue(selectFrom[0]);
     }
 
-    if (!fieldValue.to.currencyId) {
+    if (!fieldValue.to.currency) {
       const item = findFirstAvailableTo();
       form.setFields([
         {
-          name: ["to", "currencyId"],
-          value: item && item.id,
+          name: ["to", "currency"],
+          value: item && item.currency,
         },
       ]);
     }
@@ -223,7 +209,7 @@ export function CardAmount(props: CardAmountProps) {
             ]}
           />
           <FormCustom.Select
-            name={["from", "currencyId"]}
+            name={["from", "currency"]}
             placeholder="currency"
             defaultValue={selectFrom[0] ? selectFrom[0].id : undefined}
             rules={[
@@ -235,7 +221,7 @@ export function CardAmount(props: CardAmountProps) {
             onChange={handleChange}
             options={selectFrom.map((s) => ({
               label: s.currency,
-              value: s.id,
+              value: s.currency,
             }))}
           />
         </div>
@@ -255,7 +241,7 @@ export function CardAmount(props: CardAmountProps) {
             ]}
           />
           <FormCustom.Select
-            name={["to", "currencyId"]}
+            name={["to", "currency"]}
             placeholder="currency"
             rules={[
               {
@@ -266,7 +252,7 @@ export function CardAmount(props: CardAmountProps) {
             onChange={handleToCurrencChange}
             options={selectTo.map((st) => ({
               label: st.currency,
-              value: st.id,
+              value: st.currency,
               optionDisable:
                 !allowSameCurrency && !!selectValue && selectValue.id === st.id,
             }))}
