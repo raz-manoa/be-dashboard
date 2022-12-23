@@ -94,22 +94,28 @@ export function CardAmount(props: CardAmountProps) {
   const fetchRate = async () => {
     const fieldValue = form.getFieldsValue();
     // TODO: rates
-    const rates = await companyDataEndpoint.mocks.getRates(
-      "",
-      fieldValue.from.currency,
-      fieldValue.to.currency,
+    if (
+      fieldValue.from.currency &&
+      fieldValue.to.currency &&
       fieldValue.from.value
-    );
-    if (rates) {
-      setFromRate(rates);
+    ) {
+      const rates = await companyDataEndpoint.mocks.getRates(
+        "",
+        fieldValue.from.currency,
+        fieldValue.to.currency,
+        fieldValue.from.value
+      );
+      if (rates) {
+        setFromRate(rates);
 
-      // Update to.value
-      form.setFields([
-        {
-          name: ["to", "value"],
-          value: rates.destinationAmount,
-        },
-      ]);
+        // Update to.value
+        form.setFields([
+          {
+            name: ["to", "value"],
+            value: rates.destinationAmount,
+          },
+        ]);
+      }
     }
   };
 
