@@ -9,6 +9,7 @@ import { SelectProps } from "antd/es/select";
 import { ECurrency } from "@/Interfaces/Currency";
 import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
 import { IRate } from "@/Interfaces/Rate";
+import { FormInputProps } from "@/Components/DataEntry/FormInput/FormInput";
 
 interface SelectData {
   id: string;
@@ -101,6 +102,14 @@ export function CardAmount(props: CardAmountProps) {
     );
     if (rates) {
       setFromRate(rates);
+
+      // Update to.value
+      form.setFields([
+        {
+          name: ["to", "value"],
+          value: rates.destinationAmount,
+        },
+      ]);
     }
   };
 
@@ -127,6 +136,9 @@ export function CardAmount(props: CardAmountProps) {
     if (showRate) {
       fetchRate();
     }
+  };
+  const handleFromChange: FormInputProps["onChange"] = (e) => {
+    if (e.currentTarget.value) fetchRate();
   };
   const handleToCurrencChange: SelectProps["onChange"] = (currency) => {
     const selectedItem = selectTo.find((item) => item.currency === currency);
@@ -207,6 +219,7 @@ export function CardAmount(props: CardAmountProps) {
                 },
               },
             ]}
+            onChange={handleFromChange}
           />
           <FormCustom.Select
             name={["from", "currency"]}

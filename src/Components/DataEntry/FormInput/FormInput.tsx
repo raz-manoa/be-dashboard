@@ -5,7 +5,7 @@ import styles from "./FormInput.module.scss";
 import Form, { Rule } from "antd/es/form";
 import { NamePath } from "antd/es/form/interface";
 import Icon from "@/Components/General/Icon/Icon";
-interface FormInputProps extends Omit<InputProps, "name"> {
+export interface FormInputProps extends Omit<InputProps, "name"> {
   icon?: string;
   label?: string;
   color?: string;
