@@ -4,7 +4,7 @@ import Button from "@/Components/General/Button/Button";
 import Text from "@/Components/General/Text/Text";
 import { useForm } from "antd/es/form/Form";
 import styles from "./CardAmount.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SelectProps } from "antd/es/select";
 import { ECurrency } from "@/Interfaces/Currency";
 import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
@@ -57,6 +57,21 @@ export function CardAmount(props: CardAmountProps) {
   const [selectValue, setSelectValue] = useState<SelectData>();
   const [fromRate, setFromRate] = useState<IRate>();
 
+  const findFirstAvailableTo = (): SelectData | undefined => {
+    const fieldValue = form.getFieldsValue();
+    const fromItemId =
+      fieldValue.from.currencyId || selectFrom[0] ? selectFrom[0].id : "";
+    return selectTo.find((item) => {
+      if (!!allowSameCurrency) {
+        return true;
+      }
+      if (!!fromItemId && item.id !== fromItemId) {
+        return true;
+      }
+      return false;
+    });
+  };
+
   const fetchRate = async () => {
     const fieldValue = form.getFieldsValue();
     // TODO: rates
@@ -82,10 +97,11 @@ export function CardAmount(props: CardAmountProps) {
       selectedItem &&
       selectedItem.id === formData.to.currencyId
     ) {
+      const toItem = findFirstAvailableTo();
       form.setFields([
         {
           name: ["to", "currencyId"],
-          value: null,
+          value: toItem ? toItem.id : null,
         },
       ]);
     }
@@ -105,6 +121,29 @@ export function CardAmount(props: CardAmountProps) {
     const data = await form.validateFields();
     onSubmit && onSubmit(data);
   };
+
+  useEffect(() => {
+    const fieldValue = form.getFieldsValue();
+
+    if (!fieldValue.from.currencyId && selectFrom[0]) {
+      form.setFields([
+        {
+          name: ["from", "currencyId"],
+          value: selectFrom[0] && selectFrom[0].id,
+        },
+      ]);
+    }
+
+    if (!fieldValue.to.currencyId) {
+      const item = findFirstAvailableTo();
+      form.setFields([
+        {
+          name: ["to", "currencyId"],
+          value: item && item.id,
+        },
+      ]);
+    }
+  }, [selectFrom, selectTo]);
 
   // TODO: handle loading props
   return (
@@ -140,6 +179,7 @@ export function CardAmount(props: CardAmountProps) {
           <FormCustom.Select
             name={["from", "currencyId"]}
             placeholder="currency"
+            defaultValue={selectFrom[0] ? selectFrom[0].id : undefined}
             rules={[
               {
                 required: true,
