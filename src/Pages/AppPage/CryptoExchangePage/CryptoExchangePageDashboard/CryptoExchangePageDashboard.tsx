@@ -1,12 +1,16 @@
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
-import { CardAmount } from "@/Components/Display/CardAmount/CardAmount";
+import {
+  CardAmount,
+  ICardAmountForm,
+} from "@/Components/Display/CardAmount/CardAmount";
 import companyDataEndpoint, {
   AccountsResponse,
   CurrencyInfo,
 } from "@/Api/endpoints/companyData.endpoint";
 import { useState, useEffect, useMemo } from "react";
 import { ECurrency } from "@/Interfaces/Currency";
+import { useCryptoExchangePageContext } from "../CryptoExchangePageContext";
 
 const cryptoData: CurrencyInfo[] = [
   {
@@ -43,11 +47,14 @@ const CryptoExchangePageDashboard = () => {
   useSetAppLayoutTitle("Crypto Exchange");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [accounts, setAccounts] = useState<AccountsResponse[]>([]);
+  const { setForm } = useCryptoExchangePageContext();
 
   const navigate = useNavigate();
 
-  const handleSubmit = (data: any) => {
-    console.log(data);
+  const handleSubmit = (data: ICardAmountForm) => {
+    if (setForm) {
+      setForm(data);
+    }
     navigate("review");
   };
 
@@ -76,7 +83,6 @@ const CryptoExchangePageDashboard = () => {
       title="Amount"
       selectFrom={availableCurrency}
       selectTo={availableCurrency}
-      transactionFee="0 USD"
       onSubmit={handleSubmit}
       showRate={true}
       loading={isLoading}

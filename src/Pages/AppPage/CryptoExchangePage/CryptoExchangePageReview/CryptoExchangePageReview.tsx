@@ -1,25 +1,33 @@
+import { formatCardAmount } from "@/Components/Display/CardAmount/CardAmount";
 import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
 import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirmItem";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useCryptoExchangePageContext } from "../CryptoExchangePageContext";
 
 export default function CryptoExchangePageReview() {
   useSetAppLayoutTitle("Crypto Exchange");
   const navigate = useNavigate();
+  const { form } = useCryptoExchangePageContext();
+
+  if (!form) {
+    return <Navigate to="" />;
+  }
+
   const data: CardModalItemProps[] = [
     {
       label: "From",
-      value: "100.00 SOL",
+      value: formatCardAmount("from", form),
       color: "red",
     },
     {
       label: "To",
-      value: "97.00 BTC",
+      value: formatCardAmount("to", form),
       color: "red",
     },
     {
       label: "Transaction fee",
-      value: "0.00 USD",
+      value: formatCardAmount("transactionFee", form),
       color: "black",
     },
     {
@@ -28,6 +36,15 @@ export default function CryptoExchangePageReview() {
       color: "black",
     },
   ];
+
+  const onSubmit = () => {
+    console.log("submit form", form);
+    // TODO: submit exchange
+    navigate({
+      pathname: "/app/crypto-exchange/confirm",
+    });
+  };
+
   return (
     <CardConfirm
       className="common__card"
@@ -41,11 +58,7 @@ export default function CryptoExchangePageReview() {
           pathname: "/app/crypto-exchange/",
         });
       }}
-      onClickSecondBtn={() => {
-        navigate({
-          pathname: "/app/crypto-exchange/confirm",
-        });
-      }}
+      onClickSecondBtn={onSubmit}
     />
   );
 }

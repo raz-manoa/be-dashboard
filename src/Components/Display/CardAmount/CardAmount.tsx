@@ -20,41 +20,61 @@ interface SelectData {
   createdAt: string;
   updatedAt: string;
 }
+interface ITransactionFree {
+  value: number;
+  currencyId: string;
+  currency: ECurrency;
+}
 
-export interface ICartAmountForm {
+export interface ICardAmountForm {
   from: {
     value: number;
     currencyId: string;
+    currency: ECurrency;
   };
   to: {
     value: number;
     currencyId: string;
+    currency: ECurrency;
   };
+  transactionFee?: ITransactionFree;
 }
 interface CardAmountProps {
   title: string;
   selectFrom: SelectData[];
   selectTo: SelectData[];
-  transactionFee: string;
-  onSubmit?: (data: ICartAmountForm) => void;
+  transactionFee?: ITransactionFree;
+  onSubmit?: (data: ICardAmountForm) => void;
   loading?: boolean;
   showRate?: boolean;
   allowSameCurrency?: boolean;
 }
+
+export const formatCardAmount = (
+  key: keyof ICardAmountForm,
+  form: ICardAmountForm
+): string => {
+  const info = form[key];
+  if (info) return `${info.value} ${info.currency}`;
+  return "0";
+};
 
 export function CardAmount(props: CardAmountProps) {
   const {
     title,
     selectFrom,
     selectTo,
-    transactionFee = null,
+    transactionFee: defaultTransactionFee,
     showRate = false,
     allowSameCurrency = false,
     onSubmit,
   } = props;
 
-  const [form] = useForm<ICartAmountForm>();
+  const [form] = useForm<ICardAmountForm>();
   const [selectValue, setSelectValue] = useState<SelectData>();
+  const [transactionFee, setTransactionFee] = useState<
+    ITransactionFree | undefined
+  >(defaultTransactionFee);
   const [fromRate, setFromRate] = useState<IRate>();
 
   const findFirstAvailableTo = (): SelectData | undefined => {
@@ -110,7 +130,15 @@ export function CardAmount(props: CardAmountProps) {
       fetchRate();
     }
   };
-  const handleToCurrencChange: SelectProps["onChange"] = () => {
+  const handleToCurrencChange: SelectProps["onChange"] = (id) => {
+    const selectedItem = selectTo.find((item) => item.id === id);
+    form.setFields([
+      {
+        name: ["to", "currency"],
+        value: selectedItem ? selectedItem.currency : null,
+      },
+    ]);
+
     if (showRate) {
       fetchRate();
     }
@@ -119,7 +147,24 @@ export function CardAmount(props: CardAmountProps) {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const data = await form.validateFields();
-    onSubmit && onSubmit(data);
+    const selectedFrom = selectFrom.find(
+      (item) => item.id === data.from.currencyId
+    );
+    const selectedTo = selectTo.find((item) => item.id === data.to.currencyId);
+    if (selectedTo && selectedFrom) {
+      onSubmit &&
+        onSubmit({
+          from: {
+            ...data.from,
+            currency: selectedFrom.currency,
+          },
+          to: {
+            ...data.to,
+            currency: selectedTo.currency,
+          },
+          transactionFee,
+        });
+    }
   };
 
   useEffect(() => {
@@ -238,7 +283,10 @@ export function CardAmount(props: CardAmountProps) {
           )}
           {transactionFee && (
             <Text type="p" tag="p" variant="grey">
-              Transaction fee <strong>{transactionFee}</strong>
+              Transaction fee{" "}
+              <strong>
+                {transactionFee.value} {transactionFee.currency}
+              </strong>
             </Text>
           )}
         </div>
