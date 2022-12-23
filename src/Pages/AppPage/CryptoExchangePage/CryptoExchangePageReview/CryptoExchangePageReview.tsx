@@ -9,7 +9,7 @@ import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
 export default function CryptoExchangePageReview() {
   useSetAppLayoutTitle("Crypto Exchange");
   const navigate = useNavigate();
-  const { form } = useCryptoExchangePageContext();
+  const { form, setConfirmation } = useCryptoExchangePageContext();
 
   if (!form) {
     return <Navigate to="" />;
@@ -38,18 +38,20 @@ export default function CryptoExchangePageReview() {
     },
   ];
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     console.log("submit form", form);
     // TODO: pass response to confirmation
-    const data = await companyDataEndpoint.exchange(
-        'companyId', {
-          currencyFrom: 'ETH',
-          currencyTo: 'SOL',
-          amount: '2',
-          startRate: 'rate fetched from getRates',
-          type: 'exchange',
-        }
-    );
+    const data = await companyDataEndpoint.exchange("companyId", {
+      currencyFrom: "ETH",
+      currencyTo: "SOL",
+      amount: "2",
+      startRate: "rate fetched from getRates",
+      type: "exchange",
+    });
+
+    if (setConfirmation && data) {
+      setConfirmation(data);
+    }
     // TODO: submit exchange
     navigate({
       pathname: "/app/crypto-exchange/confirm",

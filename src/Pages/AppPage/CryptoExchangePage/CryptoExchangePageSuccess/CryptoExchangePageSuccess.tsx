@@ -2,8 +2,11 @@ import CartAmountConfirm from "@/Components/Display/CardAmount/CartAmountConfirm
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useCryptoExchangePageContext } from "../CryptoExchangePageContext";
 
+export interface CryptoExchangeConfirmData {}
+
 export default function CryptoExchangePageSuccess() {
   useSetAppLayoutTitle("Crypto Exchange");
-  const context = useCryptoExchangePageContext();
-  return <CartAmountConfirm form={context.form} />;
+  const { form, confirmation } = useCryptoExchangePageContext();
+  console.log("confirmation", confirmation);
+  return <CartAmountConfirm form={form} />;
 }
