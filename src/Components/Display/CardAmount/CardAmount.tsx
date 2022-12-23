@@ -138,7 +138,16 @@ export function CardAmount(props: CardAmountProps) {
     }
   };
   const handleFromChange: FormInputProps["onChange"] = (e) => {
-    if (e.currentTarget.value) fetchRate();
+    if (e.currentTarget.value) {
+      fetchRate();
+    } else {
+      form.setFields([
+        {
+          name: ["to", "value"],
+          value: null,
+        },
+      ]);
+    }
   };
   const handleToCurrencChange: SelectProps["onChange"] = (currency) => {
     const selectedItem = selectTo.find((item) => item.currency === currency);
