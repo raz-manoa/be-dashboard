@@ -8,6 +8,18 @@ import Button from "@/Components/General/Button/Button";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/Components/General/Icon/Icon";
 
+// TODO: set recipient type
+interface IRecipientForm {
+  name: string;
+  city_or_district: string;
+  bank_name: string;
+  bic: string;
+  iban: string;
+  country: string;
+  beneficiary_address: string;
+  account_number: string;
+  message: string;
+}
 interface BankTransfertPageRecipientProps {
   onAddBeneficiary?(e: React.MouseEvent): void;
   overlay: boolean;
@@ -20,7 +32,7 @@ export default function BankTransfertPageRecipient(
   const { onAddBeneficiary, onContinue, overlay } = props;
 
   const navigate = useNavigate();
-  const [form] = useForm();
+  const [form] = useForm<IRecipientForm>();
   const handleContinue = async () => {
     await form.validateFields();
     onContinue && onContinue();
@@ -84,7 +96,7 @@ export default function BankTransfertPageRecipient(
             label="BIC/SWIFT Code:"
             placeholder="Code"
             color="grey"
-            type="number"
+            type="text"
             rules={[
               {
                 required: true,
@@ -97,7 +109,7 @@ export default function BankTransfertPageRecipient(
             label="IBAN:"
             placeholder="Code"
             color="grey"
-            type="number"
+            type="text"
             rules={[
               {
                 required: true,
@@ -140,7 +152,7 @@ export default function BankTransfertPageRecipient(
             label="Account Number:"
             placeholder="Number"
             color="grey"
-            type="number"
+            type="text"
             rules={[
               {
                 required: true,
