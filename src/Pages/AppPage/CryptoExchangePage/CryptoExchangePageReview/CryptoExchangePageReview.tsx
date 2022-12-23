@@ -4,6 +4,7 @@ import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirm
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useCryptoExchangePageContext } from "../CryptoExchangePageContext";
+import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
 
 export default function CryptoExchangePageReview() {
   useSetAppLayoutTitle("Crypto Exchange");
@@ -39,6 +40,16 @@ export default function CryptoExchangePageReview() {
 
   const onSubmit = () => {
     console.log("submit form", form);
+    // TODO: pass response to confirmation
+    const data = await companyDataEndpoint.exchange(
+        'companyId', {
+          currencyFrom: 'ETH',
+          currencyTo: 'SOL',
+          amount: '2',
+          startRate: 'rate fetched from getRates',
+          type: 'exchange',
+        }
+    );
     // TODO: submit exchange
     navigate({
       pathname: "/app/crypto-exchange/confirm",
