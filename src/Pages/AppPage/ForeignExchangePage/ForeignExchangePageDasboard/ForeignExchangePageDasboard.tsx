@@ -8,16 +8,20 @@ import companyDataEndpoint, {
   AccountsResponse,
 } from "@/Api/endpoints/companyData.endpoint";
 import { useEffect, useState } from "react";
+import { useForeignExchangePageContext } from "../ForeignExchangePageContext";
 
 const ForeignExchangePageDashboard = () => {
   useSetAppLayoutTitle("Foreign Exchange (FX)");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [accounts, setAccounts] = useState<AccountsResponse[]>([]);
+  const { setForm } = useForeignExchangePageContext();
 
   const navigate = useNavigate();
 
   const handleSubmit = (data: ICardAmountForm) => {
-    console.log(data);
+    if (setForm) {
+      setForm(data);
+    }
     navigate("review");
   };
 
