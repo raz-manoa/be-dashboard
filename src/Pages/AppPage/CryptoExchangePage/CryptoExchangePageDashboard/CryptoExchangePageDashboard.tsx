@@ -61,8 +61,9 @@ const CryptoExchangePageDashboard = () => {
   useEffect(() => {
     setIsLoading(true);
     // TODO: set account id
-    companyDataEndpoint.mocks
-      .getAccounts("")
+    const companyId = localStorage.getItem('companyId') || '';
+    companyDataEndpoint
+      .getAccounts(companyId)
       .then((data) => {
         if (data) {
           setAccounts(data);

@@ -103,7 +103,7 @@ export function CardAmount(props: CardAmountProps) {
     ) {
       const companyId = localStorage.getItem('companyId') || '';
 
-      const rates = await companyDataEndpoint.mocks.getRates(
+      const rates = await companyDataEndpoint.getRates(
           companyId,
         fieldValue.from.currency,
         fieldValue.to.currency,

@@ -75,7 +75,7 @@ const companyDataEndpoint = {
   },
   exchange: async (id: string, body: any): Promise<ITransaction[]> => {
     return apiInstance
-        .post(`/admin/companies/${id}/crypto/exchange`, body)
+        .post(`api/admin/companies/${id}/crypto/exchange`, body)
         .then(({ data }) => data);
   },
   mocks: {
