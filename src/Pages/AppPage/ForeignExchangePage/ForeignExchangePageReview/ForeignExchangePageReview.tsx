@@ -12,7 +12,7 @@ export default function ForeignExchangePageReview() {
   useSetAppLayoutTitle("Foreign Exchange (FX)");
   const navigate = useNavigate();
   const { form } = useForeignExchangePageContext();
-  const { error, setError } = useState<boolean>(false);
+  const [ error, setError ] = useState<boolean>(false);
 
   if (!form) {
     return <Navigate to="" />;

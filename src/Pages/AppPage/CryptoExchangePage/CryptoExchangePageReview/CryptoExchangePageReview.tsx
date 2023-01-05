@@ -12,7 +12,7 @@ export default function CryptoExchangePageReview() {
   useSetAppLayoutTitle("Crypto Exchange");
   const navigate = useNavigate();
   const { form, setConfirmation } = useCryptoExchangePageContext();
-  const { error, setError } = useState<boolean>(false);
+  const [ error, setError ] = useState<boolean>(false);
 
   if (!form) {
     return <Navigate to="" />;
