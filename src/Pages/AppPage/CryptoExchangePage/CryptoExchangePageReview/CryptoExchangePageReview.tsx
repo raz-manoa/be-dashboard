@@ -5,6 +5,7 @@ import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useCryptoExchangePageContext } from "../CryptoExchangePageContext";
 import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
+import Alert from "antd/es/alert";
 
 export default function CryptoExchangePageReview() {
   useSetAppLayoutTitle("Crypto Exchange");
@@ -68,19 +69,22 @@ export default function CryptoExchangePageReview() {
   };
 
   return (
-    <CardConfirm
-      className="common__card"
-      title="Crypto Exchange - Review"
-      btnPrimary="Back"
-      btnSecondary="Confirmer"
-      itemStyle={{ padding: "25px 15px 24px" }}
-      data={data}
-      onClickFirstBtn={() => {
-        navigate({
-          pathname: "/app/crypto-exchange/",
-        });
-      }}
-      onClickSecondBtn={onSubmit}
-    />
+    <div>
+      <Alert message="Insufficient USD funds." type="error" className="mb-8" />
+      <CardConfirm
+        className="common__card"
+        title="Crypto Exchange - Review"
+        btnPrimary="Back"
+        btnSecondary="Confirmer"
+        itemStyle={{ padding: "25px 15px 24px" }}
+        data={data}
+        onClickFirstBtn={() => {
+          navigate({
+            pathname: "/app/crypto-exchange/",
+          });
+        }}
+        onClickSecondBtn={onSubmit}
+      />
+    </div>
   );
 }
