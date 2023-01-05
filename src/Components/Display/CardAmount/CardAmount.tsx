@@ -51,7 +51,7 @@ interface CardAmountProps {
 }
 
 export const formatCardAmount = (
-  key: keyof ICardAmountForm,
+  key: "from" | "to" | "transactionFee",
   form: ICardAmountForm
 ): string => {
   const info = form[key];
@@ -101,10 +101,10 @@ export function CardAmount(props: CardAmountProps) {
       fieldValue.to.currency &&
       fieldValue.from.value
     ) {
-      const companyId = localStorage.getItem('companyId') || '';
+      const companyId = localStorage.getItem("companyId") || "";
 
       const rates = await companyDataEndpoint.getRates(
-          companyId,
+        companyId,
         fieldValue.from.currency,
         fieldValue.to.currency,
         fieldValue.from.value
@@ -182,6 +182,8 @@ export function CardAmount(props: CardAmountProps) {
       onSubmit({
         ...data,
         transactionFee,
+        // TODO: set rate value
+        rate: 23,
       });
   };
 
