@@ -37,6 +37,7 @@ export interface ICardAmountForm {
     currency: ECurrency;
   };
   transactionFee?: ITransactionFree;
+  rate: number;
 }
 interface CardAmountProps {
   title: string;
@@ -100,8 +101,10 @@ export function CardAmount(props: CardAmountProps) {
       fieldValue.to.currency &&
       fieldValue.from.value
     ) {
+      const companyId = localStorage.getItem('companyId') || '';
+
       const rates = await companyDataEndpoint.mocks.getRates(
-        "",
+          companyId,
         fieldValue.from.currency,
         fieldValue.to.currency,
         fieldValue.from.value
