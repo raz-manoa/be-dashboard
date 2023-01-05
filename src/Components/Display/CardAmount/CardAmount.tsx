@@ -76,19 +76,20 @@ export function CardAmount(props: CardAmountProps) {
   >(defaultTransactionFee);
   const [fromRate, setFromRate] = useState<IRate>();
 
-  const findFirstAvailableTo = (): SelectData | undefined => {
+  const findFirstAvailableTo = (
+    excludes?: ECurrency[]
+  ): SelectData | undefined => {
     const fieldValue = form.getFieldsValue();
+
     const fromItemCurrency =
       fieldValue.from.currency || selectFrom[0] ? selectFrom[0].currency : "";
-    return selectTo.find((item) => {
-      if (!!allowSameCurrency) {
-        return true;
-      }
-      if (!!fromItemCurrency && item.currency !== fromItemCurrency) {
-        return true;
-      }
-      return false;
-    });
+
+    return selectTo.find(
+      ({ currency }) =>
+        !!allowSameCurrency ||
+        (!!fromItemCurrency && currency !== fromItemCurrency && !excludes) ||
+        (!!excludes && !excludes.includes(currency))
+    );
   };
 
   const fetchRate = async () => {
@@ -130,7 +131,8 @@ export function CardAmount(props: CardAmountProps) {
       selectedItem &&
       selectedItem.currency === formData.to.currency
     ) {
-      const toItem = findFirstAvailableTo();
+      const toItem = findFirstAvailableTo([selectedItem.currency]);
+
       form.setFields([
         {
           name: ["to", "currency"],
