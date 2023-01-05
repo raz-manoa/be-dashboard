@@ -66,7 +66,7 @@ const companyDataEndpoint = {
     currencyFrom: string,
     currencyTo: string,
     amount: number
-  ): Promise<any> => {
+  ): Promise<IRate> => {
     return apiInstance
       .get(
         `api/admin/companies/${id}/exchange/rates?currencyFrom=${currencyFrom}&currencyTo=${currencyTo}&amount=${amount}`
@@ -75,8 +75,8 @@ const companyDataEndpoint = {
   },
   exchange: async (id: string, body: any): Promise<ITransaction[]> => {
     return apiInstance
-        .post(`api/admin/companies/${id}/crypto/exchange`, body)
-        .then(({ data }) => data);
+      .post(`api/admin/companies/${id}/crypto/exchange`, body)
+      .then(({ data }) => data);
   },
   mocks: {
     getAccounts: async (id: string): Promise<AccountsResponse[]> => {

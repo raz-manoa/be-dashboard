@@ -41,16 +41,14 @@ export default function CryptoExchangePageReview() {
   const onSubmit = async () => {
     console.log("submit form", form);
     // TODO: pass response to confirmation
-    const companyId = localStorage.getItem('companyId') || '';
-    const data = await companyDataEndpoint.exchange(
-        companyId, {
-          currencyFrom: form.from.currency,
-          currencyTo: form.to.currency,
-          amount: form.from.value,
-          startRate: form.rate,
-          type: 'exchange',
-        }
-    );
+    const companyId = localStorage.getItem("companyId") || "";
+    const data = await companyDataEndpoint.exchange(companyId, {
+      currencyFrom: form.from.currency,
+      currencyTo: form.to.currency,
+      amount: form.from.value,
+      startRate: form.rate,
+      type: "exchange",
+    });
     // console.log(data);
     // const data = await companyDataEndpoint.exchange("companyId", {
     //   currencyFrom: "ETH",

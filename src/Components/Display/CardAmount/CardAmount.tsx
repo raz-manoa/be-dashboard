@@ -37,7 +37,7 @@ export interface ICardAmountForm {
     currency: ECurrency;
   };
   transactionFee?: ITransactionFree;
-  rate: number;
+  rate?: IRate;
 }
 interface CardAmountProps {
   title: string;
@@ -182,8 +182,7 @@ export function CardAmount(props: CardAmountProps) {
       onSubmit({
         ...data,
         transactionFee,
-        // TODO: set rate value
-        rate: 23,
+        rate: fromRate, // TODO: set rate here
       });
   };
 
