@@ -6,11 +6,13 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useCryptoExchangePageContext } from "../CryptoExchangePageContext";
 import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
 import Alert from "antd/es/alert";
+import {useState} from "react";
 
 export default function CryptoExchangePageReview() {
   useSetAppLayoutTitle("Crypto Exchange");
   const navigate = useNavigate();
   const { form, setConfirmation } = useCryptoExchangePageContext();
+  const { error, setError } = useState<boolean>(false);
 
   if (!form) {
     return <Navigate to="" />;
@@ -42,35 +44,32 @@ export default function CryptoExchangePageReview() {
   const onSubmit = async () => {
     console.log("submit form", form);
     // TODO: pass response to confirmation
-    const companyId = localStorage.getItem("companyId") || "";
-    const data = await companyDataEndpoint.exchange(companyId, {
-      currencyFrom: form.from.currency,
-      currencyTo: form.to.currency,
-      amount: form.from.value,
-      startRate: form.rate.rate,
-      type: "exchange",
-    });
-    // console.log(data);
-    // const data = await companyDataEndpoint.exchange("companyId", {
-    //   currencyFrom: "ETH",
-    //   currencyTo: "SOL",
-    //   amount: "2",
-    //   startRate: "rate fetched from getRates",
-    //   type: "exchange",
-    // });
+    try {
+      const companyId = localStorage.getItem("companyId") || "";
+      const data = await companyDataEndpoint.exchange(companyId, {
+        currencyFrom: form.from.currency,
+        currencyTo: form.to.currency,
+        amount: form.from.value,
+        startRate: form.rate.rate,
+        type: "exchange",
+      });
 
-    if (setConfirmation && data) {
-      setConfirmation(data);
+      if (setConfirmation && data) {
+        setConfirmation(data);
+      }
+      // TODO: submit exchange
+      navigate({
+        pathname: "/app/crypto-exchange/confirm",
+      });
+    } catch (e) {
+      setError(true);
     }
-    // TODO: submit exchange
-    navigate({
-      pathname: "/app/crypto-exchange/confirm",
-    });
+
   };
 
   return (
     <div>
-      <Alert message="Insufficient USD funds." type="error" className="mb-8" />
+      {error && <Alert message="Exchange failed" type="error" className="mb-8" />}
       <CardConfirm
         className="common__card"
         title="Crypto Exchange - Review"
