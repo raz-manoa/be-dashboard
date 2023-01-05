@@ -27,9 +27,10 @@ const BankTransfertPageDashboard = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    companyDataEndpoint.mocks
-      // TODO: set account id
-      .getAccounts("")
+    const companyId = localStorage.getItem('companyId') || '';
+
+    companyDataEndpoint
+      .getAccounts(companyId)
       .then((data) => {
         if (data) {
           setAccounts(data);

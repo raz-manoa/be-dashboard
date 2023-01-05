@@ -46,7 +46,7 @@ export default function CryptoExchangePageReview() {
       currencyFrom: form.from.currency,
       currencyTo: form.to.currency,
       amount: form.from.value,
-      startRate: form.rate,
+      startRate: form.rate.rate,
       type: "exchange",
     });
     // console.log(data);

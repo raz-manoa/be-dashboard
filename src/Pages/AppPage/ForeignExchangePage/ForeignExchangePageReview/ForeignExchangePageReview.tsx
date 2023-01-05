@@ -4,6 +4,7 @@ import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirm
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useForeignExchangePageContext } from "../ForeignExchangePageContext";
+import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
 
 export default function ForeignExchangePageReview() {
   useSetAppLayoutTitle("Foreign Exchange (FX)");
@@ -37,9 +38,17 @@ export default function ForeignExchangePageReview() {
     },
   ];
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     console.log("submit form", form);
     // TODO: submit exchange
+    const companyId = localStorage.getItem('companyId') || '';
+    const data = await companyDataEndpoint.exchange(companyId, {
+      currencyFrom: form.from.currency,
+      currencyTo: form.to.currency,
+      amount: Number(form.from.value),
+      // startRate: Number(form.rate.rate),
+      type: "exchange",
+    });
     navigate({
       pathname: "/app/foreign-exchange/confirm",
     });

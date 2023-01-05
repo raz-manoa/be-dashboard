@@ -27,9 +27,11 @@ const ForeignExchangePageDashboard = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    companyDataEndpoint.mocks
+    const companyId = localStorage.getItem('companyId') || '';
+
+    companyDataEndpoint
       // TODO: set account id
-      .getAccounts("")
+      .getAccounts(companyId)
       .then((data) => {
         if (data) {
           setAccounts(data);
