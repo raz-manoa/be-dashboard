@@ -1,7 +1,8 @@
 import Card from "@/Components/Display/Card/Card";
 import Text from "@/Components/General/Text/Text";
 import styles from "./BankTransfertPageAmount.module.scss";
-import React from "react";
+import { useBankTransfertPageContext } from "../../BankTransfertPageContext";
+import { formatCardAmount } from "@/Components/Display/CardAmount/CardAmount";
 
 interface BankTransfertPageAmountProps {
   overlay?: boolean;
@@ -11,6 +12,10 @@ export default function BankTransfertPageAmount(
   props: BankTransfertPageAmountProps
 ) {
   const { overlay } = props;
+  const { form } = useBankTransfertPageContext();
+  if (!form) {
+    return null;
+  }
   return (
     <Card className={overlay ? styles.overlay : ""}>
       <Text tag="h2" type="h2" variant="black2">
@@ -26,7 +31,9 @@ export default function BankTransfertPageAmount(
           className={styles.amount__list}
         >
           Amount from:
-          <strong className="common__strong--red">12.00 USD</strong>
+          <strong className="common__strong--red">
+            {formatCardAmount("from", form)}
+          </strong>
         </Text>
         <Text
           tag="p"
@@ -35,10 +42,12 @@ export default function BankTransfertPageAmount(
           variant="grey"
           className={styles.amount__list}
         >
-          Amount from:
-          <strong className="common__strong--red">12.00 USD</strong>
+          Amount to:
+          <strong className="common__strong--red">
+            {formatCardAmount("to", form)}
+          </strong>
         </Text>
-        <Text
+        {/* <Text
           tag="p"
           type="p"
           size={19}
@@ -47,7 +56,7 @@ export default function BankTransfertPageAmount(
         >
           Amount from:
           <strong className="common__strong--red">12.00 USD</strong>
-        </Text>
+        </Text> */}
       </div>
     </Card>
   );
