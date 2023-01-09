@@ -83,6 +83,11 @@ const companyDataEndpoint = {
         .post(`api/admin/companies/${id}/exchange`, body)
         .then(({ data }) => data);
   },
+  createBankTransfer: async (id: string, body: any): Promise<ITransaction[]> => {
+    return apiInstance
+        .post(`api/admin/companies/${id}/otherbank`, body)
+        .then(({ data }) => data);
+  },
   mocks: {
     getAccounts: async (id: string): Promise<AccountsResponse[]> => {
       return Promise.resolve(accountsMock);
