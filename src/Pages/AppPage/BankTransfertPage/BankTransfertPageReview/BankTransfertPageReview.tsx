@@ -18,7 +18,6 @@ export default function BankTransfertPageReview() {
   if (!form) {
     return <Navigate to="/app/bank-transfer" />;
   }
-  console.log("form.beneficiary", form.beneficiary);
   const data: CardModalItemProps[] = [
     {
       label: "Amount from",

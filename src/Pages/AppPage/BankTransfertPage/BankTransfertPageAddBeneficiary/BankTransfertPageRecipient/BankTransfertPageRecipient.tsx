@@ -48,6 +48,13 @@ export default function BankTransfertPageRecipient(
     }
     onContinue && onContinue();
   };
+  const handleFormChange = () => {
+    const formData = form.getFieldsValue();
+    if (setForm)
+      setForm((mainForm) =>
+        mainForm ? { ...mainForm, beneficiary: { ...formData } } : undefined
+      );
+  };
 
   useEffect(() => {
     companyDataEndpoint.country().then((data) => {
@@ -70,7 +77,11 @@ export default function BankTransfertPageRecipient(
           />
         </div>
       </div>
-      <FormCustom form={form} className={styles.card__field}>
+      <FormCustom
+        form={form}
+        onChange={handleFormChange}
+        className={styles.card__field}
+      >
         <div>
           <FormCustom.Input
             name="name"
@@ -142,6 +153,7 @@ export default function BankTransfertPageRecipient(
             name="country"
             placeholder="Select"
             options={countries}
+            onChange={handleFormChange}
           />
           <FormCustom.Input
             name="beneficiary_address"
