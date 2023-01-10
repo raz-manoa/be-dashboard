@@ -50,7 +50,7 @@ export default function BankTransfertPageRecipient(
   };
 
   useEffect(() => {
-    companyDataEndpoint.coutry().then((data) => {
+    companyDataEndpoint.country().then((data) => {
       setCountries(data.map(({ label, name: value }) => ({ value, label })));
     });
   }, []);

@@ -93,7 +93,7 @@ const companyDataEndpoint = {
       .post(`api/admin/companies/${id}/otherbank`, body)
       .then(({ data }) => data);
   },
-  coutry: async (): Promise<ICountry[]> => {
+  country: async (): Promise<ICountry[]> => {
     const response = await apiInstance.get(`api/admin/countries`);
     return response.data && response.data.countries
       ? response.data.countries
