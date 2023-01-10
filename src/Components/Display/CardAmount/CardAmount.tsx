@@ -144,12 +144,22 @@ export function CardAmount(props: CardAmountProps) {
       ]);
     }
 
-    if (showRate) {
-      fetchRate();
-    }
+    fetchRate();
   };
   const handleFromChange: FormInputProps["onChange"] = (e) => {
-    if (e.currentTarget.value) {
+    const value = e.currentTarget.value;
+    if (value) {
+      if (allowSameCurrency) {
+        const fieldValue = form.getFieldsValue();
+        if (fieldValue.from.currency === fieldValue.to.currency) {
+          form.setFields([
+            {
+              name: ["to", "value"],
+              value: value,
+            },
+          ]);
+        }
+      }
       fetchRate();
     } else {
       form.setFields([
@@ -161,6 +171,7 @@ export function CardAmount(props: CardAmountProps) {
     }
   };
   const handleToCurrencChange: SelectProps["onChange"] = (currency) => {
+    const formData = form.getFieldsValue();
     const selectedItem = selectTo.find((item) => item.currency === currency);
     form.setFields([
       {
@@ -169,9 +180,20 @@ export function CardAmount(props: CardAmountProps) {
       },
     ]);
 
-    if (showRate) {
-      fetchRate();
+    if (
+      selectedItem &&
+      selectedItem.currency === formData.from.currency &&
+      formData.from.value
+    ) {
+      form.setFields([
+        {
+          name: ["to", "value"],
+          value: formData.from.value,
+        },
+      ]);
     }
+
+    fetchRate();
   };
 
   const handleSubmit = async (e: any) => {
