@@ -27,11 +27,12 @@ const BankTransfertPageDashboard = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    const companyId = localStorage.getItem('companyId') || '';
+    const companyId = localStorage.getItem("companyId") || "";
 
     companyDataEndpoint
       .getAccounts(companyId)
       .then((data) => {
+        console.log("companyId", data);
         if (data) {
           setAccounts(data);
         }

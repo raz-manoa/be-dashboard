@@ -1,9 +1,10 @@
 import { ICardAmountForm } from "@/Components/Display/CardAmount/CardAmount";
 import React, { useContext } from "react";
-import { IBeneficiaryForm } from "./BankTransfertPageAddBeneficiary/BankTransfertPageAddBeneficiary";
+// import { IBeneficiaryForm } from "./BankTransfertPageAddBeneficiary/BankTransfertPageAddBeneficiary";
+import { IRecipientForm } from "./BankTransfertPageAddBeneficiary/BankTransfertPageRecipient/BankTransfertPageRecipient";
 
 export interface BankTransfertFormType extends ICardAmountForm {
-  beneficiary?: IBeneficiaryForm;
+  beneficiary?: IRecipientForm;
 }
 interface IState {
   form?: BankTransfertFormType;

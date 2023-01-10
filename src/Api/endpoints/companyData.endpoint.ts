@@ -6,6 +6,8 @@ import { ECurrency } from "@/Interfaces/Currency";
 import { ISaving } from "@/Pages/AppPage/DashboardPage/DashboarPageSavingAccount/SavingCard/SavingCard";
 import { accountsMock } from "../mock/account.mock";
 import { IRate } from "@/Interfaces/Rate";
+import { ICountry } from "@/Interfaces/Country";
+import { countriesMock } from "../mock/country.mock";
 
 export interface IGetAllTransactionArgs {
   page?: number;
@@ -80,13 +82,22 @@ const companyDataEndpoint = {
   },
   exchange: async (id: string, body: any): Promise<ITransaction[]> => {
     return apiInstance
-        .post(`api/admin/companies/${id}/exchange`, body)
-        .then(({ data }) => data);
+      .post(`api/admin/companies/${id}/exchange`, body)
+      .then(({ data }) => data);
   },
-  createBankTransfer: async (id: string, body: any): Promise<ITransaction[]> => {
+  createBankTransfer: async (
+    id: string,
+    body: any
+  ): Promise<ITransaction[]> => {
     return apiInstance
-        .post(`api/admin/companies/${id}/otherbank`, body)
-        .then(({ data }) => data);
+      .post(`api/admin/companies/${id}/otherbank`, body)
+      .then(({ data }) => data);
+  },
+  coutry: async (): Promise<ICountry[]> => {
+    const response = await apiInstance.get(`api/admin/countries`);
+    return response.data && response.data.countries
+      ? response.data.countries
+      : countriesMock;
   },
   mocks: {
     getAccounts: async (id: string): Promise<AccountsResponse[]> => {

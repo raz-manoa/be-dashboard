@@ -2,7 +2,7 @@ import apiConfig from "@/Config/api.config";
 import axios from "axios";
 
 export const getAxiosInstance = (baseUrl: string = "") => {
-  const baseURL = 'http://staging-api.befinancialgroup.com/'; // baseUrl || apiConfig.apiHost;
+  const baseURL = 'http://localhost:3003/'; // baseUrl || apiConfig.apiHost;
   return axios.create({
     baseURL,
     headers: {

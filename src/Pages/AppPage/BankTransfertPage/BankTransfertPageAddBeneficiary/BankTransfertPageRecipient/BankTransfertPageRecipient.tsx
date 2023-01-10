@@ -1,15 +1,17 @@
 import Card from "@/Components/Display/Card/Card";
 import styles from "./BankTransfertPageRecipient.module.scss";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Text from "@/Components/General/Text/Text";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
 import { useForm } from "antd/es/form/Form";
 import Button from "@/Components/General/Button/Button";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/Components/General/Icon/Icon";
+import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
+import { useBankTransfertPageContext } from "../../BankTransfertPageContext";
 
 // TODO: set recipient type
-interface IRecipientForm {
+export interface IRecipientForm {
   name: string;
   city_or_district: string;
   bank_name: string;
@@ -30,13 +32,28 @@ export default function BankTransfertPageRecipient(
   props: BankTransfertPageRecipientProps
 ) {
   const { onAddBeneficiary, onContinue, overlay } = props;
-
+  const [countries, setCountries] = useState<
+    Array<{ value: string; label: string }>
+  >([]);
+  const { setForm } = useBankTransfertPageContext();
   const navigate = useNavigate();
   const [form] = useForm<IRecipientForm>();
+
   const handleContinue = async () => {
-    await form.validateFields();
+    const formdata = await form.validateFields();
+    if (setForm) {
+      setForm((mainForm) =>
+        mainForm ? { ...mainForm, beneficiary: formdata } : undefined
+      );
+    }
     onContinue && onContinue();
   };
+
+  useEffect(() => {
+    companyDataEndpoint.coutry().then((data) => {
+      setCountries(data.map(({ label, name: value }) => ({ value, label })));
+    });
+  }, []);
 
   return (
     <Card className={`${styles.card} modal ${overlay ? styles.overlay : ""}`}>
@@ -63,7 +80,7 @@ export default function BankTransfertPageRecipient(
             rules={[
               {
                 required: true,
-                message: "Ce champ est requis",
+                message: "This field is required",
               },
             ]}
           />
@@ -75,7 +92,7 @@ export default function BankTransfertPageRecipient(
             rules={[
               {
                 required: true,
-                message: "Ce champ est requis",
+                message: "This field is required",
               },
             ]}
           />
@@ -87,7 +104,7 @@ export default function BankTransfertPageRecipient(
             rules={[
               {
                 required: true,
-                message: "Ce champ est requis",
+                message: "This field is required",
               },
             ]}
           />
@@ -100,7 +117,7 @@ export default function BankTransfertPageRecipient(
             rules={[
               {
                 required: true,
-                message: "Ce champ est requis",
+                message: "This field is required",
               },
             ]}
           />
@@ -113,7 +130,7 @@ export default function BankTransfertPageRecipient(
             rules={[
               {
                 required: true,
-                message: "Ce champ est requis",
+                message: "This field is required",
               },
             ]}
           />
@@ -124,16 +141,7 @@ export default function BankTransfertPageRecipient(
             label="Beneficiary Country:"
             name="country"
             placeholder="Select"
-            options={[
-              {
-                label: "USDC",
-                value: "usdc",
-              },
-              {
-                label: "EUR",
-                value: "eur",
-              },
-            ]}
+            options={countries}
           />
           <FormCustom.Input
             name="beneficiary_address"
@@ -143,7 +151,7 @@ export default function BankTransfertPageRecipient(
             rules={[
               {
                 required: true,
-                message: "Ce champ est requis",
+                message: "This field is required",
               },
             ]}
           />
@@ -156,7 +164,7 @@ export default function BankTransfertPageRecipient(
             rules={[
               {
                 required: true,
-                message: "Ce champ est requis",
+                message: "This field is required",
               },
             ]}
           />
@@ -169,7 +177,7 @@ export default function BankTransfertPageRecipient(
             rules={[
               {
                 required: true,
-                message: "Ce champ est requis",
+                message: "This field is required",
               },
             ]}
           />
