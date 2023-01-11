@@ -99,6 +99,28 @@ const companyDataEndpoint = {
       ? response.data.countries
       : countriesMock;
   },
+  getTopUP: async (): Promise<any[]> => {
+    return apiInstance
+        .get(
+            `api/admin/top-up-options`
+        )
+        .then(({ data }) => data);
+  },
+  getCryptoWithdrawalFee: async (
+      id: string,
+      coin: string,
+      amount: number,
+      address: string
+  ): Promise<ITransaction[]> => {
+    return apiInstance
+        .get(`api//admin/companies/${id}/crypto/send/fee?coin=${coin}&amount=${amount}&address=${address}`)
+        .then(({ data }) => data);
+  },
+  cryptoWithdraw: async (id: string, body: any): Promise<ITransaction[]> => {
+    return apiInstance
+        .post(`api/admin/companies/${id}/crypto/send`, body)
+        .then(({ data }) => data);
+  },
   mocks: {
     getAccounts: async (id: string): Promise<AccountsResponse[]> => {
       return Promise.resolve(accountsMock);
