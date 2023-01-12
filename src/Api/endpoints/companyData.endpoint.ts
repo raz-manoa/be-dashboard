@@ -121,6 +121,11 @@ const companyDataEndpoint = {
         .post(`api/admin/companies/${id}/crypto/send`, body)
         .then(({ data }) => data);
   },
+  fetchIdentity: async (id: string, search: any): Promise<any> => {
+    return apiInstance
+        .post(`/admin/companies/phone/recipient`, {search})
+        .then(({data}) => data);
+  },
   mocks: {
     getAccounts: async (id: string): Promise<AccountsResponse[]> => {
       return Promise.resolve(accountsMock);
