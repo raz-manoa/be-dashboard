@@ -16,8 +16,13 @@ export interface BeNetworkFormType {
     identity: string;
   };
 }
+export interface BeNetworkConfirmation {}
 interface IState {
   form?: BeNetworkFormType;
+  confirmation?: BeNetworkConfirmation;
+  setConfirmation?: React.Dispatch<
+    React.SetStateAction<BeNetworkConfirmation | undefined>
+  >;
   setForm?: React.Dispatch<React.SetStateAction<BeNetworkFormType | undefined>>;
 }
 const BeNetworkPageContext = React.createContext<IState>({});

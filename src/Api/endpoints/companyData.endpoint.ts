@@ -8,6 +8,7 @@ import { accountsMock } from "../mock/account.mock";
 import { IRate } from "@/Interfaces/Rate";
 import { ICountry } from "@/Interfaces/Country";
 import { countriesMock } from "../mock/country.mock";
+import { BeNetworkFormType } from "@/Pages/AppPage/BeNetworkPage/BeNetworkPageContext";
 
 export interface IGetAllTransactionArgs {
   page?: number;
@@ -133,6 +134,11 @@ class CompanyDataEndpoint {
   }> => {
     return apiInstance
       .post(`api/admin/companies/phone/recipient`, { search })
+      .then(({ data }) => data);
+  };
+  sendBeNetwork = async (id: string, body: BeNetworkFormType): Promise<any> => {
+    return apiInstance
+      .post(`api/admin/companies/benetwork`, body)
       .then(({ data }) => data);
   };
   mocks = {

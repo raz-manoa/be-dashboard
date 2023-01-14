@@ -1,15 +1,19 @@
-import Card from "@/Components/Display/Card/Card";
 import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
 import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirmItem";
 import Text from "@/Components/General/Text/Text";
 import styles from "./BeNetworkPageReview.module.scss";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useBeNetworkPageContext } from "../BeNetworkPageContext";
+import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
 
 export default function BeNetworkPageReview() {
   useSetAppLayoutTitle("Be Network");
-  const { form } = useBeNetworkPageContext();
+  const navigate = useNavigate();
+  const { form, setConfirmation } = useBeNetworkPageContext();
+  if (!form) {
+    return <Navigate to="/app/be-network" />;
+  }
 
   const data: CardModalItemProps[] = [
     {
@@ -85,13 +89,20 @@ export default function BeNetworkPageReview() {
     },
   ];
 
-  const navigate = useNavigate();
   const handleBack = () => {
     navigate("/app/be-network");
   };
-  const handleConfirm = () => {
-    navigate("/app/be-network/confirm");
+
+  const handleConfirm = async () => {
+    if (form) {
+      const data = await companyDataEndpoint.sendBeNetwork("", form);
+      if (data && setConfirmation) {
+        setConfirmation(data);
+        navigate("/app/be-network/confirm");
+      }
+    }
   };
+
   return (
     <CardConfirm
       title="Review"
