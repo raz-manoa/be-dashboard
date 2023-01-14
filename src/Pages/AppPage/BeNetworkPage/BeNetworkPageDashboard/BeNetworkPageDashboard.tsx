@@ -47,8 +47,8 @@ const BeNetworkPageDashboard = () => {
     }
   };
 
-  const handleContinue = () => {
-    form.validateFields();
+  const handleContinue = async () => {
+    const formData = await form.validateFields();
     navigate("review");
   };
 
@@ -91,9 +91,6 @@ const BeNetworkPageDashboard = () => {
             <FormCustom.Select
               name="currency"
               placeholder="USD"
-              defaultValue={
-                accounts && accounts[0] ? accounts[0].currency : undefined
-              }
               options={accounts.map((s) => ({
                 label: s.currency,
                 value: s.currency,
@@ -124,20 +121,30 @@ const BeNetworkPageDashboard = () => {
             <FormCustom.Switch
               label="By Phone Number"
               className={styles.switch__toggle}
-              name="phone"
+              name="withPhone"
               onChange={setCurrentPhone}
             />
             <FormCustom.Input
-              name="mobile_number"
+              name="phone"
               placeholder="Mobile number"
               color="grey"
               type="number"
               className={styles.input__field}
+              dependencies={["withPhone"]}
               rules={[
-                {
-                  required: true,
-                  message: "Ce champ est requis",
-                },
+                ({ getFieldValue }) => ({
+                  validator: (rule, value, callback) => {
+                    const isWithPhone: boolean = getFieldValue(["withPhone"]);
+
+                    if (isWithPhone) {
+                      const data = parseFloat(value) || 0;
+                      if (!data) {
+                        callback("The Mobile phone entered is incorrect.");
+                      }
+                    }
+                    callback();
+                  },
+                }),
               ]}
               disabled={!currentPhone}
             />
@@ -145,21 +152,31 @@ const BeNetworkPageDashboard = () => {
           <div className={styles.switch__field}>
             <FormCustom.Switch
               label="By BE ID"
-              name="beid"
+              name="withBeid"
               className={styles.switch__toggle}
               onChange={setCurrentBeId}
             />
             <FormCustom.Input
-              name="be_id"
+              name="beid"
               placeholder="BE ID"
               color="grey"
               type="number"
               className={styles.input__field}
+              dependencies={["withBeid"]}
               rules={[
-                {
-                  required: true,
-                  message: "Ce champ est requis",
-                },
+                ({ getFieldValue }) => ({
+                  validator: (rule, value, callback) => {
+                    const isWithBeid: boolean = getFieldValue(["withBeid"]);
+
+                    if (isWithBeid) {
+                      const data = parseFloat(value) || 0;
+                      if (!data) {
+                        callback("The BE ID entered is incorrect.");
+                      }
+                    }
+                    callback();
+                  },
+                }),
               ]}
               disabled={!currentBeId}
             />

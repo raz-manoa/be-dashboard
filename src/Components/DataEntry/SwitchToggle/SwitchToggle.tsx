@@ -14,12 +14,10 @@ interface SwitchToggleProps extends SwitchProps {
 export default function SwitchToggle(props: SwitchToggleProps) {
   const { label, className, rules, name, ...rest } = props;
   return (
-    <Form.Item
-      rules={rules}
-      name={name}
-      className={`${styles.switch} ${className}`}
-    >
-      <Switch {...rest} />
+    <Form.Item className={`${styles.switch} ${className}`}>
+      <Form.Item rules={rules} name={name} valuePropName="checked" noStyle>
+        <Switch {...rest} />
+      </Form.Item>
       <Text tag="label" type="p" variant="grey">
         {label}
       </Text>
