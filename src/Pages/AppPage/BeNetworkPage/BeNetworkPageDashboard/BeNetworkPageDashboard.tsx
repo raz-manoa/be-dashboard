@@ -1,57 +1,51 @@
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
-import SwitchToggle from "@/Components/DataEntry/SwitchToggle/SwitchToggle";
 import Card from "@/Components/Display/Card/Card";
 import Button from "@/Components/General/Button/Button";
 import Text from "@/Components/General/Text/Text";
-import { Switch } from "antd";
 import { useForm } from "antd/es/form/Form";
 import styles from "./BeNetworkPageDashboard.module.scss";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
 import Alert from "antd/es/alert";
-import {useEffect, useState} from "react";
-import { DefaultOptionType } from "antd/es/select";
-import api from "@/Api/api";
-const optionsData = [
-  { label: "US Dollar (USD)", value: "USD" },
-  { label: "Euro (EUR)", value: "EUR" },
-  { label: "Pound Sterling (GPB)", value: "GPB" },
-  { label: "Canadian Dollar (CAD)", value: "CAD" },
-  { label: "South African Rand (ZAR)", value: "ZAR" },
-  { label: "Kenyan Shilling (KES)", value: "KES" },
-  { label: "Ugandan Shilling (UGX)", value: "UGX" },
-  { label: "Tanzanian Shilling (TZS)", value: "TZS" },
-  { label: "Malawian Kwacha (MWK)", value: "MWK" },
-];
+import { useEffect, useMemo, useState } from "react";
+import { BeNetworkFormType } from "../BeNetworkPageContext";
+import companyDataEndpoint, {
+  AccountsResponse,
+} from "@/Api/endpoints/companyData.endpoint";
+import { FormSelectProps } from "@/Components/DataEntry/FormSelect/FormSelect";
+
 const BeNetworkPageDashboard = () => {
+  useSetAppLayoutTitle("Be Network");
   const navigate = useNavigate();
+  const [form] = useForm<BeNetworkFormType>();
+
   const [currentPhone, setCurrentPhone] = useState(false);
   const [currentBeId, setCurrentBeId] = useState(false);
-  const [accounts, setAccounts] = useState([]);
-  const [currencies, setCurrencies] = useState([]);
-  const [currency, setCurrency] = useState(null);
+  const [accounts, setAccounts] = useState<AccountsResponse[]>([]);
+  const [selectedAccount, setSelectedAccount] = useState<AccountsResponse>();
+
+  const fetchAccounts = async () => {
+    const accountResponse = await companyDataEndpoint.getMyAccounts();
+    if (accountResponse) {
+      setAccounts(accountResponse);
+      if (accountResponse[0] && !selectedAccount) {
+        form.setFieldValue("currency", accountResponse[0].currency);
+        setSelectedAccount(accountResponse[0]);
+      }
+    }
+  };
+
   useEffect(() => {
-        async function getInfo() {
-          const companyId = localStorage.getItem('companyId');
-          // @ts-ignore
-          const company = await api.companyData.getCompany(companyId);
-          const accounts = company.Accounts;
-          const currencies = accounts.map(item => {
-            return {label: item.currency, value: item.currency}
-          });
-          setCurrencies(currencies);
-          setAccounts(accounts);
-          setCurrency(accounts[0].currency);
-          console.log('all settled', currencies, currency);
-        }
-        if (!accounts.length) {
-          getInfo();
-        }
-      })
-
-  useSetAppLayoutTitle("Be Network");
-
-  const [form] = useForm();
+    fetchAccounts();
+  }, []);
+  const handleCurrencyChange: FormSelectProps<AccountsResponse>["onChange"] = (
+    value,
+    option
+  ) => {
+    if (!Array.isArray(option)) {
+      setSelectedAccount(option.data);
+    }
+  };
 
   const handleContinue = () => {
     form.validateFields();
@@ -63,113 +57,137 @@ const BeNetworkPageDashboard = () => {
       <Text tag="h2" type="h2" variant="black2">
         Transfer Amount
       </Text>
-      {accounts.length && <FormCustom form={form}>
-        <div className={`${styles.select__field} common__field-wrap`}>
-          <FormCustom.Input
-            name="account_number"
-            placeholder="0.00"
-            label="Leaving Account:"
-            color="grey"
-            type="number"
-            className="common__field"
-            rules={[
-              {
-                required: true,
-                message: "Amount is required",
-              },
-              {
-                max: accounts.find(item => item.currency === currency).balance,
-                message: "Amount is required",
-              },
-              {
-                min: 0,
-                message: "Amount is required",
-              },
-            ]}
-          />
-          <FormCustom.Select
-            name="currency"
-            placeholder="USD"
-            options={currencies}
-            optionLabelProp="value"
-            dropdownMatchSelectWidth={false}
-            onChange={value => setCurrency(value)}
-          />
-        </div>
-        <div className="common__txt">
-          <Text type="p" tag="p" variant="grey">
-            <strong>{`100 ${currency}`}</strong> available to transfer
-          </Text>
-          <Text type="p" tag="p" variant="grey">
-            Transaction fee <strong>0 USD</strong>
-          </Text>
-          <Text type="p" tag="p" variant="grey">
-            1 USD equals 1 USD
-          </Text>
-        </div>
-        <div className={styles.switch__field}>
-          <FormCustom.Switch
-            label="By Phone Number"
-            className={styles.switch__toggle}
-            name="phone"
-            onChange={setCurrentPhone}
-          />
-          <FormCustom.Input
-            name="mobile_number"
-            placeholder="Mobile number"
-            color="grey"
-            type="number"
-            className={styles.input__field}
-            rules={[
-              {
-                required: true,
-                message: "Ce champ est requis",
-              },
-            ]}
-            disabled={!currentPhone}
-          />
-        </div>
-        <div className={styles.switch__field}>
-          <FormCustom.Switch
-            label="By BE ID"
-            name="beid"
-            className={styles.switch__toggle}
-            onChange={setCurrentBeId}
-          />
-          <FormCustom.Input
-            name="be_id"
-            placeholder="BE ID"
-            color="grey"
-            type="number"
-            className={styles.input__field}
-            rules={[
-              {
-                required: true,
-                message: "Ce champ est requis",
-              },
-            ]}
-            disabled={!currentBeId}
-          />
-        </div>
-        <FormCustom.TextArea
-          name="message"
-          className={styles.textarea}
-          label="Message : "
-          option="Optional"
-          placeholder="Message..."
-          rules={[
-            {
-              required: true,
-              message: "Ce champ est requis",
-            },
-          ]}
-        />
-        <Alert message="The BE ID entered is incorrect." type="error" />
+      {!!accounts && !!accounts.length && (
+        <FormCustom form={form}>
+          <div className={`common__field-wrap`}>
+            <FormCustom.Input
+              name="account_number"
+              placeholder="0.00"
+              label="Leaving Account:"
+              color="grey"
+              type="number"
+              className="common__field"
+              rules={[
+                {
+                  required: true,
+                  message: "Amount is required",
+                },
+                {
+                  validator: (rule, value, callback) => {
+                    const data = parseFloat(value) || 0;
+                    if (selectedAccount && data > selectedAccount.balance) {
+                      callback("The amount is not available");
+                    }
+                    callback();
+                  },
+                },
 
-        <Button type="primary" onClick={handleContinue} className="common__btn">
-          Continue
-        </Button>
-      </FormCustom>}
+                {
+                  min: 0,
+                  message: "Amount is required",
+                },
+              ]}
+            />
+            <FormCustom.Select
+              name="currency"
+              placeholder="USD"
+              defaultValue={
+                accounts && accounts[0] ? accounts[0].currency : undefined
+              }
+              options={accounts.map((s) => ({
+                label: s.currency,
+                value: s.currency,
+                data: s,
+              }))}
+              optionLabelProp="value"
+              dropdownMatchSelectWidth={false}
+              onChange={handleCurrencyChange}
+            />
+          </div>
+          <div className="common__txt">
+            <Text type="p" tag="p" variant="grey">
+              <strong>
+                {selectedAccount
+                  ? `${selectedAccount.balance} ${selectedAccount.currency}`
+                  : 0}
+              </strong>{" "}
+              available to transfer
+            </Text>
+            {/* <Text type="p" tag="p" variant="grey">
+              Transaction fee <strong>0 USD</strong>
+            </Text> */}
+            {/* <Text type="p" tag="p" variant="grey">
+              1 USD equals 1 USD
+            </Text> */}
+          </div>
+          <div className={styles.switch__field}>
+            <FormCustom.Switch
+              label="By Phone Number"
+              className={styles.switch__toggle}
+              name="phone"
+              onChange={setCurrentPhone}
+            />
+            <FormCustom.Input
+              name="mobile_number"
+              placeholder="Mobile number"
+              color="grey"
+              type="number"
+              className={styles.input__field}
+              rules={[
+                {
+                  required: true,
+                  message: "Ce champ est requis",
+                },
+              ]}
+              disabled={!currentPhone}
+            />
+          </div>
+          <div className={styles.switch__field}>
+            <FormCustom.Switch
+              label="By BE ID"
+              name="beid"
+              className={styles.switch__toggle}
+              onChange={setCurrentBeId}
+            />
+            <FormCustom.Input
+              name="be_id"
+              placeholder="BE ID"
+              color="grey"
+              type="number"
+              className={styles.input__field}
+              rules={[
+                {
+                  required: true,
+                  message: "Ce champ est requis",
+                },
+              ]}
+              disabled={!currentBeId}
+            />
+          </div>
+          <FormCustom.TextArea
+            name="message"
+            className={styles.textarea}
+            label="Message : "
+            option="Optional"
+            placeholder="Message..."
+            rules={[
+              {
+                required: true,
+                message: "Ce champ est requis",
+              },
+            ]}
+          />
+          <Alert message="The BE ID entered is incorrect." type="error" />
+
+          <Button
+            type="primary"
+            onClick={handleContinue}
+            className="common__btn"
+          >
+            Continue
+          </Button>
+        </FormCustom>
+      )}
     </Card>
   );
 };

@@ -2,12 +2,12 @@ import apiConfig from "@/Config/api.config";
 import axios from "axios";
 
 export const getAxiosInstance = (baseUrl: string = "") => {
-  const baseURL = 'http://localhost:3003/'; // baseUrl || apiConfig.apiHost;
+  const baseURL = baseUrl || apiConfig.apiHost;
   return axios.create({
     baseURL,
     headers: {
-      authorization: localStorage.getItem('token')
-    }
+      authorization: localStorage.getItem("token"),
+    },
     // timeout: 10000,
     // withCredentials: true,
   });

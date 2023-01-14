@@ -1,9 +1,18 @@
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import BeNetworkPageContext, {
+  BeNetworkFormType,
+} from "./BeNetworkPageContext";
 
 const BeNetworkPage = () => {
   useSetAppLayoutTitle("Be Network");
-  return <Outlet></Outlet>;
+  const [form, setForm] = useState<BeNetworkFormType>();
+  return (
+    <BeNetworkPageContext.Provider value={{ form, setForm }}>
+      <Outlet></Outlet>
+    </BeNetworkPageContext.Provider>
+  );
 };
 
 export default BeNetworkPage;

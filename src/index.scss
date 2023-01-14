@@ -438,3 +438,8 @@ input[type="number"] {
 /* i.ant-spin-dot-item {
   background-color: #e02b59 !important;
 } */
+
+.ant-form-item-explain-error {
+  @apply absolute left-0;
+  height: 22px;
+}
