@@ -1,3 +1,4 @@
+import { ITransactionFree } from "@/Components/Display/CardAmount/CardAmount";
 import { ECurrency } from "@/Interfaces/Currency";
 import React, { useContext } from "react";
 
@@ -9,6 +10,11 @@ export interface BeNetworkFormType {
   withBeid?: boolean;
   beid?: string;
   message?: string;
+  transactionFee?: ITransactionFree;
+  recipient?: {
+    id: string;
+    identity: string;
+  };
 }
 interface IState {
   form?: BeNetworkFormType;

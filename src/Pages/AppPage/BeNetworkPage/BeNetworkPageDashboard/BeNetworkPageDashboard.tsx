@@ -10,21 +10,30 @@ import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
 import Alert from "antd/es/alert";
 import { useEffect, useMemo, useState } from "react";
-import { BeNetworkFormType } from "../BeNetworkPageContext";
+import {
+  BeNetworkFormType,
+  useBeNetworkPageContext,
+} from "../BeNetworkPageContext";
 import companyDataEndpoint, {
   AccountsResponse,
 } from "@/Api/endpoints/companyData.endpoint";
 import { FormSelectProps } from "@/Components/DataEntry/FormSelect/FormSelect";
+import { ITransactionFree } from "@/Components/Display/CardAmount/CardAmount";
 
 const BeNetworkPageDashboard = () => {
   useSetAppLayoutTitle("Be Network");
   const navigate = useNavigate();
   const [form] = useForm<BeNetworkFormType>();
-
+  const { setForm } = useBeNetworkPageContext();
   const [currentPhone, setCurrentPhone] = useState(false);
   const [currentBeId, setCurrentBeId] = useState(false);
   const [accounts, setAccounts] = useState<AccountsResponse[]>([]);
   const [selectedAccount, setSelectedAccount] = useState<AccountsResponse>();
+  const [transactionFee, setTransactionFee] = useState<ITransactionFree>();
+  const [recipient, setRecipient] = useState<{
+    id: string;
+    identity: string;
+  }>();
 
   const fetchAccounts = async () => {
     const accountResponse = await companyDataEndpoint.getMyAccounts();
@@ -46,9 +55,14 @@ const BeNetworkPageDashboard = () => {
       data.type,
       data.value
     );
-    if (response) {
-      // validated if success !== false
-      return response.success !== false;
+    // validated if success !== false
+    if (response && response.success !== false) {
+      setRecipient({
+        identity: response.identity,
+        id: response.id,
+      });
+
+      return true;
     }
     return false;
   };
@@ -67,13 +81,15 @@ const BeNetworkPageDashboard = () => {
 
   const handleContinue = async (e: any) => {
     e.preventDefault();
-    try {
-      const formData = await form.validateFields();
-
-      navigate("review");
-    } catch (error) {
-      console.log(error);
+    const formData = await form.validateFields();
+    if (setForm) {
+      setForm({
+        ...formData,
+        transactionFee,
+        recipient,
+      });
     }
+    navigate("review");
   };
 
   return (
@@ -152,7 +168,18 @@ const BeNetworkPageDashboard = () => {
               label="By Phone Number"
               className={styles.switch__toggle}
               name="withPhone"
-              onChange={setCurrentPhone}
+              onChange={(value) => {
+                if (!!value) {
+                  form.setFields([
+                    {
+                      name: "withBeid",
+                      value: false,
+                    },
+                  ]);
+                  setCurrentBeId(false);
+                }
+                setCurrentPhone(value);
+              }}
             />
             <FormCustom.Input
               name="phone"
@@ -199,7 +226,18 @@ const BeNetworkPageDashboard = () => {
               label="By BE ID"
               name="withBeid"
               className={styles.switch__toggle}
-              onChange={setCurrentBeId}
+              onChange={(value) => {
+                if (!!value) {
+                  form.setFields([
+                    {
+                      name: "withPhone",
+                      value: false,
+                    },
+                  ]);
+                  setCurrentPhone(false);
+                }
+                setCurrentBeId(value);
+              }}
             />
             <FormCustom.Input
               name="beid"

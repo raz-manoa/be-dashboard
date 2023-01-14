@@ -21,7 +21,7 @@ interface SelectData {
   createdAt: string;
   updatedAt: string;
 }
-interface ITransactionFree {
+export interface ITransactionFree {
   value: number;
   currencyId: string;
   currency: ECurrency;
