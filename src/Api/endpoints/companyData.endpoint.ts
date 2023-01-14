@@ -123,9 +123,16 @@ class CompanyDataEndpoint {
       .post(`api/admin/companies/${id}/crypto/send`, body)
       .then(({ data }) => data);
   };
-  fetchIdentity = async (id: string, search: any): Promise<any> => {
+  fetchIdentity = async (
+    id: string,
+    search: any
+  ): Promise<{
+    id: string;
+    identity: string;
+    success?: boolean;
+  }> => {
     return apiInstance
-      .post(`/admin/companies/phone/recipient`, { search })
+      .post(`api/admin/companies/phone/recipient`, { search })
       .then(({ data }) => data);
   };
   mocks = {

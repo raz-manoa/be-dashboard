@@ -35,6 +35,22 @@ const BeNetworkPageDashboard = () => {
     }
   };
 
+  const checkIdentity = async (data: {
+    type: "phone" | "beid";
+    value: string;
+  }): Promise<boolean> => {
+    // TODO: check
+    const response = await companyDataEndpoint.fetchIdentity(
+      data.type,
+      data.value
+    );
+    if (response) {
+      // validated if success !== false
+      return response.success !== false;
+    }
+    return false;
+  };
+
   useEffect(() => {
     fetchAccounts();
   }, []);
@@ -96,6 +112,12 @@ const BeNetworkPageDashboard = () => {
                 value: s.currency,
                 data: s,
               }))}
+              rules={[
+                {
+                  required: true,
+                  message: "Current is required",
+                },
+              ]}
               optionLabelProp="value"
               dropdownMatchSelectWidth={false}
               onChange={handleCurrencyChange}
@@ -128,7 +150,7 @@ const BeNetworkPageDashboard = () => {
               name="phone"
               placeholder="Mobile number"
               color="grey"
-              type="number"
+              type="text"
               className={styles.input__field}
               dependencies={["withPhone"]}
               rules={[
@@ -137,12 +159,27 @@ const BeNetworkPageDashboard = () => {
                     const isWithPhone: boolean = getFieldValue(["withPhone"]);
 
                     if (isWithPhone) {
-                      const data = parseFloat(value) || 0;
+                      const data = value;
                       if (!data) {
-                        callback("The Mobile phone entered is incorrect.");
+                        callback("Phone number is required");
+                      } else {
+                        checkIdentity({ type: "phone", value: data })
+                          .then((res) => {
+                            if (!res) {
+                              callback(
+                                "The Mobile phone entered is incorrect."
+                              );
+                            } else {
+                              callback();
+                            }
+                          })
+                          .catch(() => {
+                            callback("Error on Mobile phone validation.");
+                          });
                       }
+                    } else {
+                      callback();
                     }
-                    callback();
                   },
                 }),
               ]}
@@ -160,7 +197,7 @@ const BeNetworkPageDashboard = () => {
               name="beid"
               placeholder="BE ID"
               color="grey"
-              type="number"
+              type="text"
               className={styles.input__field}
               dependencies={["withBeid"]}
               rules={[
@@ -169,12 +206,25 @@ const BeNetworkPageDashboard = () => {
                     const isWithBeid: boolean = getFieldValue(["withBeid"]);
 
                     if (isWithBeid) {
-                      const data = parseFloat(value) || 0;
+                      const data = value;
                       if (!data) {
-                        callback("The BE ID entered is incorrect.");
+                        callback("BE ID is required.");
+                      } else {
+                        checkIdentity({ type: "beid", value: data })
+                          .then((res) => {
+                            if (!res) {
+                              callback("The BE ID entered is incorrect.");
+                            } else {
+                              callback();
+                            }
+                          })
+                          .catch(() => {
+                            callback("Error on BE ID validation.");
+                          });
                       }
+                    } else {
+                      callback();
                     }
-                    callback();
                   },
                 }),
               ]}
@@ -187,12 +237,6 @@ const BeNetworkPageDashboard = () => {
             label="Message : "
             option="Optional"
             placeholder="Message..."
-            rules={[
-              {
-                required: true,
-                message: "Ce champ est requis",
-              },
-            ]}
           />
           <Alert message="The BE ID entered is incorrect." type="error" />
 
