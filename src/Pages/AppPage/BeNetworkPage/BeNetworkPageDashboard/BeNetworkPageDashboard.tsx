@@ -3,6 +3,8 @@ import Card from "@/Components/Display/Card/Card";
 import Button from "@/Components/General/Button/Button";
 import Text from "@/Components/General/Text/Text";
 import { useForm } from "antd/es/form/Form";
+import Form from "antd/es/form";
+
 import styles from "./BeNetworkPageDashboard.module.scss";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
@@ -244,7 +246,29 @@ const BeNetworkPageDashboard = () => {
             option="Optional"
             placeholder="Message..."
           />
-          <Alert message="The BE ID entered is incorrect." type="error" />
+
+          <Form.Item dependencies={["beid", "phone"]}>
+            {({ getFieldError }) => {
+              const beIdError = getFieldError("beid");
+              const phoneError = getFieldError("phone");
+              return (
+                <>
+                  {!!beIdError && !!beIdError.length && (
+                    <Alert
+                      message="The BE ID entered is incorrect."
+                      type="error"
+                    />
+                  )}
+                  {!!phoneError && !!phoneError.length && (
+                    <Alert
+                      message="The Phone number entered is incorrect."
+                      type="error"
+                    />
+                  )}
+                </>
+              );
+            }}
+          </Form.Item>
 
           <Button
             type="primary"
