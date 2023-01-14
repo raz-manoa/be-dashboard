@@ -2,10 +2,8 @@ import { ECurrency } from "@/Interfaces/Currency";
 import React, { useContext } from "react";
 
 export interface BeNetworkFormType {
-  leavingAcount: {
-    value: number;
-    currency: ECurrency;
-  };
+  amount: number;
+  currency: ECurrency;
   withPhone?: boolean;
   phone?: string;
   withBeid?: boolean;

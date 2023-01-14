@@ -63,9 +63,15 @@ const BeNetworkPageDashboard = () => {
     }
   };
 
-  const handleContinue = async () => {
-    const formData = await form.validateFields();
-    navigate("review");
+  const handleContinue = async (e: any) => {
+    e.preventDefault();
+    try {
+      const formData = await form.validateFields();
+
+      navigate("review");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -77,7 +83,7 @@ const BeNetworkPageDashboard = () => {
         <FormCustom form={form}>
           <div className={`common__field-wrap`}>
             <FormCustom.Input
-              name="account_number"
+              name="amount"
               placeholder="0.00"
               label="Leaving Account:"
               color="grey"
