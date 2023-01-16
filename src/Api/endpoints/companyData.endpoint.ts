@@ -9,6 +9,7 @@ import { IRate } from "@/Interfaces/Rate";
 import { ICountry } from "@/Interfaces/Country";
 import { countriesMock } from "../mock/country.mock";
 import { BeNetworkFormType } from "@/Pages/AppPage/BeNetworkPage/BeNetworkPageContext";
+import { ITopUpItem } from "@/Pages/AppPage/TopUpPage/TopUpPage";
 
 export interface IGetAllTransactionArgs {
   page?: number;
@@ -104,7 +105,7 @@ class CompanyDataEndpoint {
       ? response.data.countries
       : countriesMock;
   };
-  getTopUP = async (): Promise<any[]> => {
+  getTopUP = async (): Promise<{ topUpOptions: ITopUpItem[] }> => {
     return apiInstance.get(`api/admin/top-up-options`).then(({ data }) => data);
   };
   getCryptoWithdrawalFee = async (
