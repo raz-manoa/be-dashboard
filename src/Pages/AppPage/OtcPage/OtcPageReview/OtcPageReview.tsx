@@ -1,25 +1,37 @@
+import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
+import { formatCardAmount } from "@/Components/Display/CardAmount/CardAmount";
 import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
 import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirmItem";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
-import { useNavigate } from "react-router-dom";
+import { Alert } from "antd";
+import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useOtcPagePageContext } from "../OtcPageContext";
 
 export default function OtcPageReview() {
   useSetAppLayoutTitle("OTC");
   const navigate = useNavigate();
+  const { form } = useOtcPagePageContext();
+  const [error, setError] = useState<boolean>(false);
+
+  if (!form) {
+    return <Navigate to="" />;
+  }
+
   const data: CardModalItemProps[] = [
     {
       label: "From",
-      value: "170.00 USD",
+      value: formatCardAmount("from", form),
       color: "red",
     },
     {
       label: "To",
-      value: "170.00 USDC",
+      value: formatCardAmount("to", form),
       color: "red",
     },
     {
       label: "Transaction fee",
-      value: "0.00 USD",
+      value: formatCardAmount("transactionFee", form),
       color: "black",
     },
     {
@@ -28,24 +40,42 @@ export default function OtcPageReview() {
       color: "black",
     },
   ];
+
+  const onSubmit = async () => {
+    const companyId = localStorage.getItem("companyId") || "";
+    try {
+      const data = await companyDataEndpoint.exchange(companyId, {
+        currencyFrom: form.from.currency,
+        currencyTo: form.to.currency,
+        amount: Number(form.from.value),
+        // startRate: Number(form.rate.rate),
+        type: "otc",
+      });
+      navigate({
+        pathname: "/app/otc/confirm",
+      });
+    } catch (e) {
+      setError(true);
+    }
+  };
   return (
-    <CardConfirm
-      className="common__card"
-      title="Foreign Exchange - Review"
-      btnPrimary="back"
-      btnSecondary="Confirm"
-      itemStyle={{ padding: "25px 15px 24px" }}
-      data={data}
-      onClickFirstBtn={() => {
-        navigate({
-          pathname: "/app/otc",
-        });
-      }}
-      onClickSecondBtn={() => {
-        navigate({
-          pathname: "/app/otc/confirm",
-        });
-      }}
-    />
+    <div>
+      {error && (
+        <Alert message="Exchange failed." type="error" className="mb-8" />
+      )}
+      <CardConfirm
+        className="common__card"
+        title="Foreign Exchange - Review"
+        btnPrimary="Back"
+        btnSecondary="Confirm"
+        data={data}
+        onClickFirstBtn={() => {
+          navigate({
+            pathname: "/app/otc",
+          });
+        }}
+        onClickSecondBtn={onSubmit}
+      />
+    </div>
   );
 }
