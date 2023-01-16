@@ -1,3 +1,4 @@
+import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import ForeignExchangePageContext, {
@@ -5,6 +6,8 @@ import ForeignExchangePageContext, {
 } from "./ForeignExchangePageContext";
 
 const ForeignExchangePage = () => {
+  useSetAppLayoutTitle("Foreign Exchange (FX)");
+
   const [form, setForm] = useState<ForeignExchangeFormType>();
   const navigate = useNavigate();
 
