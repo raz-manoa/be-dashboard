@@ -14,7 +14,7 @@ interface FormTextAreaProps {
 }
 
 export default function FormTextArea(props: FormTextAreaProps) {
-  const { label, placeholder, className, option, rules } = props;
+  const { label, placeholder, className, option, rules, name } = props;
   const [currentValue, setCurrentValue] = useState<string>("");
   const handleChange = (e: any) => {
     setCurrentValue(e.target.value);
@@ -25,18 +25,19 @@ export default function FormTextArea(props: FormTextAreaProps) {
       className={`${styles.textarea__container} ${className} ${
         currentValue !== "" ? `${styles.active}` : ""
       }`}
-      rules={rules}
     >
       <div className={styles.textarea__label}>
         <label htmlFor="">{label}</label>
         {option && <span>({option})</span>}
       </div>
-      <TextArea
-        rows={4}
-        placeholder={placeholder}
-        onChange={handleChange}
-        className={` ${styles.textarea} `}
-      />
+      <Form.Item name={name} rules={rules} noStyle>
+        <TextArea
+          rows={4}
+          placeholder={placeholder}
+          onChange={handleChange}
+          className={` ${styles.textarea} `}
+        />
+      </Form.Item>
     </Form.Item>
   );
 }

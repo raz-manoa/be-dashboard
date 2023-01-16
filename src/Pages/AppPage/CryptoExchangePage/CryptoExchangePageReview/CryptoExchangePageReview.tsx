@@ -6,13 +6,13 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useCryptoExchangePageContext } from "../CryptoExchangePageContext";
 import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
 import Alert from "antd/es/alert";
-import {useState} from "react";
+import { useState } from "react";
 
 export default function CryptoExchangePageReview() {
   useSetAppLayoutTitle("Crypto Exchange");
   const navigate = useNavigate();
   const { form, setConfirmation } = useCryptoExchangePageContext();
-  const [ error, setError ] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
 
   if (!form) {
     return <Navigate to="" />;
@@ -50,7 +50,7 @@ export default function CryptoExchangePageReview() {
         currencyFrom: form.from.currency,
         currencyTo: form.to.currency,
         amount: form.from.value,
-        startRate: form.rate.rate,
+        startRate: form.rate?.rate,
         type: "exchange",
       });
 
@@ -64,12 +64,13 @@ export default function CryptoExchangePageReview() {
     } catch (e) {
       setError(true);
     }
-
   };
 
   return (
     <div>
-      {error && <Alert message="Exchange failed" type="error" className="mb-8" />}
+      {error && (
+        <Alert message="Exchange failed" type="error" className="mb-8" />
+      )}
       <CardConfirm
         className="common__card"
         title="Crypto Exchange - Review"

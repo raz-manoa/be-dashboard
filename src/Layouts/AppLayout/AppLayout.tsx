@@ -13,7 +13,7 @@ const AppLayout = () => {
     <AppLayoutContext.Provider value={{ headerTitle, setHeaderTitle }}>
       <Layout style={{ minHeight: "100vh" }}>
         {/* content */}
-        <Layout.Sider width={"20%"}>
+        <Layout.Sider width={"30%"} style={{ maxWidth: 260 }}>
           <Sidebar />
         </Layout.Sider>
         <Layout>

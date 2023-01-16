@@ -6,22 +6,25 @@ import Select, { SelectProps } from "antd/es/select";
 import { useState } from "react";
 import clsx from "clsx";
 
-interface FormSelectOption {
+export interface FormSelectOption<T extends object = object> {
   label: string;
   value: string;
   optionDisable?: boolean;
+  data?: T;
 }
 
-interface FormSelectProps extends SelectProps {
-  options: FormSelectOption[];
+export interface FormSelectProps<T extends object = object>
+  extends SelectProps<any, FormSelectOption<T>> {
+  options: FormSelectOption<T>[];
   rules?: Rule[];
   name: NamePath;
   label?: string;
   className?: string;
-  onChange?: SelectProps["onChange"];
 }
 
-export default function FormSelect(props: FormSelectProps) {
+export default function FormSelect<T extends object = object>(
+  props: FormSelectProps<T>
+) {
   const {
     options,
     rules,
