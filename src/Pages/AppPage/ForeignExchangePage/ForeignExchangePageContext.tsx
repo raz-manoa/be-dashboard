@@ -1,6 +1,5 @@
 import { ICardAmountForm } from "@/Components/Display/CardAmount/CardAmount";
-import React, { useContext, useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
 
 export interface ForeignExchangeFormType extends ICardAmountForm {}
 interface IState {

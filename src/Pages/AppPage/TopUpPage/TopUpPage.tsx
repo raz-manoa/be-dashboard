@@ -5,77 +5,118 @@ import styles from "./TopUpPage.module.scss";
 import CardConfirmItem from "@/Components/Display/CardConfirm/CardConfirmItem";
 import { useSetAppLayoutTitle } from "../../../Layouts/AppLayout/AppLayoutContext";
 import CopyTextDisplay from "@/Components/Display/CopyTextDisplay/CopyTextDisplay";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
+
+export interface ITopUpItem {
+  id: string;
+  currencyId: string;
+  name: string;
+  bankName: string;
+  bankAddress: string;
+  bankCountry: string;
+  accountNumber: string;
+  transit: string;
+  bankCode: string;
+  swiftCode: string;
+  beneficiaryName: string;
+  beneficiaryAddress: string;
+  intermediaryBankName: string;
+  intermediaryBankAddress: string;
+  intermediaryAccountNumber: string;
+  intermediarySwiftCode: string;
+  iban: string;
+  intermediaryIban: string;
+  appTypeId: number;
+  createdAt: string;
+  updatedAt: string;
+}
 
 const TopUpPage = () => {
   useSetAppLayoutTitle("Top Up");
-  const [selected, setSelected] = useState(1);
+  const [selected, setSelected] = useState<ITopUpItem>();
+  const [list, setList] = useState<ITopUpItem[] | undefined>(undefined);
 
-  const moneyData = [
-    {
-      id: 1,
-      label: "USD (Mauritius)",
-    },
-    {
-      id: 2,
-      label: "MUR (Mauritius)",
-    },
-    {
-      id: 3,
-      label: "ZAR (Mauritius)",
-    },
-    {
-      id: 4,
-      label: "EUR (Mauritius)",
-    },
-    {
-      id: 5,
-      label: "EUR (SEPA)",
-    },
-  ];
-  const data = [
-    {
-      label: "Currency",
-      value: "USD",
-    },
-    {
-      label: "Beneficiary Name",
-      value: "Be Mobile Limited",
-    },
-    {
-      label: "Beneficiary Address",
-      value:
-        "Level 2, Alexander House, Silicon Avenue,Cibercity, Ebene, Mauritius ",
-    },
-    {
-      label: "Bank Name",
-      value: "The Mauritius Commercial Bank Ltd",
-    },
-    {
-      label: "Bank Address",
-      value: "9-15 Sir William Newton Street, Port Louis",
-    },
-    {
-      label: "Bank Country",
-      value: "Mauritius",
-    },
+  useEffect(() => {
+    const fetchTopUp = async () => {
+      const response = await companyDataEndpoint.getTopUP();
+      if (response && response.topUpOptions) {
+        setList(response.topUpOptions);
+        if (response.topUpOptions[0]) {
+          setSelected(response.topUpOptions[0]);
+        }
+      } else {
+        setList([]);
+      }
+    };
 
-    {
-      label: "Account Number",
-      value: <CopyTextDisplay value={"000449876447656"} />,
-      icon: "bank-transfert",
-    },
-    {
-      label: "IBAN",
-      value: <CopyTextDisplay value={"MU38MCBL876165318323290823132"} />,
-      icon: "copy",
-    },
-    {
-      label: "Reference",
-      value: <CopyTextDisplay value={"user BE_ID"} />,
-      icon: "copy",
-    },
-  ];
+    if (!list) {
+      fetchTopUp();
+    }
+  }, []);
+
+  const data = useMemo(() => {
+    if (!selected) {
+      return [];
+    }
+    const {
+      name,
+      beneficiaryName,
+      beneficiaryAddress,
+      bankName,
+      bankAddress,
+      bankCountry,
+      accountNumber,
+      iban,
+    } = selected;
+    return [
+      {
+        label: "Currency",
+        value: name,
+      },
+      {
+        label: "Beneficiary Name",
+        value: beneficiaryName,
+      },
+      {
+        label: "Beneficiary Address",
+        value: beneficiaryAddress,
+      },
+      {
+        label: "Bank Name",
+        value: bankName,
+      },
+      {
+        label: "Bank Address",
+        value: bankAddress,
+      },
+      {
+        label: "Bank Country",
+        value: bankCountry,
+      },
+
+      {
+        label: "Account Number",
+        value: <CopyTextDisplay value={accountNumber} />,
+        icon: "bank-transfert",
+      },
+      {
+        label: "IBAN",
+        value: <CopyTextDisplay value={iban} />,
+        icon: "copy",
+      },
+      {
+        label: "Reference",
+        // TODO use be id ???
+        value: <CopyTextDisplay value={"use BE ID"} />,
+        icon: "copy",
+      },
+    ];
+  }, [selected]);
+
+  const handleClickItem = (item: ITopUpItem) => () => {
+    setSelected(item);
+  };
 
   return (
     <Card className="common__card">
@@ -83,14 +124,15 @@ const TopUpPage = () => {
         To top up, please use the account information below to transfer funds:
       </Text>
       <div className={styles.card__nav__list}>
-        {moneyData.map((m) => (
-          <TopUpPageNav
-            label={m.label}
-            active={selected === m.id}
-            key={`m-${m.id}`}
-            onClick={() => setSelected(m.id)}
-          />
-        ))}
+        {!!list &&
+          list.map((item) => (
+            <TopUpPageNav
+              label={`${item.name} (${item.bankName})`}
+              active={selected && selected.id === item.id}
+              key={`m-${item.id}`}
+              onClick={handleClickItem(item)}
+            />
+          ))}
       </div>
       {data.map((d, id) => (
         <CardConfirmItem label={d.label} value={d.value} key={`d-${id}`} />

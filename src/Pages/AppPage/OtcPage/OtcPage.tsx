@@ -1,9 +1,27 @@
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
-import { Outlet } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import OtcPagePageContext, { OtcPageFormType } from "./OtcPageContext";
 
 const OtcPage = () => {
   useSetAppLayoutTitle("OTC");
-  return <Outlet></Outlet>;
+
+  const [form, setForm] = useState<OtcPageFormType>();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!form) {
+      navigate("");
+    } else {
+      navigate("review");
+    }
+  }, []);
+
+  return (
+    <OtcPagePageContext.Provider value={{ form, setForm }}>
+      <Outlet></Outlet>
+    </OtcPagePageContext.Provider>
+  );
 };
 
 export default OtcPage;

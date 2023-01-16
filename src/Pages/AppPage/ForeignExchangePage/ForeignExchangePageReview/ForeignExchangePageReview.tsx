@@ -6,13 +6,13 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useForeignExchangePageContext } from "../ForeignExchangePageContext";
 import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
 import Alert from "antd/es/alert";
-import {useState} from "react";
+import { useState } from "react";
 
 export default function ForeignExchangePageReview() {
   useSetAppLayoutTitle("Foreign Exchange (FX)");
   const navigate = useNavigate();
   const { form } = useForeignExchangePageContext();
-  const [ error, setError ] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
 
   if (!form) {
     return <Navigate to="" />;
@@ -42,9 +42,7 @@ export default function ForeignExchangePageReview() {
   ];
 
   const onSubmit = async () => {
-    console.log("submit form", form);
-    // TODO: submit exchange
-    const companyId = localStorage.getItem('companyId') || '';
+    const companyId = localStorage.getItem("companyId") || "";
     try {
       const data = await companyDataEndpoint.exchange(companyId, {
         currencyFrom: form.from.currency,
@@ -59,24 +57,25 @@ export default function ForeignExchangePageReview() {
     } catch (e) {
       setError(true);
     }
-
   };
   return (
-      <div>
-        {error && <Alert message="Exchange failed." type="error" className="mb-8" />}
-        <CardConfirm
-            className="common__card"
-            title="Foreign Exchange - Review"
-            btnPrimary="Back"
-            btnSecondary="Confirm"
-            data={data}
-            onClickFirstBtn={() => {
-              navigate({
-                pathname: "/app/foreign-exchange",
-              });
-            }}
-            onClickSecondBtn={onSubmit}
-        />
-      </div>
+    <div>
+      {error && (
+        <Alert message="Exchange failed." type="error" className="mb-8" />
+      )}
+      <CardConfirm
+        className="common__card"
+        title="Foreign Exchange - Review"
+        btnPrimary="Back"
+        btnSecondary="Confirm"
+        data={data}
+        onClickFirstBtn={() => {
+          navigate({
+            pathname: "/app/foreign-exchange",
+          });
+        }}
+        onClickSecondBtn={onSubmit}
+      />
+    </div>
   );
 }

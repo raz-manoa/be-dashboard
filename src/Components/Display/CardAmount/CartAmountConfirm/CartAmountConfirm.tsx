@@ -23,7 +23,12 @@ const CartAmountConfirm = <T extends ICardAmountForm>(
     <Card className="common__card">
       <CardConfirm
         title={title}
-        date="11/06/2022, 10:27:41 PM"
+        date={new Date().toLocaleDateString("default", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+          formatMatcher: "basic",
+        })}
         msg={
           <>
             An exchange from

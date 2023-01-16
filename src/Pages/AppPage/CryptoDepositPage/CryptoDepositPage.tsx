@@ -4,21 +4,23 @@ import BitCoin from "@/Assets/Logo/BitCoin.svg";
 import Solana from "@/Assets/Logo/Solana.svg";
 import QRCode from "@/Assets/qr-code.svg";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
-import {useEffect, useState} from "react";
-import {
-  TransactionPageTableData
-} from "@/Pages/AppPage/TransactionPage/TransactionPageDashboard/TransactionPageTable/TransactionPageTableConfig";
+import { useEffect, useState } from "react";
+import { TransactionPageTableData } from "@/Pages/AppPage/TransactionPage/TransactionPageDashboard/TransactionPageTable/TransactionPageTableConfig";
 
 const CryptoDepositPage = () => {
   useSetAppLayoutTitle("Crypto Deposit");
   const [data, setData] = useState<any[]>([]);
   useEffect(() => {
     async function getInfo() {
-      const company = localStorage.getItem('company');
-      const parsedCompany = JSON.parse(company);
+      const company = localStorage.getItem("company");
+      // const parsedCompany = JSON.parse(company || "");
       // @ts-ignore
-      const addresses = JSON.parse(parsedCompany.addresses);
-      const data = [
+      const addresses = {
+        ETH: "sdfqsdf",
+        BTC: "suoif",
+        SOL: "xxxssd",
+      };
+      const responseData = [
         {
           name: "Ethereum",
           id: "ETH",
@@ -44,26 +46,26 @@ const CryptoDepositPage = () => {
           code: QRCode,
         },
       ];
-      setData(data);
+      setData(responseData);
     }
-    if (data.length === 0) {
-      getInfo();
-    }
-  })
+
+    getInfo();
+  }, []);
 
   return (
-      <div className="grid grid-cols-3 gap-5 mt-5">
-      {data.length && data.map((d, index) => (
-        <CryptoDepositPageItem
-          key={`d-${index}`}
-          logo={d.logo}
-          title={d.name}
-          sup={d.id}
-          txt={d.txt}
-          identity={d.address}
-          code={d.code}
-        />
-      ))}
+    <div className="grid grid-cols-3 gap-5 mt-5">
+      {data.length &&
+        data.map((d, index) => (
+          <CryptoDepositPageItem
+            key={`d-${index}`}
+            logo={d.logo}
+            title={d.name}
+            sup={d.id}
+            txt={d.txt}
+            identity={d.address}
+            code={d.code}
+          />
+        ))}
     </div>
   );
 };

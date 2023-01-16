@@ -3,6 +3,7 @@ import Text from "@/Components/General/Text/Text";
 import styles from "./CryptoDepositPageItem.module.scss";
 import React from "react";
 import Button from "@/Components/General/Button/Button";
+import QRCode from "react-qr-code";
 interface CryptoDepositPageItemProps {
   title: string;
   sup: string;
@@ -40,7 +41,12 @@ export default function CryptoDepositPageItem(
       <Button type="primary" className={styles.btn} onClick={handleCopy}>
         Copy Address
       </Button>
-      <img src={code} alt="QR_Code" className={styles.QR_code} />
+      <QRCode
+        value={identity}
+        size={256}
+        viewBox={`0 0 256 256`}
+        className={styles.QR_code}
+      />
       <Text type="p" tag="p" className={styles.txt__footer} variant="grey">
         {txt}
       </Text>
