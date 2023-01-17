@@ -10,6 +10,10 @@ import { ICountry } from "@/Interfaces/Country";
 import { countriesMock } from "../mock/country.mock";
 import { BeNetworkFormType } from "@/Pages/AppPage/BeNetworkPage/BeNetworkPageContext";
 import { ITopUpItem } from "@/Pages/AppPage/TopUpPage/TopUpPage";
+import {
+  CryptoWithdrawalConfirmData,
+  CryptoWithdrawalFormType,
+} from "@/Pages/AppPage/CryptoWithdrawal/CryptoWithdrawalContext";
 
 export interface IGetAllTransactionArgs {
   page?: number;
@@ -22,6 +26,7 @@ export interface CurrencyInfo {
   isCrypto: boolean;
   precision: number;
   countryCode?: string | null;
+  icon?: string;
 }
 
 interface UsdBalance {
@@ -110,17 +115,27 @@ class CompanyDataEndpoint {
   };
   getCryptoWithdrawalFee = async (
     id: string,
-    coin: string,
-    amount: number,
-    address: string
-  ): Promise<ITransaction[]> => {
+    params: { coin: string; amount: number; address: string }
+  ): Promise<{ success: true; fee: number } | { success: false }> => {
+    const { coin, amount, address } = params;
     return apiInstance
       .get(
-        `api//admin/companies/${id}/crypto/send/fee?coin=${coin}&amount=${amount}&address=${address}`
+        `api/admin/companies/${id}/crypto/send/fee?coin=${coin}&amount=${amount}&address=${address}`
       )
       .then(({ data }) => data);
   };
-  cryptoWithdraw = async (id: string, body: any): Promise<ITransaction[]> => {
+  getMyCryptoWithdrawalFee = (params: {
+    coin: string;
+    amount: number;
+    address: string;
+  }) => {
+    const companyId = localStorage.getItem("companyId") || "";
+    return this.getCryptoWithdrawalFee(companyId, params);
+  };
+  cryptoWithdraw = async (
+    id: string,
+    body: CryptoWithdrawalFormType
+  ): Promise<CryptoWithdrawalConfirmData> => {
     return apiInstance
       .post(`api/admin/companies/${id}/crypto/send`, body)
       .then(({ data }) => data);
