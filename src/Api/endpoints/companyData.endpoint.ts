@@ -22,6 +22,7 @@ export interface CurrencyInfo {
   isCrypto: boolean;
   precision: number;
   countryCode?: string | null;
+  icon?: string;
 }
 
 interface UsdBalance {
@@ -113,10 +114,10 @@ class CompanyDataEndpoint {
     coin: string,
     amount: number,
     address: string
-  ): Promise<ITransaction[]> => {
+  ): Promise<{ success: true; fee: number } | { success: false }> => {
     return apiInstance
       .get(
-        `api//admin/companies/${id}/crypto/send/fee?coin=${coin}&amount=${amount}&address=${address}`
+        `api/admin/companies/${id}/crypto/send/fee?coin=${coin}&amount=${amount}&address=${address}`
       )
       .then(({ data }) => data);
   };

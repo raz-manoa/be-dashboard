@@ -1,7 +1,7 @@
 import Card from "@/Components/Display/Card/Card";
 import TitleCard from "@/Components/Display/TitleCard/TitleCard";
 import styles from "./CryptoWithdrawal.module.scss";
-import React, { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Radio, { RadioChangeEvent } from "antd/es/radio";
 import Text from "@/Components/General/Text/Text";
 import Ethereum from "@/Assets/Logo/Ethereum.svg";
@@ -9,28 +9,107 @@ import Btc from "@/Assets/Logo/BitCoin.svg";
 import Solana from "@/Assets/Logo/Solana.svg";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
 import { useForm } from "antd/es/form/Form";
+import Form from "antd/es/form";
 import Button from "@/Components/General/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
+import companyDataEndpoint, {
+  AccountsResponse,
+  CurrencyInfo,
+} from "@/Api/endpoints/companyData.endpoint";
+import { ECurrency } from "@/Interfaces/Currency";
+import { CryptoWithdrawalFormType } from "../CryptoWithdrawalContext";
+
+const cryptoData: { [c in ECurrency]?: CurrencyInfo } = {
+  [ECurrency.SOL]: {
+    id: ECurrency.SOL,
+    sign: "SOL",
+    name: "Solana",
+    isCrypto: true,
+    precision: 8,
+    icon: Solana,
+  },
+  [ECurrency.BTC]: {
+    id: ECurrency.BTC,
+    sign: "₿",
+    name: "Bitcoin",
+    isCrypto: true,
+    precision: 8,
+    icon: Btc,
+  },
+  [ECurrency.ETH]: {
+    id: ECurrency.ETH,
+    sign: "Ξ",
+    name: "Ethereum",
+    isCrypto: true,
+    precision: 8,
+    icon: Ethereum,
+  },
+};
+
 const CryptoWithdrawalDashboard = () => {
   useSetAppLayoutTitle("Crypto Withdrawal");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [accounts, setAccounts] = useState<AccountsResponse[]>([]);
 
-  const [form] = useForm();
+  const [form] = useForm<CryptoWithdrawalFormType>();
   const [value, setValue] = useState(1);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<boolean | null>(null);
   const [currentValue, setCurrentValue] = useState("");
 
   const navigate = useNavigate();
-  useSetAppLayoutTitle("Crypto Withdrawal");
 
   const onChange = (e: RadioChangeEvent) => {
     setValue(e.target.value);
   };
 
-  const handleWithdrawal = () => {
-    form.validateFields();
-    navigate("review");
+  const handleWithdrawal = async (e: any) => {
+    e.preventDefault();
+    const formData = await form.validateFields();
+    console.log(formData);
+    // navigate("review");
   };
+
+  useEffect(() => {
+    setIsLoading(true);
+    companyDataEndpoint
+      .getMyAccounts()
+      .then((data) => {
+        if (data) {
+          setAccounts(data);
+        }
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  const availableCurrency = useMemo(() => {
+    const availableSign: ECurrency[] = Object.keys(cryptoData) as ECurrency[];
+    return accounts.filter((account) =>
+      availableSign.includes(account.currency)
+    );
+  }, [cryptoData, accounts]);
+
+  useEffect(() => {
+    const fieldValue = form.getFieldsValue();
+    console.log("availableCurrency", availableCurrency);
+    if (!fieldValue.chain) {
+      form.setFields([
+        {
+          name: ["chain"],
+          value: availableCurrency[0] && availableCurrency[0].currency,
+        },
+      ]);
+    }
+    if (!fieldValue.currency) {
+      form.setFields([
+        {
+          name: ["currency"],
+          value: availableCurrency[0] && availableCurrency[0].currency,
+        },
+      ]);
+    }
+  }, [availableCurrency]);
+
   return (
     <Card className="common__card">
       <TitleCard
@@ -38,126 +117,165 @@ const CryptoWithdrawalDashboard = () => {
         subtitle="Select the blockchain"
         className={styles.withdrawal__title}
       />
-      <div className={styles.withdrawal__type}>
-        <Radio.Group
-          onChange={onChange}
-          value={value}
-          className={styles.withdrawal__radio}
-        >
-          <Radio value={1}>ETH</Radio>
-          <Radio value={2}>BTC</Radio>
-          <Radio value={3}>SOL</Radio>
-        </Radio.Group>
-        <div className={styles.withdrawal__logo}>
-          {value === 1 && (
-            <>
-              <img src={Ethereum} alt="logo ethereum" />
-              <Text tag="h2" type="h2" variant="grey">
-                Ethereum <sup> ETH</sup>
-              </Text>
-            </>
-          )}
-          {value === 2 && (
-            <>
-              <img src={Btc} alt="logo ethereum" />
-              <Text tag="h2" type="h2" variant="grey">
-                BitCoin <sup> BTC</sup>
-              </Text>
-            </>
-          )}
-          {value === 3 && (
-            <>
-              <img src={Solana} alt="logo ethereum" />
-              <Text tag="h2" type="h2" variant="grey">
-                Solana <sup> SOL</sup>
-              </Text>
-            </>
-          )}
-        </div>
-      </div>
-      <FormCustom
+
+      <FormCustom<CryptoWithdrawalFormType>
         form={form}
         className={`${styles.withdrawal__form} ${
-          currentValue === "error"
-            ? styles.error
-            : currentValue === "success"
-            ? styles.success
-            : ""
+          error === true ? styles.error : error === false ? styles.success : ""
         }`}
       >
+        <div className={styles.withdrawal__type}>
+          <Form.Item
+            name="chain"
+            rules={[
+              {
+                required: true,
+                message: "Chain is required",
+              },
+            ]}
+          >
+            <Radio.Group className={styles.withdrawal__radio}>
+              {availableCurrency.map((item, index) => {
+                return (
+                  <Radio key={item.currency} value={item.currency}>
+                    {item.currency}
+                  </Radio>
+                );
+              })}
+            </Radio.Group>
+          </Form.Item>
+          <div className={styles.withdrawal__logo}>
+            <Form.Item shouldUpdate={() => true} dependencies={["chain"]}>
+              {({ getFieldValue }) => {
+                const chain = getFieldValue("chain");
+                const chainItem = availableCurrency.find(
+                  (c) => c.currency === chain
+                );
+                if (!chainItem) return null;
+                const data = cryptoData[chainItem.currency];
+                return (
+                  <>
+                    <img src={data?.icon || ""} alt={data?.name || "icon"} />
+                    <Text tag="h2" type="h2" variant="grey">
+                      {data?.name} <sup> {chainItem.currency}</sup>
+                    </Text>
+                  </>
+                );
+              }}
+            </Form.Item>
+          </div>
+        </div>
         <FormCustom.Input
-          name="example"
+          name="address"
           label="Destination Address:"
           color="grey"
           className={styles.adress}
+          help={"test"}
           rules={[
             {
               required: true,
-              message: "Ce champ est requis",
+              message: "",
+            },
+            {
+              min: 23,
+              message: "",
+            },
+            {
+              max: 45,
+              message: "",
             },
           ]}
+          hideError={true}
           onInput={(e) => setCurrentValue((e.target as any).value)}
         />
-        <Text
-          tag="p"
-          type="p"
-          className={styles.withdrawal__validation}
-          size={12}
-        >
-          Validation:{" "}
-          {currentValue === "error" ? (
-            <>Address is incorrect</>
-          ) : currentValue === "success" ? (
-            <>Address is correct</>
-          ) : (
-            <></>
-          )}
-        </Text>
+        <Form.Item shouldUpdate dependencies={["address"]}>
+          {({ getFieldError, getFieldValue }) => {
+            const hasError = getFieldError("address");
+            const address = getFieldValue("address");
+            setError(!address ? null : !!hasError && !!hasError.length);
+            return (
+              <Text
+                tag="p"
+                type="p"
+                className={styles.withdrawal__validation}
+                size={12}
+              >
+                Validation:{" "}
+                {!address ? (
+                  ""
+                ) : hasError ? (
+                  <>Address is incorrect</>
+                ) : (
+                  <>Address is correct</>
+                )}
+              </Text>
+            );
+          }}
+        </Form.Item>
         <div className={`${styles.select}`}>
           <FormCustom.Input
-            name="sent"
+            name="amount"
             label="Amount to be sent:"
             color="grey"
             type="number"
+            dependencies={["currency"]}
             className={styles.select__input}
             placeholder="0"
             rules={[
               {
                 required: true,
-                message: "Ce champ est requis",
+                message: "This field is required",
               },
+              ({ getFieldValue }) => ({
+                validator: (rule, value, callback) => {
+                  const currency = getFieldValue("currency");
+                  const parsedValue = parseFloat(value) || 0;
+                  const currencyItem = availableCurrency.find(
+                    (c) => c.currency === currency
+                  );
+                  if (!currencyItem) {
+                    callback();
+                  } else if (
+                    currencyItem &&
+                    parsedValue > currencyItem.balance
+                  ) {
+                    callback("The amount is not available");
+                  }
+                },
+              }),
             ]}
           />
           <FormCustom.Select
-            name="select"
-            placeholder="ETH"
-            options={[
-              {
-                label: "ETH",
-                value: "eth",
-              },
-              {
-                label: "BTC",
-                value: "btc",
-              },
-              {
-                label: "SOL",
-                value: "sol",
-              },
-            ]}
+            name="currency"
+            placeholder="currency"
+            options={availableCurrency.map(({ currency }) => ({
+              label: currency,
+              value: currency,
+            }))}
           />
         </div>
-        <Text
-          tag="p"
-          type="p"
-          className={`${styles.txt__info} common__txt`}
-          variant="grey"
-        >
-          {value === 1 && <strong>0.00234129 ETH </strong>}
-          {value === 2 && <strong>0.00234129 BTC </strong>}
-          {value === 3 && <strong>0.00234129 SOL </strong>}
-          available to withdraw
-        </Text>
+        <Form.Item shouldUpdate={() => true} dependencies={["currency"]}>
+          {({ getFieldValue }) => {
+            const currency = getFieldValue("currency");
+            const currencyItem = availableCurrency.find(
+              (c) => c.currency === currency
+            );
+            if (!currencyItem) return null;
+            return (
+              <Text
+                tag="p"
+                type="p"
+                className={`${styles.txt__info} common__txt`}
+                variant="grey"
+              >
+                <strong key={currencyItem.currency}>
+                  {currencyItem.balance} {currencyItem.currency}{" "}
+                </strong>
+                available to withdraw
+              </Text>
+            );
+          }}
+        </Form.Item>
 
         <div className={styles.withdrawal__info}>
           {value === 1 && (

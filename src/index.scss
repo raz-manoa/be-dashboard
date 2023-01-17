@@ -443,3 +443,11 @@ input[type="number"] {
   @apply absolute left-0;
   height: 22px;
 }
+
+.ant-form-item-has-error {
+  &.hideError {
+    .ant-form-item-explain-error {
+      display: none !important;
+    }
+  }
+}
