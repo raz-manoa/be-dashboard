@@ -18,7 +18,10 @@ import companyDataEndpoint, {
   CurrencyInfo,
 } from "@/Api/endpoints/companyData.endpoint";
 import { ECurrency } from "@/Interfaces/Currency";
-import { CryptoWithdrawalFormType } from "../CryptoWithdrawalContext";
+import {
+  CryptoWithdrawalFormType,
+  useCryptoWithdrawalContext,
+} from "../CryptoWithdrawalContext";
 
 const cryptoData: { [c in ECurrency]?: CurrencyInfo } = {
   [ECurrency.SOL]: {
@@ -49,50 +52,13 @@ const cryptoData: { [c in ECurrency]?: CurrencyInfo } = {
 
 const CryptoWithdrawalDashboard = () => {
   useSetAppLayoutTitle("Crypto Withdrawal");
+  const { setForm } = useCryptoWithdrawalContext();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [accounts, setAccounts] = useState<AccountsResponse[]>([]);
-
   const [form] = useForm<CryptoWithdrawalFormType>();
-  const [error, setError] = useState<boolean | null>(null);
+  const [error, setError] = useState<"error" | "success">();
 
   const navigate = useNavigate();
-
-  const handleTransactionFee = async () => {
-    const { amount, currency, address } = form.getFieldsValue();
-    const response = await companyDataEndpoint.getMyCryptoWithdrawalFee({
-      amount,
-      coin: currency,
-      address,
-    });
-
-    if (response.success === true) {
-      form.setFields([
-        {
-          name: "fee",
-          value: response.fee,
-        },
-      ]);
-    } else {
-      form.setFields([
-        {
-          name: "fee",
-          value: null,
-        },
-      ]);
-    }
-  };
-
-  const handleWithdrawal = async (e: any) => {
-    try {
-      e.preventDefault();
-      console.log("handle withdrawal");
-      const formData = await form.validateFields();
-      console.log("formData", formData);
-      // navigate("review");
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -133,6 +99,44 @@ const CryptoWithdrawalDashboard = () => {
     }
   }, [availableCurrency]);
 
+  const handleTransactionFee = async () => {
+    const { amount, currency, address } = form.getFieldsValue();
+    const response = await companyDataEndpoint.getMyCryptoWithdrawalFee({
+      amount,
+      coin: currency,
+      address,
+    });
+
+    if (response.success === true) {
+      form.setFields([
+        {
+          name: "fee",
+          value: response.fee,
+        },
+      ]);
+    } else {
+      form.setFields([
+        {
+          name: "fee",
+          value: null,
+        },
+      ]);
+    }
+  };
+
+  const handleWithdrawal = async (e: any) => {
+    try {
+      e.preventDefault();
+      const formData = await form.validateFields();
+      if (setForm) {
+        setForm(formData);
+      }
+      navigate("review");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Card className="common__card">
       <TitleCard
@@ -144,7 +148,11 @@ const CryptoWithdrawalDashboard = () => {
       <FormCustom<CryptoWithdrawalFormType>
         form={form}
         className={`${styles.withdrawal__form} ${
-          error === true ? styles.error : error === false ? styles.success : ""
+          error === "error"
+            ? styles.error
+            : error === "success"
+            ? styles.success
+            : ""
         }`}
       >
         <div className={styles.withdrawal__type}>
@@ -199,49 +207,36 @@ const CryptoWithdrawalDashboard = () => {
             {
               validator: (rule, value, callback) => {
                 if (!value) {
+                  setError("error");
                   callback("Address is required");
-                } else if (value.length < 23 || value.length > 45) {
-                  callback("The address is not valid");
-                } else {
+                } else if (value.length >= 23 && value.length <= 45) {
+                  setError("success");
                   callback();
+                } else {
+                  setError("error");
+                  callback("The address is not valid");
                 }
               },
             },
           ]}
           hideError={true}
         />
-        <Form.Item dependencies={["address"]} noStyle>
-          {({ getFieldError, getFieldValue }) => {
-            const address = getFieldValue("address");
-            const addressError = getFieldError("address");
 
-            if (address) {
-              const hasError: boolean = !!addressError && !!addressError.length;
-              if (error !== hasError) {
-                setError(hasError);
-              }
-            } else if (!address && error !== null) {
-              setError(null);
-            }
-            return (
-              <Text
-                tag="p"
-                type="p"
-                className={styles.withdrawal__validation}
-                size={12}
-              >
-                Validation:{" "}
-                {!address ? (
-                  ""
-                ) : addressError ? (
-                  <>Address is incorrect</>
-                ) : (
-                  <>Address is correct</>
-                )}
-              </Text>
-            );
-          }}
-        </Form.Item>
+        <Text
+          tag="p"
+          type="p"
+          className={styles.withdrawal__validation}
+          size={12}
+        >
+          Validation:{" "}
+          {error === "error" ? (
+            <>Address is incorrect</>
+          ) : error === "success" ? (
+            <>Address is correct</>
+          ) : (
+            ""
+          )}
+        </Text>
         <div className={`${styles.select}`}>
           <FormCustom.Input
             name="amount"
@@ -270,6 +265,8 @@ const CryptoWithdrawalDashboard = () => {
                     parsedValue > currencyItem.balance
                   ) {
                     callback("The amount is not available");
+                  } else {
+                    callback();
                   }
                 },
               }),
@@ -343,14 +340,14 @@ const CryptoWithdrawalDashboard = () => {
               );
             }}
           </Form.Item>
-          <Button
-            type="primary"
-            onClick={handleWithdrawal}
-            className="common__btn"
-          >
-            Continue
-          </Button>
         </div>
+        <Button
+          type="primary"
+          onClick={handleWithdrawal}
+          className="common__btn"
+        >
+          Continue
+        </Button>
       </FormCustom>
     </Card>
   );

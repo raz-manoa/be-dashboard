@@ -49,6 +49,7 @@ export default function FormInput(props: FormInputProps) {
         currentValue !== "" && styles.active,
         hideError && "hideError",
       ])}
+      noStyle={!!hidden}
     >
       <label>{label}</label>
       <Form.Item
