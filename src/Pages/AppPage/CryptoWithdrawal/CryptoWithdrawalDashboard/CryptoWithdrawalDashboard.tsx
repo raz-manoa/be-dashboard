@@ -53,21 +53,45 @@ const CryptoWithdrawalDashboard = () => {
   const [accounts, setAccounts] = useState<AccountsResponse[]>([]);
 
   const [form] = useForm<CryptoWithdrawalFormType>();
-  const [value, setValue] = useState(1);
   const [error, setError] = useState<boolean | null>(null);
-  const [currentValue, setCurrentValue] = useState("");
 
   const navigate = useNavigate();
 
-  const onChange = (e: RadioChangeEvent) => {
-    setValue(e.target.value);
+  const handleTransactionFee = async () => {
+    const { amount, currency, address } = form.getFieldsValue();
+    const response = await companyDataEndpoint.getMyCryptoWithdrawalFee({
+      amount,
+      coin: currency,
+      address,
+    });
+
+    if (response.success === true) {
+      form.setFields([
+        {
+          name: "fee",
+          value: response.fee,
+        },
+      ]);
+    } else {
+      form.setFields([
+        {
+          name: "fee",
+          value: null,
+        },
+      ]);
+    }
   };
 
   const handleWithdrawal = async (e: any) => {
-    e.preventDefault();
-    const formData = await form.validateFields();
-    console.log(formData);
-    // navigate("review");
+    try {
+      e.preventDefault();
+      console.log("handle withdrawal");
+      const formData = await form.validateFields();
+      console.log("formData", formData);
+      // navigate("review");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -91,7 +115,6 @@ const CryptoWithdrawalDashboard = () => {
 
   useEffect(() => {
     const fieldValue = form.getFieldsValue();
-    console.log("availableCurrency", availableCurrency);
     if (!fieldValue.chain) {
       form.setFields([
         {
@@ -125,6 +148,7 @@ const CryptoWithdrawalDashboard = () => {
         }`}
       >
         <div className={styles.withdrawal__type}>
+          <FormCustom.Input name="fee" hidden label="" />
           <Form.Item
             name="chain"
             rules={[
@@ -145,7 +169,7 @@ const CryptoWithdrawalDashboard = () => {
             </Radio.Group>
           </Form.Item>
           <div className={styles.withdrawal__logo}>
-            <Form.Item shouldUpdate={() => true} dependencies={["chain"]}>
+            <Form.Item shouldUpdate={() => true} noStyle>
               {({ getFieldValue }) => {
                 const chain = getFieldValue("chain");
                 const chainItem = availableCurrency.find(
@@ -173,26 +197,32 @@ const CryptoWithdrawalDashboard = () => {
           help={"test"}
           rules={[
             {
-              required: true,
-              message: "",
-            },
-            {
-              min: 23,
-              message: "",
-            },
-            {
-              max: 45,
-              message: "",
+              validator: (rule, value, callback) => {
+                if (!value) {
+                  callback("Address is required");
+                } else if (value.length < 23 || value.length > 45) {
+                  callback("The address is not valid");
+                } else {
+                  callback();
+                }
+              },
             },
           ]}
           hideError={true}
-          onInput={(e) => setCurrentValue((e.target as any).value)}
         />
-        <Form.Item shouldUpdate dependencies={["address"]}>
+        <Form.Item dependencies={["address"]} noStyle>
           {({ getFieldError, getFieldValue }) => {
-            const hasError = getFieldError("address");
             const address = getFieldValue("address");
-            setError(!address ? null : !!hasError && !!hasError.length);
+            const addressError = getFieldError("address");
+
+            if (address) {
+              const hasError: boolean = !!addressError && !!addressError.length;
+              if (error !== hasError) {
+                setError(hasError);
+              }
+            } else if (!address && error !== null) {
+              setError(null);
+            }
             return (
               <Text
                 tag="p"
@@ -203,7 +233,7 @@ const CryptoWithdrawalDashboard = () => {
                 Validation:{" "}
                 {!address ? (
                   ""
-                ) : hasError ? (
+                ) : addressError ? (
                   <>Address is incorrect</>
                 ) : (
                   <>Address is correct</>
@@ -244,6 +274,7 @@ const CryptoWithdrawalDashboard = () => {
                 },
               }),
             ]}
+            onChange={handleTransactionFee}
           />
           <FormCustom.Select
             name="currency"
@@ -252,9 +283,10 @@ const CryptoWithdrawalDashboard = () => {
               label: currency,
               value: currency,
             }))}
+            onChange={handleTransactionFee}
           />
         </div>
-        <Form.Item shouldUpdate={() => true} dependencies={["currency"]}>
+        <Form.Item shouldUpdate={() => true} noStyle>
           {({ getFieldValue }) => {
             const currency = getFieldValue("currency");
             const currencyItem = availableCurrency.find(
@@ -278,7 +310,7 @@ const CryptoWithdrawalDashboard = () => {
         </Form.Item>
 
         <div className={styles.withdrawal__info}>
-          {value === 1 && (
+          {/*  {value === 1 && (
             <>
               <Text tag="p" type="p" variant="grey">
                 1 ETH equals 1400 USDC
@@ -298,10 +330,19 @@ const CryptoWithdrawalDashboard = () => {
                 1 SOL equals 50 USDC
               </Text>
             </>
-          )}
-          <Text tag="p" type="p" variant="grey">
-            Estimated transaction fee: 0.00050000
-          </Text>
+          )} */}
+          <Form.Item dependencies={["fee", "currency"]} noStyle>
+            {({ getFieldValue }) => {
+              const fee = getFieldValue("fee");
+              const currency = getFieldValue("currency");
+              if (!fee) return null;
+              return (
+                <Text tag="p" type="p" variant="grey">
+                  Estimated transaction fee: {fee} {currency}
+                </Text>
+              );
+            }}
+          </Form.Item>
           <Button
             type="primary"
             onClick={handleWithdrawal}

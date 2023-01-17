@@ -5,8 +5,10 @@ export interface CryptoWithdrawalConfirmData {}
 
 export interface CryptoWithdrawalFormType {
   chain: ECurrency;
+  address: string;
   currency: ECurrency;
-  amount: string;
+  amount: number;
+  fee?: number;
 }
 interface IState {
   form?: CryptoWithdrawalFormType;

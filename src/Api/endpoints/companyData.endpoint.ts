@@ -111,15 +111,22 @@ class CompanyDataEndpoint {
   };
   getCryptoWithdrawalFee = async (
     id: string,
-    coin: string,
-    amount: number,
-    address: string
+    params: { coin: string; amount: number; address: string }
   ): Promise<{ success: true; fee: number } | { success: false }> => {
+    const { coin, amount, address } = params;
     return apiInstance
       .get(
         `api/admin/companies/${id}/crypto/send/fee?coin=${coin}&amount=${amount}&address=${address}`
       )
       .then(({ data }) => data);
+  };
+  getMyCryptoWithdrawalFee = (params: {
+    coin: string;
+    amount: number;
+    address: string;
+  }) => {
+    const companyId = localStorage.getItem("companyId") || "";
+    return this.getCryptoWithdrawalFee(companyId, params);
   };
   cryptoWithdraw = async (id: string, body: any): Promise<ITransaction[]> => {
     return apiInstance

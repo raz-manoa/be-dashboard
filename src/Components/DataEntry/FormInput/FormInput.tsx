@@ -14,6 +14,7 @@ export interface FormInputProps extends Omit<InputProps, "name"> {
   name?: NamePath;
   dependencies?: FormItemProps["dependencies"];
   help?: FormItemProps["help"];
+  hidden?: FormItemProps["hidden"];
   hideError?: boolean;
 }
 
@@ -32,6 +33,7 @@ export default function FormInput(props: FormInputProps) {
     dependencies,
     help,
     hideError,
+    hidden,
     ...rest
   } = props;
   const [currentValue, setCurrentValue] = useState<string>("");
@@ -51,6 +53,7 @@ export default function FormInput(props: FormInputProps) {
       <label>{label}</label>
       <Form.Item
         name={name}
+        hidden={hidden}
         help={help}
         noStyle
         dependencies={dependencies}
