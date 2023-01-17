@@ -1,7 +1,9 @@
 import { ECurrency } from "@/Interfaces/Currency";
 import React, { useContext } from "react";
 
-export interface CryptoWithdrawalConfirmData {}
+export interface CryptoWithdrawalConfirmData {
+  // TODO: declare type
+}
 
 export interface CryptoWithdrawalFormType {
   chain: ECurrency;

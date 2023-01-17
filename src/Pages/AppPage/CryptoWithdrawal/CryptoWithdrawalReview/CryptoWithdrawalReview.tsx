@@ -1,61 +1,87 @@
-import Card from "@/Components/Display/Card/Card";
+import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
 import CardConfirm from "@/Components/Display/CardConfirm/CardConfirm";
 import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirmItem";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
-import React from "react";
-import { useNavigate } from "react-router-dom";
-
-const data: CardModalItemProps[] = [
-  {
-    label: "Sending",
-    value: "0.00111111 ETH",
-    color: "red",
-  },
-  {
-    label: "Transaction fee",
-    value: "0.00050000 ETH",
-    color: "black",
-  },
-  {
-    label: "Destination Amount",
-    value: "0.00100000 ETH",
-    color: "black",
-  },
-  {
-    label: "Destination address",
-    value: "0x9D7e522C00574c£000503801D27ddc2fbb2552E2",
-    color: "black",
-  },
-  {
-    label: "When",
-    value: "May 17, 2022",
-    color: "black",
-    weight: 400,
-  },
-];
+import Alert from "antd/es/alert";
+import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useCryptoWithdrawalContext } from "../CryptoWithdrawalContext";
 
 export default function CryptoWithdrawalReview() {
   useSetAppLayoutTitle("Crypto Withdrawal");
   const navigate = useNavigate();
+  const { form, setConfirmation } = useCryptoWithdrawalContext();
+  const [error, setError] = useState<boolean>(false);
+  if (!form) {
+    return <Navigate to="" />;
+  }
+
+  const data: CardModalItemProps[] = [
+    {
+      label: "Sending",
+      value: form.amount + " " + form.currency,
+      color: "red",
+    },
+    {
+      label: "Transaction fee",
+      value: form.fee || 0 + " " + form.currency,
+      color: "black",
+    },
+    {
+      label: "Destination Amount",
+      value: form.amount + " " + form.currency,
+      color: "black",
+    },
+    {
+      label: "Destination address",
+      value: form.address,
+      color: "black",
+    },
+    {
+      label: "When",
+      value: new Date().toLocaleDateString("default", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+        formatMatcher: "basic",
+      }),
+      color: "black",
+      weight: 400,
+    },
+  ];
+
+  const handleSubmit = async () => {
+    const companyId = localStorage.getItem("companyId") || "";
+    const response = await companyDataEndpoint.cryptoWithdraw(companyId, form);
+    if (response && setConfirmation) {
+      setConfirmation(response);
+      navigate({
+        pathname: "/app/crypto-withdraw/confirm",
+      });
+    } else {
+      setError(true);
+    }
+  };
 
   return (
-    <CardConfirm
-      title="Crypto Withdrawal - Review"
-      data={data}
-      className="common__card"
-      btnPrimary="back"
-      itemStyle={{ padding: "25px 15px 24px" }}
-      btnSecondary="confirm"
-      onClickFirstBtn={() => {
-        navigate({
-          pathname: "/app/crypto-withdraw",
-        });
-      }}
-      onClickSecondBtn={() => {
-        navigate({
-          pathname: "/app/crypto-withdraw/confirm",
-        });
-      }}
-    />
+    <div>
+      {error && (
+        <Alert message="Transfer failed" type="error" className="mb-8" />
+      )}
+      <CardConfirm
+        title="Crypto Withdrawal - Review"
+        data={data}
+        className="common__card"
+        btnPrimary="back"
+        itemStyle={{ padding: "25px 15px 24px" }}
+        btnSecondary="confirm"
+        onClickFirstBtn={() => {
+          navigate({
+            pathname: "/app/crypto-withdraw",
+          });
+        }}
+        onClickSecondBtn={handleSubmit}
+      />
+    </div>
   );
 }

@@ -10,6 +10,10 @@ import { ICountry } from "@/Interfaces/Country";
 import { countriesMock } from "../mock/country.mock";
 import { BeNetworkFormType } from "@/Pages/AppPage/BeNetworkPage/BeNetworkPageContext";
 import { ITopUpItem } from "@/Pages/AppPage/TopUpPage/TopUpPage";
+import {
+  CryptoWithdrawalConfirmData,
+  CryptoWithdrawalFormType,
+} from "@/Pages/AppPage/CryptoWithdrawal/CryptoWithdrawalContext";
 
 export interface IGetAllTransactionArgs {
   page?: number;
@@ -128,7 +132,10 @@ class CompanyDataEndpoint {
     const companyId = localStorage.getItem("companyId") || "";
     return this.getCryptoWithdrawalFee(companyId, params);
   };
-  cryptoWithdraw = async (id: string, body: any): Promise<ITransaction[]> => {
+  cryptoWithdraw = async (
+    id: string,
+    body: CryptoWithdrawalFormType
+  ): Promise<CryptoWithdrawalConfirmData> => {
     return apiInstance
       .post(`api/admin/companies/${id}/crypto/send`, body)
       .then(({ data }) => data);
