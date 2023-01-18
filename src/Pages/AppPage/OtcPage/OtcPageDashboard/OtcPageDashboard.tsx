@@ -79,9 +79,9 @@ const OtcPageDashboard = () => {
       title="Amount"
       selectFrom={availableCurrency}
       selectTo={availableCurrency}
-      allowSameCurrency={true}
       onSubmit={handleSubmit}
       loading={isLoading}
+      mayHave={ECurrency.USDC}
     />
   );
 };
