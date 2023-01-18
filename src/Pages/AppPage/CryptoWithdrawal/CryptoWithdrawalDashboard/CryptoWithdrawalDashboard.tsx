@@ -22,6 +22,7 @@ import {
   CryptoWithdrawalFormType,
   useCryptoWithdrawalContext,
 } from "../CryptoWithdrawalContext";
+import Alert from "antd/es/alert";
 
 const CryptoWithdrawalDashboard = () => {
   useSetAppLayoutTitle("Crypto Withdrawal");
@@ -175,7 +176,12 @@ const CryptoWithdrawalDashboard = () => {
         }`}
       >
         <div className={styles.withdrawal__type}>
-          <FormCustom.Input name="fee" hidden label="" />
+          <FormCustom.Input
+            rules={[{ required: true, message: "Error fee" }]}
+            name="fee"
+            hidden
+            label=""
+          />
           <Form.Item
             name="chain"
             rules={[
@@ -363,6 +369,18 @@ const CryptoWithdrawalDashboard = () => {
             }}
           </Form.Item>
         </div>
+        <Form.Item shouldUpdate={true}>
+          {({ getFieldError }) => {
+            const feeError = getFieldError("fee");
+            return (
+              <>
+                {!!feeError && !!feeError.length && (
+                  <Alert message="Transaction fee error!" type="error" />
+                )}
+              </>
+            );
+          }}
+        </Form.Item>
         <Button
           type="primary"
           onClick={handleWithdrawal}
