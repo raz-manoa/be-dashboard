@@ -108,16 +108,17 @@ const CryptoWithdrawalDashboard = () => {
     });
 
     if (response.success === true) {
+      console.log("setFee", response.fee);
       form.setFields([
         {
-          name: "fee",
+          name: ["fee"],
           value: response.fee,
         },
       ]);
     } else {
       form.setFields([
         {
-          name: "fee",
+          name: ["fee"],
           value: null,
         },
       ]);
@@ -328,7 +329,7 @@ const CryptoWithdrawalDashboard = () => {
               </Text>
             </>
           )} */}
-          <Form.Item dependencies={["fee", "currency"]} noStyle>
+          <Form.Item shouldUpdate={() => true} noStyle>
             {({ getFieldValue }) => {
               const fee = getFieldValue("fee");
               const currency = getFieldValue("currency");
