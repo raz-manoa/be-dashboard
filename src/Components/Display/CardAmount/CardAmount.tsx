@@ -48,6 +48,7 @@ interface CardAmountProps {
   loading?: boolean;
   showRate?: boolean;
   allowSameCurrency?: boolean;
+  mayHave?: ECurrency;
 }
 
 export const formatCardAmount = (
@@ -66,9 +67,12 @@ export function CardAmount(props: CardAmountProps) {
     selectTo,
     transactionFee: defaultTransactionFee,
     showRate = false,
-    allowSameCurrency = false,
+    allowSameCurrency: hasSameCurrency = false,
+    mayHave,
     onSubmit,
   } = props;
+
+  const allowSameCurrency: boolean = !!hasSameCurrency || !!mayHave;
 
   const [form] = useForm<ICardAmountForm>();
   const [selectValue, setSelectValue] = useState<SelectData>();
@@ -129,19 +133,30 @@ export function CardAmount(props: CardAmountProps) {
 
     const formData = form.getFieldsValue();
 
-    if (
-      !allowSameCurrency &&
-      selectedItem &&
-      selectedItem.currency === formData.to.currency
-    ) {
-      const toItem = findFirstAvailableTo([selectedItem.currency]);
+    if (mayHave) {
+      if (selectedItem && selectedItem.currency !== mayHave) {
+        form.setFields([
+          {
+            name: ["to", "currency"],
+            value: mayHave,
+          },
+        ]);
+      }
+    } else {
+      if (
+        !allowSameCurrency &&
+        selectedItem &&
+        selectedItem.currency === formData.to.currency
+      ) {
+        const toItem = findFirstAvailableTo([selectedItem.currency]);
 
-      form.setFields([
-        {
-          name: ["to", "currency"],
-          value: toItem ? toItem.currency : null,
-        },
-      ]);
+        form.setFields([
+          {
+            name: ["to", "currency"],
+            value: toItem ? toItem.currency : null,
+          },
+        ]);
+      }
     }
 
     fetchRate();
@@ -179,18 +194,33 @@ export function CardAmount(props: CardAmountProps) {
         value: selectedItem ? selectedItem.currency : null,
       },
     ]);
-
-    if (
-      selectedItem &&
-      selectedItem.currency === formData.from.currency &&
-      formData.from.value
-    ) {
-      form.setFields([
-        {
-          name: ["to", "value"],
-          value: formData.from.value,
-        },
-      ]);
+    if (mayHave) {
+      const from = form.getFieldValue(["from", "currency"]);
+      if (
+        selectedItem &&
+        selectedItem.currency !== mayHave &&
+        from !== mayHave
+      ) {
+        form.setFields([
+          {
+            name: ["from", "currency"],
+            value: mayHave,
+          },
+        ]);
+      }
+    } else {
+      if (
+        selectedItem &&
+        selectedItem.currency === formData.from.currency &&
+        formData.from.value
+      ) {
+        form.setFields([
+          {
+            name: ["to", "value"],
+            value: formData.from.value,
+          },
+        ]);
+      }
     }
 
     fetchRate();
@@ -215,7 +245,7 @@ export function CardAmount(props: CardAmountProps) {
       form.setFields([
         {
           name: ["from", "currency"],
-          value: selectFrom[0] && selectFrom[0].currency,
+          value: mayHave ? mayHave : selectFrom[0] && selectFrom[0].currency,
         },
       ]);
       setSelectValue(selectFrom[0]);
