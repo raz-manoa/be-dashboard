@@ -27,6 +27,7 @@ export interface CurrencyInfo {
   precision: number;
   countryCode?: string | null;
   icon?: string;
+  supportedCurrencies?: ECurrency[];
 }
 
 interface UsdBalance {

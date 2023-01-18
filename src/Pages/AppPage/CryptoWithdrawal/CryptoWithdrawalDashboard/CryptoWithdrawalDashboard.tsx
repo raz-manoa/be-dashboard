@@ -23,42 +23,46 @@ import {
   useCryptoWithdrawalContext,
 } from "../CryptoWithdrawalContext";
 
-const cryptoData: { [c in ECurrency]?: CurrencyInfo } = {
-  [ECurrency.SOL]: {
-    id: ECurrency.SOL,
-    sign: "SOL",
-    name: "Solana",
-    isCrypto: true,
-    precision: 8,
-    icon: Solana,
-  },
-  [ECurrency.BTC]: {
-    id: ECurrency.BTC,
-    sign: "₿",
-    name: "Bitcoin",
-    isCrypto: true,
-    precision: 8,
-    icon: Btc,
-  },
-  [ECurrency.ETH]: {
-    id: ECurrency.ETH,
-    sign: "Ξ",
-    name: "Ethereum",
-    isCrypto: true,
-    precision: 8,
-    icon: Ethereum,
-  },
-};
-
 const CryptoWithdrawalDashboard = () => {
   useSetAppLayoutTitle("Crypto Withdrawal");
   const { setForm } = useCryptoWithdrawalContext();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [accounts, setAccounts] = useState<AccountsResponse[]>([]);
   const [form] = useForm<CryptoWithdrawalFormType>();
+  const [availableCurrency, setAvailableCurrency] = useState<ECurrency[]>([]);
   const [error, setError] = useState<"error" | "success">();
 
   const navigate = useNavigate();
+
+  const chainData: { [c in ECurrency]?: CurrencyInfo } = {
+    [ECurrency.SOL]: {
+      id: ECurrency.SOL,
+      sign: "SOL",
+      name: "Solana",
+      isCrypto: true,
+      precision: 8,
+      icon: Solana,
+      supportedCurrencies: [ECurrency.SOL],
+    },
+    [ECurrency.BTC]: {
+      id: ECurrency.BTC,
+      sign: "₿",
+      name: "Bitcoin",
+      isCrypto: true,
+      precision: 8,
+      icon: Btc,
+      supportedCurrencies: [ECurrency.BTC],
+    },
+    [ECurrency.ETH]: {
+      id: ECurrency.ETH,
+      sign: "Ξ",
+      name: "Ethereum",
+      isCrypto: true,
+      precision: 8,
+      icon: Ethereum,
+      supportedCurrencies: [ECurrency.ETH, ECurrency.BTC],
+    },
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -72,12 +76,12 @@ const CryptoWithdrawalDashboard = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  const availableCurrency = useMemo(() => {
-    const availableSign: ECurrency[] = Object.keys(cryptoData) as ECurrency[];
+  const availableChain = useMemo(() => {
+    const availableSign: ECurrency[] = Object.keys(chainData) as ECurrency[];
     return accounts.filter((account) =>
       availableSign.includes(account.currency)
     );
-  }, [cryptoData, accounts]);
+  }, [chainData, accounts]);
 
   useEffect(() => {
     const fieldValue = form.getFieldsValue();
@@ -85,19 +89,24 @@ const CryptoWithdrawalDashboard = () => {
       form.setFields([
         {
           name: ["chain"],
-          value: availableCurrency[0] && availableCurrency[0].currency,
+          value: availableChain[0] && availableChain[0].currency,
         },
       ]);
     }
-    if (!fieldValue.currency) {
+    if (!fieldValue.currency && availableChain[0]) {
+      const supportedCurrencies: ECurrency[] = chainData[
+        availableChain[0].currency
+      ]?.supportedCurrencies || [availableChain[0].currency];
+
+      setAvailableCurrency(supportedCurrencies);
       form.setFields([
         {
           name: ["currency"],
-          value: availableCurrency[0] && availableCurrency[0].currency,
+          value: availableChain[0].currency,
         },
       ]);
     }
-  }, [availableCurrency]);
+  }, [availableChain]);
 
   const handleTransactionFee = async () => {
     const { amount, currency, address } = form.getFieldsValue();
@@ -108,7 +117,6 @@ const CryptoWithdrawalDashboard = () => {
     });
 
     if (response.success === true) {
-      console.log("setFee", response.fee);
       form.setFields([
         {
           name: ["fee"],
@@ -135,6 +143,16 @@ const CryptoWithdrawalDashboard = () => {
       navigate("review");
     } catch (error) {
       console.log(error);
+    }
+  };
+  const handleChainChange = (e: RadioChangeEvent) => {
+    const value = e.target.value as ECurrency;
+
+    if (chainData[value]) {
+      const supportedCurrencies: ECurrency[] = chainData[value]
+        ?.supportedCurrencies || [value];
+      setAvailableCurrency(supportedCurrencies);
+      form.setFieldValue(["currency"], supportedCurrencies[0]);
     }
   };
 
@@ -167,8 +185,11 @@ const CryptoWithdrawalDashboard = () => {
               },
             ]}
           >
-            <Radio.Group className={styles.withdrawal__radio}>
-              {availableCurrency.map((item, index) => {
+            <Radio.Group
+              className={styles.withdrawal__radio}
+              onChange={handleChainChange}
+            >
+              {availableChain.map((item, index) => {
                 return (
                   <Radio key={item.currency} value={item.currency}>
                     {item.currency}
@@ -181,11 +202,11 @@ const CryptoWithdrawalDashboard = () => {
             <Form.Item shouldUpdate={() => true} noStyle>
               {({ getFieldValue }) => {
                 const chain = getFieldValue("chain");
-                const chainItem = availableCurrency.find(
+                const chainItem = availableChain.find(
                   (c) => c.currency === chain
                 );
                 if (!chainItem) return null;
-                const data = cryptoData[chainItem.currency];
+                const data = chainData[chainItem.currency];
                 return (
                   <>
                     <img src={data?.icon || ""} alt={data?.name || "icon"} />
@@ -256,7 +277,7 @@ const CryptoWithdrawalDashboard = () => {
                 validator: (rule, value, callback) => {
                   const currency = getFieldValue("currency");
                   const parsedValue = parseFloat(value) || 0;
-                  const currencyItem = availableCurrency.find(
+                  const currencyItem = availableChain.find(
                     (c) => c.currency === currency
                   );
                   if (!currencyItem) {
@@ -277,7 +298,7 @@ const CryptoWithdrawalDashboard = () => {
           <FormCustom.Select
             name="currency"
             placeholder="currency"
-            options={availableCurrency.map(({ currency }) => ({
+            options={availableCurrency.map((currency) => ({
               label: currency,
               value: currency,
             }))}
@@ -287,7 +308,7 @@ const CryptoWithdrawalDashboard = () => {
         <Form.Item shouldUpdate={() => true} noStyle>
           {({ getFieldValue }) => {
             const currency = getFieldValue("currency");
-            const currencyItem = availableCurrency.find(
+            const currencyItem = availableChain.find(
               (c) => c.currency === currency
             );
             if (!currencyItem) return null;
