@@ -28,7 +28,6 @@ const BeNetworkPageDashboard = () => {
   const [currentPhone, setCurrentPhone] = useState(false);
   const [currentBeId, setCurrentBeId] = useState(false);
   const [accounts, setAccounts] = useState<AccountsResponse[]>([]);
-  const [selectedAccount, setSelectedAccount] = useState<AccountsResponse>();
   const [transactionFee, setTransactionFee] = useState<ITransactionFree>();
   const [recipient, setRecipient] = useState<{
     id: string;
@@ -39,9 +38,8 @@ const BeNetworkPageDashboard = () => {
     const accountResponse = await companyDataEndpoint.getMyAccounts();
     if (accountResponse) {
       setAccounts(accountResponse);
-      if (accountResponse[0] && !selectedAccount) {
+      if (accountResponse[0]) {
         form.setFieldValue("currency", accountResponse[0].currency);
-        setSelectedAccount(accountResponse[0]);
       }
     }
   };
@@ -70,14 +68,6 @@ const BeNetworkPageDashboard = () => {
   useEffect(() => {
     fetchAccounts();
   }, []);
-  const handleCurrencyChange: FormSelectProps<AccountsResponse>["onChange"] = (
-    value,
-    option
-  ) => {
-    if (!Array.isArray(option)) {
-      setSelectedAccount(option.data);
-    }
-  };
 
   const handleContinue = async (e: any) => {
     e.preventDefault();
@@ -102,6 +92,7 @@ const BeNetworkPageDashboard = () => {
           <div className={`common__field-wrap`}>
             <FormCustom.Input
               name="amount"
+              dependencies={["currency"]}
               placeholder="0.00"
               label="Leaving Account:"
               color="grey"
@@ -112,16 +103,20 @@ const BeNetworkPageDashboard = () => {
                   required: true,
                   message: "Amount is required",
                 },
-                {
+                ({ getFieldValue }) => ({
                   validator: (rule, value, callback) => {
                     const data = parseFloat(value) || 0;
-                    if (selectedAccount && data > selectedAccount.balance) {
+                    const selected = getFieldValue("currency");
+                    const selectedItem = accounts.find(
+                      (account) => account.currency === selected
+                    );
+
+                    if (selectedItem && data > selectedItem.balance) {
                       callback("The amount is not available");
                     }
                     callback();
                   },
-                },
-
+                }),
                 {
                   min: 0,
                   message: "Amount is required",
@@ -144,18 +139,28 @@ const BeNetworkPageDashboard = () => {
               ]}
               optionLabelProp="value"
               dropdownMatchSelectWidth={false}
-              onChange={handleCurrencyChange}
             />
           </div>
           <div className="common__txt">
-            <Text type="p" tag="p" variant="grey">
-              <strong>
-                {selectedAccount
-                  ? `${selectedAccount.balance} ${selectedAccount.currency}`
-                  : 0}
-              </strong>{" "}
-              available to transfer
-            </Text>
+            <Form.Item dependencies={["currency"]}>
+              {({ getFieldValue }) => {
+                const selected = getFieldValue("currency");
+                const selectedItem = accounts.find(
+                  (account) => account.currency === selected
+                );
+                return (
+                  <Text type="p" tag="p" variant="grey">
+                    <strong>
+                      {selectedItem
+                        ? `${selectedItem.balance} ${selectedItem.currency}`
+                        : 0}
+                    </strong>{" "}
+                    available to transfer
+                  </Text>
+                );
+              }}
+            </Form.Item>
+
             {/* <Text type="p" tag="p" variant="grey">
               Transaction fee <strong>0 USD</strong>
             </Text> */}
@@ -175,6 +180,10 @@ const BeNetworkPageDashboard = () => {
                       name: "withBeid",
                       value: false,
                     },
+                    {
+                      name: "beid",
+                      value: null,
+                    },
                   ]);
                   setCurrentBeId(false);
                 }
@@ -187,7 +196,7 @@ const BeNetworkPageDashboard = () => {
               color="grey"
               type="text"
               className={styles.input__field}
-              dependencies={["withPhone"]}
+              dependencies={["withPhone", "withBeid"]}
               rules={[
                 ({ getFieldValue }) => ({
                   validator: (rule, value, callback) => {
@@ -233,6 +242,10 @@ const BeNetworkPageDashboard = () => {
                       name: "withPhone",
                       value: false,
                     },
+                    {
+                      name: "phone",
+                      value: null,
+                    },
                   ]);
                   setCurrentPhone(false);
                 }
@@ -245,7 +258,7 @@ const BeNetworkPageDashboard = () => {
               color="grey"
               type="text"
               className={styles.input__field}
-              dependencies={["withBeid"]}
+              dependencies={["withBeid", "withPhone"]}
               rules={[
                 ({ getFieldValue }) => ({
                   validator: (rule, value, callback) => {
