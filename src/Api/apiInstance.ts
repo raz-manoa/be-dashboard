@@ -1,7 +1,7 @@
 import apiConfig from "@/Config/api.config";
 import axios from "axios";
 
-export const getAxiosInstance = (baseUrl: string = "") => {
+export const getAxiosInstance = (baseUrl: string = "https://staging-api.befinancialgroup.com") => {
   const baseURL = baseUrl || apiConfig.apiHost;
   return axios.create({
     baseURL,
