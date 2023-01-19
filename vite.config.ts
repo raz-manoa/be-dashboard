@@ -8,20 +8,23 @@ dotenv.config();
 export default defineConfig({
   plugins: [react()],
   build: {
-    assetsDir: 'static/js',
-    // rollupOptions: {
-    //   output: {
-    //     assetFileNames: (assetInfo) => {
-    //       let extType = assetInfo.name.split('.').at(1);
-    //       if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
-    //         extType = 'img';
-    //       }
-    //       return `assets/${extType}/[name]-[hash][extname]`;
-    //     },
-    //     chunkFileNames: 'static/js/[name]-[hash].js',
-    //     entryFileNames: 'static/js/[name]-[hash].js'
-    //   }
-    // }
+    outDir: "dist",
+    assetsDir: "static/js",
+    rollupOptions: {
+      output: {
+        assetFileNames: (assetInfo) => {
+          let extType = assetInfo.name.split(".").at(1);
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
+            extType = "img";
+          } else if (/eot|ttf|woff/i.test(extType)) {
+            extType = "fonts/" + extType;
+          }
+          return `companies-static/${extType}/[name]-[hash][extname]`;
+        },
+        chunkFileNames: "companies-static/js/[name]-[hash].js",
+        entryFileNames: "companies-static/js/[name]-[hash].js",
+      },
+    },
   },
   resolve: {
     alias: {
