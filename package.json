@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy-demo": "vite build && rsync -W -avhp -e \"ssh -i $HOME/Downloads/bebank.pem\" --ignore-times dist/ ubuntu@13.251.192.60:/home/ubuntu/companies-demo"
   },
   "dependencies": {
     "antd": "^4.23.4",

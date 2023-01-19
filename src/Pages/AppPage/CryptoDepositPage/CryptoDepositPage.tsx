@@ -12,14 +12,9 @@ const CryptoDepositPage = () => {
   const [data, setData] = useState<any[]>([]);
   useEffect(() => {
     async function getInfo() {
-      const company = localStorage.getItem("company");
-      // const parsedCompany = JSON.parse(company || "");
-      // @ts-ignore
-      const addresses = {
-        ETH: "sdfqsdf",
-        BTC: "suoif",
-        SOL: "xxxssd",
-      };
+      const company = localStorage.getItem('company') || '';
+      const parsedCompany = JSON.parse(company);
+      const addresses = JSON.parse(parsedCompany.addresses);
       const responseData = [
         {
           name: "Ethereum",
