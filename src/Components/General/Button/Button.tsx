@@ -7,6 +7,7 @@ interface ButtonProps {
   children: ReactNode;
   tag?: "link" | "button";
   to?: To;
+  active: boolean;
   onClick?(e: React.MouseEvent): void;
 }
 
@@ -17,14 +18,15 @@ export default function Button(props: ButtonProps) {
     children,
     tag = "button",
     to,
+    active = true,
     onClick,
   } = props;
-
+  console.log(props);
   const ButtonTag = tag;
 
   return (
     <>
-      {tag === "link" ? (
+      {(tag === "link" && active) ? (
         <Link
           to={to as To}
           className={`${styles.btn} ${styles[`btn__${type}`]} ${className}`}

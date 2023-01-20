@@ -7,10 +7,13 @@ import {useForm} from "antd/lib/form/Form";
 import {useNavigate} from "react-router-dom";
 import CompanyData from "@/Api/endpoints/companyData.endpoint";
 import {IUser} from "@/Interfaces/IUser";
+import Alert from "antd/es/alert";
+import { useState } from "react";
 
 export default function SecurityConfimationPage() {
     const [form] = useForm<{ otp: string }>();
     const navigate = useNavigate();
+    const [error, setError] = useState<any>(null);
 
     const verify = async () => {
         try {
@@ -33,29 +36,35 @@ export default function SecurityConfimationPage() {
                 });
             }
         } catch (error) {
+            setError('Wrong OTP.')
             console.log('Verify error', error);
         }
     };
     return (
         <LoginLayout title="Security  Confirmation">
-            <FormCustom form={form}>
-                <FormCustom.Input
-                    name="otp"
-                    color="red"
-                    placeholder="Enter OTP PIN received by text"
-                    type="text"
-                    rules={[
-                        {
-                            required: true,
-                            message: "Please enter OTP",
-                        },
-                    ]}
-                    className={styles.field__confirm}
-                />
-                <Button type="white" className={styles.btn} onClick={verify}>
-                    Confirm
-                </Button>
-            </FormCustom>
+            <div>
+                {error && (
+                    <Alert message={error} type="info" className="mb-8" />
+                )}
+                <FormCustom form={form}>
+                    <FormCustom.Input
+                        name="otp"
+                        color="red"
+                        placeholder="Enter OTP PIN received by text"
+                        type="text"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please enter OTP",
+                            },
+                        ]}
+                        className={styles.field__confirm}
+                    />
+                    <Button active={true} type="white" className={styles.btn} onClick={verify}>
+                        Confirm
+                    </Button>
+                </FormCustom>
+            </div>
         </LoginLayout>
     );
 }

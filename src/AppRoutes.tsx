@@ -41,7 +41,7 @@ function AppRoutes() {
       }, */
       children: mapRoutes(appRoutes),
     },
-  ]);
+  ], { basename: "/companies" });
   return <RouterProvider router={router} />;
 }
 
