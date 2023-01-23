@@ -38,7 +38,7 @@ export default function CryptoDepositPageItem(
           {identity}
         </Text>
       </div>
-      <Button type="primary" className={styles.btn} onClick={handleCopy}>
+      <Button type="primary" className={styles.btn} onClick={handleCopy} active={true}>
         Copy Address
       </Button>
       <QRCode

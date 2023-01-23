@@ -8,6 +8,10 @@ import {
   UGXSvg,
   TZSSvg,
   MWKSvg,
+  BTCSvg,
+  ETHSvg,
+  SOLSvg,
+  USDCSvg
 } from "@/Assets/CurrencyFlags";
 import { ECurrency } from "@/Interfaces/Currency";
 
@@ -21,6 +25,10 @@ const mapCurrencyFlag: Record<ECurrency, string> = {
   [ECurrency.UGX]: UGXSvg,
   [ECurrency.TZS]: TZSSvg,
   [ECurrency.MWK]: MWKSvg,
+  [ECurrency.BTC]: BTCSvg,
+  [ECurrency.ETH]: ETHSvg,
+  [ECurrency.SOL]: SOLSvg,
+  [ECurrency.USDC]: USDCSvg
 };
 const mapCurrencyLabel: Record<ECurrency, string> = {
   [ECurrency.USD]: "US Dollar",
@@ -32,6 +40,10 @@ const mapCurrencyLabel: Record<ECurrency, string> = {
   [ECurrency.UGX]: "Ugandan Shilling",
   [ECurrency.TZS]: "Tanzanian Shilling",
   [ECurrency.MWK]: "Malawian Kwacha",
+  [ECurrency.BTC]: "Bitcoin",
+  [ECurrency.ETH]: "Ethereum",
+  [ECurrency.SOL]: "Solana",
+  [ECurrency.USDC]: "USD Coin"
 };
 
 export const currencyToFlag = (currency: ECurrency) =>

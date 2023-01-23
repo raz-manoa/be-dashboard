@@ -7,3 +7,7 @@ export { default as KESSvg } from "./KES.svg";
 export { default as UGXSvg } from "./UGX.svg";
 export { default as TZSSvg } from "./TZS.svg";
 export { default as MWKSvg } from "./MWK.svg";
+export { default as BTCSvg } from "./BTC.svg";
+export { default as ETHSvg } from "./ETH.svg";
+export { default as SOLSvg } from "./SOL.svg";
+export { default as USDCSvg } from "./USDC.svg";
