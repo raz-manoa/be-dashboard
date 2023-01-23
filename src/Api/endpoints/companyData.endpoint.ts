@@ -143,19 +143,19 @@ class CompanyDataEndpoint {
   };
   fetchIdentity = async (
     id: string,
-    search: any
+    phone: any
   ): Promise<{
     id: string;
     identity: string;
     success?: boolean;
   }> => {
     return apiInstance
-      .post(`api/admin/companies/phone/recipient`, { search })
+      .post(`api/admin/companies/phone/recipient`, { phone })
       .then(({ data }) => data);
   };
   sendBeNetwork = async (id: string, body: BeNetworkFormType): Promise<any> => {
     return apiInstance
-      .post(`api/admin/companies/benetwork`, body)
+      .post(`api/admin/companies/${id}/bebanktransfer`, body)
       .then(({ data }) => data);
   };
   mocks = {

@@ -95,7 +95,16 @@ export default function BeNetworkPageReview() {
 
   const handleConfirm = async () => {
     if (form) {
-      const data = await companyDataEndpoint.sendBeNetwork("", form);
+      const companyId = localStorage.getItem("companyId") || "";
+      const data1 = {
+        currency: form.currency,
+        amount: Number(form.amount),
+        message: form.message,
+        type: 'bebanktransfer',
+        // @ts-ignore
+        receiverId: form.recipient.id
+      }
+      const data = await companyDataEndpoint.sendBeNetwork(companyId, data1);
       if (data && setConfirmation) {
         setConfirmation(data);
         navigate("/app/be-network/confirm");
