@@ -23,13 +23,7 @@ export const transactionPageTableColumn: (options: {
       render: (value: TransactionPageTableData["transactionType"]) => {
         return (
           <Icon
-            icon={`${
-              value.includes("Bank Transfer")
-                ? "bank-transfert"
-                : value.includes("QR Code Payment")
-                ? "qr"
-                : "saving-withdraw"
-            }`}
+            icon={value}
             size={16}
             color={"var(--red)"}
           />
