@@ -17,7 +17,9 @@ function getTransfer(transaction: ITransaction) {
 
 function getAmount(transaction: ITransaction, companyId: string) {
   const transfer = transaction.Saving || transaction.BebankTransfer || transaction.InviteTransfer || transaction.Exchange || transaction.OtherBankTransfer || transaction.RemittanceTransfer;
+  // @ts-ignore
   if (transfer.name === 'exchange' || transfer.name === 'crypto-exchange') {
+    // @ts-ignore
     return `-${transfer.amountFromWithCommission} ${transfer.currencyFrom}/+${transfer.amountTo} ${transfer.currencyTo}`
   }
   if (companyId === transaction.sender.id) {
@@ -39,6 +41,7 @@ export default function TransactionPageTable() {
       const changed = transactions.map(item => {
         // @ts-ignore
         item.transfer = getTransfer(item);
+        // @ts-ignore
         item.beid = item.sender.identifyNumber.toString().padStart(8, `${item.sender.identifyPrefix}000000`);
         // @ts-ignore
         item.amount = getAmount(item, companyId);
@@ -49,6 +52,7 @@ export default function TransactionPageTable() {
         }
         return item;
       })
+      // @ts-ignore
       setTransactions(changed);
     }
     getInfo();

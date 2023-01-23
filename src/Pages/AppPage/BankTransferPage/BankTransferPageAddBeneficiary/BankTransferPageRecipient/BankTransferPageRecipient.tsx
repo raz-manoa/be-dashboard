@@ -1,5 +1,5 @@
 import Card from "@/Components/Display/Card/Card";
-import styles from "./BankTransfertPageRecipient.module.scss";
+import styles from "./BankTransferPageRecipient.module.scss";
 import React, { useEffect, useState } from "react";
 import Text from "@/Components/General/Text/Text";
 import { FormCustom } from "@/Components/DataEntry/FormCustom";
@@ -8,7 +8,7 @@ import Button from "@/Components/General/Button/Button";
 import { useNavigate } from "react-router-dom";
 import Icon from "@/Components/General/Icon/Icon";
 import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
-import { useBankTransfertPageContext } from "../../BankTransfertPageContext";
+import { useBankTransferPageContext } from "../../BankTransferPageContext";
 
 // TODO: set recipient type
 export interface IRecipientForm {
@@ -22,20 +22,20 @@ export interface IRecipientForm {
   account_number: string;
   message: string;
 }
-interface BankTransfertPageRecipientProps {
+interface BankTransferPageRecipientProps {
   onAddBeneficiary?(e: React.MouseEvent): void;
   overlay: boolean;
   onContinue?: () => void;
 }
 
-export default function BankTransfertPageRecipient(
-  props: BankTransfertPageRecipientProps
+export default function BankTransferPageRecipient(
+  props: BankTransferPageRecipientProps
 ) {
   const { onAddBeneficiary, onContinue, overlay } = props;
   const [countries, setCountries] = useState<
     Array<{ value: string; label: string }>
   >([]);
-  const { setForm } = useBankTransfertPageContext();
+  const { setForm } = useBankTransferPageContext();
   const navigate = useNavigate();
   const [form] = useForm<IRecipientForm>();
 
@@ -201,13 +201,13 @@ export default function BankTransfertPageRecipient(
               form.validateFields();
               navigate({ pathname: "/app/bank-transfer" });
             }}
-          >
+           active={true}>
             Back
           </Button>
-          <Button type="default" onClick={onAddBeneficiary}>
+          <Button active={true} type="default" onClick={onAddBeneficiary}>
             ADD BENEFICIARY
           </Button>
-          <Button type="primary" onClick={handleContinue}>
+          <Button active={true} type="primary" onClick={handleContinue}>
             Continue
           </Button>
         </div>

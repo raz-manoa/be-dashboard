@@ -55,31 +55,31 @@ const ForeignExchangePageDasboard = React.lazy(
       "../Pages/AppPage/ForeignExchangePage/ForeignExchangePageDasboard/ForeignExchangePageDasboard"
     )
 );
-const BankTransfertPage = React.lazy(
-  () => import("../Pages/AppPage/BankTransfertPage/BankTransfertPage")
+const BankTransferPage = React.lazy(
+  () => import("../Pages/AppPage/BankTransferPage/BankTransferPage")
 );
 const BankTransfertPageSuccess = React.lazy(
   () =>
     import(
-      "../Pages/AppPage/BankTransfertPage/BankTransfertPageSuccess/BankTransfertPageSucces"
+      "../Pages/AppPage/BankTransferPage/BankTransferPageSuccess/BankTransferPageSucces"
     )
 );
 const BankTransfertPageReview = React.lazy(
   () =>
     import(
-      "../Pages/AppPage/BankTransfertPage/BankTransfertPageReview/BankTransfertPageReview"
+      "../Pages/AppPage/BankTransferPage/BankTransferPageReview/BankTransferPageReview"
     )
 );
 const BankTransfertPageDashboard = React.lazy(
   () =>
     import(
-      "@/Pages/AppPage/BankTransfertPage/BankTransfertPageDashboard/BankTransfertPageDashboard"
+      "@/Pages/AppPage/BankTransferPage/BankTransferPageDashboard/BankTransferPageDashboard"
     )
 );
 const BankTransfertPageAddBeneficiary = React.lazy(
   () =>
     import(
-      "@/Pages/AppPage/BankTransfertPage/BankTransfertPageAddBeneficiary/BankTransfertPageAddBeneficiary"
+      "@/Pages/AppPage/BankTransferPage/BankTransferPageAddBeneficiary/BankTransferPageAddBeneficiary"
     )
 );
 const SavingsPage = React.lazy(
@@ -253,8 +253,8 @@ const sidebarRoutes: ISidebarRoute[] = [
   {
     path: "bank-transfer",
     name: "Bank Transfer",
-    icon: "bank-transfert",
-    component: BankTransfertPage,
+    icon: "bank-transfer",
+    component: BankTransferPage,
     children: [
       {
         path: "",

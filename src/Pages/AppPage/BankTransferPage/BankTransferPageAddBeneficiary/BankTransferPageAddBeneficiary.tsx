@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
-import styles from "./BankTransfertPageAddBeneficiary.module.scss";
+import styles from "./BankTransferPageAddBeneficiary.module.scss";
 import BankTransfertPageAmount from "./BankTransfertPageAmount/BankTransfertPageAmount";
-import BankTransfertPageRecipient from "./BankTransfertPageRecipient/BankTransfertPageRecipient";
+import BankTransferPageRecipient from "./BankTransferPageRecipient/BankTransferPageRecipient";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
-import BankTransfertPageDashboardModal from "./BankTransfertPageDashboardModal/BankTransfertPageDashboardModal";
+import BankTransferPageDashboardModal from "./BankTransferPageDashboardModal/BankTransferPageDashboardModal";
 import { useNavigate } from "react-router-dom";
 
-export default function BankTransfertPageAddBeneficiary() {
+export default function BankTransferPageAddBeneficiary() {
   useSetAppLayoutTitle("Bank Transfer");
 
   const navigate = useNavigate();
@@ -32,12 +32,12 @@ export default function BankTransfertPageAddBeneficiary() {
   return (
     <div className={styles.card__container} ref={cardRef}>
       <BankTransfertPageAmount overlay={isModalOpen} />
-      <BankTransfertPageRecipient
+      <BankTransferPageRecipient
         overlay={isModalOpen}
         onAddBeneficiary={handleShowModal}
         onContinue={handleContinue}
       />
-      <BankTransfertPageDashboardModal
+      <BankTransferPageDashboardModal
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}

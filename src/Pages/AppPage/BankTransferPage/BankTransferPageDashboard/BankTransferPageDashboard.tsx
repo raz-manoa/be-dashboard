@@ -8,13 +8,13 @@ import companyDataEndpoint, {
   AccountsResponse,
 } from "@/Api/endpoints/companyData.endpoint";
 import { useState, useEffect } from "react";
-import { useBankTransfertPageContext } from "../BankTransfertPageContext";
+import { useBankTransferPageContext } from "../BankTransferPageContext";
 
-const BankTransfertPageDashboard = () => {
+const BankTransferPageDashboard = () => {
   useSetAppLayoutTitle("Bank Transfer");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [accounts, setAccounts] = useState<AccountsResponse[]>([]);
-  const { setForm } = useBankTransfertPageContext();
+  const { setForm } = useBankTransferPageContext();
 
   const navigate = useNavigate();
 
@@ -52,4 +52,4 @@ const BankTransfertPageDashboard = () => {
   );
 };
 
-export default BankTransfertPageDashboard;
+export default BankTransferPageDashboard;

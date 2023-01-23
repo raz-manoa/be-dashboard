@@ -4,11 +4,11 @@ import CartAmountConfirm from "@/Components/Display/CardAmount/CartAmountConfirm
 import CardConfirm from "@/Components/Display/ConfirmModal/CardConfirm";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { Navigate } from "react-router-dom";
-import { useBankTransfertPageContext } from "../BankTransfertPageContext";
+import { useBankTransferPageContext } from "../BankTransferPageContext";
 
-export default function BankTransfertPageSucces() {
+export default function BankTransferPageSucces() {
   useSetAppLayoutTitle("Bank Transfer");
-  const { form } = useBankTransfertPageContext();
+  const { form } = useBankTransferPageContext();
 
   if (!form) {
     return <Navigate to="/app/bank-transfer" />;

@@ -1,7 +1,7 @@
 import Card from "@/Components/Display/Card/Card";
 import Text from "@/Components/General/Text/Text";
 import styles from "./BankTransfertPageAmount.module.scss";
-import { useBankTransfertPageContext } from "../../BankTransfertPageContext";
+import { useBankTransferPageContext } from "../../BankTransferPageContext";
 import { formatCardAmount } from "@/Components/Display/CardAmount/CardAmount";
 
 interface BankTransfertPageAmountProps {
@@ -12,7 +12,7 @@ export default function BankTransfertPageAmount(
   props: BankTransfertPageAmountProps
 ) {
   const { overlay } = props;
-  const { form } = useBankTransfertPageContext();
+  const { form } = useBankTransferPageContext();
   if (!form) {
     return null;
   }

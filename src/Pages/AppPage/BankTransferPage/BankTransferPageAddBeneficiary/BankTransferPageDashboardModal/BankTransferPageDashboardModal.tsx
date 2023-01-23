@@ -3,15 +3,15 @@ import CardConfirmItem, {
 } from "@/Components/Display/CardConfirm/CardConfirmItem";
 import Modal, { ModalProps } from "antd/lib/modal";
 import React from "react";
-import { useBankTransfertPageContext } from "../../BankTransfertPageContext";
-import styles from "./BankTransfertPageDashboardModal.module.scss";
+import { useBankTransferPageContext } from "../../BankTransferPageContext";
+import styles from "./BankTransferPageDashboardModal.module.scss";
 
 interface BankTransfertPageDashboardProps extends ModalProps {}
 
-export default function BankTransfertPageDashboardModal(
+export default function BankTransferPageDashboardModal(
   props: BankTransfertPageDashboardProps
 ) {
-  const { form } = useBankTransfertPageContext();
+  const { form } = useBankTransferPageContext();
   const dataModal: CardModalItemProps[] =
     form && form.beneficiary
       ? [

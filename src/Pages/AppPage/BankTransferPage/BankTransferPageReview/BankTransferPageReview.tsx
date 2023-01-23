@@ -4,15 +4,15 @@ import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirm
 import Text from "@/Components/General/Text/Text";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { Navigate, useNavigate } from "react-router-dom";
-import { useBankTransfertPageContext } from "../BankTransfertPageContext";
+import { useBankTransferPageContext } from "../BankTransferPageContext";
 import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
 import Alert from "antd/es/alert";
 import { useState } from "react";
 
-export default function BankTransfertPageReview() {
+export default function BankTransferPageReview() {
   useSetAppLayoutTitle("Bank Transfer");
   const navigate = useNavigate();
-  const { form } = useBankTransfertPageContext();
+  const { form } = useBankTransferPageContext();
   const [error, setError] = useState<boolean>(false);
 
   if (!form) {
