@@ -6,11 +6,14 @@ import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useBeNetworkPageContext } from "../BeNetworkPageContext";
 import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
+import Alert from "antd/es/alert";
+import {useState} from "react";
 
 export default function BeNetworkPageReview() {
   useSetAppLayoutTitle("Be Network");
   const navigate = useNavigate();
   const { form, setConfirmation } = useBeNetworkPageContext();
+  const [error, setError] = useState<boolean>(false);
   if (!form) {
     return <Navigate to="/app/be-network" />;
   }
@@ -95,32 +98,41 @@ export default function BeNetworkPageReview() {
 
   const handleConfirm = async () => {
     if (form) {
-      const companyId = localStorage.getItem("companyId") || "";
-      const data1 = {
-        currency: form.currency,
-        amount: Number(form.amount),
-        message: form.message,
-        type: 'bebanktransfer',
-        // @ts-ignore
-        receiverId: form.recipient.id
-      }
-      const data = await companyDataEndpoint.sendBeNetwork(companyId, data1);
-      if (data && setConfirmation) {
-        setConfirmation(data);
-        navigate("/app/be-network/confirm");
+      try {
+        const companyId = localStorage.getItem("companyId") || "";
+        const data1 = {
+          currency: form.currency,
+          amount: Number(form.amount),
+          message: form.message,
+          type: 'bebanktransfer',
+          // @ts-ignore
+          receiverId: form.recipient.id
+        }
+        const data = await companyDataEndpoint.sendBeNetwork(companyId, data1);
+        if (data && setConfirmation) {
+          setConfirmation(data);
+          navigate("/app/be-network/confirm");
+        }
+      } catch (e) {
+        setError(true);
       }
     }
   };
 
   return (
-    <CardConfirm
-      title="Review"
-      data={data}
-      className={`common__card ${styles.beNetwork_review}`}
-      btnPrimary="back"
-      btnSecondary="Confirm"
-      onClickFirstBtn={handleBack}
-      onClickSecondBtn={handleConfirm}
-    />
+      <div>
+        {error && (
+            <Alert message="Transfer failed" type="error" className="mb-8" />
+        )}
+        <CardConfirm
+          title="Review"
+          data={data}
+          className={`common__card ${styles.beNetwork_review}`}
+          btnPrimary="back"
+          btnSecondary="Confirm"
+          onClickFirstBtn={handleBack}
+          onClickSecondBtn={handleConfirm}
+        />
+      </div>
   );
 }
