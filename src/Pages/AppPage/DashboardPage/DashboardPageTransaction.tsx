@@ -14,48 +14,6 @@ import {IUser} from "@/Interfaces/IUser";
 
 const paires = ["All", "USD", "EUR", "CHF", "GBP"];
 
-const transaction: CardTransactionProps[] = [
-  {
-    company: "Company retreat",
-    user: "Juan Perez",
-    transaction: "+454.00 CHF",
-    payment: "Electronic Fund Transfer",
-    icon: "bank-transfert",
-    date: "11/06/2022",
-  },
-
-  {
-    user: "John Smith",
-    transaction: "-330.00 GBP",
-    payment: "  QR Code Payment",
-    icon: "qr",
-    date: "11/06/2022",
-  },
-  {
-    user: "John Smith",
-    transaction: "-24.00 USD",
-    payment: "Savings Withdrawal",
-    icon: "saving-withdraw",
-    date: "11/06/2022",
-  },
-  {
-    company: "Company retreat",
-    user: "Juan Perez",
-    transaction: "+454.00 CHF",
-    payment: "Savings Withdrawal",
-    icon: "bank-transfert",
-    date: "11/06/2022",
-  },
-  {
-    company: "Coffee",
-    user: "Russel Sprout",
-    transaction: "-25.00 USD",
-    payment: "Electronic Fund Transfer",
-    icon: "qr",
-    date: "11/06/2022",
-  },
-];
-
 function getFullName(user: IUser) {
   return `${user.firstName} ${user.lastName}`;
 }

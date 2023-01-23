@@ -48,7 +48,7 @@ export default function TransactionPageTable() {
         // @ts-ignore
         item.fee = item.transfer.fee ? `${item.transfer.fee} ${item.currency ? item.currency : item.currencyFrom}` : ` - `;
         if (item.transactionType === 'exchange') {
-          item.transactionType = 'crypto-exchange';
+          item.transactionType = 'fx';
         }
         return item;
       })

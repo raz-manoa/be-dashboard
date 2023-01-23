@@ -15,7 +15,7 @@ export default function CardTransaction(props: CardTransactionProps) {
   const { date, company, user, payment, transaction } = props;
   let { icon } = props;
   if (icon === 'exchange') {
-    icon = 'crypto-exchange';
+    icon = 'fx';
   }
   return (
     <div className={styles.transaction}>
