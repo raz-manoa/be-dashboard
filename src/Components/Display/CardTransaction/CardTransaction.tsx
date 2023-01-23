@@ -12,7 +12,11 @@ export interface CardTransactionProps {
   transaction: string;
 }
 export default function CardTransaction(props: CardTransactionProps) {
-  const { date, icon, company, user, payment, transaction } = props;
+  const { date, company, user, payment, transaction } = props;
+  let { icon } = props;
+  if (icon === 'exchange') {
+    icon = 'crypto-exchange';
+  }
   return (
     <div className={styles.transaction}>
       <div className={styles.transaction__info}>

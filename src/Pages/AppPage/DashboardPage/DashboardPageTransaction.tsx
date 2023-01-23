@@ -63,6 +63,9 @@ function getFullName(user: IUser) {
 function getAmount(transaction: ITransaction) {
   const transfer = transaction.Saving || transaction.BebankTransfer || transaction.InviteTransfer || transaction.Exchange || transaction.OtherBankTransfer || transaction.RemittanceTransfer;
   const companyId = localStorage.getItem('companyId');
+  if (transfer.name === 'exchange' || transfer.name === 'crypto-exchange') {
+    return `-${transfer.amountFromWithCommission} ${transfer.currencyFrom}/+${transfer.amountTo} ${transfer.currencyTo}`
+  }
   if (companyId === transaction.sender.id) {
     // @ts-ignore
     return `-${transfer.amount} ${transfer.currency}`

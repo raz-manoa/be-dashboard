@@ -17,6 +17,9 @@ function getTransfer(transaction: ITransaction) {
 
 function getAmount(transaction: ITransaction, companyId: string) {
   const transfer = transaction.Saving || transaction.BebankTransfer || transaction.InviteTransfer || transaction.Exchange || transaction.OtherBankTransfer || transaction.RemittanceTransfer;
+  if (transfer.name === 'exchange' || transfer.name === 'crypto-exchange') {
+    return `-${transfer.amountFromWithCommission} ${transfer.currencyFrom}/+${transfer.amountTo} ${transfer.currencyTo}`
+  }
   if (companyId === transaction.sender.id) {
     // @ts-ignore
     return `-${transfer.amount || transfer.amountFromWithCommission} ${transfer.currency || transfer.currencyFrom}`
@@ -41,6 +44,9 @@ export default function TransactionPageTable() {
         item.amount = getAmount(item, companyId);
         // @ts-ignore
         item.fee = item.transfer.fee || 0;
+        if (item.transactionType === 'exchange') {
+          item.transactionType = 'crypto-exchange';
+        }
         return item;
       })
       setTransactions(changed);
