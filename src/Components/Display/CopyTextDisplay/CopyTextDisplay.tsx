@@ -1,6 +1,6 @@
 import Icon from "@/Components/General/Icon/Icon";
 import Text from "@/Components/General/Text/Text";
-import React from "react";
+import copy from "copy-to-clipboard";
 
 interface CopyTextDisplayProps {
   value: string;
@@ -8,7 +8,7 @@ interface CopyTextDisplayProps {
 
 const CopyTextDisplay = ({ value }: CopyTextDisplayProps) => {
   const handleCopy = () => {
-    navigator.clipboard.writeText(value);
+    copy(value);
   };
   return (
     <div className="flex items-center">
