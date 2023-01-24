@@ -1,6 +1,6 @@
 import React from "react";
 import Icon from "@/Components/General/Icon/Icon";
-import SidebarItem from "@/Components/General/SibarItem/SidebarItem";
+import SidebarItem from "@/Components/General/SidebarItem/SidebarItem";
 import BeLogoWhite from "@/Assets/Be-logo-white.svg";
 import styles from "./Sidebar.module.scss";
 import sidebarRoutes from "@/Routes/sidebarRoutes";
@@ -12,10 +12,10 @@ export default function Sidebar() {
     <div className={styles.sidebar}>
       <div className={styles.sidebar__header}>
         <Text tag="h2" type="h2" variant="white" size={19}>
-          Company Name
+            {localStorage.getItem('fullName')}
         </Text>
         <Text tag="p" type="p" size={16}>
-          Be ID: BE007054
+            {`Be ID: ${localStorage.getItem('beId')}`}
         </Text>
       </div>
       <div className={styles.sidebar__list}>

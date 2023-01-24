@@ -34,7 +34,7 @@ export default function Header(props: HeaderProps) {
               color="#546e7a"
             />
           </NavLink>
-          <NavLink to="/">
+          <NavLink to="/login" onClick={() => localStorage.clear()}>
             <Icon
               icon="logout"
               color="#546e7a"

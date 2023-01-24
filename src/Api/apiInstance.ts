@@ -6,7 +6,7 @@ export const getAxiosInstance = (baseUrl: string = "https://staging-api.befinanc
   return axios.create({
     baseURL,
     headers: {
-      authorization: localStorage.getItem("token"),
+      authorization: localStorage.getItem("token") || '',
     },
     // timeout: 10000,
     // withCredentials: true,

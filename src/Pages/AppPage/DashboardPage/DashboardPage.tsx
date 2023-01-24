@@ -30,10 +30,10 @@ const DashboardPage = () => {
 
     useSetAppLayoutTitle(
     <>
-      <span>{`Welcome ${localStorage.getItem('fullName')}`}</span>{" "}
-      <Text tag="span" size={14} weight={400} variant="grey-light">
-          {localStorage.getItem('email')}
-      </Text>
+      <span>{`Welcome ${localStorage.getItem('email')}`}</span>{" "}
+      {/*<Text tag="span" size={14} weight={400} variant="grey-light">*/}
+      {/*    {localStorage.getItem('email')}*/}
+      {/*</Text>*/}
     </>
   );
 

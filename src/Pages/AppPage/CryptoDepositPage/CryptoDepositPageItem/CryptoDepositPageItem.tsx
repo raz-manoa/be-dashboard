@@ -17,8 +17,8 @@ export default function CryptoDepositPageItem(
   props: CryptoDepositPageItemProps
 ) {
   const { title, logo, sup, code, identity, txt } = props;
-  const handleCopy = () => {
-    navigator.clipboard.writeText(identity);
+  const handleCopy = async () => {
+      await navigator.clipboard.writeText(identity);
   };
   return (
     <Card className={styles.card__crypto}>

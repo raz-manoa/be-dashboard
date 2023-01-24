@@ -21,7 +21,6 @@ export default function Button(props: ButtonProps) {
     active = true,
     onClick,
   } = props;
-  console.log(props);
   const ButtonTag = tag;
 
   return (

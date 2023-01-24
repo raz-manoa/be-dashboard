@@ -9,10 +9,13 @@ import TransactionPageTableModal from "./TransactionPageTableModal";
 import { useEffect, useRef, useState } from "react";
 import { ITransaction } from "@/Interfaces/Transaction";
 import api from "@/Api/api";
-import { transactionsMock } from "@/Api/mock/transactions.mock";
 
 function getTransfer(transaction: ITransaction) {
   return transaction.Saving || transaction.BebankTransfer || transaction.InviteTransfer || transaction.Exchange || transaction.OtherBankTransfer || transaction.RemittanceTransfer;
+}
+
+function capitalize(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function getAmount(transaction: ITransaction, companyId: string) {
@@ -47,9 +50,29 @@ export default function TransactionPageTable() {
         item.amount = getAmount(item, companyId);
         // @ts-ignore
         item.fee = item.transfer.fee ? `${item.transfer.fee} ${item.currency ? item.currency : item.currencyFrom}` : ` - `;
+        item.icon = item.transactionType;
         if (item.transactionType === 'exchange') {
-          item.transactionType = 'fx';
+          item.icon = 'fx';
         }
+        if (item.transactionType === 'bebanktransfer') {
+          item.icon = 'bank-transfer';
+        }
+        if (item.transactionType === 'bebanktransfer') {
+          item.transactionType = 'BeBank Transfer'
+        }
+        if (item.transactionType === 'otherbanktransfer') {
+          item.transactionType = 'Other Bank Transfer'
+        }
+        if (item.transactionType === 'fundswithdraw') {
+          item.transactionType = 'Funds Withdraw'
+        }
+        if (item.transactionType === 'wiretransfer') {
+          item.transactionType = 'Wire Transfer'
+        }
+        if (item.transactionType === 'qrtransfer') {
+          item.transactionType = 'QR Transfer'
+        }
+        item.transactionType = capitalize(item.transactionType);
         return item;
       })
       // @ts-ignore

@@ -26,11 +26,14 @@ export default function SecurityConfimationPage() {
                     role: 'companyAdmin',
                 };
                 const response = await api.auth.verify(payload);
-                await localStorage.setItem('companyId', response.data.company);
                 await localStorage.setItem('token', response.data.token);
+                await localStorage.setItem('companyId', response.data.company);
                 const company = await api.companyData.getCompany(response.data.company);
+                // @ts-ignore
+                // const admin = company.CompanyAdmins.find(admin => admin.email === email);
                 await localStorage.setItem('company', JSON.stringify(company));
                 await localStorage.setItem('fullName', company.firstName + ' ' + company.lastName);
+                await localStorage.setItem('beId', company.identifyNumber.toString().padStart(8, `${company.identifyPrefix}000000`));
                 navigate({
                     pathname: "app/dashboard",
                 });

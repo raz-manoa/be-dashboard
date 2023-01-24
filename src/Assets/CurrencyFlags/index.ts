@@ -11,3 +11,14 @@ export { default as BTCSvg } from "./BTC.svg";
 export { default as ETHSvg } from "./ETH.svg";
 export { default as SOLSvg } from "./SOL.svg";
 export { default as USDCSvg } from "./USDC.svg";
+export { default as AAVESvg } from "./AAVE.svg";
+export { default as DODOSvg } from "./DODO.svg";
+export { default as DOGESvg } from "./DOGE.svg";
+export { default as DYDXSvg } from "./DYDX.svg";
+export { default as FIDASvg } from "./FIDA.svg";
+export { default as SANDSvg } from "./SAND.svg";
+export { default as SERUMSvg } from "./SERUM.svg";
+export { default as SUSHISvg } from "./SUSHI.svg";
+export { default as USDTSvg } from "./USDT.svg";
+
+

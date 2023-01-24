@@ -2,6 +2,7 @@ import {IAccount} from "@/Interfaces/Account";
 import {IUser} from "@/Interfaces/IUser";
 
 export interface ITransaction {
+  icon?: string;
   transfer?: object;
   id: string;
   Account: IAccount,

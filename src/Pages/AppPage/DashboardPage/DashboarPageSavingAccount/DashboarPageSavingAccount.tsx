@@ -9,7 +9,7 @@ export default function DashboarPageSavingAccount(savings: ISaving[]) {
                 title="5% Savings Offering"
                 subtitle="Balances"
                 link={{
-                    url: "/",
+                    url: "/app/savings",
                     label: "View all",
                 }}
             />

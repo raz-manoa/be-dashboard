@@ -4,11 +4,13 @@ import { ColumnType } from "antd/es/table";
 import { statusColor } from "./TransactionPageTableModal";
 import { ITransaction } from "@/Interfaces/Transaction";
 
+// @ts-ignore
 export interface TransactionPageTableData extends ITransaction {
   transfer: object;
   beid: string;
   amount: number;
   fee: number;
+  createdAt: Date;
 }
 
 export const transactionPageTableColumn: (options: {
@@ -17,10 +19,10 @@ export const transactionPageTableColumn: (options: {
   return [
     {
       key: "icon",
-      dataIndex: "transactionType",
+      dataIndex: "icon",
       title: "",
       width: 40,
-      render: (value: TransactionPageTableData["transactionType"]) => {
+      render: (value: TransactionPageTableData["icon"]) => {
         return (
           <Icon
             icon={value}
@@ -131,9 +133,10 @@ export const transactionPageTableColumn: (options: {
       title: "Created At",
       width: 150,
       render: (value: TransactionPageTableData["createdAt"]) => {
+        // @ts-ignore
         return (
           <Text tag="span" variant="grey" size={14}>
-            {value}
+            {new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: '2-digit' ,day: '2-digit', hour: '2-digit', minute: '2-digit'}).format(Date.parse(value))}
           </Text>
         );
       },

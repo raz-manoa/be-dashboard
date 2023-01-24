@@ -11,7 +11,7 @@ import {
   BTCSvg,
   ETHSvg,
   SOLSvg,
-  USDCSvg
+  USDCSvg, AAVESvg, DODOSvg, DOGESvg, DYDXSvg, FIDASvg, SANDSvg, SERUMSvg, SUSHISvg, USDTSvg
 } from "@/Assets/CurrencyFlags";
 import { ECurrency } from "@/Interfaces/Currency";
 
@@ -28,7 +28,16 @@ const mapCurrencyFlag: Record<ECurrency, string> = {
   [ECurrency.BTC]: BTCSvg,
   [ECurrency.ETH]: ETHSvg,
   [ECurrency.SOL]: SOLSvg,
-  [ECurrency.USDC]: USDCSvg
+  [ECurrency.USDC]: USDCSvg,
+  [ECurrency.AAVE]: AAVESvg,
+  [ECurrency.DODO]: DODOSvg,
+  [ECurrency.DOGE]: DOGESvg,
+  [ECurrency.DYDX]: DYDXSvg,
+  [ECurrency.FIDA]: FIDASvg,
+  [ECurrency.SAND]: SANDSvg,
+  [ECurrency.SERUM]: SERUMSvg,
+  [ECurrency.SUSHI]: SUSHISvg,
+  [ECurrency.USDT]: USDTSvg
 };
 const mapCurrencyLabel: Record<ECurrency, string> = {
   [ECurrency.USD]: "US Dollar",
@@ -43,7 +52,16 @@ const mapCurrencyLabel: Record<ECurrency, string> = {
   [ECurrency.BTC]: "Bitcoin",
   [ECurrency.ETH]: "Ethereum",
   [ECurrency.SOL]: "Solana",
-  [ECurrency.USDC]: "USD Coin"
+  [ECurrency.USDC]: "USD Coin",
+  [ECurrency.AAVE]: 'AAVE',
+  [ECurrency.DODO]: 'DODO',
+  [ECurrency.DOGE]: 'DOGE',
+  [ECurrency.DYDX]: 'DYDX',
+  [ECurrency.FIDA]: 'FIDA',
+  [ECurrency.SAND]: 'SAND',
+  [ECurrency.SERUM]: 'SERUM',
+  [ECurrency.SUSHI]: 'SUSHI',
+  [ECurrency.USDT]: 'USDT'
 };
 
 export const currencyToFlag = (currency: ECurrency) =>

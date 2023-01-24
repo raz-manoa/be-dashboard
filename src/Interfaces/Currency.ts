@@ -11,5 +11,14 @@ export enum ECurrency {
   ETH = 'ETH',
   BTC = 'BTC',
   SOL = 'SOL',
-  USDC = 'USDC'
+  USDC = 'USDC',
+  AAVE = 'AAVE',
+  DODO = 'DODO',
+  DOGE = 'DOGE',
+  DYDX = 'DYDX',
+  FIDA = 'FIDA',
+  SAND = 'SAND',
+  SERUM = 'SERUM',
+  SUSHI = 'SUSHI',
+  USDT = 'USDT'
 }

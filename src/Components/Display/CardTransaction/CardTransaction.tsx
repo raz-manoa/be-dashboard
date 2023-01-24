@@ -11,12 +11,34 @@ export interface CardTransactionProps {
   payment: string;
   transaction: string;
 }
+function capitalize(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 export default function CardTransaction(props: CardTransactionProps) {
-  const { date, company, user, payment, transaction } = props;
-  let { icon } = props;
+  const { date, company, user, transaction } = props;
+  let { icon, payment } = props;
   if (icon === 'exchange') {
     icon = 'fx';
   }
+  if (icon === 'bebanktransfer') {
+    icon = 'bank-transfer';
+  }
+  if (payment === 'bebanktransfer') {
+    payment = 'BeBank Transfer'
+  }
+  if (payment === 'otherbanktransfer') {
+    payment = 'Other Bank Transfer'
+  }
+  if (payment === 'fundswithdraw') {
+    payment = 'Funds Withdraw'
+  }
+  if (payment === 'wiretransfer') {
+    payment = 'Wire Transfer'
+  }
+  if (payment === 'qrtransfer') {
+    payment = 'QR Transfer'
+  }
+  payment = capitalize(payment);
   return (
     <div className={styles.transaction}>
       <div className={styles.transaction__info}>
@@ -46,7 +68,7 @@ export default function CardTransaction(props: CardTransactionProps) {
           variant="grey"
           className={styles.transaction__date}
         >
-          {date}
+          {new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit'}).format(Date.parse(date))}
         </Text>
         <Text tag="h3" type="h3" variant="black">
           {transaction}
