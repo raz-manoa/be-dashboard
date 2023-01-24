@@ -29,9 +29,9 @@ export default function CurrencyItem(props: AccountsResponse) {
         <Text size={31} tag="p" variant="grey" weight={600}>
           {currencyParser(balance)}
         </Text>
-        {usdBalance && (
+        {usdBalance && currency !== 'USD' && (
           <Text size={13} tag="span" variant="grey-light">
-            = {usdBalance.currency} {currencyParser(usdBalance.value)}
+            = {usdBalance.currency.id} {currencyParser(usdBalance.value)}
           </Text>
         )}
       </div>

@@ -6,6 +6,8 @@ export interface IAccount {
   balance: number;
   lockBalance: number;
   isDefaultCurrency: boolean;
+  currencyInfo: object;
+  usdBalance: object
   userId: string;
   createdAt: string;
   updatedAt: string;

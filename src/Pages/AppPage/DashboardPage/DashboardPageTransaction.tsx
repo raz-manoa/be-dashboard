@@ -96,7 +96,7 @@ export default function DashboardPageTransaction(transactions: { transactions: I
         items={tabItems}
         tabBarExtraContent={{
           right: (
-            <Link to="" title="">
+            <Link to="/app/transactions" title="">
               <Text tag="span" variant="red" weight={500} size={14}>
                 View All
               </Text>

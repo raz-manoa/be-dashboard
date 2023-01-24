@@ -58,7 +58,7 @@ class CompanyDataEndpoint {
   };
   getAccounts = async (id: string): Promise<AccountsResponse[]> => {
     return apiInstance
-      .get(`api/admin/companies/${id}/accounts`)
+      .get(`api/admin/companies/${id}/accounts/new`)
       .then(({ data }) => data.accounts);
   };
   getMyAccounts = (): Promise<AccountsResponse[]> => {
