@@ -10,6 +10,15 @@ import CompanyData, {AccountsResponse} from "@/Api/endpoints/companyData.endpoin
 export default function DashboardCurrentAccount(accounts: { accounts: AccountsResponse[] }) {
     const data = accounts.accounts;
     const defaultAccount = data.find(account => account.isDefaultCurrency) || data[0];
+    let totalBalance = 0;
+    data.forEach(account => {
+        if (account.currency !== 'USD') {
+            // @ts-ignore
+            totalBalance += account.usdBalance.value;
+        } else {
+            totalBalance += account.balance;
+        }
+    })
 
     return (
         <div className={styles.dashboardLeft}>
@@ -32,7 +41,7 @@ export default function DashboardCurrentAccount(accounts: { accounts: AccountsRe
                         weight={700}
                         className="relative top-1"
                     >
-                        {currencyParser(defaultAccount.balance)}
+                        {currencyParser(totalBalance)}
                     </Text>
                 </Text>
             </TitleCard>
