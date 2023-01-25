@@ -101,12 +101,7 @@ export default function BankTransferPageReview() {
           IBAN: form.beneficiary.account_number,
           message: form.beneficiary.message,
         };
-        const data = await companyDataEndpoint.createBankTransfer(companyId, {
-          currencyFrom: form.from.currency,
-          currencyTo: form.to.currency,
-          amount: form.from.value,
-          type: "exchange",
-        });
+        const data = await companyDataEndpoint.createBankTransfer(companyId, body);
         navigate({
           pathname: "/app/bank-transfer/confirm",
         });

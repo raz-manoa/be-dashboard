@@ -18,7 +18,7 @@ import companyDataEndpoint, {
   AccountsResponse,
 } from "@/Api/endpoints/companyData.endpoint";
 import { FormSelectProps } from "@/Components/DataEntry/FormSelect/FormSelect";
-import { ITransactionFree } from "@/Components/Display/CardAmount/CardAmount";
+import { ITransactionFee } from "@/Components/Display/CardAmount/CardAmount";
 
 const BeNetworkPageDashboard = () => {
   useSetAppLayoutTitle("Be Network");
@@ -28,7 +28,7 @@ const BeNetworkPageDashboard = () => {
   const [currentPhone, setCurrentPhone] = useState(false);
   const [currentBeId, setCurrentBeId] = useState(false);
   const [accounts, setAccounts] = useState<AccountsResponse[]>([]);
-  const [transactionFee, setTransactionFee] = useState<ITransactionFree>();
+  const [transactionFee, setTransactionFee] = useState<ITransactionFee>();
   const [recipient, setRecipient] = useState<{
     id: string;
     identity: string;

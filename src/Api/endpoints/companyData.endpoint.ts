@@ -87,6 +87,25 @@ class CompanyDataEndpoint {
       )
       .then(({ data }) => data);
   };
+  getFeeRates = async (
+      id: string,
+      currencyFrom: string,
+      currencyTo: string,
+      amount: number
+  ): Promise<IRate> => {
+    return apiInstance
+        .get(
+            `api/admin/companies/${id}/exchange/fee/rates?currencyFrom=${currencyFrom}&currencyTo=${currencyTo}&amount=${amount}`
+        )
+        .then(({ data }) => data);
+  };
+  getWireFees = async (
+      id: string
+  ): Promise<any> => {
+    return apiInstance
+        .get(`api/admin/fee`)
+        .then(({ data }) => data.fee);
+  };
   cryptoExchange = async (id: string, body: any): Promise<ITransaction[]> => {
     return apiInstance
       .post(`api/admin/companies/${id}/crypto/exchange`, body)

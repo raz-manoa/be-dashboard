@@ -1,15 +1,17 @@
-import { FormCustom } from "@/Components/DataEntry/FormCustom";
+import {FormCustom} from "@/Components/DataEntry/FormCustom";
 import Card from "@/Components/Display/Card/Card";
 import Button from "@/Components/General/Button/Button";
 import Text from "@/Components/General/Text/Text";
-import { useForm } from "antd/es/form/Form";
+import {useForm} from "antd/es/form/Form";
 import styles from "./CardAmount.module.scss";
-import { useEffect, useState } from "react";
-import { SelectProps } from "antd/es/select";
-import { ECurrency } from "@/Interfaces/Currency";
+import {useEffect, useState} from "react";
+import {SelectProps} from "antd/es/select";
+import {ECurrency} from "@/Interfaces/Currency";
 import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
-import { IRate } from "@/Interfaces/Rate";
-import { FormInputProps } from "@/Components/DataEntry/FormInput/FormInput";
+import {IRate} from "@/Interfaces/Rate";
+import {FormInputProps} from "@/Components/DataEntry/FormInput/FormInput";
+import {Simulate} from "react-dom/test-utils";
+import error = Simulate.error;
 
 interface SelectData {
   id: string;
@@ -21,7 +23,7 @@ interface SelectData {
   createdAt: string;
   updatedAt: string;
 }
-export interface ITransactionFree {
+export interface ITransactionFee {
   value: number;
   currencyId: string;
   currency: ECurrency;
@@ -36,15 +38,16 @@ export interface ICardAmountForm {
     value: number;
     currency: ECurrency;
   };
-  transactionFee?: ITransactionFree;
+  transactionFee?: ITransactionFee;
   rate?: IRate;
 }
 interface CardAmountProps {
   title: string;
   selectFrom: SelectData[];
   selectTo: SelectData[];
-  transactionFee?: ITransactionFree;
+  transactionFee?: ITransactionFee;
   onSubmit?: (data: ICardAmountForm) => void;
+  setError?: (any) => void;
   loading?: boolean;
   showRate?: boolean;
   allowSameCurrency?: boolean;
@@ -70,14 +73,16 @@ export function CardAmount(props: CardAmountProps) {
     allowSameCurrency: hasSameCurrency = false,
     mayHave,
     onSubmit,
+    setError
   } = props;
 
   const allowSameCurrency: boolean = !!hasSameCurrency || !!mayHave;
 
   const [form] = useForm<ICardAmountForm>();
   const [selectValue, setSelectValue] = useState<SelectData>();
+  const [active, setActive] = useState<boolean>(false);
   const [transactionFee, setTransactionFee] = useState<
-    ITransactionFree | undefined
+    ITransactionFee | undefined
   >(defaultTransactionFee);
   const [fromRate, setFromRate] = useState<IRate>();
 
@@ -127,6 +132,49 @@ export function CardAmount(props: CardAmountProps) {
     }
   };
 
+  const fetchFee = async () => {
+    const fieldValue = form.getFieldsValue();
+    if (
+        fieldValue.from.currency &&
+        fieldValue.to.currency &&
+        fieldValue.from.value
+    ) {
+      const companyId = localStorage.getItem("companyId") || "";
+
+      const wireFees = await companyDataEndpoint.getWireFees(companyId);
+      const allFees = wireFees.find(item => item.type === fieldValue.to.currency);
+      if (allFees) {
+        const fee = allFees.value;
+        if (fieldValue.from.currency !== 'USD') {
+          const feeRates = await companyDataEndpoint.getFeeRates(
+              companyId,
+              'USD',
+              fieldValue.from.currency,
+              fee
+          );
+          const exchangedFee = Number(feeRates.destinationAmount);
+          setTransactionFee({ currency: ECurrency.USD, value: fee, currencyId: 'USD'});
+          if (exchangedFee + Number(fieldValue.from.value) > selectValue?.balance) {
+            setError(true);
+            setActive(false);
+          } else {
+            setError(false);
+            setActive(true);
+          }
+        } else {
+          if (fee + Number(fieldValue.from.value) > selectValue?.balance) {
+            setError(true);
+            setActive(false);
+          } else {
+            setError(false);
+            setActive(true);
+          }
+          setTransactionFee({ currency: ECurrency.USD, value: fee, currencyId: 'USD'});
+        }
+      }
+    }
+  };
+
   const handleChange: SelectProps["onChange"] = (currency) => {
     const selectedItem = selectFrom.find((item) => item.currency === currency);
     setSelectValue(selectedItem);
@@ -160,6 +208,7 @@ export function CardAmount(props: CardAmountProps) {
     }
 
     fetchRate();
+    fetchFee();
   };
   const handleFromChange: FormInputProps["onChange"] = (e) => {
     const value = e.currentTarget.value;
@@ -176,6 +225,7 @@ export function CardAmount(props: CardAmountProps) {
         }
       }
       fetchRate();
+      fetchFee();
     } else {
       form.setFields([
         {
@@ -185,7 +235,7 @@ export function CardAmount(props: CardAmountProps) {
       ]);
     }
   };
-  const handleToCurrencChange: SelectProps["onChange"] = (currency) => {
+  const handleToCurrencyChange: SelectProps["onChange"] = (currency) => {
     const formData = form.getFieldsValue();
     const selectedItem = selectTo.find((item) => item.currency === currency);
     form.setFields([
@@ -224,6 +274,7 @@ export function CardAmount(props: CardAmountProps) {
     }
 
     fetchRate();
+    fetchFee();
   };
 
   const handleSubmit = async (e: any) => {
@@ -335,7 +386,7 @@ export function CardAmount(props: CardAmountProps) {
                 message: "This field is required",
               },
             ]}
-            onChange={handleToCurrencChange}
+            onChange={handleToCurrencyChange}
             options={selectTo.map((st) => ({
               label: st.currency,
               value: st.currency,
@@ -382,7 +433,7 @@ export function CardAmount(props: CardAmountProps) {
           </Text>
         )}
 
-        <Button type="primary" onClick={handleSubmit} className="common__btn">
+        <Button type="primary" onClick={handleSubmit} className="common__btn" active={active}>
           Continue
         </Button>
       </FormCustom>

@@ -9,6 +9,7 @@ import companyDataEndpoint, {
 } from "@/Api/endpoints/companyData.endpoint";
 import { useState, useEffect } from "react";
 import { useBankTransferPageContext } from "../BankTransferPageContext";
+import Alert from "antd/es/alert";
 
 const BankTransferPageDashboard = () => {
   useSetAppLayoutTitle("Bank Transfer");
@@ -25,6 +26,7 @@ const BankTransferPageDashboard = () => {
   }});
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [accounts, setAccounts] = useState<AccountsResponse[]>([]);
+  const [error, setError] = useState<boolean>(false);
   const { setForm } = useBankTransferPageContext();
 
   const navigate = useNavigate();
@@ -52,14 +54,20 @@ const BankTransferPageDashboard = () => {
   }, []);
 
   return (
-    <CardAmount
-      title="Transfer Amount"
-      selectFrom={accounts}
-      selectTo={allMockedAccs}
-      loading={isLoading}
-      onSubmit={handleSubmit}
-      allowSameCurrency={true}
-    />
+      <div>
+        {error && (
+            <Alert message="Not enough money" type="error" className="mb-8" />
+        )}
+        <CardAmount
+            title="Exchange Amount"
+            selectFrom={accounts}
+            selectTo={allMockedAccs}
+            onSubmit={handleSubmit}
+            loading={isLoading}
+            setError={setError}
+            error={error}
+        />
+      </div>
   );
 };
 

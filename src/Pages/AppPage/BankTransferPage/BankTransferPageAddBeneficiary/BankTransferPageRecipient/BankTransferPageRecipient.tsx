@@ -147,13 +147,18 @@ export default function BankTransferPageRecipient(
           />
         </div>
         <div>
-          <FormCustom.Select
-            className={styles.select}
+          <FormCustom.Input
             label="Beneficiary Country:"
             name="country"
-            placeholder="Select"
-            options={countries}
-            onChange={handleFormChange}
+            placeholder="Country"
+            color="grey"
+            type="text"
+            rules={[
+              {
+                required: true,
+                message: "This field is required",
+              },
+            ]}
           />
           <FormCustom.Input
             name="beneficiary_address"
