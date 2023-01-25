@@ -4,6 +4,7 @@ import styles from "./CryptoDepositPageItem.module.scss";
 import React from "react";
 import Button from "@/Components/General/Button/Button";
 import QRCode from "react-qr-code";
+import copy from "copy-to-clipboard";
 interface CryptoDepositPageItemProps {
   title: string;
   sup: string;
@@ -18,7 +19,7 @@ export default function CryptoDepositPageItem(
 ) {
   const { title, logo, sup, code, identity, txt } = props;
   const handleCopy = async () => {
-      await navigator.clipboard.writeText(identity);
+      copy(identity);
   };
   return (
     <Card className={styles.card__crypto}>
