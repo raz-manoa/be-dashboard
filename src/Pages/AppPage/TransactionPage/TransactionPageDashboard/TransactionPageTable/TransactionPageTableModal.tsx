@@ -31,6 +31,12 @@ export const statusColor: Record<string, TextProps["variant"]> = {
   failed: "red",
 };
 
+function getMessage(transaction: ITransaction) {
+  const transfer = transaction.Saving || transaction.BebankTransfer || transaction.InviteTransfer || transaction.Exchange || transaction.OtherBankTransfer || transaction.RemittanceTransfer;
+  // @ts-ignore
+  return transfer.message;
+}
+
 export default function TransactionPageTableModal(
   props: TransactionPageTableModal
 ) {
@@ -71,8 +77,7 @@ export default function TransactionPageTableModal(
         label="Description"
         color="grey"
         value={
-          <Text size={12} variant="black" weight={400}>
-            Lorem ipsum dolor sit amet, consectetur.
+          <Text size={12} variant="black" weight={400}>{data ? getMessage(data) : ''}
           </Text>
         }
         align="row"

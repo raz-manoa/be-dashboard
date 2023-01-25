@@ -27,16 +27,18 @@ const BankTransferPageDashboard = () => {
   }});
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [accounts, setAccounts] = useState<AccountsResponse[]>([]);
-  const [error, setError] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
   const { setForm } = useBankTransferPageContext();
 
   const navigate = useNavigate();
 
   const handleSubmit = (data: ICardAmountForm) => {
-    if (setForm) {
-      setForm(data);
+    if (error.length === 0) {
+      if (setForm) {
+        setForm(data);
+      }
+      navigate("add-beneficiary");
     }
-    navigate("add-beneficiary");
   };
 
   useEffect(() => {
@@ -57,8 +59,8 @@ const BankTransferPageDashboard = () => {
 
   return (
       <div>
-        {error && (
-            <Alert message="Not enough money" type="error" className="mb-8" />
+        {error && error.length > 0 && (
+            <Alert message={error} type="error" className="mb-8" />
         )}
         <CardAmount
             title="Exchange Amount"

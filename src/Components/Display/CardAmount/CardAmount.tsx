@@ -154,22 +154,32 @@ export function CardAmount(props: CardAmountProps) {
           );
           const exchangedFee = Number(feeRates.destinationAmount);
           setTransactionFee({ currency: ECurrency.USD, value: fee, currencyId: 'USD'});
+          if (exchangedFee > Number(fieldValue.from.value)) {
+            setError('Fee higher than amount');
+            setActive(false);
+            return
+          }
           if (exchangedFee + Number(fieldValue.from.value) > selectValue?.balance) {
-            setError(true);
+            setError('Not enough money.');
             setActive(false);
           } else {
-            setError(false);
+            setError('');
             setActive(true);
           }
         } else {
+          setTransactionFee({ currency: ECurrency.USD, value: fee, currencyId: 'USD'});
+          if (fee > Number(fieldValue.from.value)) {
+            setError('Fee higher than amount');
+            setActive(false);
+            return
+          }
           if (fee + Number(fieldValue.from.value) > selectValue?.balance) {
-            setError(true);
+            setError('Not enough money');
             setActive(false);
           } else {
-            setError(false);
+            setError('');
             setActive(true);
           }
-          setTransactionFee({ currency: ECurrency.USD, value: fee, currencyId: 'USD'});
         }
       }
     }
