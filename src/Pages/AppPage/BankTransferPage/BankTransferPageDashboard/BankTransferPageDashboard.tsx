@@ -12,6 +12,17 @@ import { useBankTransferPageContext } from "../BankTransferPageContext";
 
 const BankTransferPageDashboard = () => {
   useSetAppLayoutTitle("Bank Transfer");
+  const all = ['USD', 'EUR', 'GBP', 'CAD', 'BWP', 'GHS', 'GNF', 'KES', 'MGA', 'MUR', 'MWK', 'MZN', 'NAD', 'NGN', 'RWF', 'SCR', 'TZS', 'UGX', 'XAF', 'XOF', 'ZAR', 'ZMW'];
+  const allMockedAccs = all.map(item => { return {
+    id: item,
+    userId: 'string',
+    balance: 0,
+    lockBalance: 0,
+    currency: item,
+    isDefaultCurrency: false,
+    createdAt: 'string',
+    updatedAt: 'string'
+  }});
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [accounts, setAccounts] = useState<AccountsResponse[]>([]);
   const { setForm } = useBankTransferPageContext();
@@ -44,7 +55,7 @@ const BankTransferPageDashboard = () => {
     <CardAmount
       title="Transfer Amount"
       selectFrom={accounts}
-      selectTo={accounts}
+      selectTo={allMockedAccs}
       loading={isLoading}
       onSubmit={handleSubmit}
       allowSameCurrency={true}
