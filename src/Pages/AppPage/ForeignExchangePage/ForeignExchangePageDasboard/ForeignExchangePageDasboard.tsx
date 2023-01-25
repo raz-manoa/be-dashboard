@@ -46,7 +46,8 @@ const ForeignExchangePageDashboard = () => {
       .getAccounts(companyId)
       .then((data) => {
         if (data) {
-          setAccounts(data);
+            const accs = data.filter(item => !item.currencyInfo?.isCrypto);
+            setAccounts(accs);
         }
       })
       .finally(() => setIsLoading(false));

@@ -7,9 +7,10 @@ import {
 import companyDataEndpoint, {
   AccountsResponse,
 } from "@/Api/endpoints/companyData.endpoint";
-import { useState, useEffect } from "react";
+import {useState, useEffect, useMemo} from "react";
 import { useBankTransferPageContext } from "../BankTransferPageContext";
 import Alert from "antd/es/alert";
+import {ECurrency} from "@/Interfaces/Currency";
 
 const BankTransferPageDashboard = () => {
   useSetAppLayoutTitle("Bank Transfer");
@@ -47,7 +48,8 @@ const BankTransferPageDashboard = () => {
       .then((data) => {
         console.log("companyId", data);
         if (data) {
-          setAccounts(data);
+          const accs = data.filter(item => !item.currencyInfo?.isCrypto);
+          setAccounts(accs);
         }
       })
       .finally(() => setIsLoading(false));
