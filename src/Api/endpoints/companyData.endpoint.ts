@@ -35,6 +35,7 @@ interface UsdBalance {
   value: number;
 }
 
+// @ts-ignore
 export interface AccountsResponse extends IAccount {
   currencyInfo?: CurrencyInfo;
   usdBalance?: UsdBalance;
@@ -65,9 +66,9 @@ class CompanyDataEndpoint {
     const companyId = localStorage.getItem("companyId") || "";
     return this.getAccounts(companyId);
   };
-  getCompany = async (id: string): Promise<IUser> => {
+  getCompany = async (id: string, token: string): Promise<IUser> => {
     return apiInstance
-      .get<{ company: IUser }>(`api/admin/companies/${id}`)
+      .get<{ company: IUser }>(`api/admin/companies/${id}`, { headers: { authorization: token }})
       .then(({ data }) => data.company);
   };
   getAccounts1 = async (id: string): Promise<ITransaction[]> => {

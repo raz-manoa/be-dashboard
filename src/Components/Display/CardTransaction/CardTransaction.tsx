@@ -1,6 +1,7 @@
 import Icon from "@/Components/General/Icon/Icon";
 import Text from "@/Components/General/Text/Text";
 import React from "react";
+import dayjs from "dayjs";
 import Card from "../Card/Card";
 import styles from "./CardTransaction.module.scss";
 export interface CardTransactionProps {
@@ -28,6 +29,7 @@ export default function CardTransaction(props: CardTransactionProps) {
   }
   if (payment === 'otherbanktransfer') {
     payment = 'Other Bank Transfer'
+    icon = 'transfer-intl';
   }
   if (payment === 'fundswithdraw') {
     payment = 'Funds Withdraw'
@@ -68,7 +70,7 @@ export default function CardTransaction(props: CardTransactionProps) {
           variant="grey"
           className={styles.transaction__date}
         >
-          {new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit'}).format(Date.parse(date))}
+          {date ? dayjs(date).format('DD/MM/YYYY HH:MM') : ''}
         </Text>
         <Text tag="h3" type="h3" variant="black">
           {transaction}

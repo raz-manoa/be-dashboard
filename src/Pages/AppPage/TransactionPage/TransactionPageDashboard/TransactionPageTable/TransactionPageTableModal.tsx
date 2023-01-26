@@ -4,6 +4,7 @@ import Modal, { ModalProps } from "antd/lib/modal";
 import React from "react";
 import { TransactionPageTableData } from "./TransactionPageTableConfig";
 import {ITransaction} from "@/Interfaces/Transaction";
+import dayjs from "dayjs";
 
 interface TransactionPageTableModal extends ModalProps {
   data?: TransactionPageTableData;
@@ -70,7 +71,7 @@ export default function TransactionPageTableModal(
         weight={400}
         label="Timestamp"
         color="grey"
-        value={data ? new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: '2-digit' ,day: '2-digit', hour: '2-digit', minute: '2-digit'}).format(Date.parse(data?.createdAt)) : ''}
+        value={data ? dayjs(data.createdAt).format('DD/MM/YYYY HH:MM') : ''}
       />
       <CardConfirmItem
         weight={400}

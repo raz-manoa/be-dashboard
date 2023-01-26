@@ -16,6 +16,7 @@
     "clsx": "^1.2.1",
     "copy-to-clipboard": "^3.3.3",
     "crypto-js": "^4.1.1",
+    "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "icomoon-react": "^3.0.0",
     "install": "^0.13.0",

@@ -3,6 +3,7 @@ import Text from "@/Components/General/Text/Text";
 import { ColumnType } from "antd/es/table";
 import { statusColor } from "./TransactionPageTableModal";
 import { ITransaction } from "@/Interfaces/Transaction";
+import dayjs from "dayjs";
 
 // @ts-ignore
 export interface TransactionPageTableData extends ITransaction {
@@ -136,7 +137,7 @@ export const transactionPageTableColumn: (options: {
         // @ts-ignore
         return (
           <Text tag="span" variant="grey" size={14}>
-            {new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: '2-digit' ,day: '2-digit', hour: '2-digit', minute: '2-digit'}).format(Date.parse(value))}
+            {dayjs(value).format('DD/MM/YYYY HH:MM')}
           </Text>
         );
       },

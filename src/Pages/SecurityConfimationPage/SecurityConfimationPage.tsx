@@ -28,7 +28,7 @@ export default function SecurityConfimationPage() {
                 const response = await api.auth.verify(payload);
                 await localStorage.setItem('token', response.data.token);
                 await localStorage.setItem('companyId', response.data.company);
-                const company = await api.companyData.getCompany(response.data.company);
+                const company = await api.companyData.getCompany(response.data.company, response.data.token);
                 // @ts-ignore
                 // const admin = company.CompanyAdmins.find(admin => admin.email === email);
                 await localStorage.setItem('company', JSON.stringify(company));
