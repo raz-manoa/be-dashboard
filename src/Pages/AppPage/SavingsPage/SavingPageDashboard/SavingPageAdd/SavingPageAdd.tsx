@@ -6,11 +6,15 @@ import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import {ISaving} from "@/Pages/AppPage/DashboardPage/DashboarPageSavingAccount/SavingCard/SavingCard";
 import {IAccount} from "@/Interfaces/Account";
+import {currencyParser} from "@/Utils/currencyParser";
+import axios from "axios";
+import apiInstance from "@/Api/apiInstance";
+import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
 
 export default function SavingPageAdd(props: { props: { savings: ISaving[], accounts: IAccount[] }}) {
     const navigate = useNavigate();
-    // const [usdSaving, setUSDSaving] = useState<ISaving>(null);
-    // const [eurSaving, setEURSaving] = useState<ISaving>(null);
+    const [currency, setCurrency] = useState<any>(null);
+    const [amount, setAmount] = useState<number>(0);
     // const [usdAccount, setUsdAccount] = useState<IAccount>(null);
     // const [eurAccount, setEurAccount] = useState<IAccount>(null);
     const [tabItems, setTabItems] = useState<TabsProps["items"]>(null)
@@ -23,13 +27,6 @@ export default function SavingPageAdd(props: { props: { savings: ISaving[], acco
             const eurSaving = savingsData.find(item => item.currency.id === 'EUR');
             const usdAccount = accountsData.find(item => item.currency === 'USD');
             const eurAccount = accountsData.find(item => item.currency === 'EUR');
-            // setUSDSaving(savingsData.find(item => item.currency.id === 'USD'));
-            // // @ts-ignore
-            // setEURSaving(savingsData.find(item => item.currency.id === 'EUR'));
-            // // @ts-ignore
-            // setUsdAccount(accountsData.find(item => item.currency === 'USD'));
-            // // @ts-ignore
-            // setEurAccount(accountsData.find(item => item.currency === 'EUR'));
             console.log(usdAccount, eurAccount, usdSaving, eurSaving);
             const tabItems: TabsProps["items"] = [
                 {
@@ -40,21 +37,27 @@ export default function SavingPageAdd(props: { props: { savings: ISaving[], acco
                             <CardDisposit
                                 save="USD Savings"
                                 placeholder="0.0 USD"
-                                money={`${usdAccount.balance} USD`}
+                                money={`${currencyParser(usdAccount.balance)} USD`}
                                 btnLabel="Deposit"
+                                currency={'USD'}
                                 className={styles.card}
-                                onAction={() =>
+                                setCurrency={setCurrency}
+                                setAmount={setAmount}
+                                onAction={() => {
                                     navigate({
                                         pathname: "confirm-deposit",
-                                    })
+                                    })}
                                 }
                             />
                             <CardDisposit
                                 save="EUR Savings"
                                 placeholder="0.0 EUR"
-                                money={`${eurAccount.balance} EUR`}
+                                money={`${currencyParser(eurAccount.balance)} EUR`}
                                 btnLabel="Deposit"
+                                currency={'EUR'}
                                 className={styles.card}
+                                setCurrency={setCurrency}
+                                setAmount={setAmount}
                                 onAction={() =>
                                     navigate({
                                         pathname: "confirm-deposit",
@@ -72,8 +75,11 @@ export default function SavingPageAdd(props: { props: { savings: ISaving[], acco
                             <CardDisposit
                                 save="USD Savings"
                                 placeholder="0.0 USD"
-                                money={`${usdSaving.amount} USD`}
+                                money={`${currencyParser(usdSaving.amount)} USD`}
                                 className={styles.card}
+                                currency={'USD'}
+                                setCurrency={setCurrency}
+                                setAmount={setAmount}
                                 btnLabel="Withdraw"
                                 onAction={() =>
                                     navigate({
@@ -84,8 +90,11 @@ export default function SavingPageAdd(props: { props: { savings: ISaving[], acco
                             <CardDisposit
                                 save="EUR Savings"
                                 placeholder="0.0 EUR"
-                                money={`${eurSaving.amount} EUR`}
+                                money={`${currencyParser(eurSaving.amount)} EUR`}
                                 className={styles.card}
+                                currency={'EUR'}
+                                setCurrency={setCurrency}
+                                setAmount={setAmount}
                                 btnLabel="Withdraw"
                                 onAction={() =>
                                     navigate({

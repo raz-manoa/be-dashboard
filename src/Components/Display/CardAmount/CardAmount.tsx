@@ -10,8 +10,7 @@ import {ECurrency} from "@/Interfaces/Currency";
 import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
 import {IRate} from "@/Interfaces/Rate";
 import {FormInputProps} from "@/Components/DataEntry/FormInput/FormInput";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
+import {currencyParser} from "@/Utils/currencyParser";
 
 interface SelectData {
   id: string;
@@ -410,7 +409,7 @@ export function CardAmount(props: CardAmountProps) {
           {selectValue && (
             <Text type="p" tag="p" variant="grey">
               <strong>
-                {selectValue.balance} {selectValue.currency}
+                {currencyParser(selectValue.balance)} {selectValue.currency}
               </strong>{" "}
               available to transfer
             </Text>

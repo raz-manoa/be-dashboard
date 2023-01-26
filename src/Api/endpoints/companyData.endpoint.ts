@@ -57,6 +57,11 @@ class CompanyDataEndpoint {
       .get<ISaving[]>(`api/admin/companies/${id}/savings`)
       .then(({ data }) => data);
   };
+  addSavings = async (id: string, body: any): Promise<ITransaction[]> => {
+    return apiInstance
+        .post(`api/admin/companies/${id}/saving`, body)
+        .then(({ data }) => data);
+  };
   getAccounts = async (id: string): Promise<AccountsResponse[]> => {
     return apiInstance
       .get(`api/admin/companies/${id}/accounts/new`)

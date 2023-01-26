@@ -65,7 +65,7 @@ export default function DashboardPageTransaction(transactions: { transactions: I
               <div>
                 {transactions.transactions.map((t, index) => (
                   <CardTransaction
-                    date={t.date}
+                    date={t.createdAt}
                     icon={t.transactionType}
                     payment={t.transactionType}
                     transaction={getAmount(t)}

@@ -19,6 +19,7 @@ import companyDataEndpoint, {
 } from "@/Api/endpoints/companyData.endpoint";
 import { FormSelectProps } from "@/Components/DataEntry/FormSelect/FormSelect";
 import { ITransactionFee } from "@/Components/Display/CardAmount/CardAmount";
+import {currencyParser} from "@/Utils/currencyParser";
 
 const BeNetworkPageDashboard = () => {
   useSetAppLayoutTitle("Be Network");
@@ -152,7 +153,7 @@ const BeNetworkPageDashboard = () => {
                   <Text type="p" tag="p" variant="grey">
                     <strong>
                       {selectedItem
-                        ? `${selectedItem.balance} ${selectedItem.currency}`
+                        ? `${currencyParser(selectedItem.balance)} ${selectedItem.currency}`
                         : 0}
                     </strong>{" "}
                     available to transfer

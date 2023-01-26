@@ -7,7 +7,7 @@ interface ButtonProps {
   children: ReactNode;
   tag?: "link" | "button";
   to?: To;
-  active: boolean;
+  active?: boolean;
   onClick?(e: React.MouseEvent): void;
 }
 
