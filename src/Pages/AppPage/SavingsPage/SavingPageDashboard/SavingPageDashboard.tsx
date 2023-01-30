@@ -43,10 +43,10 @@ const SavingPageDashboard = () => {
           className="mb-8"
         />
       )}
-      {accounts.length && savings.length && props && (
+      {accounts?.length && savings?.length && props && (
         <div className="grid grid-cols-2 gap-5">
           <SavingPageOffering savings={savings} />
-          <SavingPageAdd props={props} />
+          <SavingPageAdd {...props} />
         </div>
       )}
       {accounts.length && savings.length && (

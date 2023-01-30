@@ -3,7 +3,7 @@ import TitleCard from "@/Components/Display/TitleCard/TitleCard";
 import EuropUnion from "@/Assets/Flags/european union.svg";
 import UnitedState from "@/Assets/Flags/united states.svg";
 import styles from "./SavingPageOffering.module.scss";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import api from "@/Api/api";
 import SavingCard, {ISaving} from "@/Pages/AppPage/DashboardPage/DashboarPageSavingAccount/SavingCard/SavingCard";
 
