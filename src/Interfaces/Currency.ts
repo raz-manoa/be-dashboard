@@ -1,3 +1,5 @@
+import {GHSSvg} from "@/Assets/CurrencyFlags";
+
 export enum ECurrency {
   USD = "USD",
   EUR = "EUR",
@@ -27,5 +29,6 @@ export enum ECurrency {
   MAD = 'MAD',
   MUR = 'MUR',
   BIF = 'BIF',
-  RWF = 'RWF'
+  RWF = 'RWF',
+  GHS = 'GHS'
 }

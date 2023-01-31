@@ -27,3 +27,4 @@ export { default as MADSvg } from "./MAD.svg";
 export { default as MURSvg } from "./MUR.svg";
 export { default as BIFSvg } from "./BIF.svg";
 export { default as RWFSvg } from "./RWF.svg";
+export { default as GHSSvg } from "./GHS.svg";

@@ -24,7 +24,7 @@ import {
   BADGERSvg,
   STEPSvg,
   RAYSvg,
-  MADSvg, MURSvg, BIFSvg, RWFSvg
+  MADSvg, MURSvg, BIFSvg, RWFSvg, GHSSvg
 } from "@/Assets/CurrencyFlags";
 import { ECurrency } from "@/Interfaces/Currency";
 
@@ -58,6 +58,7 @@ const mapCurrencyFlag: Record<ECurrency, string> = {
   [ECurrency.MUR]: MURSvg,
   [ECurrency.BIF]: BIFSvg,
   [ECurrency.RWF]: RWFSvg,
+  [ECurrency.GHS]: GHSSvg
 };
 const mapCurrencyLabel: Record<ECurrency, string> = {
   [ECurrency.USD]: "US Dollar",
@@ -89,6 +90,7 @@ const mapCurrencyLabel: Record<ECurrency, string> = {
   [ECurrency.MUR]: 'MUR',
   [ECurrency.BIF]: 'BIF',
   [ECurrency.RWF]: 'RWF',
+  [ECurrency.GHS]: 'GHS'
 };
 
 export const currencyToFlag = (currency: ECurrency) =>
