@@ -20,5 +20,12 @@ export enum ECurrency {
   SAND = 'SAND',
   SERUM = 'SERUM',
   SUSHI = 'SUSHI',
-  USDT = 'USDT'
+  USDT = 'USDT',
+  BADGER = 'BADGER',
+  RAY = 'RAY',
+  STEP = 'STEP',
+  MAD = 'MAD',
+  MUR = 'MUR',
+  BIF = 'BIF',
+  RWF = 'RWF'
 }

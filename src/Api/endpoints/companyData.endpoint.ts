@@ -62,6 +62,11 @@ class CompanyDataEndpoint {
         .post(`api/admin/companies/${id}/saving`, body)
         .then(({ data }) => data);
   };
+  requestWithdrawSavings = async (id: string, body: any): Promise<ITransaction[]> => {
+    return apiInstance
+        .post(`api/admin/companies/${id}/saving/withdraw`, body)
+        .then(({ data }) => data);
+  };
   getAccounts = async (id: string): Promise<AccountsResponse[]> => {
     return apiInstance
       .get(`api/admin/companies/${id}/accounts/new`)
@@ -101,7 +106,7 @@ class CompanyDataEndpoint {
   ): Promise<IRate> => {
     return apiInstance
         .get(
-            `api/admin/companies/${id}/exchange/fee/rates?currencyFrom=${currencyFrom}&currencyTo=${currencyTo}&amount=${amount}`
+            `api/admin/companies/${id}/exchange/rates?currencyFrom=${currencyFrom}&currencyTo=${currencyTo}&amount=${amount}`
         )
         .then(({ data }) => data);
   };

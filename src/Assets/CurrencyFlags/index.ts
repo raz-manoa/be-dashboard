@@ -20,5 +20,10 @@ export { default as SANDSvg } from "./SAND.svg";
 export { default as SERUMSvg } from "./SERUM.svg";
 export { default as SUSHISvg } from "./SUSHI.svg";
 export { default as USDTSvg } from "./USDT.svg";
-
-
+export { default as BADGERSvg } from "./BADGER.svg";
+export { default as STEPSvg } from "./STEP.svg";
+export { default as RAYSvg } from "./RAY.svg";
+export { default as MADSvg } from "./MAD.svg";
+export { default as MURSvg } from "./MUR.svg";
+export { default as BIFSvg } from "./BIF.svg";
+export { default as RWFSvg } from "./RWF.svg";

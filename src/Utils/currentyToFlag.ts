@@ -11,7 +11,20 @@ import {
   BTCSvg,
   ETHSvg,
   SOLSvg,
-  USDCSvg, AAVESvg, DODOSvg, DOGESvg, DYDXSvg, FIDASvg, SANDSvg, SERUMSvg, SUSHISvg, USDTSvg
+  USDCSvg,
+  AAVESvg,
+  DODOSvg,
+  DOGESvg,
+  DYDXSvg,
+  FIDASvg,
+  SANDSvg,
+  SERUMSvg,
+  SUSHISvg,
+  USDTSvg,
+  BADGERSvg,
+  STEPSvg,
+  RAYSvg,
+  MADSvg, MURSvg, BIFSvg, RWFSvg
 } from "@/Assets/CurrencyFlags";
 import { ECurrency } from "@/Interfaces/Currency";
 
@@ -37,7 +50,14 @@ const mapCurrencyFlag: Record<ECurrency, string> = {
   [ECurrency.SAND]: SANDSvg,
   [ECurrency.SERUM]: SERUMSvg,
   [ECurrency.SUSHI]: SUSHISvg,
-  [ECurrency.USDT]: USDTSvg
+  [ECurrency.USDT]: USDTSvg,
+  [ECurrency.BADGER]: BADGERSvg,
+  [ECurrency.STEP]: STEPSvg,
+  [ECurrency.RAY]: RAYSvg,
+  [ECurrency.MAD]: MADSvg,
+  [ECurrency.MUR]: MURSvg,
+  [ECurrency.BIF]: BIFSvg,
+  [ECurrency.RWF]: RWFSvg,
 };
 const mapCurrencyLabel: Record<ECurrency, string> = {
   [ECurrency.USD]: "US Dollar",
@@ -61,7 +81,14 @@ const mapCurrencyLabel: Record<ECurrency, string> = {
   [ECurrency.SAND]: 'SAND',
   [ECurrency.SERUM]: 'SERUM',
   [ECurrency.SUSHI]: 'SUSHI',
-  [ECurrency.USDT]: 'USDT'
+  [ECurrency.USDT]: 'USDT',
+  [ECurrency.BADGER]: 'BADGER',
+  [ECurrency.STEP]: 'STEP',
+  [ECurrency.RAY]: 'RAY',
+  [ECurrency.MAD]: 'MAD',
+  [ECurrency.MUR]: 'MUR',
+  [ECurrency.BIF]: 'BIF',
+  [ECurrency.RWF]: 'RWF',
 };
 
 export const currencyToFlag = (currency: ECurrency) =>

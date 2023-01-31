@@ -6,6 +6,7 @@ export interface SavingFormType {
   type: "deposit" | "withdraw";
   currency: ECurrency;
   value: number;
+  response?: object;
 }
 interface IState {
   form?: SavingFormType;

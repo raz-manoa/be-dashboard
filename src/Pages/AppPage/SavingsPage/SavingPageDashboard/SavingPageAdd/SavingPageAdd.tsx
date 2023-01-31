@@ -39,7 +39,7 @@ export default function SavingPageAdd(props: {
           <CardDisposit
             save="USD Savings"
             placeholder="0.0 USD"
-            money={`${usdAccount?.balance} USD`}
+            money={`${currencyParser(usdAccount?.balance)} USD`}
             btnLabel="Deposit"
             className={styles.card}
             currency={ECurrency.USD}
@@ -52,14 +52,14 @@ export default function SavingPageAdd(props: {
                 });
               }
               navigate({
-                pathname: "confirm-deposit",
+                pathname: "review-deposit",
               });
             }}
           />
           <CardDisposit
             save="EUR Savings"
             placeholder="0.0 EUR"
-            money={`${eurAccount?.balance} EUR`}
+            money={`${currencyParser(eurAccount?.balance)} EUR`}
             btnLabel="Deposit"
             currency={ECurrency.EUR}
             className={styles.card}
@@ -72,7 +72,7 @@ export default function SavingPageAdd(props: {
                 });
               }
               navigate({
-                pathname: "confirm-deposit",
+                pathname: "review-deposit",
               });
             }}
           />
@@ -87,7 +87,7 @@ export default function SavingPageAdd(props: {
           <CardDisposit
             save="USD Savings"
             placeholder="0.0 USD"
-            money={`${usdSaving?.amount} USD`}
+            money={`${currencyParser(usdSaving?.amount)} USD`}
             className={styles.card}
             currency={ECurrency.USD}
             btnLabel="Withdraw"
@@ -107,7 +107,7 @@ export default function SavingPageAdd(props: {
           <CardDisposit
             save="EUR Savings"
             placeholder="0.0 EUR"
-            money={`${eurSaving?.amount} EUR`}
+            money={`${currencyParser(eurSaving?.amount)} EUR`}
             currency={ECurrency.EUR}
             className={styles.card}
             btnLabel="Withdraw"

@@ -3,31 +3,36 @@ import { CardModalItemProps } from "@/Components/Display/CardConfirm/CardConfirm
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
 import { useSavingPageContext } from "../../SavingPageContext";
+import companyDataEndpoint from "@/Api/endpoints/companyData.endpoint";
 
 export default function SavingPageReview() {
   useSetAppLayoutTitle("Savings");
-  const { form } = useSavingPageContext();
+  const { form, setForm } = useSavingPageContext();
+  const companyId = localStorage.getItem("companyId") || "";
+  const beid = localStorage.getItem('beId');
+  const fullname = localStorage.getItem('fullName');
+  const date = "Jan 30, 2023";
 
   const navigate = useNavigate();
   const data: CardModalItemProps[] = [
     {
-      label: "Amout",
+      label: "Amount",
       value: form ? `${form.value} ${form.currency}` : "",
       color: "red",
     },
     {
       label: "Recipient",
-      value: "Company Name",
+      value: fullname,
       color: "black",
     },
     {
       label: "BE ID",
-      value: "30303",
+      value: beid,
       color: "black",
     },
     {
       label: "When",
-      value: "May 17, 2022",
+      value: date,
       color: "black",
     },
   ];
@@ -43,7 +48,19 @@ export default function SavingPageReview() {
           pathname: "/app/savings",
         });
       }}
-      onClickSecondBtn={() => {
+      onClickSecondBtn={async () => {
+        const result = await companyDataEndpoint.addSavings(companyId, {
+          currency: form?.currency,
+          amount: form?.value,
+        });
+        if (setForm) {
+          setForm({
+            currency: form.currency,
+            value: form.value,
+            response: result,
+            type: 'deposit'
+          });
+        }
         navigate({
           pathname: "/app/savings/confirm-deposit",
         });

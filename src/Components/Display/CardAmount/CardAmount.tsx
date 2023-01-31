@@ -141,6 +141,7 @@ export function CardAmount(props: CardAmountProps) {
       const companyId = localStorage.getItem("companyId") || "";
 
       const wireFees = await companyDataEndpoint.getWireFees(companyId);
+      // @ts-ignore
       const allFees = wireFees.find(item => item.type === fieldValue.to.currency);
       if (allFees) {
         const fee = allFees.value;
@@ -434,7 +435,7 @@ export function CardAmount(props: CardAmountProps) {
             className="common__info"
           >
             <>
-              {fromRate.directRate?.amountFrom?.value}{" "}
+              {currencyParser(fromRate.directRate?.amountFrom?.value, fromRate.directRate?.amountFrom?.currency.precision)}{" "}
               {fromRate.directRate?.amountFrom?.currency?.sign} equals{" "}
               {fromRate.directRate?.amountTo?.value}{" "}
               {fromRate.directRate?.amountTo?.currency.sign}

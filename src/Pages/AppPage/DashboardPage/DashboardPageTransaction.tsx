@@ -13,6 +13,7 @@ import {ITransaction} from "@/Interfaces/Transaction";
 import {IUser} from "@/Interfaces/IUser";
 
 const paires = ["All", "USD", "EUR", "CHF", "GBP"];
+const companyId = localStorage.getItem('companyId');
 
 function getFullName(user: IUser) {
   return `${user.firstName} ${user.lastName}`;
@@ -20,7 +21,6 @@ function getFullName(user: IUser) {
 
 function getAmount(transaction: ITransaction) {
   const transfer = transaction.Saving || transaction.BebankTransfer || transaction.InviteTransfer || transaction.Exchange || transaction.OtherBankTransfer || transaction.RemittanceTransfer;
-  const companyId = localStorage.getItem('companyId');
   // @ts-ignore
   if (transfer.name === 'exchange' || transfer.name === 'crypto-exchange') {
     // @ts-ignore
@@ -52,34 +52,81 @@ export default function DashboardPageTransaction(transactions: { transactions: I
   }, []);
 
   const tabItems: TabsProps["items"] = paires.map((paire, index) => {
-    return {
-      label: <span style={{ textTransform: "none" }}>{paire}</span>,
-      key: `${index}`,
-      children: (
-        <div
-          style={{ "--offset-top": `${offsetTop}px` } as React.CSSProperties}
-          ref={psWrapRef}
-        >
-          <Card className={styles.transactionCard}>
-            <Scrollbar>
-              <div>
-                {transactions.transactions.map((t, index) => (
-                  <CardTransaction
-                    date={t.createdAt}
-                    icon={t.transactionType}
-                    payment={t.transactionType}
-                    transaction={getAmount(t)}
-                    user={getFullName(t.sender)}
-                    company={getFullName(t.recipient)}
-                    key={`t-${index}`}
-                  />
-                ))}
-              </div>
-            </Scrollbar>
-          </Card>
-        </div>
-      ),
-    };
+    if (paire === 'All') {
+      let copy = transactions.transactions;
+      const amount = copy.length;
+      if (amount < 5) {
+        for (let i = 0; i < 5 - amount; i++) {
+          copy.push({ createdAt: null, currency: paire });
+        }
+      }
+      return {
+        label: <span style={{ textTransform: "none" }}>{paire}</span>,
+        key: `${index}`,
+        children: (
+            <div
+                style={{ "--offset-top": `${offsetTop}px` } as React.CSSProperties}
+                ref={psWrapRef}
+            >
+              <Card className={styles.transactionCard}>
+                <Scrollbar>
+                  <div>
+                    {copy.map((t, index) => (
+                        t.createdAt ?
+                        <CardTransaction
+                            date={t.createdAt}
+                            icon={t.transactionType}
+                            payment={t.transactionType}
+                            transaction={getAmount(t)}
+                            user={getFullName(t.sender)}
+                            company={getFullName(t.recipient)}
+                            key={`t-${index}`}
+                        /> : <div style={{ minHeight: 30, minWidth: 100 }}></div>
+                    ))}
+                  </div>
+                </Scrollbar>
+              </Card>
+            </div>
+        ),
+      };
+    } else {
+      let copy = transactions.transactions.filter(item => item.currency === paire);
+      const amount = copy.length;
+      if (copy.filter(item => item.currency === paire).length < 5) {
+        for (let i = 0; i < 5 - amount; i++) {
+          copy.push({ createdAt: null, currency: paire });
+        }
+      }
+      return {
+        label: <span style={{ textTransform: "none" }}>{paire}</span>,
+        key: `${index}`,
+        children: (
+            <div
+                style={{ "--offset-top": `${offsetTop}px` } as React.CSSProperties}
+                ref={psWrapRef}
+            >
+              <Card className={styles.transactionCard}>
+                <Scrollbar>
+                  <div>
+                    {copy.map((t, index) => (
+                        t.createdAt ?
+                        <CardTransaction
+                            date={t.createdAt}
+                            icon={t.transactionType}
+                            payment={t.transactionType}
+                            transaction={getAmount(t)}
+                            user={getFullName(t.sender)}
+                            company={getFullName(t.recipient)}
+                            key={`t-${index}`}
+                        /> : <div style={{ minHeight: 85, minWidth: 100 }}></div>
+                    ))}
+                  </div>
+                </Scrollbar>
+              </Card>
+            </div>
+        ),
+      };
+    }
   });
 
   return (

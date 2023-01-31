@@ -19,7 +19,6 @@ export default function CardDisposit(props: CardDispositProps) {
   const { money, placeholder, currency, save, className, btnLabel, onAction } =
     props;
   let amount = 0;
-  const companyId = localStorage.getItem("companyId") || "";
   const [form] = useForm();
   return (
     <Card className={`${styles.card} common__info_card ${className}`}>
@@ -63,10 +62,6 @@ export default function CardDisposit(props: CardDispositProps) {
             setAmount(amount); */
             // console.log(amount, currency);
             try {
-              await companyDataEndpoint.addSavings(companyId, {
-                currency,
-                amount,
-              });
               onAction && onAction({ amount, currency, ...formData });
             } catch (e) {
               console.log(e);
