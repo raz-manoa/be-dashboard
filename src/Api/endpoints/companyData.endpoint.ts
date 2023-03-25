@@ -42,7 +42,7 @@ export interface AccountsResponse extends IAccount {
 }
 
 class CompanyDataEndpoint {
-  getTransactions = async (id: string): Promise<ITransaction[]> => {
+  getTransactions = async (id: string, filters?: object): Promise<ITransaction[]> => {
     return apiInstance
       .get(`api/admin/users/${id}/transactions?limit=10`)
       .then(({ data }) => data.transactions);

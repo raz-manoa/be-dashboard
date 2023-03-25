@@ -9,6 +9,7 @@ import TransactionPageTableModal from "./TransactionPageTableModal";
 import { useEffect, useRef, useState } from "react";
 import { ITransaction } from "@/Interfaces/Transaction";
 import api from "@/Api/api";
+import {useTransactionsPageContext} from "@/Pages/AppPage/TransactionPage/TransactionsPageContext";
 
 function getTransfer(transaction: ITransaction) {
   return transaction.Saving || transaction.BebankTransfer || transaction.InviteTransfer || transaction.Exchange || transaction.OtherBankTransfer || transaction.RemittanceTransfer;
@@ -16,6 +17,43 @@ function getTransfer(transaction: ITransaction) {
 
 function capitalize(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function transform(transactions: any[]) {
+  return transactions.map(item => {
+    // @ts-ignore
+    item.transfer = getTransfer(item);
+    // @ts-ignore
+    item.beid = item.sender.identifyNumber.toString().padStart(8, `${item.sender.identifyPrefix}000000`);
+    // @ts-ignore
+    item.amount = getAmount(item, companyId);
+    // @ts-ignore
+    item.fee = item.transfer.fee ? `${item.transfer.fee} ${item.currency ? item.currency : item.currencyFrom}` : ` - `;
+    item.icon = item.transactionType;
+    if (item.transactionType === 'exchange') {
+      item.icon = 'fx';
+    }
+    if (item.transactionType === 'bebanktransfer') {
+      item.icon = 'bank-transfer';
+    }
+    if (item.transactionType === 'bebanktransfer') {
+      item.transactionType = 'BeBank Transfer'
+    }
+    if (item.transactionType === 'otherbanktransfer') {
+      item.transactionType = 'Other Bank Transfer'
+    }
+    if (item.transactionType === 'fundswithdraw') {
+      item.transactionType = 'Funds Withdraw'
+    }
+    if (item.transactionType === 'wiretransfer') {
+      item.transactionType = 'Wire Transfer'
+    }
+    if (item.transactionType === 'qrtransfer') {
+      item.transactionType = 'QR Transfer'
+    }
+    item.transactionType = capitalize(item.transactionType);
+    return item;
+  });
 }
 
 function getAmount(transaction: ITransaction, companyId: string) {
@@ -35,48 +73,25 @@ function getAmount(transaction: ITransaction, companyId: string) {
 
 export default function TransactionPageTable() {
   const [transactions, setTransactions] = useState<TransactionPageTableData[]>([]);
+  const { form, setForm } = useTransactionsPageContext();
 
   useEffect(() => {
     async function getInfo() {
       const companyId = localStorage.getItem('companyId');
       // @ts-ignore
       const transactions = await api.companyData.getTransactions(companyId);
-      const changed = transactions.map(item => {
-        // @ts-ignore
-        item.transfer = getTransfer(item);
-        // @ts-ignore
-        item.beid = item.sender.identifyNumber.toString().padStart(8, `${item.sender.identifyPrefix}000000`);
-        // @ts-ignore
-        item.amount = getAmount(item, companyId);
-        // @ts-ignore
-        item.fee = item.transfer.fee ? `${item.transfer.fee} ${item.currency ? item.currency : item.currencyFrom}` : ` - `;
-        item.icon = item.transactionType;
-        if (item.transactionType === 'exchange') {
-          item.icon = 'fx';
-        }
-        if (item.transactionType === 'bebanktransfer') {
-          item.icon = 'bank-transfer';
-        }
-        if (item.transactionType === 'bebanktransfer') {
-          item.transactionType = 'BeBank Transfer'
-        }
-        if (item.transactionType === 'otherbanktransfer') {
-          item.transactionType = 'Other Bank Transfer'
-        }
-        if (item.transactionType === 'fundswithdraw') {
-          item.transactionType = 'Funds Withdraw'
-        }
-        if (item.transactionType === 'wiretransfer') {
-          item.transactionType = 'Wire Transfer'
-        }
-        if (item.transactionType === 'qrtransfer') {
-          item.transactionType = 'QR Transfer'
-        }
-        item.transactionType = capitalize(item.transactionType);
-        return item;
-      })
+      const changed = transform(transactions);
       // @ts-ignore
       setTransactions(changed);
+      console.log('setForm', setForm);
+      if (setForm) {
+        setForm({
+          dateFrom: null,
+          dateTo: null,
+          name: null,
+          type: null
+        })
+      }
     }
     getInfo();
   }, []);

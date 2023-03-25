@@ -44,11 +44,11 @@ export default function OtcPageReview() {
   const onSubmit = async () => {
     const companyId = localStorage.getItem("companyId") || "";
     try {
-      const data = await companyDataEndpoint.exchange(companyId, {
+      const data = await companyDataEndpoint.cryptoExchange(companyId, {
         currencyFrom: form.from.currency,
         currencyTo: form.to.currency,
         amount: Number(form.from.value),
-        // startRate: Number(form.rate.rate),
+        startRate: Number(form.rate?.rate),
         type: "otc",
       });
       navigate({

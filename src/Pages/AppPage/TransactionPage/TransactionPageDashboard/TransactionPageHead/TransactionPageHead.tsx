@@ -8,18 +8,15 @@ import Icon from "@/Components/General/Icon/Icon";
 const optionSelect = [
   {
     label: "Be Network",
-    value: "Be Network",
+    value: "bebanktransfer",
   },
-  { label: "QR Payment", value: "QR Payment" },
-  { label: "Bank Transfer", value: "Bank Transfer" },
-  { label: "Top Up", value: "Top Up" },
-  { label: "Add Savings", value: "Add Savings" },
-  { label: "Withdraw Savings", value: "Withdraw Savings" },
-  { label: "Add Crypto", value: "Add Crypto" },
-  { label: "Withdraw Crypto", value: "Withdraw Crypto" },
-  { label: "OTC", value: "OTC" },
-  { label: "Crypto Exchange", value: "Crypto Exchange" },
-  { label: "FX", value: "FX" },
+  { label: "QR Payment", value: "qrtransfer" },
+  { label: "Bank Transfer", value: "otherbanktransfer" },
+  { label: "Top Up", value: "wiretransfer" },
+  { label: "Savings", value: "saving" },
+  { label: "Funds withdraw", value: "fundswithdraw" },
+  { label: "Crypto Exchange", value: "crypto-exchange" },
+  { label: "FX", value: "exchange" },
 ];
 export default function TransactionPageHead() {
   const [form] = useForm();

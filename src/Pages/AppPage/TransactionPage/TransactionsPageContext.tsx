@@ -4,8 +4,8 @@ export type Maybe<T> = T | null | undefined;
 
 export interface TransactionsFormType {
   type: Maybe<string>;
-  dateFrom: Maybe<Date>;
-  dateTo: Maybe<Date>;
+  dateFrom: Maybe<string>;
+  dateTo: Maybe<string>;
   name: Maybe<string>;
 }
 

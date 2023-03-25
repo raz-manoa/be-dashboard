@@ -1,6 +1,7 @@
 import Text from "@/Components/General/Text/Text";
 import React, { ReactNode } from "react";
 import { IRoute } from "../Interfaces/Routes";
+import Transaction from "@/Pages/AppPage/TransactionPage/Transaction";
 
 interface ISidebarRoute extends IRoute {
   icon: string;
@@ -196,7 +197,14 @@ const sidebarRoutes: ISidebarRoute[] = [
     path: "transactions",
     name: "Transactions",
     icon: "transactions",
-    component: TransactionPage,
+    component: Transaction,
+    children: [
+      {
+        path: "",
+        name: "transactions-dashboard",
+        component: TransactionPage,
+      }
+    ]
   },
   {
     path: "be-network",

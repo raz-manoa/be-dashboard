@@ -2,16 +2,18 @@ import Card from "@/Components/Display/Card/Card";
 import CardConfirm from "@/Components/Display/ConfirmModal/CardConfirm";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useSavingPageContext } from "../SavingPageContext";
+import dayjs from "dayjs";
 
 export default function SavingPageSucess() {
   useSetAppLayoutTitle("Savings");
   const { form } = useSavingPageContext();
+  const date = new Date();
 
   return (
     <Card className="common__card">
       <CardConfirm
         title="Savings Deposit - Deposit Completed"
-        date="11/06/2022, 10:27:41 PM"
+        date={date.toLocaleString()}
         msg={
           <>
             A deposit of{" "}
@@ -23,7 +25,7 @@ export default function SavingPageSucess() {
         }
         link={{
           label: "Transactions",
-          path: "#",
+          path: "/app/transactions",
           beforeText: "To check the status of your transaction, please see",
         }}
       />

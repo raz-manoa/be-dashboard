@@ -2,16 +2,18 @@ import Card from "@/Components/Display/Card/Card";
 import CardConfirm from "@/Components/Display/ConfirmModal/CardConfirm";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useSavingPageContext } from "../SavingPageContext";
+import dayjs from "dayjs";
 
 export default function SavingPageSucess() {
   useSetAppLayoutTitle("Savings");
   const { form } = useSavingPageContext();
+  const date = new Date();
 
-  return (
+    return (
     <Card className="common__card">
       <CardConfirm
         title="Savings Withdrawal - Request Submitted"
-        date="11/06/2022, 10:27:41 PM"
+        date={date.toLocaleString()}
         msg={
           <>
             A withdrawal request of{" "}

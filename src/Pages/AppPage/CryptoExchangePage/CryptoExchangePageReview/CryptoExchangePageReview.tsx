@@ -46,7 +46,7 @@ export default function CryptoExchangePageReview() {
     // TODO: pass response to confirmation
     try {
       const companyId = localStorage.getItem("companyId") || "";
-      const data = await companyDataEndpoint.exchange(companyId, {
+      const data = await companyDataEndpoint.cryptoExchange(companyId, {
         currencyFrom: form.from.currency,
         currencyTo: form.to.currency,
         amount: form.from.value,

@@ -13,6 +13,7 @@ export default function ForeignExchangePageReview() {
   const navigate = useNavigate();
   const { form } = useForeignExchangePageContext();
   const [error, setError] = useState<boolean>(false);
+  const fullname = localStorage.getItem('fullName');
 
   if (!form) {
     return <Navigate to="" />;
@@ -36,7 +37,7 @@ export default function ForeignExchangePageReview() {
     },
     {
       label: "Recipient Details",
-      value: "Company Name",
+      value: fullname,
       color: "black",
     },
   ];

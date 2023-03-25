@@ -5,6 +5,7 @@ import { SelectProps } from "antd/es/select";
 import styles from "./FormDatePicker.module.scss";
 import React, { useEffect, useState } from "react";
 import Text from "@/Components/General/Text/Text";
+import { useTransactionsPageContext } from "@/Pages/AppPage/TransactionPage/TransactionsPageContext";
 
 interface FormDatePickerProps {
   className?: string;
@@ -14,6 +15,8 @@ interface FormDatePickerProps {
 export default function FormDatePicker(props: FormDatePickerProps) {
   const { RangePicker } = DatePicker;
   const { className, onChange } = props;
+  const { form, setForm } = useTransactionsPageContext();
+  console.log(form, setForm);
   const [open, setOpen] = useState<boolean>(false);
   const [hasDate, setHasDate] = useState<boolean>(false);
 
@@ -21,8 +24,18 @@ export default function FormDatePicker(props: FormDatePickerProps) {
     setOpen(!open);
   };
 
-  const handleChange = (values: any, dateString: [string, string]) => {
+  const handleChange = async (values: any, dateString: [string, string]) => {
     onChange && onChange(values, dateString);
+    if (setForm) {
+      console.log('set form');
+      await setForm({
+        dateFrom: dateString[0],
+        dateTo: dateString[1],
+        type: form?.type,
+        name: form?.name
+      })
+      console.log(form);
+    }
     setHasDate(true);
   };
 
