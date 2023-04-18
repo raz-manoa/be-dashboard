@@ -1,6 +1,6 @@
 import Text from "@/Components/General/Text/Text";
 import React, { ReactNode } from "react";
-import { IRoute } from "../Interfaces/Routes";
+import { IRoute } from "@/Interfaces/Routes";
 import Transaction from "@/Pages/AppPage/TransactionPage/Transaction";
 
 interface ISidebarRoute extends IRoute {
@@ -185,6 +185,7 @@ const RequestMoneyPage = React.lazy(
 );
 
 // routes
+// @ts-ignore
 const sidebarRoutes: ISidebarRoute[] = [
   {
     index: true,

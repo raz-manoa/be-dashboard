@@ -15,6 +15,7 @@ const CartAmountConfirm = <T extends ICardAmountForm>(
   props: ICartAmountConfirmProps<T>
 ) => {
   const { form, title = "Exchange Complete" } = props;
+  const text = title.includes('Submitted') ? 'has been submitted.' : 'has been approved.'
   if (!form) {
     return <Navigate to="" />;
   }
@@ -41,7 +42,7 @@ const CartAmountConfirm = <T extends ICardAmountForm>(
               {" "}
               {formatCardAmount("to", form)}{" "}
             </span>
-            has been approved.
+              {text}
           </>
         }
       />
