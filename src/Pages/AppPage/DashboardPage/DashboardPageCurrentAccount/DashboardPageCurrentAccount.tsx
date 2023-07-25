@@ -25,10 +25,10 @@ export default function DashboardCurrentAccount(accounts: { accounts: AccountsRe
             <TitleCard
                 title="Current Account"
                 subtitle="Balances"
-                link={{
-                    url: "/",
-                    label: "View all",
-                }}
+                // link={{
+                //     url: "/",
+                //     label: "View all",
+                // }}
             >
                 <Text tag="div" variant="red" className="flex gap-2 items-end">
                     <Text tag="span" size={20} variant="red" weight={700}>

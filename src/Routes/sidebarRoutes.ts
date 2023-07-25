@@ -198,14 +198,7 @@ const sidebarRoutes: ISidebarRoute[] = [
     path: "transactions",
     name: "Transactions",
     icon: "transactions",
-    component: Transaction,
-    children: [
-      {
-        path: "",
-        name: "transactions-dashboard",
-        component: TransactionPage,
-      }
-    ]
+    component: TransactionPage,
   },
   {
     path: "be-network",

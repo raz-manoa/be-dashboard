@@ -63,7 +63,7 @@ const BankTransferPageDashboard = () => {
             <Alert message={error} type="error" className="mb-8" />
         )}
         <CardAmount
-            title="Exchange Amount"
+            title="Transfer amount"
             selectFrom={accounts}
             selectTo={allMockedAccs}
             onSubmit={handleSubmit}

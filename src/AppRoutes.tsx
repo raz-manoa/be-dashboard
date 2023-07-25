@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {createBrowserRouter, redirect, RouterProvider} from "react-router-dom";
 import Spin from "./Components/General/Spin/Spin";
 import { appRoutes, mainRoutes } from "./Routes";
 import { mapRoutes } from "./Utils/mapRoutes";
@@ -32,13 +32,12 @@ function AppRoutes() {
           <AppLayout />
         </Suspense>
       ),
-      // TODO: implement logged loader
-      /* loader: () => {
-        const user = localStorage.getItem("a");
+       loader: () => {
+        const user = localStorage.getItem("token");
         if (!user) {
           return redirect("/login");
         }
-      }, */
+      },
       children: mapRoutes(appRoutes),
     },
   ], { basename: "/companies" });

@@ -20,6 +20,7 @@ function capitalize(string: string) {
 }
 
 function transform(transactions: any[]) {
+  const companyId = localStorage.getItem('companyId');
   return transactions.map(item => {
     // @ts-ignore
     item.transfer = getTransfer(item);
@@ -37,19 +38,22 @@ function transform(transactions: any[]) {
       item.icon = 'bank-transfer';
     }
     if (item.transactionType === 'bebanktransfer') {
-      item.transactionType = 'BeBank Transfer'
+      item.transactionType = 'BeBank Transfer';
     }
     if (item.transactionType === 'otherbanktransfer') {
-      item.transactionType = 'Other Bank Transfer'
+      item.transactionType = 'Bank Transfer';
+      item.icon = 'network';
+      item.accountVersionType = 'bank transfer';
     }
     if (item.transactionType === 'fundswithdraw') {
-      item.transactionType = 'Funds Withdraw'
+      item.transactionType = 'Funds Withdraw';
     }
     if (item.transactionType === 'wiretransfer') {
-      item.transactionType = 'Wire Transfer'
+      item.transactionType = 'Wire Transfer';
+      item.icon = 'top-up';
     }
     if (item.transactionType === 'qrtransfer') {
-      item.transactionType = 'QR Transfer'
+      item.transactionType = 'QR Transfer';
     }
     item.transactionType = capitalize(item.transactionType);
     return item;
@@ -63,7 +67,8 @@ function getAmount(transaction: ITransaction, companyId: string) {
     // @ts-ignore
     return `-${transfer.amountFromWithCommission} ${transfer.currencyFrom}/+${transfer.amountTo} ${transfer.currencyTo}`
   }
-  if (companyId === transaction.sender.id) {
+  // @ts-ignore
+  if (companyId === transaction.sender.id && transfer.name !== 'wiretransfer') {
     // @ts-ignore
     return `-${transfer.amount || transfer.amountFromWithCommission} ${transfer.currency || transfer.currencyFrom}`
   }
@@ -83,7 +88,6 @@ export default function TransactionPageTable() {
       const changed = transform(transactions);
       // @ts-ignore
       setTransactions(changed);
-      console.log('setForm', setForm);
       if (setForm) {
         setForm({
           dateFrom: null,
