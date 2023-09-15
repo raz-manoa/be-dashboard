@@ -31,13 +31,13 @@ const LoginPage = () => {
 
       if (response && response.data.email) {
         localStorage.setItem('email', response.data.email);
+        localStorage.setItem('password', data.password);
         navigate({
           pathname: "confirmation",
         });
       }
     } catch (error) {
       setError('Wrong email or password.')
-      console.log('login error', error);
     }
   };
 

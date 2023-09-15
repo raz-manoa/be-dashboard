@@ -1,14 +1,14 @@
 import Text from "@/Components/General/Text/Text";
 import DashboardPageCurrentAccount from "./DashboardPageCurrentAccount/DashboardPageCurrentAccount";
 import styles from "./DashboardPage.module.scss";
-import DashboarPageSavingAccount from "./DashboarPageSavingAccount/DashboarPageSavingAccount";
+import DashboardPageSavingAccount from "@/Pages/AppPage/DashboardPage/DashboardPageSavingAccount/DashboardPageSavingAccount";
 import DashboardPageTransaction from "./DashboardPageTransaction";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import React, {useEffect, useState} from 'react'
 import {ITransaction} from "@/Interfaces/Transaction";
 import api from "@/Api/api";
 import {IAccount} from "@/Interfaces/Account";
-import {ISaving} from "@/Pages/AppPage/DashboardPage/DashboarPageSavingAccount/SavingCard/SavingCard";
+import {ISaving} from "@/Pages/AppPage/DashboardPage/DashboardPageSavingAccount/SavingCard/SavingCard";
 
 const DashboardPage = () => {
     const [accounts, setAccounts] = useState<IAccount[]>([]);
@@ -41,7 +41,7 @@ const DashboardPage = () => {
     <div className={styles.dashboard}>
         {accounts && accounts.length > 0 && <DashboardPageCurrentAccount accounts={accounts}/>}
       <div className={styles.dashboardRight}>
-          {savings && savings.length > 0 && <DashboarPageSavingAccount savings={savings} />}
+          {savings && savings.length > 0 && <DashboardPageSavingAccount savings={savings} />}
           {transactions && transactions.length > 0 && <DashboardPageTransaction transactions={transactions}/>}
       </div>
     </div>

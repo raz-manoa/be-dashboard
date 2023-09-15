@@ -6,7 +6,7 @@ import SavingPageTable from "./SavingPageTable/SavingPageTable";
 import { useEffect, useState } from "react";
 import api from "@/Api/api";
 import { IAccount } from "@/Interfaces/Account";
-import { ISaving } from "@/Pages/AppPage/DashboardPage/DashboarPageSavingAccount/SavingCard/SavingCard";
+import { ISaving } from "@/Pages/AppPage/DashboardPage/DashboardPageSavingAccount/SavingCard/SavingCard";
 
 const SavingPageDashboard = () => {
   const showAlert = false;

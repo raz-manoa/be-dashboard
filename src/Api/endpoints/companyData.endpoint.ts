@@ -3,7 +3,7 @@ import apiInstance from "../apiInstance";
 import { IAccount } from "@/Interfaces/Account";
 import { IUser } from "@/Interfaces/IUser";
 import { ECurrency } from "@/Interfaces/Currency";
-import { ISaving } from "@/Pages/AppPage/DashboardPage/DashboarPageSavingAccount/SavingCard/SavingCard";
+import { ISaving } from "@/Pages/AppPage/DashboardPage/DashboardPageSavingAccount/SavingCard/SavingCard";
 import { accountsMock } from "../mock/account.mock";
 import { IRate } from "@/Interfaces/Rate";
 import { ICountry } from "@/Interfaces/Country";

@@ -7,7 +7,7 @@ import {
     SavingPageTableData,
 } from "./SavingPageTableConfig";
 import useSavingPageTableLogic from "./SavingPageTableLogic";
-import {ISaving} from "@/Pages/AppPage/DashboardPage/DashboarPageSavingAccount/SavingCard/SavingCard";
+import {ISaving} from "@/Pages/AppPage/DashboardPage/DashboardPageSavingAccount/SavingCard/SavingCard";
 import api from "@/Api/api";
 import {ITransaction} from "@/Interfaces/Transaction";
 

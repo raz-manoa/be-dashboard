@@ -4,7 +4,7 @@ import styles from "./SavingPageAdd.module.scss";
 import { Tabs, TabsProps } from "antd";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ISaving } from "@/Pages/AppPage/DashboardPage/DashboarPageSavingAccount/SavingCard/SavingCard";
+import { ISaving } from "@/Pages/AppPage/DashboardPage/DashboardPageSavingAccount/SavingCard/SavingCard";
 import { IAccount } from "@/Interfaces/Account";
 import { currencyParser } from "@/Utils/currencyParser";
 import axios from "axios";

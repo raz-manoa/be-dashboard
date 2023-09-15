@@ -2,7 +2,7 @@ import TitleCard from "@/Components/Display/TitleCard/TitleCard";
 import SavingCard, {ISaving } from "./SavingCard/SavingCard";
 import styles from "../DashboardPage.module.scss";
 
-export default function DashboarPageSavingAccount(savings: ISaving[]) {
+export default function DashboardPageSavingAccount(savings: ISaving[]) {
     return (
         <div>
             <TitleCard

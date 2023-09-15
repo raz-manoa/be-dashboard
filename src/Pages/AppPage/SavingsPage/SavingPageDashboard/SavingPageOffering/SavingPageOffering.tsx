@@ -5,7 +5,7 @@ import UnitedState from "@/Assets/Flags/united states.svg";
 import styles from "./SavingPageOffering.module.scss";
 import React, { useEffect, useState } from "react";
 import api from "@/Api/api";
-import SavingCard, {ISaving} from "@/Pages/AppPage/DashboardPage/DashboarPageSavingAccount/SavingCard/SavingCard";
+import SavingCard, {ISaving} from "@/Pages/AppPage/DashboardPage/DashboardPageSavingAccount/SavingCard/SavingCard";
 
 export default function SavingPageOffering(savings: { savings: ISaving[] }) {
     useEffect(() => {
