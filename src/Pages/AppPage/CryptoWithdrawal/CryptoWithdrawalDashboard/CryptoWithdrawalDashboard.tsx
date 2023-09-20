@@ -1,27 +1,19 @@
 import Card from "@/Components/Display/Card/Card";
 import TitleCard from "@/Components/Display/TitleCard/TitleCard";
 import styles from "./CryptoWithdrawal.module.scss";
-import { useEffect, useMemo, useState } from "react";
-import Radio, { RadioChangeEvent } from "antd/es/radio";
+import {useEffect, useMemo, useState} from "react";
+import Radio, {RadioChangeEvent} from "antd/es/radio";
 import Text from "@/Components/General/Text/Text";
-import Ethereum from "@/Assets/Logo/Ethereum.svg";
-import Btc from "@/Assets/Logo/BitCoin.svg";
 import Solana from "@/Assets/Logo/Solana.svg";
-import { FormCustom } from "@/Components/DataEntry/FormCustom";
-import { useForm } from "antd/es/form/Form";
+import {FormCustom} from "@/Components/DataEntry/FormCustom";
+import {useForm} from "antd/es/form/Form";
 import Form from "antd/es/form";
 import Button from "@/Components/General/Button/Button";
-import { useNavigate } from "react-router-dom";
-import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
-import companyDataEndpoint, {
-  AccountsResponse,
-  CurrencyInfo,
-} from "@/Api/endpoints/companyData.endpoint";
-import { ECurrency } from "@/Interfaces/Currency";
-import {
-  CryptoWithdrawalFormType,
-  useCryptoWithdrawalContext,
-} from "../CryptoWithdrawalContext";
+import {useNavigate} from "react-router-dom";
+import {useSetAppLayoutTitle} from "@/Layouts/AppLayout/AppLayoutContext";
+import companyDataEndpoint, {AccountsResponse, CurrencyInfo,} from "@/Api/endpoints/companyData.endpoint";
+import {ECurrency} from "@/Interfaces/Currency";
+import {CryptoWithdrawalFormType, useCryptoWithdrawalContext,} from "../CryptoWithdrawalContext";
 import Alert from "antd/es/alert";
 
 const CryptoWithdrawalDashboard = () => {
@@ -43,26 +35,26 @@ const CryptoWithdrawalDashboard = () => {
       isCrypto: true,
       precision: 8,
       icon: Solana,
-      supportedCurrencies: [ECurrency.SOL],
+      supportedCurrencies: [ECurrency.SOL, ECurrency.USDC],
     },
-    [ECurrency.BTC]: {
-      id: ECurrency.BTC,
-      sign: "₿",
-      name: "Bitcoin",
-      isCrypto: true,
-      precision: 8,
-      icon: Btc,
-      supportedCurrencies: [ECurrency.BTC],
-    },
-    [ECurrency.ETH]: {
-      id: ECurrency.ETH,
-      sign: "Ξ",
-      name: "Ethereum",
-      isCrypto: true,
-      precision: 8,
-      icon: Ethereum,
-      supportedCurrencies: [ECurrency.ETH, ECurrency.BTC],
-    },
+    // [ECurrency.BTC]: {
+    //   id: ECurrency.BTC,
+    //   sign: "₿",
+    //   name: "Bitcoin",
+    //   isCrypto: true,
+    //   precision: 8,
+    //   icon: Btc,
+    //   supportedCurrencies: [ECurrency.BTC],
+    // },
+    // [ECurrency.ETH]: {
+    //   id: ECurrency.ETH,
+    //   sign: "Ξ",
+    //   name: "Ethereum",
+    //   isCrypto: true,
+    //   precision: 8,
+    //   icon: Ethereum,
+    //   supportedCurrencies: [ECurrency.ETH, ECurrency.BTC],
+    // },
   };
 
   useEffect(() => {
@@ -110,28 +102,34 @@ const CryptoWithdrawalDashboard = () => {
   }, [availableChain]);
 
   const handleTransactionFee = async () => {
-    const { amount, currency, address } = form.getFieldsValue();
-    const response = await companyDataEndpoint.getMyCryptoWithdrawalFee({
-      amount,
-      coin: currency,
-      address,
-    });
-
-    if (response.success === true) {
-      form.setFields([
-        {
-          name: ["fee"],
-          value: response.fee,
-        },
-      ]);
-    } else {
-      form.setFields([
-        {
-          name: ["fee"],
-          value: null,
-        },
-      ]);
-    }
+    // const { amount, currency, address } = form.getFieldsValue();
+    // const response = await companyDataEndpoint.getMyCryptoWithdrawalFee({
+    //   amount,
+    //   coin: currency,
+    //   address,
+    // });
+    //
+    // if (response.success === true) {
+    //   form.setFields([
+    //     {
+    //       name: ["fee"],
+    //       value: response.fee,
+    //     },
+    //   ]);
+    // } else {
+    //   form.setFields([
+    //     {
+    //       name: ["fee"],
+    //       value: null,
+    //     },
+    //   ]);
+    // }
+    form.setFields([
+      {
+        name: ["fee"],
+        value: null,
+      },
+    ]);
   };
 
   const handleWithdrawal = async (e: any) => {

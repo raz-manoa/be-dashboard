@@ -18,12 +18,15 @@ const DashboardPage = () => {
     useEffect(() => {
         async function getInfo() {
             const companyId = localStorage.getItem('companyId');
-            // @ts-ignore
-            api.companyData.getAccounts(companyId).then(data => setAccounts(data));
-            // @ts-ignore
-            api.companyData.getTransactions(companyId).then(data => setTransactions(data));
-            // @ts-ignore
-            api.companyData.getSavings(companyId).then(data => setSavings(data));
+            const token = localStorage.getItem('token');
+            const timeout = token ? 10 : 2000;
+            setTimeout(()=> {
+                // @ts-ignore
+                api.companyData.getAccounts(companyId).then(data => setAccounts(data));
+                // @ts-ignore
+                api.companyData.getTransactions(companyId).then(data => setTransactions(data));
+                // @ts-ignore
+                api.companyData.getSavings(companyId).then(data => setSavings(data))}, timeout)
         }
         getInfo();
     },[]);

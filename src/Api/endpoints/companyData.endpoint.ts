@@ -23,8 +23,8 @@ export interface CurrencyInfo {
   id: ECurrency;
   sign: string;
   name: string;
-  isCrypto: boolean;
-  precision: number;
+  isCrypto?: boolean;
+  precision?: number;
   countryCode?: string | null;
   icon?: string;
   supportedCurrencies?: ECurrency[];
@@ -39,6 +39,11 @@ interface UsdBalance {
 export interface AccountsResponse extends IAccount {
   currencyInfo?: CurrencyInfo;
   usdBalance?: UsdBalance;
+}
+
+export interface Address {
+  currency: CurrencyInfo;
+  address: string;
 }
 
 class CompanyDataEndpoint {
@@ -71,6 +76,11 @@ class CompanyDataEndpoint {
     return apiInstance
       .get(`api/admin/companies/${id}/accounts/new`)
       .then(({ data }) => data.accounts);
+  };
+  getAddresses = async (id: string): Promise<Address[]> => {
+    return apiInstance
+        .get(`api/admin/companies/${id}/addresses`)
+        .then(({ data }) => data.accounts);
   };
   getMyAccounts = (): Promise<AccountsResponse[]> => {
     const companyId = localStorage.getItem("companyId") || "";

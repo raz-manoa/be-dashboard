@@ -6,6 +6,7 @@ import QRCode from "@/Assets/qr-code.svg";
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useEffect, useState } from "react";
 import { TransactionPageTableData } from "@/Pages/AppPage/TransactionPage/TransactionPageDashboard/TransactionPageTable/TransactionPageTableConfig";
+import api from "@/Api/api";
 
 const CryptoDepositPage = () => {
   useSetAppLayoutTitle("Crypto Deposit");
@@ -13,39 +14,37 @@ const CryptoDepositPage = () => {
   const [error, setError] = useState<boolean>(false);
   useEffect(() => {
     async function getInfo() {
-      const company = localStorage.getItem('company') || '';
-      const parsedCompany = JSON.parse(company);
-      console.log(parsedCompany);
-      const addresses = JSON.parse(parsedCompany.addresses);
-      let count = Object.keys(addresses).length
-      if (count === 0) {
+      const companyId = localStorage.getItem("companyId") || "";
+      const addresses = await api.companyData.getAddresses(companyId);
+      const sol = addresses.find(item => item.currency.name === 'SOL');
+      if (!sol) {
         setError(true);
       } else {
         const responseData = [
           {
-            name: "Ethereum",
-            id: "ETH",
-            address: addresses.ETH,
-            logo: Ethereum,
-            txt: "Please only send ETH to this address. Sending other crypto currencies may result in loss of funds",
-            code: QRCode,
-          },
-          {
-            name: "Bitcoin",
-            id: "BTC",
-            address: addresses.BTC,
-            logo: BitCoin,
-            txt: "Please only send BTC to this address. Sending other crypto currencies may result in loss of funds",
-            code: QRCode,
-          },
-          {
             name: "Solana",
             id: "SOL",
-            address: addresses.SOL,
+            address: sol.address,
             logo: Solana,
             txt: "Please only send SOL to this address. Sending other crypto currencies may result in loss of funds",
             code: QRCode,
           },
+          // {
+          //   name: "Ethereum",
+          //   id: "ETH",
+          //   address: addresses.ETH,
+          //   logo: Ethereum,
+          //   txt: "Please only send ETH to this address. Sending other crypto currencies may result in loss of funds",
+          //   code: QRCode,
+          // },
+          // {
+          //   name: "Bitcoin",
+          //   id: "BTC",
+          //   address: addresses.BTC,
+          //   logo: BitCoin,
+          //   txt: "Please only send BTC to this address. Sending other crypto currencies may result in loss of funds",
+          //   code: QRCode,
+          // },
         ];
         setData(responseData);
       }
