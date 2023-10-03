@@ -16,7 +16,7 @@ const CryptoDepositPage = () => {
     async function getInfo() {
       const companyId = localStorage.getItem("companyId") || "";
       const addresses = await api.companyData.getAddresses(companyId);
-      const sol = addresses.find(item => item.currency.name === 'SOL');
+      const sol = addresses.find(item => item.currency.id === 'SOL');
       if (!sol) {
         setError(true);
       } else {
@@ -26,7 +26,7 @@ const CryptoDepositPage = () => {
             id: "SOL",
             address: sol.address,
             logo: Solana,
-            txt: "Please only send SOL to this address. Sending other crypto currencies may result in loss of funds",
+            txt: "Please only send SOL and USDC to this address. Sending other crypto currencies may result in loss of funds",
             code: QRCode,
           },
           // {
@@ -54,6 +54,7 @@ const CryptoDepositPage = () => {
   }, []);
 
   return (
+      // <div><p>Coming Soon</p></div>
     <div className="grid grid-cols-3 gap-5 mt-5">
       {error && <div><p>You don't have addresses</p></div>}
       {!error && data.length > 0 &&

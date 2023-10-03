@@ -12,7 +12,7 @@ import { BeNetworkFormType } from "@/Pages/AppPage/BeNetworkPage/BeNetworkPageCo
 import { ITopUpItem } from "@/Pages/AppPage/TopUpPage/TopUpPage";
 import {
   CryptoWithdrawalConfirmData,
-  CryptoWithdrawalFormType,
+  CryptoWithdrawalFormType, CryptoWithdrawalPayload,
 } from "@/Pages/AppPage/CryptoWithdrawal/CryptoWithdrawalContext";
 
 export interface IGetAllTransactionArgs {
@@ -49,7 +49,7 @@ export interface Address {
 class CompanyDataEndpoint {
   getTransactions = async (id: string, filters?: object): Promise<ITransaction[]> => {
     return apiInstance
-      .get(`api/admin/users/${id}/transactions?limit=10`)
+      .get(`api/admin/users/${id}/company/transactions?limit=10`)
       .then(({ data }) => data.transactions);
   };
   getSavingsTransactions = async (id: string): Promise<ITransaction[]> => {
@@ -80,7 +80,7 @@ class CompanyDataEndpoint {
   getAddresses = async (id: string): Promise<Address[]> => {
     return apiInstance
         .get(`api/admin/companies/${id}/addresses`)
-        .then(({ data }) => data.accounts);
+        .then(({ data }) => data.data);
   };
   getMyAccounts = (): Promise<AccountsResponse[]> => {
     const companyId = localStorage.getItem("companyId") || "";
@@ -175,7 +175,7 @@ class CompanyDataEndpoint {
   };
   cryptoWithdraw = async (
     id: string,
-    body: CryptoWithdrawalFormType
+    body: CryptoWithdrawalPayload
   ): Promise<CryptoWithdrawalConfirmData> => {
     return apiInstance
       .post(`api/admin/companies/${id}/crypto/send`, body)

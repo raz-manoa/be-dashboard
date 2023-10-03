@@ -1,7 +1,6 @@
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
 import {
-  CardAmount,
   ICardAmountForm,
 } from "@/Components/Display/CardAmount/CardAmount";
 import companyDataEndpoint, {
@@ -10,6 +9,7 @@ import companyDataEndpoint, {
 import { useEffect, useState } from "react";
 import { useForeignExchangePageContext } from "../ForeignExchangePageContext";
 import {ECurrency} from "@/Interfaces/Currency";
+import { FxCardAmount } from "@/Components/Display/CardAmount/FxCardAmount";
 
 const ForeignExchangePageDashboard = () => {
   const all = ['USD', 'EUR', 'GBP', 'CAD', 'BWP', 'GHS', 'GNF', 'KES', 'MGA', 'MUR', 'MWK', 'MZN', 'NAD', 'NGN', 'RWF', 'SCR', 'TZS', 'UGX', 'XAF', 'XOF', 'ZAR', 'ZMW'];
@@ -42,7 +42,6 @@ const ForeignExchangePageDashboard = () => {
     const companyId = localStorage.getItem('companyId') || '';
 
     companyDataEndpoint
-      // TODO: set account id
       .getAccounts(companyId)
       .then((data) => {
         if (data) {
@@ -54,7 +53,7 @@ const ForeignExchangePageDashboard = () => {
   }, []);
 
   return (
-    <CardAmount
+    <FxCardAmount
       title="Exchange Amount"
       selectFrom={accounts}
       selectTo={allMockedAccs}

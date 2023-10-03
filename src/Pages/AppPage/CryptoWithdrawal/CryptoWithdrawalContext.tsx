@@ -12,6 +12,12 @@ export interface CryptoWithdrawalFormType {
   amount: number;
   fee?: number;
 }
+
+export interface CryptoWithdrawalPayload {
+  address: string;
+  currency: ECurrency;
+  amount: number;
+}
 interface IState {
   form?: CryptoWithdrawalFormType;
   setForm?: React.Dispatch<

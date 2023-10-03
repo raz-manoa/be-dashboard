@@ -52,7 +52,12 @@ export default function CryptoWithdrawalReview() {
 
   const handleSubmit = async () => {
     const companyId = localStorage.getItem("companyId") || "";
-    const response = await companyDataEndpoint.cryptoWithdraw(companyId, form);
+    const body = {
+      address: form.address,
+      amount: form.amount,
+      currency: form.currency
+    };
+    const response = await companyDataEndpoint.cryptoWithdraw(companyId, body);
     if (response && setConfirmation) {
       setConfirmation(response);
       navigate({

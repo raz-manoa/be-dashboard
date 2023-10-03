@@ -65,7 +65,7 @@ export default function OtcPageReview() {
       )}
       <CardConfirm
         className="common__card"
-        title="Foreign Exchange - Review"
+        title="OTC - Review"
         btnPrimary="Back"
         btnSecondary="Confirm"
         data={data}

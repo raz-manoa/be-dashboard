@@ -1,7 +1,6 @@
 import { useSetAppLayoutTitle } from "@/Layouts/AppLayout/AppLayoutContext";
 import { useNavigate } from "react-router-dom";
 import {
-  CardAmount,
   ICardAmountForm,
 } from "@/Components/Display/CardAmount/CardAmount";
 import companyDataEndpoint, {
@@ -11,6 +10,7 @@ import companyDataEndpoint, {
 import { useState, useEffect, useMemo } from "react";
 import { ECurrency } from "@/Interfaces/Currency";
 import { useCryptoExchangePageContext } from "../CryptoExchangePageContext";
+import {FxCardAmount} from "@/Components/Display/CardAmount/FxCardAmount";
 
 const cryptoData: CurrencyInfo[] = [
   {
@@ -80,8 +80,8 @@ const CryptoExchangePageDashboard = () => {
   }, [cryptoData, accounts]);
 
   return (
-    <CardAmount
-      title="Amount"
+    <FxCardAmount
+      title="Exchange Amount"
       selectFrom={availableCurrency}
       selectTo={availableCurrency}
       onSubmit={handleSubmit}

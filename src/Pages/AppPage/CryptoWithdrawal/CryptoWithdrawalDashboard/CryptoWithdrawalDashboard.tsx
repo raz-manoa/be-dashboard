@@ -87,9 +87,13 @@ const CryptoWithdrawalDashboard = () => {
       ]);
     }
     if (!fieldValue.currency && availableChain[0]) {
-      const supportedCurrencies: ECurrency[] = chainData[
+      let supportedCurrencies: ECurrency[] = chainData[
         availableChain[0].currency
       ]?.supportedCurrencies || [availableChain[0].currency];
+      // @ts-ignore
+      const accountsOwned = accounts.map(account => account.currencyInfo.id);
+      console.log('accountsOwned', accountsOwned);
+      supportedCurrencies = supportedCurrencies.filter(cur => accountsOwned.includes(cur));
 
       setAvailableCurrency(supportedCurrencies);
       form.setFields([
@@ -127,7 +131,7 @@ const CryptoWithdrawalDashboard = () => {
     form.setFields([
       {
         name: ["fee"],
-        value: null,
+        value: 0,
       },
     ]);
   };
@@ -156,6 +160,7 @@ const CryptoWithdrawalDashboard = () => {
   };
 
   return (
+      // <div><p>Coming Soon</p></div>
     <Card className="common__card">
       <TitleCard
         title="Crypto Withdrawal"
@@ -358,7 +363,7 @@ const CryptoWithdrawalDashboard = () => {
             {({ getFieldValue }) => {
               const fee = getFieldValue("fee");
               const currency = getFieldValue("currency");
-              if (!fee) return null;
+              if (!fee && fee !== 0) return null;
               return (
                 <Text tag="p" type="p" variant="grey">
                   Estimated transaction fee: {fee} {currency}
