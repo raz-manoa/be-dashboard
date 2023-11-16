@@ -28,6 +28,13 @@ const cryptoData: CurrencyInfo[] = [
     precision: 8,
   },
   {
+    id: ECurrency.STEP,
+    sign: "STEP",
+    name: "STEP",
+    isCrypto: true,
+    precision: 8,
+  },
+  {
     id: ECurrency.BTC,
     sign: "₿",
     name: "Bitcoin",

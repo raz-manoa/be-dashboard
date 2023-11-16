@@ -26,7 +26,7 @@ const CryptoDepositPage = () => {
             id: "SOL",
             address: sol.address,
             logo: Solana,
-            txt: "Please only send SOL and USDC to this address. Sending other crypto currencies may result in loss of funds",
+            txt: "Please only send SOL, USDC and STEP to this address. Sending other crypto currencies may result in loss of funds",
             code: QRCode,
           },
           // {

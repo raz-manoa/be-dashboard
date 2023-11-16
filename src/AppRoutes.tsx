@@ -35,7 +35,7 @@ function AppRoutes() {
        loader: () => {
         const user = localStorage.getItem("token");
         if (!user) {
-          return redirect("/login");
+          return redirect("/companies/login");
         }
       },
       children: mapRoutes(appRoutes),

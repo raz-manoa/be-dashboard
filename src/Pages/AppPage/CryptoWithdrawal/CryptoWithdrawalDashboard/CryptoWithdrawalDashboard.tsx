@@ -35,7 +35,7 @@ const CryptoWithdrawalDashboard = () => {
       isCrypto: true,
       precision: 8,
       icon: Solana,
-      supportedCurrencies: [ECurrency.SOL, ECurrency.USDC],
+      supportedCurrencies: [ECurrency.SOL, ECurrency.USDC, ECurrency.STEP],
     },
     // [ECurrency.BTC]: {
     //   id: ECurrency.BTC,
@@ -286,9 +286,11 @@ const CryptoWithdrawalDashboard = () => {
                 validator: (rule, value, callback) => {
                   const currency = getFieldValue("currency");
                   const parsedValue = parseFloat(value) || 0;
-                  const currencyItem = availableChain.find(
-                    (c) => c.currency === currency
-                  );
+                  const currencyItem = accounts.find(cur => cur.currency === currency);
+
+                  // const currencyItem = availableChain.find(
+                  //   (c) => c.currency === currency
+                  // );
                   if (!currencyItem) {
                     callback();
                   } else if (
@@ -317,9 +319,10 @@ const CryptoWithdrawalDashboard = () => {
         <Form.Item shouldUpdate={() => true} noStyle>
           {({ getFieldValue }) => {
             const currency = getFieldValue("currency");
-            const currencyItem = availableChain.find(
-              (c) => c.currency === currency
-            );
+            const currencyItem = accounts.find(cur => cur.currency === currency);
+            // const currencyItem = availableChain.find(
+            //   (c) => c.currency === currency
+            // );
             if (!currencyItem) return null;
             return (
               <Text

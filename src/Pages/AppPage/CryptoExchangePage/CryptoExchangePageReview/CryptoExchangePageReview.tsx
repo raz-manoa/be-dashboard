@@ -76,7 +76,7 @@ export default function CryptoExchangePageReview() {
         className="common__card"
         title="Crypto Exchange - Review"
         btnPrimary="Back"
-        btnSecondary="Confirmer"
+        btnSecondary="Confirm"
         itemStyle={{ padding: "25px 15px 24px" }}
         data={data}
         onClickFirstBtn={() => {
